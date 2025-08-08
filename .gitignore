@@ -1,0 +1,111 @@
+# Node dependencies
+/node_modules/
+/.pnp/
+/.pnp.js
+
+# Next.js build output
+/.next/
+/out/
+/dist/
+
+# Production build artifacts
+/build/
+/tmp/
+/temp/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files (do NOT commit secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Next.js static cache and telemetry
+.next/cache/
+.next/static/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# JetBrains IDEs
+.idea/
+/*.iml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Coverage
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor/temp files
+*.swp
+*.swo
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Build system / bundlers
+dist/
+build/
+.cache/
+.cache-loader/
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Package lockfiles (optional — keep if you want deterministic installs)
+# Uncomment if you don't want lockfiles in the repo:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Docker
+docker-compose.override.yml
+**/Dockerfile.*
+*.env.*.local
+
+# Secrets and keys
+*.pem
+*.key
+secrets.json
+
+# Misc
+.vagrant/
+.idea/
+.svn/
+.hg/
+
+# Optional: ignore local storybook build
+/storybook-static/
+
+# Optional: ignore generated GraphQL artifacts (adjust to your project)
+# /src/graphql/generated/
+
+# Optional: ignore local test snapshots if you prefer not to track them
+# __snapshots__/
+
