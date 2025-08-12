@@ -62,7 +62,8 @@ export default function ContactForm() {
           message: ''
         })
       } else {
-        throw new Error(result.error || 'Failed to send message')
+        const errorMessage = result.error || 'Failed to send message'
+        throw new Error(errorMessage)
       }
     } catch (error) {
       console.error('Error:', error)

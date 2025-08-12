@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
+// Use environment variables for sensitive data
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: Request) {
@@ -23,8 +24,8 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'NILE.COM Contact <onboarding@resend.dev>',
-      to: [process.env.CONTACT_EMAIL || 'info@nilecom.com.eg'],
+      from: 'onboarding@resend.dev',
+      to: [process.env.CONTACT_EMAIL || 'ziadmahmoudx98@gmail.com'],
       subject: `Contact Form: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -43,16 +44,16 @@ export async function POST(request: Request) {
     if (error) {
       console.error('Resend error:', error)
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { error: 'Failed to send email: ' + error.message },
         { status: 500 }
       )
     }
 
     return NextResponse.json({ success: true, data })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Server error:', error)
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error: ' + (error.message || 'Unknown error') },
       { status: 500 }
     )
   }
