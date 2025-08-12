@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Award, Users, ArrowRight, Star, CheckCircle, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const partners = [
   {
@@ -113,15 +114,18 @@ export default function Partners() {
               key={partner.name} 
               href="/partners"
               className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
+              aria-label={`Learn more about ${partner.name} partnership`}
             >
               <Card className="h-full">
                 <CardContent className="p-6 space-y-6">
                   {/* Partner Logo */}
                   <div className="text-center">
-                    <img 
+                    <Image 
                       src={partner.logo || "/placeholder.svg"} 
                       alt={`${partner.name} Logo`}
-                      className="h-16 mx-auto object-contain"
+                      width={120}
+                      height={48}
+                      className="h-12 mx-auto object-contain"
                     />
                   </div>
 

@@ -160,6 +160,7 @@ export default function Hero() {
                   href="/services"
                   className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
                   style={{ animationDelay: `${index * 0.2}s` }}
+                  aria-label={`Learn more about ${service.title}`}
                 >
                   <Card className="h-full">
                     <CardContent className="p-6 space-y-4">

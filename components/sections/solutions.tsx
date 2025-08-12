@@ -85,6 +85,7 @@ export default function Solutions() {
               key={solution.title} 
               href="/solutions"
               className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block relative overflow-hidden"
+              aria-label={`Learn more about ${solution.title}`}
             >
               <Card className="h-full">
                 {solution.badge && (

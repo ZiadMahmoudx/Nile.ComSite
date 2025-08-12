@@ -38,18 +38,18 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-12 text-sm">
             <div className="hidden md:flex items-center space-x-8">
-              <div className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer group">
+              <a href="tel:+20227353333" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer group">
                 <Phone className="h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
                 <span className="font-medium">+20 2 2735 3333</span>
-              </div>
-              <div className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer group">
+              </a>
+              <a href="mailto:info@nilecom.com.eg" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer group">
                 <Mail className="h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
                 <span className="font-medium">info@nilecom.com.eg</span>
-              </div>
-              <div className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer group">
+              </a>
+              <a href="https://maps.app.goo.gl/tTUNyWFzGazyTgHe6" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer group">
                 <MapPin className="h-4 w-4 group-hover:scale-110 transition-transform duration-300" />
-                <span className="font-medium">Cairo, Egypt</span>
-              </div>
+                <span className="font-medium">Maadi, Cairo, Egyptt</span>
+              </a>
             </div>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">

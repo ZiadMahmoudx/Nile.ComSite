@@ -37,7 +37,7 @@ const positions = [
   {
     title: 'Senior Cloud Solutions Architect',
     department: 'Cloud Services',
-    location: 'Cairo, Egypt',
+    location: 'Maadi, Cairo, Egypt',
     type: 'Full-time',
     experience: '5+ years',
     description: 'Design and implement enterprise cloud solutions for our clients using Azure, AWS, and Google Cloud platforms.'
@@ -45,7 +45,7 @@ const positions = [
   {
     title: 'Cybersecurity Specialist',
     department: 'Security',
-    location: 'Cairo, Egypt',
+    location: 'Maadi, Cairo, Egypt',
     type: 'Full-time',
     experience: '3+ years',
     description: 'Protect our clients\' digital assets through advanced threat detection, incident response, and security architecture.'
@@ -53,7 +53,7 @@ const positions = [
   {
     title: 'IT Project Manager',
     department: 'Project Delivery',
-    location: 'Cairo, Egypt',
+    location: 'Maadi, Cairo, Egypt',
     type: 'Full-time',
     experience: '4+ years',
     description: 'Lead cross-functional teams in delivering complex IT projects on time and within budget.'
@@ -61,7 +61,7 @@ const positions = [
   {
     title: 'DevOps Engineer',
     department: 'Infrastructure',
-    location: 'Cairo, Egypt',
+    location: 'Maadi, Cairo, Egypt',
     type: 'Full-time',
     experience: '3+ years',
     description: 'Implement and maintain CI/CD pipelines, containerization, and automated infrastructure solutions.'

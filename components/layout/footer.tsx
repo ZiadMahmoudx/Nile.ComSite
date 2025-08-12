@@ -39,10 +39,9 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/nilecom', color: 'hover:text-blue-500' },
-  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/nilecom', color: 'hover:text-sky-500' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nilecom', color: 'hover:text-blue-600' },
-  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/nilecom', color: 'hover:text-pink-500' },
+  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/p/NileCom-100064014699452/', color: 'hover:text-blue-500' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nile.com', color: 'hover:text-blue-600' },
+  { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/nilecom.eg.ae/', color: 'hover:text-pink-500' },
 ]
 
 export default function Footer() {
@@ -115,7 +114,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer">
                 <MapPin className="w-4 h-4" />
-                <span className="font-medium">Cairo, Egypt</span>
+                <span className="font-medium">Maadi, Cairo, Egypt</span>
               </div>
             </div>
 

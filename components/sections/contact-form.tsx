@@ -115,7 +115,7 @@ const ContactForm = () => {
       title: "Location",
       details: "Maadi, Cairo, Egypt",
       description: "Visit our office",
-      href: "https://maps.google.com/?q=Maadi,Cairo,Egypt"
+      href: "https://maps.app.goo.gl/1rDrZiP9HFJfJzco6"
     },
     {
       icon: Clock,

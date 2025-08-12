@@ -29,7 +29,7 @@ const contactMethods = [
     description: 'Meet us at our office',
     contact: 'Maadi, Cairo, Egypt',
     action: 'Get Directions',
-    href: 'https://maps.google.com/?q=Maadi,Cairo,Egypt'
+    href: 'https://maps.app.goo.gl/yaJEBWN1eB1tYMj67'
   },
   {
     icon: Clock,

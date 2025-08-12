@@ -105,6 +105,7 @@ export default function SolutionsGrid() {
                 onMouseEnter={() => setHoveredSolution(solution.id)}
                 onMouseLeave={() => setHoveredSolution(null)}
                 style={{ animationDelay: `${index * 100}ms` }}
+                aria-label={`Learn more about ${solution.title}`}
               >
                 <Card 
                   id={solution.id.toString()} 

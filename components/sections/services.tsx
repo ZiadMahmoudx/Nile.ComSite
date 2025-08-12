@@ -6,7 +6,15 @@ import { Button } from '@/components/ui/button'
 import { Settings, Users, Headphones, Wrench, BookOpen, Rocket, ArrowRight, Clock, Shield, Award } from 'lucide-react'
 import Link from 'next/link'
 
-const services = [
+interface Service {
+  icon: React.ElementType
+  title: string
+  description: string
+  features: string[]
+  color: string
+}
+
+const services: Service[] = [
   {
     icon: Settings,
     title: 'Managed IT Services',
@@ -97,6 +105,7 @@ export default function Services() {
               key={service.title} 
               href="/services"
               className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
+              aria-label={`Learn more about ${service.title}`}
             >
               <Card className="h-full">
                 <CardHeader className="pb-4">
