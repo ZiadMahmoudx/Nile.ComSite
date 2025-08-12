@@ -32,6 +32,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [companyMenuOpen, setCompanyMenuOpen] = useState(false)
+  const [mobileCompanyMenuOpen, setMobileCompanyMenuOpen] = useState(false)
   const companyMenuRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
@@ -62,6 +63,7 @@ export default function Header() {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setMobileMenuOpen(false)
+        setMobileCompanyMenuOpen(false)
       }
     }
 
@@ -242,12 +244,12 @@ export default function Header() {
                           ? "text-white bg-gradient-to-r from-primary via-red-500 to-primary border-white shadow-lg"
                           : "text-foreground hover:text-white hover:bg-gradient-to-r hover:from-primary/80 hover:via-red-500/80 hover:to-primary/80 border-transparent hover:border-white/50"
                       )}
-                      onClick={() => setCompanyMenuOpen(!companyMenuOpen)}
+                      onClick={() => setMobileCompanyMenuOpen(!mobileCompanyMenuOpen)}
                     >
                       <span>{item.name}</span>
-                      <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", companyMenuOpen && "rotate-180")} />
+                      <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", mobileCompanyMenuOpen && "rotate-180")} />
                     </div>
-                    {companyMenuOpen && (
+                    {mobileCompanyMenuOpen && (
                       <div className="pl-8 space-y-2 mt-2">
                         {item.children.map((child) => {
                           const IconComponent = child.icon
@@ -257,7 +259,7 @@ export default function Header() {
                               href={child.href}
                               onClick={() => {
                                 setMobileMenuOpen(false)
-                                setCompanyMenuOpen(false)
+                                setMobileCompanyMenuOpen(false)
                               }}
                               className={cn(
                                 "flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200",
