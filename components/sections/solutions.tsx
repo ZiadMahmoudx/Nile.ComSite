@@ -80,37 +80,41 @@ export default function Solutions() {
 
         {/* Solutions Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {solutions.map((solution, index) => (
-            <Card key={solution.title} className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm relative overflow-hidden">
-              {solution.badge && (
-                <Badge className="absolute top-4 right-4 bg-primary/20 text-primary border-primary/30 text-xs">
-                  {solution.badge}
-                </Badge>
-              )}
-              <CardHeader className="pb-4">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${solution.color} p-4 shadow-lg mb-4`}>
-                  <solution.icon className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-xl font-bold text-foreground">{solution.title}</CardTitle>
-                <p className="text-muted-foreground leading-relaxed">{solution.description}</p>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  {solution.features.map((feature, featureIndex) => (
-                    <div key={feature} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                <Button asChild variant="ghost" className="w-full justify-between group hover:bg-primary/10 mt-4">
-                  <Link href="/solutions">
+          {solutions.map((solution) => (
+            <Link 
+              key={solution.title} 
+              href="/solutions"
+              className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block relative overflow-hidden"
+            >
+              <Card className="h-full">
+                {solution.badge && (
+                  <Badge className="absolute top-4 right-4 bg-primary/20 text-primary border-primary/30 text-xs">
+                    {solution.badge}
+                  </Badge>
+                )}
+                <CardHeader className="pb-4">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${solution.color} p-4 shadow-lg mb-4`}>
+                    <solution.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-xl font-bold text-foreground">{solution.title}</CardTitle>
+                  <p className="text-muted-foreground leading-relaxed">{solution.description}</p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    {solution.features.map((feature) => (
+                      <div key={feature} className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button variant="ghost" className="w-full justify-between group hover:bg-primary/10 mt-4">
                     Learn More
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 

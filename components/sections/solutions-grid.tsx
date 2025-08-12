@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -73,21 +72,6 @@ const solutions = [
 
 export default function SolutionsGrid() {
   const [hoveredSolution, setHoveredSolution] = useState<number | null>(null)
-  const router = useRouter()
-
-  const handleLearnMore = (id: number) => {
-    // Scroll to the solution card
-    const element = document.getElementById(id.toString())
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      // Highlight the card
-      setHoveredSolution(id)
-      // Remove highlight after 2 seconds
-      setTimeout(() => {
-        setHoveredSolution(null)
-      }, 2000)
-    }
-  }
 
   return (
     <section className="py-20 bg-background">
@@ -112,57 +96,61 @@ export default function SolutionsGrid() {
           {solutions.map((solution, index) => {
             const Icon = solution.icon
             return (
-              <Card 
+              <Link 
                 key={solution.id}
-                id={solution.id.toString()}
-                className={`card-hover tech-glow transition-all duration-500 ${
+                href="/solutions"
+                className={`card-hover tech-glow transition-all duration-500 block ${
                   hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
                 }`}
                 onMouseEnter={() => setHoveredSolution(solution.id)}
                 onMouseLeave={() => setHoveredSolution(null)}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-lg ${solution.bgColor} ${solution.color}`}>
-                      <Icon className="h-6 w-6" />
+                <Card 
+                  id={solution.id.toString()} 
+                  className="h-full"
+                >
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`p-3 rounded-lg ${solution.bgColor} ${solution.color}`}>
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <Badge variant="outline" className="text-xs">
+                        {solution.category}
+                      </Badge>
                     </div>
-                    <Badge variant="outline" className="text-xs">
-                      {solution.category}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-xl font-bold">{solution.title}</CardTitle>
-                </CardHeader>
+                    <CardTitle className="text-xl font-bold">{solution.title}</CardTitle>
+                  </CardHeader>
 
-                <CardContent className="space-y-6">
-                  <p className="text-muted-foreground">
-                    {solution.description}
-                  </p>
+                  <CardContent className="space-y-6">
+                    <p className="text-muted-foreground">
+                      {solution.description}
+                    </p>
 
-                  {/* Features List */}
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-muted-foreground">Key Features</h4>
+                    {/* Features List */}
                     <div className="space-y-2">
-                      {solution.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-center space-x-2 text-sm">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </div>
-                      ))}
+                      <h4 className="text-sm font-semibold text-muted-foreground">Key Features</h4>
+                      <div className="space-y-2">
+                        {solution.features.map((feature, featureIndex) => (
+                          <div key={featureIndex} className="flex items-center space-x-2 text-sm">
+                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                            <span className="text-muted-foreground">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* CTA Button */}
-                  <Button 
-                    onClick={() => handleLearnMore(solution.id)}
-                    variant="outline" 
-                    className="w-full btn-outline group mt-6"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </CardContent>
-              </Card>
+                    {/* CTA Button */}
+                    <Button 
+                      variant="outline" 
+                      className="w-full btn-outline group mt-6"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
             )
           })}
         </div>
@@ -176,11 +164,15 @@ export default function SolutionsGrid() {
             Let our experts design a custom solution tailored to your specific needs and goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={() => router.push('/contact')} size="lg" className="btn-primary">
-              Get Free Consultation
+            <Button asChild size="lg" className="btn-primary">
+              <Link href="/contact">
+                Get Free Consultation
+              </Link>
             </Button>
-            <Button onClick={() => router.push('/services')} variant="outline" size="lg" className="btn-outline">
-              View All Services
+            <Button asChild variant="outline" size="lg" className="btn-outline">
+              <Link href="/services">
+                View All Services
+              </Link>
             </Button>
           </div>
         </div>

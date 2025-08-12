@@ -93,7 +93,7 @@ export default function Partners() {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <Card key={stat.label} className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8 space-y-4">
                 <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
@@ -108,63 +108,67 @@ export default function Partners() {
 
         {/* Partners Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {partners.map((partner, index) => (
-            <Card key={partner.name} className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-6 space-y-6">
-                {/* Partner Logo */}
-                <div className="text-center">
-                  <img 
-                    src={partner.logo || "/placeholder.svg"} 
-                    alt={`${partner.name} Logo`}
-                    className="h-16 mx-auto object-contain"
-                  />
-                </div>
-
-                {/* Partner Info */}
-                <div className="text-center space-y-2">
-                  <h3 className="text-xl font-bold text-foreground">{partner.name}</h3>
-                  <Badge className={`bg-gradient-to-r ${partner.color} text-white border-0`}>
-                    <Star className="w-3 h-3 mr-1" />
-                    {partner.tier}
-                  </Badge>
-                </div>
-
-                {/* Expertise Level */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Expertise Level</span>
-                    <span className="font-semibold text-foreground">{partner.expertise}%</span>
+          {partners.map((partner) => (
+            <Link 
+              key={partner.name} 
+              href="/partners"
+              className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
+            >
+              <Card className="h-full">
+                <CardContent className="p-6 space-y-6">
+                  {/* Partner Logo */}
+                  <div className="text-center">
+                    <img 
+                      src={partner.logo || "/placeholder.svg"} 
+                      alt={`${partner.name} Logo`}
+                      className="h-16 mx-auto object-contain"
+                    />
                   </div>
-                  <Progress value={partner.expertise} className="h-2" />
-                </div>
 
-                {/* Projects Completed */}
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Projects Completed</span>
-                  <span className="font-bold text-primary">{partner.projects}+</span>
-                </div>
-
-                {/* Certifications */}
-                <div className="space-y-2">
-                  <span className="text-sm font-semibold text-foreground">Key Certifications</span>
-                  <div className="flex flex-wrap gap-1">
-                    {partner.certifications.map((cert, certIndex) => (
-                      <Badge key={cert} variant="outline" className="text-xs border-primary/30 text-primary">
-                        {cert}
-                      </Badge>
-                    ))}
+                  {/* Partner Info */}
+                  <div className="text-center space-y-2">
+                    <h3 className="text-xl font-bold text-foreground">{partner.name}</h3>
+                    <Badge className={`bg-gradient-to-r ${partner.color} text-white border-0`}>
+                      <Star className="w-3 h-3 mr-1" />
+                      {partner.tier}
+                    </Badge>
                   </div>
-                </div>
 
-                {/* Action Button */}
-                <Button asChild variant="ghost" className="w-full justify-between group hover:bg-primary/10">
-                  <Link href="/partners">
+                  {/* Expertise Level */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Expertise Level</span>
+                      <span className="font-semibold text-foreground">{partner.expertise}%</span>
+                    </div>
+                    <Progress value={partner.expertise} className="h-2" />
+                  </div>
+
+                  {/* Projects Completed */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Projects Completed</span>
+                    <span className="font-bold text-primary">{partner.projects}+</span>
+                  </div>
+
+                  {/* Certifications */}
+                  <div className="space-y-2">
+                    <span className="text-sm font-semibold text-foreground">Key Certifications</span>
+                    <div className="flex flex-wrap gap-1">
+                      {partner.certifications.map((cert) => (
+                        <Badge key={cert} variant="outline" className="text-xs border-primary/30 text-primary">
+                          {cert}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action Button */}
+                  <Button variant="ghost" className="w-full justify-between group hover:bg-primary/10">
                     View Partnership
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+                  </Button>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 

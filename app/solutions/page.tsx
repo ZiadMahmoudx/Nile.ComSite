@@ -22,25 +22,6 @@ export const metadata: Metadata = {
   },
 }
 
-const solutionsJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'IT Solutions',
-  provider: {
-    '@type': 'Organization',
-    name: 'NILE.COM',
-  },
-  serviceType: [
-    'Datacenter Solutions',
-    'Cloud Computing',
-    'Cybersecurity',
-    'IT Management',
-    'Productivity Solutions',
-    'Business Continuity'
-  ],
-  description: 'Comprehensive IT solutions for enterprise clients',
-}
-
 export default function SolutionsPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">

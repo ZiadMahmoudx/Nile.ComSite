@@ -68,7 +68,7 @@ export default function About() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <Card key={stat.label} className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
               <CardContent className="p-8 space-y-4">
                 <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">

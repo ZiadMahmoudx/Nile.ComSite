@@ -155,27 +155,28 @@ export default function Hero() {
           <div className={`space-y-6 ${isVisible ? 'animate-slideInRight' : 'opacity-0'}`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {services.map((service, index) => (
-                <Card 
+                <Link 
                   key={service.title} 
-                  className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm"
+                  href="/services"
+                  className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
-                  <CardContent className="p-6 space-y-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg`}>
-                      <service.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                    </div>
-                    <Button asChild variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10">
-                      <Link href="/services">
+                  <Card className="h-full">
+                    <CardContent className="p-6 space-y-4">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg`}>
+                        <service.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                      </div>
+                      <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10">
                         Learn More
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
 

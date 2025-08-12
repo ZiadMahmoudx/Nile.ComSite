@@ -111,8 +111,9 @@ const ServicesGrid = () => {
         <div className="grid lg:grid-cols-2 gap-8 mb-20">
           {services.map((service, index) => {
             const IconComponent = service.icon
+            const serviceId = service.title.toLowerCase().replace(/\s+/g, '-')
             return (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/50">
+              <Card id={serviceId} key={index} className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/50">
                 <CardHeader className="space-y-4">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">

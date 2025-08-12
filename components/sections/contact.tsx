@@ -64,7 +64,7 @@ export default function Contact() {
 
         {/* Contact Methods Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {contactMethods.map((method, index) => (
+          {contactMethods.map((method) => (
             <Card key={method.title} className="card-hover border-border/50 bg-card/50 backdrop-blur-sm text-center">
               <CardContent className="p-8 space-y-4">
                 <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
