@@ -216,7 +216,7 @@ const ServicesGrid = () => {
 
             {/* CTA */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button size="lg" asChild className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
                 <Link href="/contact">
                   Request a Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />

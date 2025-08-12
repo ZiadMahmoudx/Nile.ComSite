@@ -32,18 +32,14 @@ const SolutionsHero = () => {
             that drive business growth, enhance security, and optimize operational efficiency.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <Button asChild size="lg" className="btn-primary px-10 py-4 rounded-xl text-lg font-bold">
-              <Link href="/contact">
-                Explore Solutions
-                <ArrowRight className="ml-3 w-6 h-6" />
-              </Link>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8 relative z-10">
+            <Button size="lg" className="btn-primary px-10 py-4 rounded-xl text-lg font-bold" onClick={() => window.location.href = '/contact'}>
+              Explore Solutions
+              <ArrowRight className="ml-3 w-6 h-6" />
             </Button>
-            <Button asChild variant="outline" size="lg" className="btn-outline px-10 py-4 rounded-xl text-lg font-bold">
-              <Link href="/contact">
-                <Target className="mr-3 w-6 h-6" />
-                Get Consultation
-              </Link>
+            <Button variant="outline" size="lg" className="btn-outline px-10 py-4 rounded-xl text-lg font-bold" onClick={() => window.location.href = '/contact'}>
+              <Target className="mr-3 w-6 h-6" />
+              Get Consultation
             </Button>
           </div>
         </div>

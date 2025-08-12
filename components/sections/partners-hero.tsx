@@ -13,7 +13,7 @@ const PartnersHero = () => {
       <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-primary/20 to-red-500/20 rounded-full blur-xl float"></div>
       <div className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-full blur-xl float-delayed"></div>
 
-      <div className="max-w-7xl mx-auto px-4 text-center">
+      <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-8">
           <Badge variant="outline" className="border-primary/30 text-primary bg-gradient-to-r from-primary/10 to-red-500/10 px-6 py-3 text-lg font-semibold">
             <Users className="w-5 h-5 mr-2" />
@@ -48,13 +48,13 @@ const PartnersHero = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <Button asChild size="lg" className="btn-primary px-10 py-4 rounded-xl text-lg font-bold">
+            <Button asChild size="lg" className="btn-primary px-10 py-4 rounded-xl text-lg font-bold relative z-20">
               <Link href="/contact">
                 Partner With Us
                 <ArrowRight className="ml-3 w-6 h-6" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="btn-outline px-10 py-4 rounded-xl text-lg font-bold">
+            <Button asChild variant="outline" size="lg" className="btn-outline px-10 py-4 rounded-xl text-lg font-bold relative z-20">
               <Link href="/solutions">
                 <Globe className="mr-3 w-6 h-6" />
                 View Solutions

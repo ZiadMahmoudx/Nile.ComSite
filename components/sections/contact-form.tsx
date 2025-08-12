@@ -75,9 +75,19 @@ const ContactForm = () => {
         throw new Error(result.message || 'Something went wrong')
       }
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.';
+      
+      // Provide more specific error messages for common issues
+      let displayMessage = errorMessage;
+      if (errorMessage.includes('configuration error')) {
+        displayMessage = 'The contact form is not properly configured. Please contact the site administrator.';
+      } else if (errorMessage.includes('Failed to fetch') || errorMessage.includes('fetch')) {
+        displayMessage = 'Unable to connect to the server. Please check your internet connection and try again.';
+      }
+      
       toast({
         title: 'Error',
-        description: error instanceof Error ? error.message : 'Failed to send message. Please try again.',
+        description: displayMessage,
         variant: 'destructive',
       })
     } finally {

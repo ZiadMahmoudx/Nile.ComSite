@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -72,6 +73,21 @@ const solutions = [
 
 export default function SolutionsGrid() {
   const [hoveredSolution, setHoveredSolution] = useState<number | null>(null)
+  const router = useRouter()
+
+  const handleLearnMore = (id: number) => {
+    // Scroll to the solution card
+    const element = document.getElementById(id.toString())
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      // Highlight the card
+      setHoveredSolution(id)
+      // Remove highlight after 2 seconds
+      setTimeout(() => {
+        setHoveredSolution(null)
+      }, 2000)
+    }
+  }
 
   return (
     <section className="py-20 bg-background">
@@ -98,6 +114,7 @@ export default function SolutionsGrid() {
             return (
               <Card 
                 key={solution.id}
+                id={solution.id.toString()}
                 className={`card-hover tech-glow transition-all duration-500 ${
                   hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
                 }`}
@@ -137,14 +154,12 @@ export default function SolutionsGrid() {
 
                   {/* CTA Button */}
                   <Button 
-                    asChild 
+                    onClick={() => handleLearnMore(solution.id)}
                     variant="outline" 
                     className="w-full btn-outline group mt-6"
                   >
-                    <Link href="/solutions">
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </CardContent>
               </Card>
@@ -161,15 +176,11 @@ export default function SolutionsGrid() {
             Let our experts design a custom solution tailored to your specific needs and goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="btn-primary">
-              <Link href="/contact">
-                Get Free Consultation
-              </Link>
+            <Button onClick={() => router.push('/contact')} size="lg" className="btn-primary">
+              Get Free Consultation
             </Button>
-            <Button asChild variant="outline" size="lg" className="btn-outline">
-              <Link href="/solutions">
-                View All Solutions
-              </Link>
+            <Button onClick={() => router.push('/services')} variant="outline" size="lg" className="btn-outline">
+              View All Services
             </Button>
           </div>
         </div>

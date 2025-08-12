@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, Clock, MessageSquare, ArrowRight, AlertCircle } from 'lucide-react'
 import Link from 'next/link'
 
 const contactMethods = [
@@ -106,6 +106,22 @@ export default function Contact() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Developer Note - Only visible in development */}
+        {process.env.NODE_ENV === 'development' && (
+          <div className="mt-8 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-lg">
+            <div className="flex items-start space-x-2">
+              <AlertCircle className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+              <div>
+                <h4 className="font-bold text-yellow-500">Development Note</h4>
+                <p className="text-sm text-yellow-500/90 mt-1">
+                  To enable the contact form, configure your email settings in <code className="bg-yellow-500/20 px-1 rounded">.env.local</code>. 
+                  For testing, you can use a service like <a href="https://ethereal.email" target="_blank" rel="noopener noreferrer" className="underline">Ethereal Email</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

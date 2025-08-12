@@ -25,6 +25,20 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function POST(request: NextRequest) {
+  // Check if required environment variables are set
+  const requiredEnvVars = ['EMAIL_HOST', 'EMAIL_USER', 'EMAIL_PASS'];
+  const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
+  
+  if (missingEnvVars.length > 0) {
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: `Server configuration error: Missing environment variables: ${missingEnvVars.join(', ')}. Please contact the site administrator.` 
+      },
+      { status: 500 }
+    );
+  }
+
   try {
     const body = await request.json()
     

@@ -30,7 +30,7 @@ const ServicesHero = () => {
             <Button 
               size="lg" 
               asChild
-              className="bg-primary hover:bg-primary/90 text-primary-foreground tech-glow"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground tech-glow relative z-10"
             >
               <Link href="/contact">
                 Start Your Project
@@ -41,7 +41,7 @@ const ServicesHero = () => {
               size="lg" 
               variant="outline" 
               asChild
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground relative z-10"
             >
               <Link href="/solutions">
                 View Solutions

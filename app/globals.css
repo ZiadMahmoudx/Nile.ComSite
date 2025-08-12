@@ -107,6 +107,11 @@
     @apply transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:scale-105 hover:border-primary/30;
   }
 
+  /* Highlight for anchor-linked cards */
+  .card-hover:target {
+    @apply ring-4 ring-primary/50 scale-105 shadow-2xl border-primary/30;
+  }
+
   .card-glow {
     @apply relative overflow-hidden;
   }
