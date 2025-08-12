@@ -1,431 +1,266 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Checkbox } from '@/components/ui/checkbox'
-import { useToast } from '@/hooks/use-toast'
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare, FileText, Loader2 } from 'lucide-react'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Mail, User, Phone, Building, MessageSquare } from 'lucide-react'
+import { useToast } from '@/components/ui/use-toast'
 
-const contactSchema = z.object({
-  firstName: z.string().min(1, 'First name is required'),
-  lastName: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  subject: z.string().min(1, 'Subject is required'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-  privacy: z.boolean().refine(val => val === true, 'You must agree to the privacy policy'),
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
-
-const ContactForm = () => {
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    subject: '',
+    message: ''
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
-  const form = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      company: '',
-      subject: '',
-      message: '',
-      privacy: false,
-    },
-  })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
-  const onSubmit = async (data: ContactFormData) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
     setIsSubmitting(true)
-    
+
     try {
+      // Create FormData object
+      const form = new FormData()
+      Object.entries(formData).forEach(([key, value]) => {
+        form.append(key, value)
+      })
+
+      // Send to API route
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        body: form
       })
 
       const result = await response.json()
 
-      if (result.success) {
+      if (response.ok) {
         toast({
-          title: 'Message sent successfully!',
-          description: 'Thank you for your message. We will get back to you soon.',
+          title: 'Message Sent!',
+          description: 'Thank you for contacting us. We\'ll get back to you soon.',
         })
-        form.reset()
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          subject: '',
+          message: ''
+        })
       } else {
-        throw new Error(result.message || 'Something went wrong')
+        throw new Error(result.error || 'Failed to send message')
       }
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to send message. Please try again.';
-      
-      // Provide more specific error messages for common issues
-      let displayMessage = errorMessage;
-      if (errorMessage.includes('configuration error')) {
-        displayMessage = 'The contact form is not properly configured. Please contact the site administrator.';
-      } else if (errorMessage.includes('Failed to fetch') || errorMessage.includes('fetch')) {
-        displayMessage = 'Unable to connect to the server. Please check your internet connection and try again.';
-      }
-      
+      console.error('Error:', error)
       toast({
         title: 'Error',
-        description: displayMessage,
-        variant: 'destructive',
+        description: 'Failed to send your message. Please try again.',
+        variant: 'destructive'
       })
     } finally {
       setIsSubmitting(false)
     }
   }
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      details: "info@nilecom.com.eg",
-      description: "Send us an email anytime",
-      href: "mailto:info@nilecom.com.eg"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      details: "+20 (2) 27024681",
-      description: "Call us during business hours",
-      href: "tel:+20227024681"
-    },
-    {
-      icon: MapPin,
-      title: "Location",
-      details: "Maadi, Cairo, Egypt",
-      description: "Visit our office",
-      href: "https://maps.app.goo.gl/1rDrZiP9HFJfJzco6"
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: "Sun - Thu: 9AM - 6PM",
-      description: "We're here to help"
-    }
-  ]
-
-  const quickActions = [
-    {
-      icon: MessageSquare,
-      title: "Contact",
-      description: "Get in touch with our team"
-    },
-    {
-      icon: MessageSquare,
-      title: "Feedback",
-      description: "Share your thoughts with us"
-    },
-    {
-      icon: FileText,
-      title: "Request Quote",
-      description: "Get a custom quote for your project"
-    }
-  ]
-
   return (
-    <section className="py-20 px-4 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-3 gap-12">
+    <section className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">
-                Contact Information
-              </h3>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => {
-                  const IconComponent = info.icon
-                  const content = (
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <IconComponent className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-foreground">{info.title}</h4>
-                        <p className="text-primary font-medium">{info.details}</p>
-                        <p className="text-sm text-muted-foreground">{info.description}</p>
-                      </div>
-                    </div>
-                  )
-
-                  return info.href ? (
-                    <a
-                      key={index}
-                      href={info.href}
-                      className="block hover:bg-muted/50 rounded-lg p-2 -m-2 transition-colors"
-                      target={info.href.startsWith('http') ? '_blank' : undefined}
-                      rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    >
-                      {content}
-                    </a>
-                  ) : (
-                    <div key={index}>{content}</div>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">
-                Quick Actions
-              </h3>
+          <div>
+            <div className="space-y-8">
               <div className="space-y-4">
-                {quickActions.map((action, index) => {
-                  const IconComponent = action.icon
-                  return (
-                    <Card key={index} className="card-hover bg-card border-border hover:border-primary/50 transition-all duration-300">
-                      <CardContent className="p-4">
-                        <div className="flex items-center space-x-3">
-                          <IconComponent className="w-5 h-5 text-primary" />
-                          <div>
-                            <h4 className="font-medium text-foreground">{action.title}</h4>
-                            <p className="text-sm text-muted-foreground">{action.description}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
+                <h2 className="text-4xl font-bold">Get In Touch</h2>
+                <p className="text-lg text-muted-foreground">
+                  Have questions about our services? Want to schedule a consultation? 
+                  Fill out the form and our team will contact you within 24 hours.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Email Us</h3>
+                    <p className="text-muted-foreground">info@nilecom.com.eg</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Call Us</h3>
+                    <p className="text-muted-foreground">+20 2 2735 3333</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Building className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Visit Us</h3>
+                    <p className="text-muted-foreground">Maadi, Cairo, Egypt</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="bg-card border-border">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  Send us a Message
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="firstName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>First Name *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your first name"
-                                className="bg-background border-border"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="lastName"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Last Name *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your last name"
-                                className="bg-background border-border"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
+          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+            <CardHeader>
+              <CardTitle className="text-2xl">Send us a message</CardTitle>
+              <CardDescription>
+                Fill out the form below and we'll get back to you as soon as possible.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium text-foreground">
+                      Full Name *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="John Doe"
+                        className="pl-10"
+                        required
                       />
                     </div>
+                  </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">
+                      Email Address *
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input
+                        id="email"
                         name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email *</FormLabel>
-                            <FormControl>
-                              <Input 
-                                type="email"
-                                placeholder="Enter your email"
-                                className="bg-background border-border"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Phone</FormLabel>
-                            <FormControl>
-                              <Input 
-                                placeholder="Enter your phone number"
-                                className="bg-background border-border"
-                                {...field}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@example.com"
+                        className="pl-10"
+                        required
                       />
                     </div>
+                  </div>
+                </div>
 
-                    <FormField
-                      control={form.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="Enter your company name"
-                              className="bg-background border-border"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium text-foreground">
+                      Phone Number
+                    </label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+20 123 456 7890"
+                        className="pl-10"
+                      />
+                    </div>
+                  </div>
 
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject *</FormLabel>
-                          <FormControl>
-                            <Input 
-                              placeholder="What's this about?"
-                              className="bg-background border-border"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  <div className="space-y-2">
+                    <label htmlFor="company" className="text-sm font-medium text-foreground">
+                      Company
+                    </label>
+                    <div className="relative">
+                      <Building className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                      <Input
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="Company Name"
+                        className="pl-10"
+                      />
+                    </div>
+                  </div>
+                </div>
 
-                    <FormField
-                      control={form.control}
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="text-sm font-medium text-foreground">
+                    Subject *
+                  </label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="How can we help you?"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium text-foreground">
+                    Message *
+                  </label>
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                    <Textarea
+                      id="message"
                       name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message *</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Tell us more about your project or requirements..."
-                              rows={6}
-                              className="bg-background border-border resize-none"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us about your project or inquiry..."
+                      className="pl-10 min-h-[120px]"
+                      required
                     />
+                  </div>
+                </div>
 
-                    <FormField
-                      control={form.control}
-                      name="privacy"
-                      render={({ field }) => (
-                        <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                          <FormControl>
-                            <Checkbox
-                              checked={field.value}
-                              onCheckedChange={field.onChange}
-                            />
-                          </FormControl>
-                          <div className="space-y-1 leading-none">
-                            <FormLabel className="text-sm text-muted-foreground">
-                              I agree to the privacy policy and terms of service
-                            </FormLabel>
-                            <FormMessage />
-                          </div>
-                        </FormItem>
-                      )}
-                    />
-
-                    <Button 
-                      type="submit"
-                      size="lg" 
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground tech-glow"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-2 w-5 h-5 animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="ml-2 w-5 h-5" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </Form>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* CTA Banner */}
-        <div className="mt-16 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 lg:p-12 border border-primary/20">
-          <div className="text-center space-y-6">
-            <h3 className="text-3xl font-bold text-foreground">
-              Ready to Get Started?
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Join over 1,750 satisfied customers who trust NILE.COM for their technology needs. 
-              Let's discuss how we can help transform your business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                <a href="tel:+20227024681">
-                  Schedule Consultation
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <a href="mailto:info@nilecom.com.eg">
-                  Email Us
-                </a>
-              </Button>
-            </div>
-          </div>
+                <Button 
+                  type="submit" 
+                  className="w-full btn-primary py-3 font-bold rounded-xl"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center">
+                      <span className="animate-spin h-4 w-4 mr-2 border-b-2 border-white rounded-full"></span>
+                      Sending...
+                    </span>
+                  ) : (
+                    'Send Message'
+                  )}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
   )
 }
-
-export default ContactForm
