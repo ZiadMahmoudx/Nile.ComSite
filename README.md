@@ -4,7 +4,8 @@ A modern, responsive website for NILE.COM built with Next.js 15, TypeScript, and
 
 ## 🌐 Live Demo
 
-[Add your deployed URL here once available]
+
+https://nile-com-site-wjdn.vercel.app/
 
 ## 📋 Table of Contents
 
