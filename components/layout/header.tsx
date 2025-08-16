@@ -4,9 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, Mail, MapPin, ChevronDown, Globe, Shield, Cloud, Zap, Users, Award, BookOpen, FolderOpen } from 'lucide-react'
+import { Menu, X, Phone, Mail, MapPin, ChevronDown, Globe, Shield, Cloud, Zap, Users, Award, BookOpen, FolderOpen, SearchIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { Search } from '@/components/ui/search'
 import { cn } from '@/lib/utils'
 
 const navigation = [
@@ -33,6 +34,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [companyMenuOpen, setCompanyMenuOpen] = useState(false)
   const [mobileCompanyMenuOpen, setMobileCompanyMenuOpen] = useState(false)
+  const [showMobileSearch, setShowMobileSearch] = useState(false)
   const companyMenuRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
@@ -64,6 +66,7 @@ export default function Header() {
       if (window.innerWidth >= 1024) {
         setMobileMenuOpen(false)
         setMobileCompanyMenuOpen(false)
+        setShowMobileSearch(false)
       }
     }
 
@@ -202,8 +205,11 @@ export default function Header() {
               ))}
             </div>
 
-            {/* CTA Buttons - Responsive sizes */}
+            {/* CTA Buttons with Search - Responsive sizes */}
             <div className="hidden xl:flex items-center space-x-3">
+              <div className="w-64">
+                <Search />
+              </div>
               <Button asChild className="btn-primary px-4 py-2 font-bold text-xs md:text-sm tracking-wide rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <Link href="/contact">
                   <Zap className="w-3 h-3 mr-1 group-hover:rotate-12 transition-transform duration-300" />
@@ -212,8 +218,18 @@ export default function Header() {
               </Button>
             </div>
 
-            {/* Tablet Navigation - Show hamburger menu on tablet */}
-            <div className="xl:hidden">
+            {/* Tablet/Mobile Navigation */}
+            <div className="xl:hidden flex items-center space-x-2">
+              {/* Search Icon for Mobile/Tablet */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowMobileSearch(!showMobileSearch)}
+                className="relative p-2 hover:bg-primary/10 rounded-xl transition-all duration-300"
+              >
+                <SearchIcon className="h-5 w-5" />
+              </Button>
+              
               <Button
                 variant="ghost"
                 size="lg"
@@ -226,6 +242,13 @@ export default function Header() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Search Bar */}
+        {showMobileSearch && (
+          <div className="xl:hidden px-4 pb-4">
+            <Search />
+          </div>
+        )}
 
         {/* Mobile Navigation - Show on tablet and mobile */}
         <div className={cn(
