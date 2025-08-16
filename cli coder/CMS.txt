@@ -1,0 +1,266 @@
+Excellent choice. Integrating a headless Content Management System (CMS) is the best way to empower non-technical users to manage website content. Building a full CMS from scratch is a massive project, so the industry-standard approach is to integrate a powerful, dedicated headless CMS.
+
+For this project, I recommend **Sanity.io**. It's a highly flexible and developer-friendly headless CMS with a generous free tier. Its standout feature is that you can build your content schemas with code, and it provides a beautiful, customizable admin UI called the "Sanity Studio" that your team can use to edit content.
+
+Here is a full, step-by-step guide to integrate Sanity into your Nile.Com project.
+
+### Step 1: Set Up Your Sanity Project
+
+First, we'll install the Sanity CLI and initialize a new project inside your existing repository.
+
+1.  **Install the Sanity CLI globally:**
+
+    ```bash
+    npm install -g @sanity/cli
+    ```
+
+2.  **Initialize Sanity within your project:** Run this command in the root directory of your project.
+
+    ```bash
+    sanity init
+    ```
+
+The CLI will guide you through a few questions:
+
+  * **Log in:** It will ask you to log in or create a Sanity.io account.
+  * **Create new project:** Select "Create new project".
+  * **Project name:** Give it a name, like "Nile.Com".
+  * **Dataset configuration:** Use the default `production`.
+  * **Project output path:** This is important. To keep things organized, tell it to create the Sanity project in a new `studio` subfolder. When it prompts for the path, enter `studio`.
+  * **Project template:** Select the "Clean project w/ no predefined schemas" template.
+
+This will create a new `/studio` folder in your project containing your Sanity Studio.
+
+### Step 2: Define a Content Schema
+
+Now, let's define a content model. We'll create a "Solution" schema so your team can add and edit the solutions offered by Nile.Com.
+
+1.  **Create a new schema file:**
+
+    ```bash
+    mkdir -p studio/schemas && cat << 'EOF' > studio/schemas/solution.ts
+    import {defineField, defineType} from 'sanity'
+
+    export default defineType({
+      name: 'solution',
+      title: 'Solution',
+      type: 'document',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'slug',
+          title: 'Slug',
+          type: 'slug',
+          options: {
+            source: 'title',
+            maxLength: 96,
+          },
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'mainImage',
+          title: 'Main image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+      ],
+      preview: {
+        select: {
+          title: 'title',
+          media: 'mainImage',
+        },
+      },
+    })
+    EOF
+    ```
+
+2.  **Register the new schema:** Open `studio/sanity.config.ts` and add your new schema to the `schema.types` array.
+
+    ```ts
+    // studio/sanity.config.ts
+    import {defineConfig} from 'sanity'
+    import {structureTool} from 'sanity/structure'
+    import {visionTool} from '@sanity/vision'
+    import {schemaTypes} from './schemas'
+
+    // Import your new schema
+    import solution from './schemas/solution'
+
+    export default defineConfig({
+      name: 'default',
+      title: 'Nile.Com Studio',
+
+      projectId: 'YOUR_PROJECT_ID', // Replace with your actual project ID
+      dataset: 'production',
+
+      plugins: [structureTool(), visionTool()],
+
+      schema: {
+        // Add the new schema to the array
+        types: [solution, ...schemaTypes],
+      },
+    })
+    ```
+
+    *Note: You can find your `projectId` in the `studio/sanity.cli.ts` file.*
+
+3.  **Start the Sanity Studio:**
+    Navigate into the studio directory and start the development server.
+
+    ```bash
+    cd studio
+    npm run dev
+    ```
+
+    Now, open `http://localhost:3333` in your browser. You will see the Sanity Studio admin panel where you can now add, edit, and delete "Solutions"\!
+
+### Step 3: Connect Your Next.js App to Sanity
+
+Leave the Studio running. Now we'll set up the Next.js frontend to fetch content from Sanity.
+
+1.  **Install the `next-sanity` client library:**
+    Open a **new terminal window** in your project's root directory (not the `/studio` directory).
+
+    ```bash
+    npm install next-sanity
+    ```
+
+2.  **Configure environment variables:** Create a new file named `.env.local` in the root of your project and add your Sanity project details.
+
+    ```bash
+    cat << 'EOF' > .env.local
+    NEXT_PUBLIC_SANITY_PROJECT_ID="YOUR_PROJECT_ID"
+    NEXT_PUBLIC_SANITY_DATASET="production"
+    NEXT_PUBLIC_SANITY_API_VERSION="2024-01-01"
+    EOF
+    ```
+
+    **Remember to replace `YOUR_PROJECT_ID` with your actual ID from `studio/sanity.cli.ts`**.
+
+3.  **Create the Sanity client utility:** This file configures how your Next.js app connects to Sanity.
+
+    ```bash
+    mkdir -p lib && cat << 'EOF' > lib/sanity.ts
+    import { createClient } from 'next-sanity'
+
+    const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+    const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+    const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION
+
+    export const client = createClient({
+      projectId,
+      dataset,
+      apiVersion,
+      useCdn: false, // `false` if you want to ensure fresh data
+    })
+    EOF
+    ```
+
+### Step 4: Fetch and Display Content from the CMS
+
+Finally, let's modify the Solutions page to display content directly from your new CMS instead of the hardcoded data.
+
+This command will **overwrite** your existing `app/solutions/page.tsx` file with a new version that fetches data from Sanity.
+
+```bash
+cat << 'EOF' > app/solutions/page.tsx
+import { client } from "@/lib/sanity";
+import { SolutionsHero } from "@/components/sections/solutions-hero";
+import { SolutionsGrid } from "@/components/sections/solutions-grid";
+import { Partners } from "@/components/sections/partners";
+import { Contact } from "@/components/sections/contact";
+
+// Define the type for a single solution based on our schema
+export interface Solution {
+  _id: string;
+  title: string;
+  description: string;
+  slug: {
+    current: string;
+  };
+  // Add other fields like mainImage if you need them on this page
+}
+
+// Create a query to fetch the data
+const solutionsQuery = `*[_type == "solution"]{
+  _id,
+  title,
+  description,
+  slug,
+}`;
+
+// Make the page component async to fetch data
+export default async function SolutionsPage() {
+  // Fetch the solutions from Sanity
+  const solutions: Solution[] = await client.fetch(solutionsQuery);
+
+  return (
+    <>
+      <SolutionsHero />
+      {/* Pass the dynamic data to your component */}
+      <SolutionsGrid solutions={solutions} />
+      <Partners />
+      <Contact />
+    </>
+  );
+}
+
+// Revalidate the page every 3600 seconds (1 hour) to get new content
+export const revalidate = 3600;
+EOF
+```
+
+And update the `solutions-grid.tsx` component to accept and render this dynamic data.
+
+```bash
+cat << 'EOF' > components/sections/solutions-grid.tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Solution } from "@/app/solutions/page"; // Import the type
+
+// Update the component to accept 'solutions' as a prop
+export function SolutionsGrid({ solutions }: { solutions: Solution[] }) {
+  return (
+    <section className="container mx-auto px-4 py-12 md:py-20">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Map over the dynamic data from the CMS */}
+        {solutions.map((solution) => (
+          <Card key={solution._id}>
+            <CardHeader>
+              <CardTitle>{solution.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="mb-4">{solution.description}</p>
+              <Button>Learn More</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+EOF
+```
+
+### Step 5: Restart Your Next.js App
+
+Stop your Next.js development server if it's running and restart it to apply the new environment variables.
+
+```bash
+npm run dev
+```
+
+Now, visit `/solutions`. The page will be populated with the content you entered in the Sanity Studio at `http://localhost:3333`. Your non-technical users can now update the solutions page without needing to touch any code\! You can repeat this process for any part of your site: services, partners, about us content, etc.
