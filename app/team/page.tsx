@@ -11,52 +11,52 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
+    name: 'Karim Said',
+    role: 'CEO & Technology Strategist',
+    bio: 'Expert in Banking Payments and Cloud IT Infrastructure. Leading NILE.COM with vision and strategic direction.',
+    expertise: ['Digital Strategy', 'Banking Payments', 'Cloud Infrastructure'],
+    image: '/CEO  Technology Strategist  Expert in Banking Payments, Cloud IT Infrastructure.jpeg',
+    certifications: ['Technology Strategist', 'Cloud Infrastructure Expert']
+  },
+  {
+    name: 'Dr. Marwan Shalaby',
+    role: 'Chief Financial Officer & Board Member',
+    bio: 'Chief Financial Officer and Board Member with extensive experience in corporate finance and strategic planning.',
+    expertise: ['Corporate Finance', 'Strategic Planning', 'Board Governance'],
+    image: '/Dr. Marwan Shalaby Chief Financial  Board Member.png',
+    certifications: ['Finance Professional', 'Board Member']
+  },
+  {
+    name: 'Khaled Helmy',
+    role: 'SDM Messaging and Collaboration',
+    bio: 'Senior Director of Messaging and Collaboration at NILE.COM, specializing in communication systems and collaborative technologies.',
+    expertise: ['Messaging Systems', 'Collaboration Technologies', 'Communication Infrastructure'],
+    image: '/Khaled Helmy  SDM messaging and collaboration at Nile.Com.png',
+    certifications: ['Messaging Systems Expert', 'Collaboration Specialist']
+  },
+  {
+    name: 'Marwan Helmy',
+    role: 'Technology Solutions Lead',
+    bio: 'Expert in IT infrastructure and technology solutions, driving innovation and implementation of cutting-edge technologies.',
+    expertise: ['IT Infrastructure', 'Technology Solutions', 'System Architecture'],
+    image: '/placeholder-user.jpg',
+    certifications: ['IT Infrastructure Expert', 'System Architecture Specialist']
+  },
+  {
     name: 'Ahmed Hassan',
-    role: 'CEO & Founder',
-    bio: '25+ years of experience in IT solutions and digital transformation. Led NILE.COM to become Egypt\'s premier IT services provider.',
-    expertise: ['Digital Strategy', 'Enterprise Architecture', 'Innovation'],
+    role: 'Senior Solutions Architect',
+    bio: 'Senior Solutions Architect with deep expertise in enterprise integration and digital transformation.',
+    expertise: ['Solution Architecture', 'Enterprise Integration', 'Digital Transformation'],
     image: '/placeholder-user.jpg',
-    certifications: ['MBA', 'AWS Certified Solutions Architect', 'Microsoft Azure Expert']
-  },
-  {
-    name: 'Sarah Mahmoud',
-    role: 'CTO',
-    bio: 'Technology visionary with expertise in cloud computing and cybersecurity. Spearheads our innovation initiatives and technical excellence.',
-    expertise: ['Cloud Architecture', 'Cybersecurity', 'DevOps'],
-    image: '/placeholder-user.jpg',
-    certifications: ['CISSP', 'AWS Solutions Architect', 'Google Cloud Professional']
-  },
-  {
-    name: 'Mohamed Ali',
-    role: 'Director of Operations',
-    bio: 'Operations expert with a track record of delivering complex IT projects on time and within budget. Ensures seamless service delivery.',
-    expertise: ['Project Management', 'Service Delivery', 'Process Optimization'],
-    image: '/placeholder-user.jpg',
-    certifications: ['PMP', 'ITIL Expert', 'Scrum Master']
+    certifications: ['AWS Certified Solutions Architect', 'Azure Solutions Architect']
   },
   {
     name: 'Yasmin Khalil',
-    role: 'Head of Solutions Engineering',
-    bio: 'Solutions architect with deep expertise in enterprise integration and digital transformation. Designs innovative solutions for complex challenges.',
-    expertise: ['Solution Architecture', 'Integration', 'Digital Transformation'],
+    role: 'Cybersecurity Specialist',
+    bio: 'Cybersecurity specialist with extensive experience in threat intelligence and incident response.',
+    expertise: ['Cybersecurity', 'Threat Intelligence', 'Incident Response'],
     image: '/placeholder-user.jpg',
-    certifications: ['TOGAF', 'Azure Solutions Architect', 'AWS Advanced Networking']
-  },
-  {
-    name: 'Karim Said',
-    role: 'Security Practice Lead',
-    bio: 'Cybersecurity specialist with extensive experience in threat intelligence and incident response. Protects our clients\' digital assets.',
-    expertise: ['Cybersecurity', 'Threat Intelligence', 'Compliance'],
-    image: '/placeholder-user.jpg',
-    certifications: ['CISSP', 'CEH', 'CISM', 'ISO 27001 Lead Auditor']
-  },
-  {
-    name: 'Nadia Farouk',
-    role: 'Customer Success Director',
-    bio: 'Customer-focused leader dedicated to ensuring client satisfaction and long-term partnerships. Drives value realization for our clients.',
-    expertise: ['Customer Success', 'Account Management', 'Business Development'],
-    image: '/placeholder-user.jpg',
-    certifications: ['CSM', 'Salesforce Administrator', 'Customer Experience Professional']
+    certifications: ['CISSP', 'CEH', 'CISM']
   }
 ]
 
