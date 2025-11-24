@@ -7,6 +7,7 @@ import { Progress } from '@/components/ui/progress'
 import { Award, Users, ArrowRight, Star, CheckCircle, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Marquee } from '@/components/ui/marquee'
 
 const partners = [
   {
@@ -105,6 +106,32 @@ export default function Partners() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Logo Marquee */}
+        <div className="mb-16">
+          <div className="relative overflow-hidden bg-gradient-to-r from-primary/5 via-red-500/5 to-primary/5 rounded-2xl py-12 px-4">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+            </div>
+            <h3 className="text-center text-xl font-semibold text-muted-foreground mb-8">Trusted by Industry Leaders</h3>
+            <div className="relative z-10">
+              <Marquee pauseOnHover className="max-w-full">
+                {partners.map((partner) => (
+                  <div key={partner.name} className="mx-4 flex flex-col items-center justify-center">
+                    <Image
+                      src={partner.logo}
+                      alt={`${partner.name} Logo`}
+                      width={120}
+                      height={40}
+                      className="h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                    <div className="mt-2 text-center text-xs text-muted-foreground">{partner.name}</div>
+                  </div>
+                ))}
+              </Marquee>
+            </div>
+          </div>
         </div>
 
         {/* Partners Grid */}

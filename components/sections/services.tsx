@@ -3,6 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Settings, Users, Headphones, Wrench, BookOpen, Rocket, ArrowRight, Clock, Shield, Award } from 'lucide-react'
 import Link from 'next/link'
 
@@ -98,40 +99,46 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service) => (
-            <Link 
-              key={service.title} 
-              href="/services"
-              className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
-              aria-label={`Learn more about ${service.title}`}
-            >
-              <Card className="h-full">
-                <CardHeader className="pb-4">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.color} p-4 shadow-lg mb-4`}>
-                    <service.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl font-bold text-foreground">{service.title}</CardTitle>
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-center space-x-2">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Button variant="ghost" className="w-full justify-between group hover:bg-primary/10 mt-4">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
+        {/* Services Grid - Smaller Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {services.map((service, index) => {
+            // Make the first service card (Managed IT Services) slightly larger but not oversized
+            const isFeatured = index === 0;
+            const sizeClass = isFeatured ? "md:col-span-2" : ""; // Only span 2 columns, not rows
+
+            return (
+              <Link
+                key={service.title}
+                href="/services"
+                className={`card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block ${sizeClass}`}
+                aria-label={`Learn more about ${service.title}`}
+              >
+                <Card className="h-full">
+                  <CardHeader className="pb-4">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg mb-3`}>
+                      <service.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-lg font-bold text-foreground">{service.title}</CardTitle>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="space-y-1">
+                      {service.features.slice(0, 3).map((feature) => ( // Show only 3 features to keep card smaller
+                        <div key={feature} className="flex items-center space-x-2">
+                          <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
+                          <span className="text-xs text-muted-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10 mt-2">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Benefits Section */}
@@ -155,13 +162,15 @@ export default function Services() {
             <div className="space-y-6">
               <h3 className="text-3xl font-black text-gradient">Need Professional IT Services?</h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our team of certified experts is ready to help you optimize your IT infrastructure 
+                Our team of certified experts is ready to help you optimize your IT infrastructure
                 and support your business goals with professional services.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="btn-primary px-8 py-4 font-bold rounded-xl">
-                  <Link href="/contact">Request Service Quote</Link>
-                </Button>
+                <Link href="/contact">
+                  <SpotlightButton size="lg" className="px-8 py-4 font-bold rounded-xl">
+                    Request Service Quote
+                  </SpotlightButton>
+                </Link>
                 <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 font-bold rounded-xl">
                   <Link href="/services">View All Services</Link>
                 </Button>

@@ -4,8 +4,10 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Badge } from '@/components/ui/badge'
 import { Cloud, Shield, Server, Smartphone, Database, Network, ArrowRight, CheckCircle, Zap } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const solutions = [
   {
@@ -77,7 +79,13 @@ export default function SolutionsGrid() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fadeInUp">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
           <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/30 text-primary">
             <Zap className="h-3 w-3 mr-1" />
             Our Solutions
@@ -86,81 +94,99 @@ export default function SolutionsGrid() {
             Comprehensive IT Solutions
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From cloud migration to cybersecurity, we provide end-to-end technology solutions 
+            From cloud migration to cybersecurity, we provide end-to-end technology solutions
             that drive innovation and accelerate your business growth.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Solutions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        {/* Solutions Grid - Smaller Cards */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {solutions.map((solution, index) => {
             const Icon = solution.icon
             return (
-              <Link 
+              <motion.div
                 key={solution.id}
-                href={`/contact?subject=${encodeURIComponent(solution.title)}`}
-                className={`card-hover tech-glow transition-all duration-500 block ${
-                  hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
-                }`}
-                onMouseEnter={() => setHoveredSolution(solution.id)}
-                onMouseLeave={() => setHoveredSolution(null)}
-                style={{ animationDelay: `${index * 100}ms` }}
-                aria-label={`Learn more about ${solution.title}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <Card 
-                  id={solution.id.toString()} 
-                  className="h-full"
+                <Link
+                  href={`/contact?subject=${encodeURIComponent(solution.title)}`}
+                  className={`card-hover tech-glow transition-all duration-500 block ${
+                    hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
+                  }`}
+                  onMouseEnter={() => setHoveredSolution(solution.id)}
+                  onMouseLeave={() => setHoveredSolution(null)}
+                  aria-label={`Learn more about ${solution.title}`}
                 >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`p-3 rounded-lg ${solution.bgColor} ${solution.color}`}>
-                        <Icon className="h-6 w-6" />
+                  <Card
+                    id={solution.id.toString()}
+                    className="h-full"
+                  >
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className={`p-2 rounded-md ${solution.bgColor} ${solution.color}`}>
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <Badge variant="outline" className="text-xs py-1">
+                          {solution.category}
+                        </Badge>
                       </div>
-                      <Badge variant="outline" className="text-xs">
-                        {solution.category}
-                      </Badge>
-                    </div>
-                    <CardTitle className="text-xl font-bold">{solution.title}</CardTitle>
-                  </CardHeader>
+                      <CardTitle className="text-lg font-bold">{solution.title}</CardTitle>
+                    </CardHeader>
 
-                  <CardContent className="space-y-6">
-                    <p className="text-muted-foreground">
-                      {solution.description}
-                    </p>
+                    <CardContent className="space-y-4">
+                      <p className="text-sm text-muted-foreground">
+                        {solution.description}
+                      </p>
 
-                    {/* Features List */}
-                    <div className="space-y-2">
-                      <h4 className="text-sm font-semibold text-muted-foreground">Key Features</h4>
-                      <div className="space-y-2">
-                        {solution.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center space-x-2 text-sm">
-                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                            <span className="text-muted-foreground">{feature}</span>
-                          </div>
-                        ))}
+                      {/* Features List */}
+                      <div className="space-y-1">
+                        <h4 className="text-xs font-semibold text-muted-foreground">Key Features</h4>
+                        <div className="space-y-1">
+                          {solution.features.slice(0, 3).map((feature, featureIndex) => ( // Show only 3 features to keep card smaller
+                            <div key={featureIndex} className="flex items-center space-x-1.5 text-xs">
+                              <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                              <span className="text-muted-foreground">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* CTA Button */}
-                    <Button 
-                      variant="outline" 
-                      className="w-full btn-outline group mt-6"
-                      asChild
-                    >
-                      <span>
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </span>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Link>
+                      {/* CTA Button */}
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full btn-outline group mt-3 text-sm"
+                        asChild
+                      >
+                        <span>
+                          Learn More
+                          <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+                        </span>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Bottom CTA Section */}
-        <div className="text-center bg-gradient-to-r from-primary/10 via-red-500/10 to-red-600/10 rounded-2xl p-12 animate-fadeInUp">
+        <motion.div
+          className="text-center bg-gradient-to-r from-primary/10 via-red-500/10 to-red-600/10 rounded-2xl p-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
           <h3 className="text-3xl font-bold text-gradient mb-4">
             Ready to Transform Your Business?
           </h3>
@@ -179,7 +205,7 @@ export default function SolutionsGrid() {
               </Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
