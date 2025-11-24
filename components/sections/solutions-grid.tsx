@@ -85,7 +85,7 @@ export default function SolutionsGrid() {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           viewport={{ once: true }}
         >
           <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/30 text-primary">
@@ -121,7 +121,7 @@ export default function SolutionsGrid() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
                   <Link
@@ -194,7 +194,7 @@ export default function SolutionsGrid() {
             className="text-center p-8 sm:p-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             viewport={{ once: true }}
           >
             <h3 className="text-2xl sm:text-3xl font-bold text-gradient mb-4">

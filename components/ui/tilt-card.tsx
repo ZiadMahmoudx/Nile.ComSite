@@ -79,7 +79,7 @@ export function TiltCard({
       }}
       whileHover={{ y: -10, scale, z: 0 }} // Add z property to promote to its own layer
       whileTap={{ scale: 0.98 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      transition={{ type: "spring", stiffness: 500, damping: 25, mass: 0.5 }}
       {...props}
     >
       {children}
