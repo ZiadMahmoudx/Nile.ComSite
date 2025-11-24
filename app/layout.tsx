@@ -10,8 +10,8 @@ export const metadata: Metadata = {
     template: '%s | NILE.COM'
   },
   description: 'Leading IT solutions provider with 25+ years of experience. Specializing in cloud services, cybersecurity, infrastructure, and digital transformation for enterprises.',
-  keywords: ['IT solutions', 'cloud services', 'cybersecurity', 'digital transformation', 'enterprise technology', 'managed services'],
-  authors: [{ name: 'NILE.COM' }],
+  keywords: ['IT solutions', 'cloud services', 'cybersecurity', 'digital transformation', 'enterprise technology', 'managed services', 'managed IT services', 'technical support', 'IT consulting', 'cloud migration', 'data management', 'network solutions'],
+  authors: [{ name: 'NILE.COM', url: 'https://nile.com' }],
   creator: 'NILE.COM',
   publisher: 'NILE.COM',
   formatDetection: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://nile.com'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://nile.com/',
   },
   openGraph: {
     title: 'NILE.COM - Premier IT Solutions & Technology Services',
@@ -38,12 +38,16 @@ export const metadata: Metadata = {
     ],
     locale: 'en_US',
     type: 'website',
+    countryName: 'Egypt',
+    emails: ['info@nilecom.com.eg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'NILE.COM - Premier IT Solutions & Technology Services',
     description: 'Leading IT solutions provider with 25+ years of experience in enterprise technology.',
     images: ['/og-image.png'],
+    site: '@nilecom',
+    creator: '@nilecom',
   },
   robots: {
     index: true,
@@ -58,8 +62,25 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
+    yahoo: 'your-yahoo-verification-code',
   },
-    generator: 'v0.dev'
+  generator: 'Next.js',
+  applicationName: 'NILE.COM',
+  referrer: 'origin-when-cross-origin',
+  appleWebApp: {
+    capable: true,
+    title: 'NILE.COM',
+    statusBarStyle: 'default',
+  },
+  formatDetection: {
+    telephone: true,
+  },
+  archives: ['https://nile.com/news'],
+  bookmarks: ['https://nile.com/services'],
+  classification: 'Business',
+  category: 'technology',
+  rating: 'General',
 }
 
 export default function RootLayout({

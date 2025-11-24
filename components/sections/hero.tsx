@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -129,7 +130,7 @@ export default function Hero() {
 
             {/* Rotating Stats */}
             <GlassmorphismCard intensity="sm" blur="md">
-              <div className="p-6">
+              <div className="p-6 min-h-[7rem]"> {/* Fixed height to prevent layout shift */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <div className="p-3 bg-gradient-to-r from-primary to-red-500 rounded-xl">
@@ -176,7 +177,7 @@ export default function Hero() {
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg`}>
                           <service.icon className="w-6 h-6 text-white" />
                         </div>
-                        <div>
+                        <div className="min-h-[5rem]"> {/* Fixed height to prevent layout shift */}
                           <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                         </div>

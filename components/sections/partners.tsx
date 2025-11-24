@@ -103,8 +103,8 @@ export default function Partners() {
                   <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-r from-primary to-red-500 p-3 shadow-lg">
                     <stat.icon className="w-6 h-6 text-white" />
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-gradient">{stat.value}</div>
-                  <div className="text-xs sm:text-sm font-semibold text-muted-foreground">{stat.label}</div>
+                  <div className="text-2xl sm:text-3xl font-black text-gradient min-h-[2rem]">{stat.value}</div>
+                  <div className="text-xs sm:text-sm font-semibold text-muted-foreground min-h-[1.5rem]">{stat.label}</div>
                 </CardContent>
               </Card>
             </GlassmorphismCard>
@@ -128,6 +128,7 @@ export default function Partners() {
                       width={120}
                       height={40}
                       className="h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                      loading="lazy"
                     />
                     <div className="mt-2 text-center text-xs text-muted-foreground">{partner.name}</div>
                   </div>
@@ -149,13 +150,14 @@ export default function Partners() {
               <Card className="h-full">
                 <CardContent className="p-6 space-y-6">
                   {/* Partner Logo */}
-                  <div className="text-center">
-                    <Image 
-                      src={partner.logo || "/placeholder.svg"} 
+                  <div className="text-center min-h-[4rem]"> {/* Fixed height to prevent layout shift */}
+                    <Image
+                      src={partner.logo || "/placeholder.svg"}
                       alt={`${partner.name} Logo`}
                       width={120}
                       height={48}
                       className="h-12 mx-auto object-contain"
+                      loading="lazy"
                     />
                   </div>
 
