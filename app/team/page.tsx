@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 const teamMembers = [
   {
-    name: 'Karim Said',
+    name: 'Karim Soliman',
     role: 'CEO & Technology Strategist',
     bio: 'Expert in Banking Payments and Cloud IT Infrastructure. Leading NILE.COM with vision and strategic direction.',
     expertise: ['Digital Strategy', 'Banking Payments', 'Cloud Infrastructure'],
-    image: '/CEO  Technology Strategist  Expert in Banking Payments, Cloud IT Infrastructure.jpeg',
+    image: 'CEO.png',
     certifications: ['Technology Strategist', 'Cloud Infrastructure Expert']
   },
   {

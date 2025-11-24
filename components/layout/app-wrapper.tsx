@@ -1,7 +1,5 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { usePathname } from 'next/navigation'
 import { ReactNode } from 'react'
 
 interface AppWrapperProps {
@@ -9,20 +7,9 @@ interface AppWrapperProps {
 }
 
 export function AppWrapper({ children }: AppWrapperProps) {
-  const pathname = usePathname()
-
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathname}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.2, ease: 'easeInOut' }}
-        className="w-full min-h-screen"
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div className="w-full min-h-screen">
+      {children}
+    </div>
   )
 }
