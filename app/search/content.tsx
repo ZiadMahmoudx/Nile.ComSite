@@ -122,13 +122,24 @@ export function SearchPageContent() {
           </div>
         </div>
       )}
-      
+
       {loading ? (
-        <div className="flex items-center justify-center py-12">
-          <div className="text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
-            <p className="mt-4 text-muted-foreground">Searching for "{query}"...</p>
-          </div>
+        <div className="space-y-4">
+          {[...Array(5)].map((_, index) => (
+            <Card key={index} className="animate-pulse">
+              <CardHeader>
+                <CardTitle className="h-6 bg-muted rounded w-3/4" />
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <div className="h-4 bg-muted rounded w-full" />
+                  <div className="h-4 bg-muted rounded w-5/6" />
+                  <div className="h-4 bg-muted rounded w-4/6" />
+                </div>
+                <div className="mt-3 h-3 bg-muted rounded w-1/3" />
+              </CardContent>
+            </Card>
+          ))}
         </div>
       ) : results.length > 0 ? (
         <div className="grid gap-4">
@@ -136,8 +147,8 @@ export function SearchPageContent() {
             <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
                 <CardTitle>
-                  <a 
-                    href={result.url} 
+                  <a
+                    href={result.url}
                     className="text-xl font-bold hover:underline text-primary"
                   >
                     {result.title}
@@ -147,8 +158,8 @@ export function SearchPageContent() {
               <CardContent>
                 <p className="text-muted-foreground">{result.description}</p>
                 <div className="mt-3">
-                  <a 
-                    href={result.url} 
+                  <a
+                    href={result.url}
                     className="text-sm text-primary hover:underline"
                   >
                     {result.url}

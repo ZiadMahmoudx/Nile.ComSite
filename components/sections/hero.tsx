@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, Shield, Cloud, Zap, Globe, Users, Award, TrendingUp, CheckCircle, Play, Sparkles, Rocket } from 'lucide-react'
@@ -110,13 +111,13 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="btn-primary px-8 py-4 text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl group">
-                <Link href="/contact">
+              <Link href="/contact">
+                <SpotlightButton size="lg" className="px-8 py-4 text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl group">
                   <Rocket className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
                   Get Started Now
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </Button>
+                </SpotlightButton>
+              </Link>
               <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 text-lg font-bold rounded-xl group">
                 <Link href="/solutions">
                   <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
