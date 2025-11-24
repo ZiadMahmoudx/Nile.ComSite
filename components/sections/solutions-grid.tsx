@@ -98,7 +98,7 @@ export default function SolutionsGrid() {
             return (
               <Link 
                 key={solution.id}
-                href="/solutions"
+                href={`/contact?subject=${encodeURIComponent(solution.title)}`}
                 className={`card-hover tech-glow transition-all duration-500 block ${
                   hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
                 }`}
@@ -145,9 +145,12 @@ export default function SolutionsGrid() {
                     <Button 
                       variant="outline" 
                       className="w-full btn-outline group mt-6"
+                      asChild
                     >
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <span>
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </span>
                     </Button>
                   </CardContent>
                 </Card>
