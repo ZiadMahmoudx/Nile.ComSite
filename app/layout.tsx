@@ -2,10 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import { Toaster } from '@/components/ui/toaster'
+import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: {
@@ -73,19 +70,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={GeistSans.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          <Toaster />
-        </ThemeProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

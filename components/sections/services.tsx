@@ -4,8 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { SpotlightButton } from '@/components/ui/spotlight-button'
+import { GlassmorphismCard } from '@/components/ui/glassmorphism-card'
 import { Settings, Users, Headphones, Wrench, BookOpen, Rocket, ArrowRight, Clock, Shield, Award } from 'lucide-react'
 import Link from 'next/link'
+import { TiltCard } from '@/components/ui/tilt-card'
 
 interface Service {
   icon: React.ElementType
@@ -99,7 +101,7 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Services Grid - Smaller Cards */}
+        {/* Services Grid - Smaller Cards with 3D Tilt Effect */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {services.map((service, index) => {
             // Make the first service card (Managed IT Services) slightly larger but not oversized
@@ -107,77 +109,89 @@ export default function Services() {
             const sizeClass = isFeatured ? "md:col-span-2" : ""; // Only span 2 columns, not rows
 
             return (
-              <Link
+              <TiltCard
                 key={service.title}
-                href="/services"
-                className={`card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block ${sizeClass}`}
-                aria-label={`Learn more about ${service.title}`}
+                className="block"
+                rotateXMax={8}
+                rotateYMax={8}
+                scale={1.03}
               >
-                <Card className="h-full">
-                  <CardHeader className="pb-4">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg mb-3`}>
-                      <service.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <CardTitle className="text-lg font-bold text-foreground">{service.title}</CardTitle>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="space-y-1">
-                      {service.features.slice(0, 3).map((feature) => ( // Show only 3 features to keep card smaller
-                        <div key={feature} className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
-                          <span className="text-xs text-muted-foreground">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10 mt-2">
-                      Learn More
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Link>
+                <Link
+                  key={service.title}
+                  href="/services"
+                  className={`card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block ${sizeClass}`}
+                  aria-label={`Learn more about ${service.title}`}
+                >
+                  <Card className="h-full">
+                    <CardHeader className="pb-4">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg mb-3`}>
+                        <service.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <CardTitle className="text-lg font-bold text-foreground">{service.title}</CardTitle>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="space-y-1">
+                        {service.features.slice(0, 3).map((feature) => ( // Show only 3 features to keep card smaller
+                          <div key={feature} className="flex items-center space-x-2">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></div>
+                            <span className="text-xs text-muted-foreground">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                      <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10 mt-2">
+                        Learn More
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </TiltCard>
             );
           })}
         </div>
 
-        {/* Benefits Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Benefits Section with Glassmorphism */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {benefits.map((benefit, index) => (
-            <Card key={benefit.title} className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <benefit.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
-              </CardContent>
-            </Card>
+            <GlassmorphismCard key={benefit.title} intensity="sm" blur="md">
+              <Card className="text-center bg-transparent border-0 shadow-none">
+                <CardContent className="p-6 space-y-4">
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-r from-primary to-red-500 p-3 shadow-lg">
+                    <benefit.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                </CardContent>
+              </Card>
+            </GlassmorphismCard>
           ))}
         </div>
 
-        {/* CTA Section */}
-        <Card className="bg-gradient-to-r from-primary/10 via-red-500/10 to-primary/10 border-primary/20">
-          <CardContent className="p-12 text-center">
-            <div className="space-y-6">
-              <h3 className="text-3xl font-black text-gradient">Need Professional IT Services?</h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Our team of certified experts is ready to help you optimize your IT infrastructure
-                and support your business goals with professional services.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact">
-                  <SpotlightButton size="lg" className="px-8 py-4 font-bold rounded-xl">
-                    Request Service Quote
-                  </SpotlightButton>
-                </Link>
-                <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 font-bold rounded-xl">
-                  <Link href="/services">View All Services</Link>
-                </Button>
+        {/* CTA Section with Glassmorphism */}
+        <GlassmorphismCard intensity="sm" blur="lg">
+          <Card className="bg-transparent border-0 shadow-none">
+            <CardContent className="p-8 sm:p-12 text-center">
+              <div className="space-y-6">
+                <h3 className="text-2xl sm:text-3xl font-black text-gradient">Need Professional IT Services?</h3>
+                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Our team of certified experts is ready to help you optimize your IT infrastructure
+                  and support your business goals with professional services.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link href="/contact">
+                    <SpotlightButton size="lg" className="px-6 sm:px-8 py-3 sm:py-4 font-bold rounded-xl">
+                      Request Service Quote
+                    </SpotlightButton>
+                  </Link>
+                  <Button asChild variant="outline" size="lg" className="btn-outline px-6 sm:px-8 py-3 sm:py-4 font-bold rounded-xl">
+                    <Link href="/services">View All Services</Link>
+                  </Button>
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </GlassmorphismCard>
       </div>
     </section>
   )

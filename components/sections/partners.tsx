@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
+import { GlassmorphismCard } from '@/components/ui/glassmorphism-card'
 import { Award, Users, ArrowRight, Star, CheckCircle, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -93,18 +94,20 @@ export default function Partners() {
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Stats with Glassmorphism */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {stats.map((stat) => (
-            <Card key={stat.label} className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-black text-gradient">{stat.value}</div>
-                <div className="text-sm font-semibold text-muted-foreground">{stat.label}</div>
-              </CardContent>
-            </Card>
+            <GlassmorphismCard key={stat.label} intensity="sm" blur="md">
+              <Card className="text-center bg-transparent border-0 shadow-none">
+                <CardContent className="p-6 space-y-4">
+                  <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-r from-primary to-red-500 p-3 shadow-lg">
+                    <stat.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-2xl sm:text-3xl font-black text-gradient">{stat.value}</div>
+                  <div className="text-xs sm:text-sm font-semibold text-muted-foreground">{stat.label}</div>
+                </CardContent>
+              </Card>
+            </GlassmorphismCard>
           ))}
         </div>
 
@@ -203,62 +206,66 @@ export default function Partners() {
           ))}
         </div>
 
-        {/* Benefits Section */}
-        <Card className="bg-gradient-to-r from-primary/10 via-red-500/10 to-primary/10 border-primary/20 mb-16">
-          <CardContent className="p-12">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <h3 className="text-3xl font-black text-gradient">Partnership Benefits</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our strategic partnerships enable us to deliver world-class solutions 
-                  with the latest technologies and industry best practices.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    'Access to latest technologies and innovations',
-                    'Certified expertise and professional training',
-                    'Priority support and technical resources',
-                    'Competitive pricing and licensing benefits',
-                    'Joint go-to-market opportunities'
-                  ].map((benefit, index) => (
-                    <div key={benefit} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-muted-foreground">{benefit}</span>
-                    </div>
-                  ))}
+        {/* Benefits Section with Glassmorphism */}
+        <GlassmorphismCard intensity="sm" blur="lg" className="mb-12">
+          <Card className="bg-transparent border-0 shadow-none">
+            <CardContent className="p-8 sm:p-12">
+              <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                <div className="space-y-6">
+                  <h3 className="text-2xl sm:text-3xl font-black text-gradient">Partnership Benefits</h3>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    Our strategic partnerships enable us to deliver world-class solutions
+                    with the latest technologies and industry best practices.
+                  </p>
+                  <div className="space-y-4">
+                    {[
+                      'Access to latest technologies and innovations',
+                      'Certified expertise and professional training',
+                      'Priority support and technical resources',
+                      'Competitive pricing and licensing benefits',
+                      'Joint go-to-market opportunities'
+                    ].map((benefit, index) => (
+                      <div key={benefit} className="flex items-center space-x-3">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" />
+                        <span className="text-sm sm:text-muted-foreground">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-r from-primary to-red-500 shadow-xl sm:shadow-2xl mb-4 sm:mb-6">
+                    <Award className="w-12 h-12 sm:w-16 sm:h-16 text-white" />
+                  </div>
+                  <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-2">25+ Partners</h4>
+                  <p className="text-sm sm:text-muted-foreground">Industry-leading technology partnerships</p>
                 </div>
               </div>
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-r from-primary to-red-500 shadow-2xl mb-6">
-                  <Award className="w-16 h-16 text-white" />
-                </div>
-                <h4 className="text-2xl font-bold text-foreground mb-2">25+ Partners</h4>
-                <p className="text-muted-foreground">Industry-leading technology partnerships</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </GlassmorphismCard>
 
-        {/* CTA Section */}
-        <Card className="bg-gradient-to-r from-primary/10 via-red-500/10 to-primary/10 border-primary/20">
-          <CardContent className="p-12 text-center">
-            <div className="space-y-6">
-              <h3 className="text-3xl font-black text-gradient">Ready to Leverage Our Partnerships?</h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Benefit from our strategic partnerships and get access to the best technology 
-                solutions at competitive prices with expert implementation and support.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="btn-primary px-8 py-4 font-bold rounded-xl">
-                  <Link href="/contact">Explore Partnerships</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 font-bold rounded-xl">
-                  <Link href="/partners">View All Partners</Link>
-                </Button>
+        {/* CTA Section with Glassmorphism */}
+        <GlassmorphismCard intensity="sm" blur="lg">
+          <Card className="bg-transparent border-0 shadow-none">
+            <CardContent className="p-8 sm:p-12 text-center">
+              <div className="space-y-6">
+                <h3 className="text-2xl sm:text-3xl font-black text-gradient">Ready to Leverage Our Partnerships?</h3>
+                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Benefit from our strategic partnerships and get access to the best technology
+                  solutions at competitive prices with expert implementation and support.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button asChild size="lg" className="btn-primary px-6 py-3 sm:px-8 sm:py-4 font-bold rounded-xl">
+                    <Link href="/contact">Explore Partnerships</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="btn-outline px-6 py-3 sm:px-8 sm:py-4 font-bold rounded-xl">
+                    <Link href="/partners">View All Partners</Link>
+                  </Button>
+                </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </GlassmorphismCard>
       </div>
     </section>
   )

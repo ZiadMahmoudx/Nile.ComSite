@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { GlassmorphismCard } from '@/components/ui/glassmorphism-card'
 import { ArrowRight, Shield, Cloud, Zap, Globe, Users, Award, TrendingUp, CheckCircle, Play, Sparkles, Rocket } from 'lucide-react'
 
 const stats = [
@@ -127,73 +128,83 @@ export default function Hero() {
             </div>
 
             {/* Rotating Stats */}
-            <div className="bg-gradient-to-r from-primary/10 via-red-500/10 to-primary/10 rounded-2xl p-6 border border-primary/20">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                  <div className="p-3 bg-gradient-to-r from-primary to-red-500 rounded-xl">
-                    <CurrentIcon className="w-6 h-6 text-white" />
+            <GlassmorphismCard intensity="sm" blur="md">
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-gradient-to-r from-primary to-red-500 rounded-xl">
+                      <CurrentIcon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-3xl font-black text-gradient">{stats[currentStat].value}</div>
+                      <div className="text-sm font-semibold text-muted-foreground">{stats[currentStat].label}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-3xl font-black text-gradient">{stats[currentStat].value}</div>
-                    <div className="text-sm font-semibold text-muted-foreground">{stats[currentStat].label}</div>
+                  <div className="flex space-x-1">
+                    {stats.map((_, index) => (
+                      <div
+                        key={index}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentStat ? 'bg-primary' : 'bg-muted'
+                        }`}
+                      />
+                    ))}
                   </div>
-                </div>
-                <div className="flex space-x-1">
-                  {stats.map((_, index) => (
-                    <div
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentStat ? 'bg-primary' : 'bg-muted'
-                      }`}
-                    />
-                  ))}
                 </div>
               </div>
-            </div>
+            </GlassmorphismCard>
           </div>
 
           {/* Right Content - Service Cards */}
           <div className={`space-y-6 ${isVisible ? 'animate-slideInRight' : 'opacity-0'}`}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {services.map((service, index) => (
-                <Link 
-                  key={service.title} 
-                  href="/services"
-                  className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                  aria-label={`Learn more about ${service.title}`}
+                <GlassmorphismCard
+                  key={service.title}
+                  className="block"
+                  intensity="sm"
+                  blur="md"
                 >
-                  <Card className="h-full">
-                    <CardContent className="p-6 space-y-4">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg`}>
-                        <service.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                      </div>
-                      <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10">
-                        Learn More
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </Link>
+                  <Link
+                    href="/services"
+                    className="card-hover card-glow block h-full"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                    aria-label={`Learn more about ${service.title}`}
+                  >
+                    <Card className="h-full bg-transparent border-0 shadow-none">
+                      <CardContent className="p-6 space-y-4">
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg`}>
+                          <service.icon className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                        </div>
+                        <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10">
+                          Learn More
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </GlassmorphismCard>
               ))}
             </div>
 
             {/* Trust Indicators */}
-            <Card className="bg-gradient-to-r from-primary/5 via-red-500/5 to-primary/5 border-primary/20">
-              <CardContent className="p-6 text-center">
-                <div className="flex items-center justify-center space-x-2 mb-4">
-                  <Award className="w-6 h-6 text-primary" />
-                  <span className="text-lg font-bold text-gradient">Trusted by Industry Leaders</span>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Join 500+ enterprises who trust NILE.COM for their critical IT infrastructure
-                </p>
-              </CardContent>
-            </Card>
+            <GlassmorphismCard intensity="sm" blur="md">
+              <Card className="bg-transparent border-0 shadow-none">
+                <CardContent className="p-6 text-center">
+                  <div className="flex items-center justify-center space-x-2 mb-4">
+                    <Award className="w-6 h-6 text-primary" />
+                    <span className="text-lg font-bold text-gradient">Trusted by Industry Leaders</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    Join 500+ enterprises who trust NILE.COM for their critical IT infrastructure
+                  </p>
+                </CardContent>
+              </Card>
+            </GlassmorphismCard>
           </div>
         </div>
       </div>
