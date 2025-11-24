@@ -146,11 +146,11 @@ export default function SolutionsGrid() {
                             {solution.category}
                           </Badge>
                         </div>
-                        <CardTitle className="text-lg font-bold">{solution.title}</CardTitle>
+                        <CardTitle className="text-lg font-bold min-h-[2.5rem]">{solution.title}</CardTitle>
                       </CardHeader>
 
                       <CardContent className="space-y-4">
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground min-h-[3.5rem]">
                           {solution.description}
                         </p>
 

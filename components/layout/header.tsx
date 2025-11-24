@@ -127,6 +127,7 @@ export default function Header() {
                     width={40}
                     height={40}
                     className="transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                    priority
                   />
                 </div>
               </div>

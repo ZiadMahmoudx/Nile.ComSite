@@ -128,7 +128,7 @@ export default function Services() {
                         <service.icon className="w-6 h-6 text-white" />
                       </div>
                       <CardTitle className="text-lg font-bold text-foreground">{service.title}</CardTitle>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed min-h-[3rem]">{service.description}</p>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="space-y-1">
@@ -161,7 +161,7 @@ export default function Services() {
                     <benefit.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground">{benefit.title}</h3>
-                  <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                  <p className="text-sm text-muted-foreground min-h-[3rem]">{benefit.description}</p>
                 </CardContent>
               </Card>
             </GlassmorphismCard>
