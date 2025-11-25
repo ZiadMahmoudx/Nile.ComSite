@@ -65,6 +65,7 @@ coverage/
 *.temp
 *.bak
 *.orig
+*.zip
 
 # Build system / bundlers
 dist/
