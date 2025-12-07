@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { GlassmorphismCard } from '@/components/ui/glassmorphism-card'
+import { ParticleNetwork } from '@/components/ui/particle-network'
+import { ScrollAnimation } from '@/components/ui/scroll-animation'
+import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { ArrowRight, Shield, Cloud, Zap, Globe, Users, Award, TrendingUp, CheckCircle, Play, Sparkles, Rocket } from 'lucide-react'
 
 const stats = [
@@ -22,25 +23,22 @@ const services = [
     icon: Cloud,
     title: 'Cloud Solutions',
     description: 'Scalable cloud infrastructure and migration services',
-    color: 'from-blue-500 to-cyan-500'
+    color: 'bg-blue-500',
+    shadow: 'shadow-blue-500/30'
   },
   {
     icon: Shield,
     title: 'Cybersecurity',
     description: 'Advanced threat protection and security solutions',
-    color: 'from-red-500 to-pink-500'
+    color: 'bg-red-500',
+    shadow: 'shadow-red-500/30'
   },
   {
     icon: Zap,
     title: 'Digital Transformation',
     description: 'Modernize your business with cutting-edge technology',
-    color: 'from-yellow-500 to-orange-500'
-  },
-  {
-    icon: Globe,
-    title: 'Network Infrastructure',
-    description: 'Robust and reliable network solutions',
-    color: 'from-green-500 to-emerald-500'
+    color: 'bg-amber-500',
+    shadow: 'shadow-amber-500/30'
   }
 ]
 
@@ -53,10 +51,8 @@ const achievements = [
 
 export default function Hero() {
   const [currentStat, setCurrentStat] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    setIsVisible(true)
     const interval = setInterval(() => {
       setCurrentStat((prev) => (prev + 1) % stats.length)
     }, 3000)
@@ -66,146 +62,157 @@ export default function Hero() {
   const CurrentIcon = stats[currentStat].icon
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-primary/10 to-red-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-red-500/10 to-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary/5 via-transparent to-red-500/5 rounded-full blur-3xl animate-spin" style={{ animationDuration: '20s' }}></div>
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
+      {/* Particle Network Background */}
+      <ParticleNetwork
+        particleCount={100}
+        particleColor="rgba(159, 34, 32, 0.7)"
+        lineColor="rgba(159, 34, 32, 0.1)"
+        maxDistance={120}
+        speed={0.3}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div className={`space-y-8 ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            {/* Badge */}
-            <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Leading IT Solutions Provider
-            </Badge>
+          <div className="space-y-8">
+            <ScrollAnimation animation="fade-up" delay={0.1}>
+              <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-4">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Leading IT Solutions Provider
+              </Badge>
+            </ScrollAnimation>
 
-            {/* Main Headline */}
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-black leading-tight">
-                <span className="text-gradient">Transform</span>
-                <br />
-                <span className="text-foreground">Your Business</span>
-                <br />
-                <span className="text-gradient">With Technology</span>
-              </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                Empowering enterprises with cutting-edge IT solutions, cybersecurity, and digital transformation services for over 25 years.
-              </p>
+            <div className="space-y-2">
+              <ScrollAnimation animation="fade-up" delay={0.2}>
+                <h1 className="text-5xl lg:text-7xl font-black leading-tight tracking-tight">
+                  <span className="text-gradient">Transform</span>{' '}
+                  <span className="text-foreground">Your</span>
+                  <br />
+                  <span className="text-foreground">Business</span>
+                </h1>
+              </ScrollAnimation>
+
+              <ScrollAnimation animation="fade-up" delay={0.4}>
+                <h2 className="text-4xl lg:text-6xl font-black text-gradient leading-tight tracking-tight">
+                  With Future-Ready
+                  <br />
+                  Technology
+                </h2>
+              </ScrollAnimation>
+
+              <ScrollAnimation animation="fade-up" delay={0.5}>
+                <p className="text-xl text-muted-foreground leading-relaxed max-w-xl mt-6">
+                  Empowering enterprises with cutting-edge IT solutions, cybersecurity, and digital transformation services for over 25 years.
+                </p>
+              </ScrollAnimation>
             </div>
 
             {/* Achievement List */}
-            <div className="grid grid-cols-2 gap-4">
-              {achievements.map((achievement, index) => (
-                <div key={achievement} className="flex items-center space-x-2" style={{ animationDelay: `${index * 0.2}s` }}>
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-sm font-semibold text-muted-foreground">{achievement}</span>
-                </div>
-              ))}
-            </div>
+            <ScrollAnimation animation="fade-up" delay={0.6}>
+              <div className="grid grid-cols-2 gap-4">
+                {achievements.map((achievement) => (
+                  <div key={achievement} className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <span className="text-sm font-semibold text-muted-foreground">{achievement}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollAnimation>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <ScrollAnimation animation="fade-up" delay={0.8} className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
-                <SpotlightButton size="lg" className="px-8 py-4 text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl group">
+                <SpotlightButton size="lg" className="px-8 py-4 text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl group w-full sm:w-auto">
                   <Rocket className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
                   Get Started Now
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </SpotlightButton>
               </Link>
-              <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 text-lg font-bold rounded-xl group">
+              <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 text-lg font-bold rounded-xl group w-full sm:w-auto">
                 <Link href="/solutions">
                   <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
                   View Solutions
                 </Link>
               </Button>
-            </div>
+            </ScrollAnimation>
 
-            {/* Rotating Stats */}
-            <GlassmorphismCard intensity="sm" blur="md">
-              <div className="p-6 min-h-[7rem]"> {/* Fixed height to prevent layout shift */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-gradient-to-r from-primary to-red-500 rounded-xl">
-                      <CurrentIcon className="w-6 h-6 text-white" />
+            {/* Rotating Stats - Solid Card */}
+            <ScrollAnimation animation="scale-up" delay={1.0}>
+              <Card className="border-2 border-border hover:border-primary/50 transition-colors duration-300 bg-card shadow-xl hover:shadow-2xl">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <div className="p-3 bg-gradient-to-br from-primary to-red-600 rounded-xl shadow-lg">
+                        <CurrentIcon className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-3xl font-black text-gradient">
+                          <AnimatedCounter
+                            value={stats[currentStat].value}
+                            suffix={stats[currentStat].value.includes('%') ? '%' : '+'}
+                          />
+                        </div>
+                        <div className="text-sm font-semibold text-muted-foreground">{stats[currentStat].label}</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-3xl font-black text-gradient">{stats[currentStat].value}</div>
-                      <div className="text-sm font-semibold text-muted-foreground">{stats[currentStat].label}</div>
+                    <div className="flex space-x-1">
+                      {stats.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentStat ? 'bg-primary w-4' : 'bg-muted'}`}
+                        />
+                      ))}
                     </div>
                   </div>
-                  <div className="flex space-x-1">
-                    {stats.map((_, index) => (
-                      <div
-                        key={index}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index === currentStat ? 'bg-primary' : 'bg-muted'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </GlassmorphismCard>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
           </div>
 
-          {/* Right Content - Service Cards */}
-          <div className={`space-y-6 ${isVisible ? 'animate-slideInRight' : 'opacity-0'}`}>
+          {/* Right Content - Service Cards (Solid, High-Contrast) */}
+          <div className="space-y-6 lg:mt-0 mt-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {services.map((service, index) => (
-                <GlassmorphismCard
-                  key={service.title}
-                  className="block"
-                  intensity="sm"
-                  blur="md"
-                >
-                  <Link
-                    href="/services"
-                    className="card-hover card-glow block h-full"
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                    aria-label={`Learn more about ${service.title}`}
-                  >
-                    <Card className="h-full bg-transparent border-0 shadow-none">
+                <ScrollAnimation key={service.title} animation="fade-up" delay={1.2 + (index * 0.1)}>
+                  <Link href="/services" className="block group">
+                    <Card className={`h-full border-2 border-border bg-card hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-xl ${service.shadow}`}>
                       <CardContent className="p-6 space-y-4">
-                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.color} p-3 shadow-lg`}>
+                        <div className={`w-12 h-12 rounded-xl ${service.color} p-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                           <service.icon className="w-6 h-6 text-white" />
                         </div>
-                        <div className="min-h-[5rem]"> {/* Fixed height to prevent layout shift */}
-                          <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
+                        <div>
+                          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{service.title}</h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                         </div>
-                        <Button variant="ghost" size="sm" className="w-full justify-between group hover:bg-primary/10">
-                          Learn More
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        </Button>
                       </CardContent>
                     </Card>
                   </Link>
-                </GlassmorphismCard>
+                </ScrollAnimation>
               ))}
             </div>
 
-            {/* Trust Indicators */}
-            <GlassmorphismCard intensity="sm" blur="md">
-              <Card className="bg-transparent border-0 shadow-none">
+            {/* Trust Indicators - Solid Card */}
+            <ScrollAnimation animation="fade-up" delay={1.5}>
+              <Card className="border-2 border-border bg-card shadow-lg">
                 <CardContent className="p-6 text-center">
                   <div className="flex items-center justify-center space-x-2 mb-4">
                     <Award className="w-6 h-6 text-primary" />
                     <span className="text-lg font-bold text-gradient">Trusted by Industry Leaders</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    Join 500+ enterprises who trust NILE.COM for their critical IT infrastructure
-                  </p>
+                  <div className="flex justify-center -space-x-4">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-10 h-10 rounded-full bg-muted border-2 border-background flex items-center justify-center text-xs font-bold text-muted-foreground">
+                        {i}
+                      </div>
+                    ))}
+                    <div className="w-10 h-10 rounded-full bg-primary text-white border-2 border-background flex items-center justify-center text-xs font-bold">
+                      +500
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
-            </GlassmorphismCard>
+            </ScrollAnimation>
           </div>
         </div>
       </div>

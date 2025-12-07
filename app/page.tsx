@@ -3,8 +3,10 @@ import About from '@/components/sections/about'
 import Solutions from '@/components/sections/solutions'
 import Services from '@/components/sections/services'
 import Partners from '@/components/sections/partners'
+import Testimonials from '@/components/sections/testimonials'
 import Contact from '@/components/sections/contact'
 import LocalBusinessStructuredData from '@/components/seo/local-business-structured-data'
+import { ScrollAnimation } from '@/components/ui/scroll-animation'
 
 export default function HomePage() {
   return (
@@ -31,11 +33,30 @@ export default function HomePage() {
         ]}
       />
       <Hero />
-      <About />
-      <Solutions />
-      <Services />
-      <Partners />
-      <Contact />
+
+      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+        <About />
+      </ScrollAnimation>
+
+      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+        <Solutions />
+      </ScrollAnimation>
+
+      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+        <Services />
+      </ScrollAnimation>
+
+      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+        <Partners />
+      </ScrollAnimation>
+
+      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+        <Testimonials />
+      </ScrollAnimation>
+
+      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+        <Contact />
+      </ScrollAnimation>
     </>
   )
 }

@@ -65,11 +65,20 @@ const config: Config = {
           "0%, 100%": { boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)" },
           "50%": { boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)" },
         },
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
+          to: {
+            backgroundPosition: "350% 50%, 350% 50%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite alternate",
+        aurora: "aurora 60s linear infinite",
       },
     },
   },
