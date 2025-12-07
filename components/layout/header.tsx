@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Phone, Mail, MapPin, ChevronDown, Globe, Shield, Cloud, Zap, Users, Award, BookOpen, FolderOpen, SearchIcon } from 'lucide-react'
+import { Menu, X, Phone, Mail, MapPin, ChevronDown, Globe, Shield, Cloud, Zap, Users, Award, BookOpen, FolderOpen, SearchIcon, HelpCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { CommandPalette } from '@/components/ui/command-palette'
@@ -24,6 +24,7 @@ const navigation = [
       { name: 'Careers', href: '/careers', icon: Award },
       { name: 'News & Events', href: '/news', icon: Globe },
       { name: 'Case Studies', href: '/case-studies', icon: BookOpen },
+      { name: 'FAQ', href: '/faq', icon: HelpCircle },
     ]
   },
   { name: 'Contact', href: '/contact' },
