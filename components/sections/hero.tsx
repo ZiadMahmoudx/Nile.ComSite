@@ -69,7 +69,7 @@ export default function Hero() {
   const CurrentIcon = stats[currentStat].icon
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
       {/* Particle Network Background */}
       <ParticleNetwork
         particleCount={100}
@@ -79,7 +79,7 @@ export default function Hero() {
         speed={0.3}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
