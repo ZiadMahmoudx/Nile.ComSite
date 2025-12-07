@@ -2,7 +2,11 @@ import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
 // Use environment variables for sensitive data
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resendApiKey = process.env.RESEND_API_KEY;
+if (!resendApiKey) {
+  console.warn("RESEND_API_KEY is not set. Emails will not be sent. Please configure it in your environment variables.");
+}
+const resend = new Resend(resendApiKey || "re_dummy_key")
 
 export async function POST(request: Request) {
   try {
