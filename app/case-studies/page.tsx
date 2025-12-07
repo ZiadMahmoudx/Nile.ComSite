@@ -10,6 +10,7 @@ import { ScrollAnimation } from '@/components/ui/scroll-animation'
 
 const caseStudies = [
   {
+    id: 'bank-digital-transformation',
     title: 'Digital Transformation for EgyptBank',
     client: 'EgyptBank',
     industry: 'Financial Services',
@@ -19,6 +20,7 @@ const caseStudies = [
     tags: ['Cloud Migration', 'Financial Services']
   },
   {
+    id: 'healthcare-cloud-migration',
     title: 'Cybersecurity Overhaul for HealthCare Egypt',
     client: 'HealthCare Egypt',
     industry: 'Healthcare',
@@ -28,6 +30,7 @@ const caseStudies = [
     tags: ['Cybersecurity', 'Healthcare']
   },
   {
+    id: 'retail-security-overhaul',
     title: 'Enterprise Infrastructure for RetailCorp',
     client: 'RetailCorp',
     industry: 'Retail',
@@ -35,6 +38,16 @@ const caseStudies = [
     solution: 'Built scalable cloud-native architecture with auto-scaling',
     results: '300% traffic handling increase, 50% faster loads',
     tags: ['Infrastructure', 'Retail']
+  },
+  {
+    id: 'telecom-network-upgrade',
+    title: 'Network Modernization for Telecom Egypt',
+    client: 'Telecom Egypt',
+    industry: 'Telecommunications',
+    challenge: 'Upgrading network infrastructure for 5G readiness',
+    solution: 'Deployed next-generation SD-WAN and 5G infrastructure',
+    results: '10x network capacity, 40% latency reduction',
+    tags: ['Networking', 'Telecommunications']
   }
 ]
 
@@ -117,7 +130,7 @@ export default function CaseStudiesPage() {
                     </div>
 
                     <Button asChild variant="outline" className="mt-6 group">
-                      <Link href="/contact">
+                      <Link href={`/case-studies/${study.id}`}>
                         View Full Case Study
                         <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Link>

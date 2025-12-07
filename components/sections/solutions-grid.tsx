@@ -14,6 +14,7 @@ import { TiltCard } from '@/components/ui/tilt-card'
 const solutions = [
   {
     id: 1,
+    slug: 'cloud-migration',
     icon: Cloud,
     title: 'Cloud Migration',
     description: 'Seamless transition to cloud infrastructure with minimal downtime and maximum efficiency.',
@@ -24,6 +25,7 @@ const solutions = [
   },
   {
     id: 2,
+    slug: 'cybersecurity',
     icon: Shield,
     title: 'Cybersecurity',
     description: 'Advanced threat protection and security solutions to safeguard your digital assets.',
@@ -34,6 +36,7 @@ const solutions = [
   },
   {
     id: 3,
+    slug: 'infrastructure',
     icon: Server,
     title: 'Infrastructure',
     description: 'Robust IT infrastructure solutions designed for scalability and performance.',
@@ -44,6 +47,7 @@ const solutions = [
   },
   {
     id: 4,
+    slug: 'digital-transformation',
     icon: Smartphone,
     title: 'Digital Transformation',
     description: 'Modernize your business processes with cutting-edge digital solutions.',
@@ -54,6 +58,7 @@ const solutions = [
   },
   {
     id: 5,
+    slug: 'data-management',
     icon: Database,
     title: 'Data Management',
     description: 'Comprehensive data solutions for storage, analytics, and business intelligence.',
@@ -64,6 +69,7 @@ const solutions = [
   },
   {
     id: 6,
+    slug: 'network-solutions',
     icon: Network,
     title: 'Network Solutions',
     description: 'High-performance networking solutions for seamless connectivity and communication.',
@@ -125,10 +131,9 @@ export default function SolutionsGrid() {
                   viewport={{ once: true }}
                 >
                   <Link
-                    href={`/contact?subject=${encodeURIComponent(solution.title)}`}
-                    className={`card-hover tech-glow transition-all duration-500 block ${
-                      hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
-                    }`}
+                    href={`/solutions/${solution.slug}`}
+                    className={`card-hover tech-glow transition-all duration-500 block ${hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
+                      }`}
                     onMouseEnter={() => setHoveredSolution(solution.id)}
                     onMouseLeave={() => setHoveredSolution(null)}
                     aria-label={`Learn more about ${solution.title}`}
