@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, Mail, MapPin, ChevronDown, Globe, Shield, Cloud, Zap, Users, Award, BookOpen, FolderOpen, SearchIcon, HelpCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { CommandPalette } from '@/components/ui/command-palette'
+import { SpotlightSearch } from '@/components/ui/spotlight-search'
 import { cn } from '@/lib/utils'
 
 const navigation = [
@@ -209,7 +209,7 @@ export default function Header() {
 
             {/* CTA Buttons with Command Palette - Responsive sizes */}
             <div className="hidden xl:flex items-center space-x-3">
-              <CommandPalette />
+              <SpotlightSearch />
               <Button asChild className="btn-primary px-4 py-2 font-bold text-xs md:text-sm tracking-wide rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
                 <Link href="/contact">
                   <Zap className="w-3 h-3 mr-1 group-hover:rotate-12 transition-transform duration-300" />
@@ -221,7 +221,7 @@ export default function Header() {
             {/* Tablet/Mobile Navigation */}
             <div className="xl:hidden flex items-center space-x-2">
               {/* Command Palette for Mobile/Tablet */}
-              <CommandPalette />
+              <SpotlightSearch />
               <Button
                 variant="ghost"
                 size="lg"
