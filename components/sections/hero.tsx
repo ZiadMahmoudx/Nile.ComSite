@@ -39,6 +39,13 @@ const services = [
     description: 'Modernize your business with cutting-edge technology',
     color: 'bg-amber-500',
     shadow: 'shadow-amber-500/30'
+  },
+  {
+    icon: Rocket,
+    title: 'IT Consulting',
+    description: 'Strategic guidance for technology decisions',
+    color: 'bg-green-500',
+    shadow: 'shadow-green-500/30'
   }
 ]
 
