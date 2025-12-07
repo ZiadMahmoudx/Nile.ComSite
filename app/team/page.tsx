@@ -1,270 +1,257 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Users, Award, Target, Lightbulb, Settings, Shield } from 'lucide-react'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Our Team - NILE.COM',
-  description: 'Meet the leadership team and experts at NILE.COM who drive innovation and excellence in IT solutions and services.',
-}
+import Image from 'next/image'
+import Link from 'next/link'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Users, Award, Target, Lightbulb, Settings, Shield, ArrowRight, Linkedin, Mail } from 'lucide-react'
+import { ScrollAnimation } from '@/components/ui/scroll-animation'
+import { ParticleNetwork } from '@/components/ui/particle-network'
+import { AnimatedCounter } from '@/components/ui/animated-counter'
 
 const teamMembers = [
   {
     name: 'Karim Soliman',
     role: 'CEO & Technology Strategist',
-    bio: 'Expert in Banking Payments and Cloud IT Infrastructure. Leading NILE.COM with vision and strategic direction.',
+    bio: 'Expert in Banking Payments and Cloud IT Infrastructure.',
     expertise: ['Digital Strategy', 'Banking Payments', 'Cloud Infrastructure'],
     image: 'CEO.png',
-    certifications: ['Technology Strategist', 'Cloud Infrastructure Expert']
   },
   {
     name: 'Dr. Marwan Shalaby',
-    role: 'Chief Financial Officer & Board Member',
-    bio: 'Chief Financial Officer and Board Member with extensive experience in corporate finance and strategic planning.',
-    expertise: ['Corporate Finance', 'Strategic Planning', 'Board Governance'],
+    role: 'Chief Financial Officer',
+    bio: 'CFO and Board Member with extensive corporate finance experience.',
+    expertise: ['Corporate Finance', 'Strategic Planning', 'Governance'],
     image: '/Dr. Marwan Shalaby Chief Financial  Board Member.png',
-    certifications: ['Finance Professional', 'Board Member']
   },
   {
     name: 'Khaled Helmy',
-    role: 'SDM Messaging and Collaboration',
-    bio: 'Senior Director of Messaging and Collaboration at NILE.COM, specializing in communication systems and collaborative technologies.',
-    expertise: ['Messaging Systems', 'Collaboration Technologies', 'Communication Infrastructure'],
+    role: 'SDM Messaging & Collaboration',
+    bio: 'Senior Director specializing in communication systems.',
+    expertise: ['Messaging Systems', 'Collaboration Tech', 'Communication'],
     image: '/Khaled Helmy  SDM messaging and collaboration at Nile.Com.png',
-    certifications: ['Messaging Systems Expert', 'Collaboration Specialist']
   },
   {
     name: 'Marwan Helmy',
     role: 'Technology Solutions Lead',
-    bio: 'Expert in IT infrastructure and technology solutions, driving innovation and implementation of cutting-edge technologies.',
-    expertise: ['IT Infrastructure', 'Technology Solutions', 'System Architecture'],
+    bio: 'Expert in IT infrastructure and technology solutions.',
+    expertise: ['IT Infrastructure', 'Solutions', 'Architecture'],
     image: '/placeholder-user.jpg',
-    certifications: ['IT Infrastructure Expert', 'System Architecture Specialist']
   },
   {
     name: 'Ahmed Hassan',
     role: 'Senior Solutions Architect',
-    bio: 'Senior Solutions Architect with deep expertise in enterprise integration and digital transformation.',
-    expertise: ['Solution Architecture', 'Enterprise Integration', 'Digital Transformation'],
+    bio: 'Deep expertise in enterprise integration and digital transformation.',
+    expertise: ['Solution Architecture', 'Enterprise Integration', 'Cloud'],
     image: '/placeholder-user.jpg',
-    certifications: ['AWS Certified Solutions Architect', 'Azure Solutions Architect']
   },
   {
     name: 'Yasmin Khalil',
     role: 'Cybersecurity Specialist',
-    bio: 'Cybersecurity specialist with extensive experience in threat intelligence and incident response.',
-    expertise: ['Cybersecurity', 'Threat Intelligence', 'Incident Response'],
+    bio: 'Extensive experience in threat intelligence and incident response.',
+    expertise: ['Cybersecurity', 'Threat Intel', 'Incident Response'],
     image: '/placeholder-user.jpg',
-    certifications: ['CISSP', 'CEH', 'CISM']
   }
 ]
 
 const teamStats = [
-  { icon: Users, value: '100+', label: 'Tech Experts' },
-  { icon: Award, value: '200+', label: 'Certifications' },
-  { icon: Target, value: '2,500+', label: 'Projects Completed' },
-  { icon: Lightbulb, value: '25+', label: 'Years Experience' }
+  { value: 100, suffix: '+', label: 'Tech Experts', icon: Users },
+  { value: 200, suffix: '+', label: 'Certifications', icon: Award },
+  { value: 2500, suffix: '+', label: 'Projects', icon: Target },
+  { value: 25, suffix: '+', label: 'Years', icon: Lightbulb },
+]
+
+const values = [
+  { icon: Lightbulb, title: 'Innovation', desc: 'Cutting-edge technologies for complex challenges' },
+  { icon: Users, title: 'Collaboration', desc: 'Teamwork for extraordinary results' },
+  { icon: Award, title: 'Excellence', desc: 'Highest standards in everything we do' },
+  { icon: Shield, title: 'Integrity', desc: 'Honesty, transparency, ethical practices' },
+  { icon: Settings, title: 'Learning', desc: 'Continuous growth and development' },
+  { icon: Target, title: 'Customer Focus', desc: 'Your success is our success' },
 ]
 
 export default function TeamPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="min-h-[70vh] flex items-center justify-center hero-gradient relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10" aria-hidden="true">
-          <div className="absolute top-20 left-20 w-64 h-64 border border-primary/30 rounded-full"></div>
-          <div className="absolute bottom-20 right-20 w-48 h-48 border border-secondary/30 rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-primary/20 rounded-full"></div>
-        </div>
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-background">
+        <ParticleNetwork
+          particleCount={50}
+          particleColor="rgba(159, 34, 32, 0.5)"
+          lineColor="rgba(159, 34, 32, 0.08)"
+          maxDistance={100}
+          speed={0.2}
+        />
 
-        <div className="max-w-7xl mx-auto px-4 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
           <div className="text-center space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+            <ScrollAnimation animation="fade-up">
+              <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2">
+                <Users className="w-4 h-4 mr-2" />
+                Our Team
+              </Badge>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="fade-up" delay={0.1}>
+              <h1 className="text-5xl lg:text-7xl font-black leading-tight">
                 <span className="text-foreground">Meet Our</span>
                 <br />
                 <span className="text-gradient">Leadership Team</span>
               </h1>
+            </ScrollAnimation>
+
+            <ScrollAnimation animation="fade-up" delay={0.2}>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Our team of experts brings together decades of experience in IT solutions, 
-                digital transformation, and customer success to deliver exceptional results.
+                Decades of experience in IT solutions, digital transformation, and customer success.
               </p>
-            </div>
+            </ScrollAnimation>
 
             {/* Team Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12">
-              {teamStats.map((stat, index) => {
-                const IconComponent = stat.icon
-                return (
-                  <div key={index} className="text-center space-y-3">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                      <IconComponent className="w-8 h-8 text-primary" />
+            <ScrollAnimation animation="fade-up" delay={0.3}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
+                {teamStats.map((stat, index) => {
+                  const IconComponent = stat.icon
+                  return (
+                    <div
+                      key={index}
+                      className="text-center space-y-3 p-6 rounded-2xl border-2 border-border bg-card"
+                    >
+                      <div className="w-12 h-12 mx-auto rounded-xl bg-gradient-to-br from-primary to-primary/70 p-2.5 shadow-lg">
+                        <IconComponent className="w-7 h-7 text-white" />
+                      </div>
+                      <div className="text-3xl font-black text-gradient">
+                        <AnimatedCounter end={stat.value} suffix={stat.suffix} />
+                      </div>
+                      <p className="text-sm text-muted-foreground font-medium">{stat.label}</p>
                     </div>
-                    <h3 className="text-2xl font-bold text-gradient">{stat.value}</h3>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-24 bg-gradient-to-b from-muted/20 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Leadership Team</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our leadership team brings together decades of experience in technology, 
-              business strategy, and customer success to drive innovation and excellence.
-            </p>
-          </div>
+          <ScrollAnimation animation="fade-up">
+            <div className="text-center mb-16">
+              <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-4">
+                <Award className="w-4 h-4 mr-2" />
+                Leadership
+              </Badge>
+              <h2 className="text-4xl font-black mb-4">
+                <span className="text-gradient">Executive</span>
+                <span className="text-foreground"> Team</span>
+              </h2>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/50">
-                <CardHeader className="space-y-4">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-red-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={120}
-                      height={120}
-                      className="mx-auto rounded-full border-4 border-primary/20 group-hover:border-primary/40 transition-colors duration-300 relative"
-                    />
-                  </div>
-                  <div className="text-center">
-                    <CardTitle className="text-xl">{member.name}</CardTitle>
-                    <CardDescription className="text-base">
-                      {member.role}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground text-center">{member.bio}</p>
-                  
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-foreground">Areas of Expertise:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.expertise.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="secondary" className="text-xs">
+              <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
+                <Card className="group h-full border-2 border-border hover:border-primary/50 bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+                  <CardContent className="p-6 space-y-4">
+                    {/* Photo */}
+                    <div className="relative mx-auto w-32 h-32">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full group-hover:scale-110 transition-transform duration-300" />
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        width={128}
+                        height={128}
+                        className="rounded-full border-4 border-primary/30 group-hover:border-primary/50 transition-colors relative z-10 object-cover"
+                      />
+                    </div>
+
+                    {/* Info */}
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {member.name}
+                      </h3>
+                      <p className="text-sm text-primary font-medium">{member.role}</p>
+                      <p className="text-sm text-muted-foreground mt-2">{member.bio}</p>
+                    </div>
+
+                    {/* Expertise */}
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {member.expertise.map((skill, i) => (
+                        <Badge key={i} variant="secondary" className="text-xs">
                           {skill}
                         </Badge>
                       ))}
                     </div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <h4 className="font-semibold text-foreground">Certifications:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.certifications.map((cert, certIndex) => (
-                        <Badge key={certIndex} variant="outline" className="text-xs bg-primary/5 border-primary/20">
-                          {cert}
-                        </Badge>
-                      ))}
+
+                    {/* Social */}
+                    <div className="flex justify-center gap-3 pt-2">
+                      <button className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-white transition-colors">
+                        <Linkedin className="w-4 h-4" />
+                      </button>
+                      <button className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-white transition-colors">
+                        <Mail className="w-4 h-4" />
+                      </button>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Company Culture */}
-      <section className="py-20">
+      {/* Values Section */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Our Culture & Values</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We foster an environment of innovation, collaboration, and continuous learning 
-              that empowers our team to deliver exceptional results for our clients.
-            </p>
+          <ScrollAnimation animation="fade-up">
+            <div className="text-center mb-16">
+              <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-4">
+                <Shield className="w-4 h-4 mr-2" />
+                Our Values
+              </Badge>
+              <h2 className="text-4xl font-black mb-4">
+                <span className="text-foreground">Culture & </span>
+                <span className="text-gradient">Values</span>
+              </h2>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {values.map((value, index) => (
+              <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
+                <Card className="group border-2 border-border hover:border-primary/50 bg-card transition-all duration-300 hover:-translate-y-1">
+                  <CardContent className="p-6 text-center space-y-4">
+                    <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-primary to-primary/70 p-3 shadow-lg group-hover:scale-110 transition-transform">
+                      <value.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
+                    <p className="text-muted-foreground text-sm">{value.desc}</p>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
+            ))}
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <Lightbulb className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Innovation</h3>
-                <p className="text-muted-foreground">
-                  We embrace cutting-edge technologies and methodologies to solve complex challenges 
-                  and create value for our clients.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Collaboration</h3>
-                <p className="text-muted-foreground">
-                  We believe in the power of teamwork and cross-functional collaboration 
-                  to achieve extraordinary results.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Excellence</h3>
-                <p className="text-muted-foreground">
-                  We strive for the highest standards in everything we do, 
-                  from technical solutions to customer service.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <Shield className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Integrity</h3>
-                <p className="text-muted-foreground">
-                  We conduct business with honesty, transparency, and ethical practices, 
-                  building trust with our clients and partners.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <Settings className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Continuous Learning</h3>
-                <p className="text-muted-foreground">
-                  We invest in our team's growth through training, certifications, 
-                  and knowledge sharing to stay at the forefront of technology.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-primary to-red-500 p-4 shadow-lg">
-                  <Target className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground">Customer Success</h3>
-                <p className="text-muted-foreground">
-                  Our success is measured by our clients' success. 
-                  We're committed to delivering solutions that drive real business value.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          {/* CTA */}
+          <ScrollAnimation animation="fade-up" delay={0.4}>
+            <div className="text-center mt-16">
+              <Card className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 inline-block">
+                <CardContent className="p-8 sm:p-12">
+                  <h3 className="text-2xl font-black text-gradient mb-4">Join Our Team</h3>
+                  <p className="text-muted-foreground mb-6 max-w-lg">
+                    We're always looking for talented individuals to join our growing team.
+                  </p>
+                  <Button asChild size="lg" className="btn-primary px-8 py-4 font-bold rounded-xl">
+                    <Link href="/careers">
+                      View Open Positions
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
     </>

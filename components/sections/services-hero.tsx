@@ -1,85 +1,100 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Settings, Users, Headphones, Lightbulb } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { ArrowRight, Settings, Users, Headphones, Lightbulb, Zap, Shield, CheckCircle } from 'lucide-react'
+import { ScrollAnimation } from '@/components/ui/scroll-animation'
+import { ParticleNetwork } from '@/components/ui/particle-network'
+
+const highlights = [
+  { icon: Lightbulb, title: 'Consulting', desc: 'Strategic IT Planning' },
+  { icon: Settings, title: 'Implementation', desc: 'Expert Deployment' },
+  { icon: Users, title: 'Managed Services', desc: '24/7 Management' },
+  { icon: Headphones, title: 'Support', desc: 'Always Available' },
+]
 
 const ServicesHero = () => {
   return (
-    <section className="min-h-[70vh] flex items-center justify-center hero-gradient relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10" aria-hidden="true">
-        <div className="absolute top-20 left-20 w-64 h-64 border border-primary/30 rounded-full"></div>
-        <div className="absolute bottom-20 right-20 w-48 h-48 border border-secondary/30 rounded-full"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-32 border border-primary/20 rounded-full"></div>
-      </div>
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-background">
+      {/* Particle Background */}
+      <ParticleNetwork
+        particleCount={60}
+        particleColor="rgba(159, 34, 32, 0.5)"
+        lineColor="rgba(159, 34, 32, 0.08)"
+        maxDistance={100}
+        speed={0.2}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
         <div className="text-center space-y-8">
-          <div className="space-y-4">
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+          <ScrollAnimation animation="fade-up">
+            <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-4">
+              <Zap className="w-4 h-4 mr-2" />
+              Enterprise IT Services
+            </Badge>
+          </ScrollAnimation>
+
+          <ScrollAnimation animation="fade-up" delay={0.1}>
+            <h1 className="text-5xl lg:text-7xl font-black leading-tight">
               <span className="text-foreground">Professional IT</span>
               <br />
               <span className="text-gradient">Services</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Expert consulting, implementation, and managed services to optimize your IT infrastructure 
+          </ScrollAnimation>
+
+          <ScrollAnimation animation="fade-up" delay={0.2}>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Expert consulting, implementation, and managed services to optimize your IT infrastructure
               and accelerate your digital transformation journey.
             </p>
-          </div>
+          </ScrollAnimation>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              asChild
-              className="bg-primary hover:bg-primary/90 text-primary-foreground tech-glow relative z-10"
-            >
-              <Link href="/contact">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              asChild
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground relative z-10"
-            >
-              <Link href="/solutions">
-                View Solutions
-              </Link>
-            </Button>
-          </div>
+          <ScrollAnimation animation="fade-up" delay={0.3}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                size="lg"
+                asChild
+                className="btn-primary px-8 py-4 font-bold rounded-xl"
+              >
+                <Link href="/contact">
+                  Start Your Project
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="btn-outline px-8 py-4 font-bold rounded-xl"
+              >
+                <Link href="/solutions">
+                  View Solutions
+                </Link>
+              </Button>
+            </div>
+          </ScrollAnimation>
 
-          {/* Service highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-12">
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Lightbulb className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="font-semibold">Consulting</h3>
-              <p className="text-sm text-muted-foreground">Strategic IT Planning</p>
+          {/* Service Highlights */}
+          <ScrollAnimation animation="fade-up" delay={0.4}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
+              {highlights.map((item, index) => {
+                const IconComponent = item.icon
+                return (
+                  <div
+                    key={index}
+                    className="group text-center space-y-3 p-6 rounded-2xl border-2 border-border bg-card hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-primary to-primary/70 p-3 shadow-lg group-hover:scale-110 transition-transform">
+                      <IconComponent className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="font-bold text-foreground">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  </div>
+                )
+              })}
             </div>
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Settings className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="font-semibold">Implementation</h3>
-              <p className="text-sm text-muted-foreground">Expert Deployment</p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Users className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="font-semibold">Managed Services</h3>
-              <p className="text-sm text-muted-foreground">Ongoing Management</p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <Headphones className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="font-semibold">Support</h3>
-              <p className="text-sm text-muted-foreground">24/7 Assistance</p>
-            </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </div>
     </section>

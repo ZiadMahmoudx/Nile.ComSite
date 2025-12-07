@@ -5,7 +5,8 @@ import { useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface AnimatedCounterProps {
-    value: number | string
+    value?: number | string
+    end?: number | string  // alias for value
     suffix?: string
     prefix?: string
     duration?: number
@@ -15,6 +16,7 @@ interface AnimatedCounterProps {
 
 export function AnimatedCounter({
     value,
+    end,
     suffix = '',
     prefix = '',
     duration = 2000,
@@ -23,12 +25,15 @@ export function AnimatedCounter({
 }: AnimatedCounterProps) {
     const ref = useRef<HTMLSpanElement>(null)
     const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+    // Use 'end' prop if 'value' is not provided
+    const rawValue = value ?? end ?? 0
     const [displayValue, setDisplayValue] = useState(0)
 
     // Parse numeric value from string like "500+" or "99.9%"
-    const numericValue = typeof value === 'string'
-        ? parseFloat(value.replace(/[^0-9.]/g, ''))
-        : value
+    const numericValue = typeof rawValue === 'string'
+        ? parseFloat(rawValue.replace(/[^0-9.]/g, '')) || 0
+        : (rawValue || 0)
 
     useEffect(() => {
         if (!isInView) return
