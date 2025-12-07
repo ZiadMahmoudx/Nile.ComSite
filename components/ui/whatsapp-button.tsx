@@ -31,7 +31,7 @@ export function WhatsAppButton({
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 1, type: 'spring', stiffness: 200 }}
             className={cn(
-                'fixed bottom-24 right-8 z-50 flex items-center gap-3',
+                'fixed bottom-20 right-4 sm:bottom-24 sm:right-8 z-50 flex items-center gap-3',
                 className
             )}
         >
@@ -59,8 +59,8 @@ export function WhatsAppButton({
                 <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-25" />
 
                 {/* Button */}
-                <div className="relative w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:bg-green-600 transition-colors">
-                    <MessageCircle className="w-7 h-7 text-white" />
+                <div className="relative w-12 h-12 sm:w-14 sm:h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:bg-green-600 transition-colors">
+                    <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                 </div>
             </motion.div>
         </motion.a>
