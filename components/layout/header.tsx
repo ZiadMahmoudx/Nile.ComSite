@@ -16,8 +16,8 @@ const navigation = [
   { name: 'Solutions', href: '/solutions' },
   { name: 'Services', href: '/services' },
   { name: 'Partners', href: '/partners' },
-  { 
-    name: 'Company', 
+  {
+    name: 'Company',
     href: '#',
     children: [
       { name: 'Our Team', href: '/team', icon: Users },
@@ -142,7 +142,7 @@ export default function Header() {
               {navigation.map((item) => (
                 <div key={item.name} className="relative" ref={item.name === 'Company' ? companyMenuRef : null}>
                   {item.children ? (
-                    <div 
+                    <div
                       className={cn(
                         "relative px-3 py-2.5 text-sm font-bold transition-all duration-300 rounded-lg group overflow-hidden flex items-center cursor-pointer",
                         pathname === item.href
@@ -178,7 +178,7 @@ export default function Header() {
 
                   {/* Dropdown Menu */}
                   {item.children && companyMenuOpen && (
-                    <div className="absolute left-0 mt-2 w-64 bg-background/98 backdrop-blur-xl border border-border/50 rounded-xl shadow-2xl z-50">
+                    <div className="absolute left-0 mt-2 w-64 bg-background border border-border rounded-xl shadow-2xl z-50">
                       <div className="py-2">
                         {item.children.map((child) => {
                           const IconComponent = child.icon
