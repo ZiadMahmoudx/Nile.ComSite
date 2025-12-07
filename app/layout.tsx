@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
 import { Providers } from './providers'
+import { SmoothScroll } from '@/components/ui/smooth-scroll'
 
 export const metadata: Metadata = {
   title: {
@@ -73,14 +74,12 @@ export const metadata: Metadata = {
     title: 'NILE.COM',
     statusBarStyle: 'default',
   },
-  formatDetection: {
-    telephone: true,
-  },
+
   archives: ['https://nile.com/news'],
   bookmarks: ['https://nile.com/services'],
   classification: 'Business',
   category: 'technology',
-  rating: 'General',
+
 }
 
 export default function RootLayout({
@@ -92,7 +91,9 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={GeistSans.className}>
         <Providers>
-          {children}
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
         </Providers>
       </body>
     </html>
