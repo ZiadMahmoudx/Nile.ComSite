@@ -238,28 +238,28 @@ export default function Header() {
 
         {/* Mobile Navigation - Show on tablet and mobile */}
         <div className={cn(
-          "xl:hidden transition-all duration-500 overflow-hidden bg-background/98 backdrop-blur-xl border-t border-border/50",
+          "xl:hidden transition-all duration-500 overflow-hidden bg-background border-t border-border",
           mobileMenuOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
         )}>
-          <div className="px-6 py-6 space-y-3 max-h-[70vh] overflow-y-auto">
+          <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
             {navigation.map((item) => (
               <div key={item.name}>
                 {item.children ? (
                   <>
                     <div
                       className={cn(
-                        "flex items-center justify-between px-6 py-4 text-base font-bold transition-all duration-300 rounded-xl border-l-4 group cursor-pointer",
+                        "flex items-center justify-between px-4 py-3 text-base font-semibold transition-all duration-200 rounded-lg cursor-pointer",
                         pathname === item.href
-                          ? "text-white bg-gradient-to-r from-primary via-red-500 to-primary border-white shadow-lg"
-                          : "text-foreground hover:text-white hover:bg-gradient-to-r hover:from-primary/80 hover:via-red-500/80 hover:to-primary/80 border-transparent hover:border-white/50"
+                          ? "text-primary bg-primary/10"
+                          : "text-foreground hover:bg-muted"
                       )}
                       onClick={() => setMobileCompanyMenuOpen(!mobileCompanyMenuOpen)}
                     >
                       <span>{item.name}</span>
-                      <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", mobileCompanyMenuOpen && "rotate-180")} />
+                      <ChevronDown className={cn("w-4 h-4 text-muted-foreground transition-transform duration-200", mobileCompanyMenuOpen && "rotate-180")} />
                     </div>
                     {mobileCompanyMenuOpen && (
-                      <div className="pl-8 space-y-2 mt-2">
+                      <div className="ml-4 mt-1 space-y-1 border-l-2 border-border pl-4">
                         {item.children.map((child) => {
                           const IconComponent = child.icon
                           return (
@@ -271,13 +271,13 @@ export default function Header() {
                                 setMobileCompanyMenuOpen(false)
                               }}
                               className={cn(
-                                "flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors duration-200",
+                                "flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200",
                                 pathname === child.href
                                   ? "text-primary bg-primary/10"
-                                  : "text-foreground hover:text-primary hover:bg-primary/5"
+                                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
                               )}
                             >
-                              <IconComponent className="w-4 h-4 mr-2 text-muted-foreground" />
+                              <IconComponent className="w-4 h-4 mr-3" />
                               {child.name}
                             </Link>
                           )
@@ -291,25 +291,23 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "block px-6 py-4 text-base font-bold transition-all duration-300 rounded-xl border-l-4 group",
+                      "flex items-center justify-between px-4 py-3 text-base font-semibold transition-all duration-200 rounded-lg",
                       pathname === item.href
-                        ? "text-white bg-gradient-to-r from-primary via-red-500 to-primary border-white shadow-lg"
-                        : "text-foreground hover:text-white hover:bg-gradient-to-r hover:from-primary/80 hover:via-red-500/80 hover:to-primary/80 border-transparent hover:border-white/50"
+                        ? "text-primary bg-primary/10"
+                        : "text-foreground hover:bg-muted"
                     )}
                   >
-                    <div className="flex items-center justify-between">
-                      <span>{item.name}</span>
-                      <ChevronDown className="w-4 h-4 rotate-[-90deg] group-hover:translate-x-1 transition-transform duration-300" />
-                    </div>
+                    <span>{item.name}</span>
+                    <ChevronDown className="w-4 h-4 rotate-[-90deg] text-muted-foreground" />
                   </Link>
                 )}
               </div>
             ))}
-            <div className="pt-6 border-t border-border/50 space-y-3">
+            <div className="pt-4 mt-4 border-t border-border">
               <Button asChild className="w-full btn-primary font-bold py-3 text-base">
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                   <Zap className="w-4 h-4 mr-2" />
-                  Get Started Now
+                  Get Started
                 </Link>
               </Button>
             </div>

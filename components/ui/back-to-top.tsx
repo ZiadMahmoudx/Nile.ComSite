@@ -39,7 +39,7 @@ export function BackToTop({ showAfter = 400, className }: BackToTopProps) {
                     transition={{ duration: 0.2 }}
                     onClick={scrollToTop}
                     className={cn(
-                        'fixed bottom-8 right-8 z-50 p-3 rounded-full',
+                        'fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-50 p-2.5 sm:p-3 rounded-full',
                         'bg-primary text-white shadow-lg shadow-primary/30',
                         'hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40',
                         'transition-all duration-300 hover:-translate-y-1',
