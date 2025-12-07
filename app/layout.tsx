@@ -6,6 +6,7 @@ import { Providers } from './providers'
 import { SmoothScroll } from '@/components/ui/smooth-scroll'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { BackToTop } from '@/components/ui/back-to-top'
+import { CookieConsent } from '@/components/ui/cookie-consent'
 
 export const metadata: Metadata = {
   title: {
@@ -98,6 +99,7 @@ export default function RootLayout({
             {children}
           </SmoothScroll>
           <BackToTop />
+          <CookieConsent />
         </Providers>
       </body>
     </html>
