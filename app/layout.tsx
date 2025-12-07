@@ -4,6 +4,8 @@ import { GeistSans } from 'geist/font/sans'
 import './globals.css'
 import { Providers } from './providers'
 import { SmoothScroll } from '@/components/ui/smooth-scroll'
+import { ScrollProgress } from '@/components/ui/scroll-progress'
+import { BackToTop } from '@/components/ui/back-to-top'
 
 export const metadata: Metadata = {
   title: {
@@ -91,9 +93,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={GeistSans.className}>
         <Providers>
+          <ScrollProgress />
           <SmoothScroll>
             {children}
           </SmoothScroll>
+          <BackToTop />
         </Providers>
       </body>
     </html>
