@@ -7,6 +7,7 @@ import Testimonials from '@/components/sections/testimonials'
 import Contact from '@/components/sections/contact'
 import LocalBusinessStructuredData from '@/components/seo/local-business-structured-data'
 import { ScrollAnimation } from '@/components/ui/scroll-animation'
+import CompanyIntro from '@/components/sections/company-intro'
 
 export default function HomePage() {
   return (
@@ -33,6 +34,8 @@ export default function HomePage() {
         ]}
       />
       <Hero />
+
+      <CompanyIntro />
 
       <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
         <About />

@@ -142,6 +142,66 @@ const newsItems = [
       <h2>Commitment to Excellence</h2>
       <p>This investment demonstrates our ongoing commitment to providing world-class infrastructure services to our clients.</p>
     `
+    },
+    {
+        id: 'cloud-summit-2025',
+        title: 'Cloud Innovation Summit 2025',
+        date: '2025-09-15',
+        category: 'Events',
+        image: '/images/news/event1.jpg',
+        content: `
+      <p>Join us for the premier cloud technology event of the year. The Cloud Innovation Summit 2025 brings together industry leaders, tech experts, and innovators to discuss the future of cloud computing.</p>
+      
+      <h2>Event Highlights</h2>
+      <ul>
+        <li>Keynote speeches from global tech leaders</li>
+        <li>Hands-on workshops and live demos</li>
+        <li>Networking opportunities with 500+ professionals</li>
+        <li>Exclusive insights into future cloud trends</li>
+      </ul>
+      
+      <h2>Location & Time</h2>
+      <p>Cairo Conference Center, 9:00 AM - 5:00 PM</p>
+    `
+    },
+    {
+        id: 'security-workshop',
+        title: 'Enterprise Security Workshop',
+        date: '2025-08-20',
+        category: 'Events',
+        image: '/images/news/event2.jpg',
+        content: `
+      <p>A deep dive into modern enterprise security strategies. This hands-on workshop is designed for security professionals looking to enhance their organization's defense posture.</p>
+      
+      <h2>What You Will Learn</h2>
+      <ul>
+        <li>Advanced threat detection techniques</li>
+        <li>Zero Trust architecture implementation</li>
+        <li>Incident response best practices</li>
+        <li>Compliance and regulatory requirements</li>
+      </ul>
+      
+      <h2>Location & Time</h2>
+      <p>NILE.COM Training Center, 10:00 AM - 3:00 PM</p>
+    `
+    },
+    {
+        id: 'tech-training-workshop',
+        title: 'IT Leadership Workshop Series',
+        date: '2025-02-25',
+        category: 'Events',
+        image: '/images/news/event3.jpg',
+        content: `
+      <p>Our exclusive workshop series for IT leaders focuses on strategic decision-making in the digital age.</p>
+      
+      <h2>Workshop Agenda</h2>
+      <ul>
+        <li>Digital transformation roadmap planning</li>
+        <li>Managing technical debt</li>
+        <li>Building high-performance tech teams</li>
+        <li>ROI analysis for emerging technologies</li>
+      </ul>
+    `
     }
 ]
 
