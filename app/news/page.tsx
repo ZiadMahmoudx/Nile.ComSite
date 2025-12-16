@@ -78,15 +78,13 @@ const upcomingEvents = [
     location: 'NILE.COM Training Center',
     time: '10:00 AM - 3:00 PM',
   },
-];
-import { WorldMapBackground } from '@/components/ui/world-map-background'
+]
 
 export default function NewsPage() {
   return (
     <>
       {/* Hero Section */}
       <section className="min-h-[50vh] flex items-center justify-center bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
-        <WorldMapBackground />
         <div className="absolute inset-0 opacity-10 pointer-events-none" aria-hidden="true">
           <div className="absolute top-20 left-20 w-64 h-64 border border-primary/30 rounded-full"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 border border-primary/30 rounded-full"></div>
