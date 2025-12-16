@@ -8,6 +8,7 @@ import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { BackToTop } from '@/components/ui/back-to-top'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
+import { ScrollToTopGuide } from '@/components/ui/scroll-to-top-guide'
 
 export const metadata: Metadata = {
   title: {
@@ -101,6 +102,7 @@ export default function RootLayout({
           </SmoothScroll>
           <BackToTop />
           <CookieConsent />
+          <ScrollToTopGuide />
           <WhatsAppButton phoneNumber="20227353333" />
         </Providers>
       </body>

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ParticleNetwork } from '@/components/ui/particle-network'
+import { WorldMapBackground } from '@/components/ui/world-map-background'
 import { ScrollAnimation } from '@/components/ui/scroll-animation'
 import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { ArrowRight, Shield, Cloud, Zap, Globe, Users, Award, TrendingUp, CheckCircle, Play, Sparkles, Rocket } from 'lucide-react'
@@ -70,14 +70,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
-      {/* Particle Network Background */}
-      <ParticleNetwork
-        particleCount={100}
-        particleColor="rgba(159, 34, 32, 0.7)"
-        lineColor="rgba(159, 34, 32, 0.1)"
-        maxDistance={120}
-        speed={0.3}
-      />
+      <WorldMapBackground />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
