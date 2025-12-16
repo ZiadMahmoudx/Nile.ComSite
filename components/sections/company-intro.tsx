@@ -1,22 +1,41 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Play, X, ChevronRight, CheckCircle2 } from 'lucide-react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { Play, Pause, ChevronRight, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import Image from 'next/image'
 
+const galleryImages = [
+    { src: "/media/1763752491089.jpeg", alt: "Team Collaboration" },
+    { src: "/media/1763752490924.jpeg", alt: "Innovation Lab" },
+    { src: "/media/1763752507941.jpeg", alt: "Client Success" },
+    { src: "/media/1763752473223.jpeg", alt: "Training" },
+    { src: "/media/1763752466980.jpeg", alt: "Community" },
+    { src: "/media/1763752459305.jpeg", alt: "Office Life" },
+    { src: "/media/1763752469471.jpeg", alt: "Events" },
+    { src: "/media/1763752495881.jpeg", alt: "Workplace" },
+]
+
 export default function CompanyIntro() {
-    const [isVideoOpen, setIsVideoOpen] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const videoRef = useRef<HTMLVideoElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start end", "end start"]
     })
 
-    // Parallax effect for the video thumbnail
     const y = useTransform(scrollYProgress, [0, 1], [0, -50])
+
+    const handlePlay = () => {
+        setIsPlaying(true)
+        setTimeout(() => {
+            if (videoRef.current) {
+                videoRef.current.play()
+            }
+        }, 100)
+    }
 
     return (
         <section ref={containerRef} className="py-24 bg-background relative overflow-hidden">
@@ -25,7 +44,7 @@ export default function CompanyIntro() {
             <div className="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-primary/5 to-transparent -skew-x-12 -translate-x-1/2 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
 
                     {/* Content Column */}
                     <motion.div
@@ -72,7 +91,7 @@ export default function CompanyIntro() {
                         </Button>
                     </motion.div>
 
-                    {/* Video Column */}
+                    {/* Inline Video Column */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -81,138 +100,108 @@ export default function CompanyIntro() {
                         style={{ y }}
                         className="relative"
                     >
-                        {/* Video Thumbnail Card */}
-                        <div className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer" onClick={() => setIsVideoOpen(true)}>
-                            {/* Overlay Gradient */}
-                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors z-10" />
-
-                            {/* Placeholder Image (simulating video thumbnail) */}
-                            <div className="aspect-video bg-muted relative">
-                                <Image
-                                    src="/media/1763752491089.jpeg"
-                                    alt="Video Thumbnail"
-                                    fill
-                                    className="object-cover"
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    {/* Overlay for better text readability */}
-                                    <div className="absolute inset-0 bg-black/20" />
-                                    <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center z-20 group-hover:scale-110 transition-transform duration-300 border border-white/30">
-                                        <Play className="w-8 h-8 text-white fill-current ml-1" />
-                                    </div>
-                                </div>
-                                {/* Simulated UI elements */}
-                                <div className="absolute bottom-4 left-4 right-4 z-20 flex justify-between items-end">
-                                    <div>
-                                        <p className="text-white font-bold text-lg">We Are NILE.COM</p>
-                                        <p className="text-white/80 text-sm">2:15 • Corporate Intro</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black">
+                            {/* Video Player */}
+                            <AnimatePresence mode="wait">
+                                {isPlaying ? (
+                                    <motion.div
+                                        key="video"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        className="absolute inset-0 z-20"
+                                    >
+                                        <video
+                                            ref={videoRef}
+                                            width="100%"
+                                            height="100%"
+                                            controls
+                                            className="w-full h-full object-cover"
+                                            poster="/media/1763752491089.jpeg"
+                                        >
+                                            <source src="/media/intro.mp4" type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </motion.div>
+                                ) : (
+                                    <motion.div
+                                        key="thumbnail"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="absolute inset-0 cursor-pointer group"
+                                        onClick={handlePlay}
+                                    >
+                                        <Image
+                                            src="/media/1763752491089.jpeg"
+                                            alt="Video Thumbnail"
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/30 shadow-xl">
+                                                <Play className="w-8 h-8 text-white fill-current ml-1" />
+                                            </div>
+                                        </div>
+                                        <div className="absolute bottom-6 left-6 text-white z-10">
+                                            <p className="font-bold text-xl">We Are NILE.COM</p>
+                                            <p className="text-white/80 text-sm">2:15 • Corporate Intro</p>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
 
-                        {/* Decorative Elements around video */}
+                        {/* Decor */}
                         <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary/10 rounded-full blur-2xl -z-10" />
                         <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl -z-10" />
                     </motion.div>
                 </div>
 
-                {/* Photo Gallery / Culture Section */}
-                <div className="mt-24">
-                    <div className="text-center mb-12">
-                        <h3 className="text-2xl font-bold mb-4">Inside NILE.COM</h3>
+                {/* Modern Infinite Marquee Gallery */}
+                <div className="mt-8">
+                    <div className="text-center mb-10">
+                        <h3 className="text-2xl font-bold mb-2">Inside NILE.COM</h3>
                         <p className="text-muted-foreground">A glimpse into our daily life and culture</p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-[400px]">
-                        {/* Photo 1 (Big) */}
-                        <div className="col-span-2 row-span-2 relative rounded-2xl overflow-hidden group">
-                            <Image
-                                src="/media/1763752491089.jpeg"
-                                alt="Team Collaboration"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                <p className="text-white font-medium">Collaborative Workspace</p>
-                            </div>
-                        </div>
-                        {/* Photo 2 */}
-                        <div className="relative rounded-2xl overflow-hidden group">
-                            <Image
-                                src="/media/1763752490924.jpeg"
-                                alt="Innovation Lab"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <span className="text-white font-bold">Innovation Lab</span>
-                            </div>
-                        </div>
-                        {/* Photo 3 */}
-                        <div className="relative rounded-2xl overflow-hidden group">
-                            <Image
-                                src="/media/1763752507941.jpeg"
-                                alt="Client Success"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <span className="text-white font-bold">Client Success</span>
-                            </div>
-                        </div>
-                        {/* Photo 4 */}
-                        <div className="relative rounded-2xl overflow-hidden group">
-                            <Image
-                                src="/media/1763752473223.jpeg"
-                                alt="Training"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <span className="text-white font-bold">Training</span>
-                            </div>
-                        </div>
-                        {/* Photo 5 */}
-                        <div className="relative rounded-2xl overflow-hidden group">
-                            <Image
-                                src="/media/1763752466980.jpeg"
-                                alt="Community"
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                                <span className="text-white font-bold">Community</span>
-                            </div>
+                    <div className="relative w-full overflow-hidden mask-gradient-x">
+                        {/* Gradient Masks */}
+                        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
+                        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
+
+                        <div className="flex gap-6 animate-scroll-left py-4 hover:[animation-play-state:paused]">
+                            {[...galleryImages, ...galleryImages].map((img, idx) => (
+                                <div
+                                    key={idx}
+                                    className="relative flex-none w-[300px] h-[200px] rounded-xl overflow-hidden shadow-lg group cursor-pointer"
+                                >
+                                    <Image
+                                        src={img.src}
+                                        alt={img.alt}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <p className="text-white font-medium text-sm">{img.alt}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Video Modal */}
-            <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
-                <DialogContent className="sm:max-w-4xl p-0 bg-black border-none overflow-hidden text-white">
-                    <div className="relative aspect-video w-full bg-black flex items-center justify-center">
-                        <video
-                            width="100%"
-                            height="100%"
-                            controls
-                            autoPlay
-                            className="w-full h-full object-contain"
-                        >
-                            <source src="/media/intro.mp4" type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-
-                        <button
-                            onClick={() => setIsVideoOpen(false)}
-                            className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/80 rounded-full text-white transition-colors z-20"
-                        >
-                            <X className="w-5 h-5" />
-                        </button>
-                    </div>
-                </DialogContent>
-            </Dialog>
+            <style jsx global>{`
+                @keyframes scroll-left {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .animate-scroll-left {
+                    animation: scroll-left 40s linear infinite;
+                    width: max-content;
+                }
+            `}</style>
         </section>
     )
 }
