@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import Link from 'next/link'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Play, Pause, ChevronRight, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -85,9 +86,11 @@ export default function CompanyIntro() {
                             ))}
                         </div>
 
-                        <Button size="lg" className="btn-primary group">
-                            About Our Company
-                            <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <Button asChild size="lg" className="btn-primary group">
+                            <Link href="/about">
+                                About Our Company
+                                <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            </Link>
                         </Button>
                     </motion.div>
 
@@ -100,7 +103,7 @@ export default function CompanyIntro() {
                         style={{ y }}
                         className="relative"
                     >
-                        <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black">
+                        <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video bg-black group-video">
                             {/* Video Player */}
                             <AnimatePresence mode="wait">
                                 {isPlaying ? (
@@ -116,7 +119,8 @@ export default function CompanyIntro() {
                                             height="100%"
                                             controls
                                             className="w-full h-full object-cover"
-                                            poster="/media/1763752491089.jpeg"
+                                            poster="/images/thumb.jpg"
+                                            autoPlay
                                         >
                                             <source src="/media/intro.mp4" type="video/mp4" />
                                             Your browser does not support the video tag.
@@ -132,7 +136,7 @@ export default function CompanyIntro() {
                                         onClick={handlePlay}
                                     >
                                         <Image
-                                            src="/media/1763752491089.jpeg"
+                                            src="/images/thumb.jpg"
                                             alt="Video Thumbnail"
                                             fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
