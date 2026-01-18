@@ -35,9 +35,9 @@ export default function HomePage() {
         ]}
       />
 
-      {/* Background Particles - Removed to move to Hero */}
-      {/* <div className="fixed inset-0 z-0 pointer-events-none opacity-30">
-        <ParticleNetwork particleColor="rgba(159, 34, 32, 0.5)" lineColor="rgba(159, 34, 32, 0.15)" />
+      {/* Background Particles - Removed to move back to Hero per user request */}
+      {/* <div className="fixed inset-0 z-20 pointer-events-none">
+        <ParticleNetwork particleCount={100} particleColor="rgba(159, 34, 32, 0.6)" lineColor="rgba(159, 34, 32, 0.2)" />
       </div> */}
 
       <div className="relative z-10">

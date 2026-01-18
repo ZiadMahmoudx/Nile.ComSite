@@ -70,9 +70,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
-      {/* Background Particles */}
-      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
-        <ParticleNetwork particleColor="rgba(159, 34, 32, 0.5)" lineColor="rgba(159, 34, 32, 0.15)" />
+      {/* Background Particles - Restored to Hero only with improved visibility */}
+      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+        <ParticleNetwork particleCount={100} particleColor="rgba(159, 34, 32, 0.6)" lineColor="rgba(159, 34, 32, 0.2)" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-20">
