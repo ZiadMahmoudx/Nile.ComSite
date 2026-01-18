@@ -1,13 +1,14 @@
 import Hero from '@/components/sections/hero'
-import About from '@/components/sections/about'
+// import About from '@/components/sections/about'
 import Solutions from '@/components/sections/solutions'
 import Services from '@/components/sections/services'
-import Partners from '@/components/sections/partners'
-import Testimonials from '@/components/sections/testimonials'
+// import Partners from '@/components/sections/partners'
+// import Testimonials from '@/components/sections/testimonials'
 import Contact from '@/components/sections/contact'
 import LocalBusinessStructuredData from '@/components/seo/local-business-structured-data'
 import { ScrollAnimation } from '@/components/ui/scroll-animation'
 import CompanyIntro from '@/components/sections/company-intro'
+import { ParticleNetwork } from '@/components/ui/particle-network'
 
 export default function HomePage() {
   return (
@@ -33,33 +34,41 @@ export default function HomePage() {
           "https://www.twitter.com/nilecom"
         ]}
       />
-      <Hero />
 
-      <CompanyIntro />
+      {/* Background Particles - Removed to move to Hero */}
+      {/* <div className="fixed inset-0 z-0 pointer-events-none opacity-30">
+        <ParticleNetwork particleColor="rgba(159, 34, 32, 0.5)" lineColor="rgba(159, 34, 32, 0.15)" />
+      </div> */}
 
-      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
-        <About />
-      </ScrollAnimation>
+      <div className="relative z-10">
+        <Hero />
 
-      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
-        <Solutions />
-      </ScrollAnimation>
+        <CompanyIntro />
 
-      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
-        <Services />
-      </ScrollAnimation>
+        {/* <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+          <About />
+        </ScrollAnimation> */}
 
-      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
-        <Partners />
-      </ScrollAnimation>
+        <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+          <Solutions />
+        </ScrollAnimation>
 
-      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
-        <Testimonials />
-      </ScrollAnimation>
+        <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+          <Services />
+        </ScrollAnimation>
 
-      <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
-        <Contact />
-      </ScrollAnimation>
+        {/* <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+          <Partners />
+        </ScrollAnimation> */}
+
+        {/* <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+          <Testimonials />
+        </ScrollAnimation> */}
+
+        <ScrollAnimation animation="fade-up" delay={0.2} viewport={{ once: true, margin: "-100px" }}>
+          <Contact />
+        </ScrollAnimation>
+      </div>
     </>
   )
 }

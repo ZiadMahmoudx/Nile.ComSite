@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { ParticleNetwork } from '@/components/ui/particle-network'
 import { Button } from '@/components/ui/button'
 import { SpotlightButton } from '@/components/ui/spotlight-button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -69,6 +70,10 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[80vh] lg:min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
+      {/* Background Particles */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <ParticleNetwork particleColor="rgba(159, 34, 32, 0.5)" lineColor="rgba(159, 34, 32, 0.15)" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
