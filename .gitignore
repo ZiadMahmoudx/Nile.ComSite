@@ -110,3 +110,5 @@ secrets.json
 # Optional: ignore local test snapshots if you prefer not to track them
 # __snapshots__/
 
+# Ignore Rayo Digital Agency template folder
+rayo-digital-agency-and-personal-portfolio-html-template/
