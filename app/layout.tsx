@@ -2,6 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
+import '@/styles/rayo/plugins.css'
+import '@/styles/rayo/main.css'
 import { Providers } from './providers'
 import { SmoothScroll } from '@/components/ui/smooth-scroll'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
@@ -9,6 +11,9 @@ import { BackToTop } from '@/components/ui/back-to-top'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { ScrollToTopGuide } from '@/components/ui/scroll-to-top-guide'
+import { RayoHeader } from '@/components/layout/rayo-header'
+import { RayoFooter } from '@/components/layout/rayo-footer'
+import { RayoAnimationsProvider } from '@/components/animations/rayo-animations-provider'
 
 export const metadata: Metadata = {
   title: {
@@ -96,14 +101,18 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={GeistSans.className}>
         <Providers>
-          <ScrollProgress />
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
-          <BackToTop />
-          <CookieConsent />
-          <ScrollToTopGuide />
-          <WhatsAppButton phoneNumber="20227353333" />
+          <RayoAnimationsProvider>
+            <RayoHeader />
+            <ScrollProgress />
+            <SmoothScroll>
+              {children}
+              <RayoFooter />
+            </SmoothScroll>
+            <BackToTop />
+            <CookieConsent />
+            <ScrollToTopGuide />
+            <WhatsAppButton phoneNumber="20227353333" />
+          </RayoAnimationsProvider>
         </Providers>
       </body>
     </html>

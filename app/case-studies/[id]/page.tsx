@@ -1,13 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
-import { ParticleNetwork } from '@/components/ui/particle-network'
 import { ArrowLeft, ArrowRight, CheckCircle, Building, Globe, Users } from 'lucide-react'
 
 const caseStudies = [
@@ -110,143 +103,152 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
     }
 
     return (
-        <div className="min-h-screen bg-background text-foreground">
-            <Header />
+        <div className="bg-background text-foreground">
             <main>
-                {/* Hero */}
-                <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-background">
-                    <ParticleNetwork
-                        particleCount={50}
-                        particleColor="rgba(159, 34, 32, 0.5)"
-                        lineColor="rgba(159, 34, 32, 0.08)"
-                        maxDistance={120}
-                        speed={0.2}
-                    />
-                    <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
-                        <Link href="/case-studies" className="inline-flex items-center gap-2 text-primary hover:underline mb-8">
-                            <ArrowLeft className="w-4 h-4" />
-                            Back to Case Studies
-                        </Link>
+                {/* Inner Header / Hero */}
+                <section className="mxd-section mxd-section-inner-headline padding-default">
+                    <div className="mxd-container grid-container">
+                        <div className="mxd-block">
+                            <div className="container-fluid px-0">
+                                <div className="row gx-0">
+                                    {/* Sidebar Spacing */}
+                                    <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                                        <div className="mxd-block__name name-inner-headline">
+                                            <p className="mxd-point-subtitle">
+                                                <span>Case Study</span>
+                                            </p>
+                                        </div>
+                                    </div>
 
-                        <ScrollAnimation animation="fade-up">
-                            <div className="flex flex-wrap items-center gap-3 mb-6">
-                                <Badge className="bg-primary/10 text-primary border-primary/20">
-                                    {study.industry}
-                                </Badge>
-                                <Badge variant="outline">Success Story</Badge>
+                                    {/* Main Content */}
+                                    <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                                        <div className="mxd-block__content">
+                                            <div className="inner-headline">
+                                                <Link href="/case-studies" className="tag tag-default mb-8 inline-flex items-center gap-2">
+                                                    <ArrowLeft className="w-4 h-4" />
+                                                    Back to Case Studies
+                                                </Link>
+
+                                                <div className="flex flex-wrap items-center gap-3 mb-6 anim-uni-in-up">
+                                                    <span className="tag tag-default bg-primary/10 text-primary border-primary/20">
+                                                        {study.industry}
+                                                    </span>
+                                                    <span className="tag tag-default bg-secondary/10 text-foreground border-border">Success Story</span>
+                                                </div>
+
+                                                <h1 className="inner-headline__title anim-uni-in-up">
+                                                    {study.title}
+                                                </h1>
+                                                <p className="inner-headline__subtitle anim-uni-in-up">
+                                                    {study.client}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </ScrollAnimation>
-
-                        <ScrollAnimation animation="fade-up" delay={0.1}>
-                            <h1 className="text-5xl lg:text-6xl font-black leading-tight mb-4">
-                                {study.title}
-                            </h1>
-                            <p className="text-xl text-muted-foreground">
-                                {study.client}
-                            </p>
-                        </ScrollAnimation>
+                        </div>
                     </div>
                 </section>
 
                 {/* Results Grid */}
-                <section className="py-12 bg-primary/5">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            {study.results.map((result, index) => (
-                                <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
-                                    <Card className="text-center border-2 border-border">
-                                        <CardContent className="p-6">
-                                            <div className="text-4xl font-black text-primary mb-2">{result.metric}</div>
-                                            <div className="text-sm text-muted-foreground">{result.label}</div>
-                                        </CardContent>
-                                    </Card>
-                                </ScrollAnimation>
-                            ))}
+                <section className="mxd-section padding-default bg-secondary/5">
+                    <div className="mxd-container">
+                        <div className="mxd-block">
+                            <div className="row g-4">
+                                {study.results.map((result, index) => (
+                                    <div key={index} className="col-6 col-md-3 anim-uni-in-up">
+                                        <div className="radius-m border-2 border-border text-center p-6 bg-background">
+                                            <div className="text-4xl font-black text-primary mb-2 line-height-1">{result.metric}</div>
+                                            <div className="text-sm text-muted-foreground uppercase tracking-widest">{result.label}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Challenge & Solution */}
-                <section className="py-20">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="grid lg:grid-cols-2 gap-12">
-                            <ScrollAnimation animation="fade-up">
-                                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                                    <Building className="w-8 h-8 text-primary" />
-                                    The Challenge
-                                </h2>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    {study.challenge}
-                                </p>
-                            </ScrollAnimation>
+                <section className="mxd-section padding-default">
+                    <div className="mxd-container">
+                        <div className="mxd-block">
+                            <div className="row g-5">
+                                <div className="col-12 col-lg-6 anim-uni-in-up">
+                                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                                        <Building className="w-8 h-8 text-primary" />
+                                        The Challenge
+                                    </h2>
+                                    <p className="t-bright t-large leading-relaxed">
+                                        {study.challenge}
+                                    </p>
+                                </div>
 
-                            <ScrollAnimation animation="fade-up" delay={0.1}>
-                                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                                    <CheckCircle className="w-8 h-8 text-green-500" />
-                                    Our Solution
-                                </h2>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    {study.solution}
-                                </p>
-                            </ScrollAnimation>
+                                <div className="col-12 col-lg-6 anim-uni-in-up">
+                                    <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                                        <CheckCircle className="w-8 h-8 text-green-500" />
+                                        Our Solution
+                                    </h2>
+                                    <p className="t-bright t-large leading-relaxed">
+                                        {study.solution}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Technologies */}
-                <section className="py-12">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <ScrollAnimation animation="fade-up">
-                            <h2 className="text-2xl font-bold mb-6 text-center">Technologies Used</h2>
+                <section className="mxd-section padding-default pt-0">
+                    <div className="mxd-container">
+                        <div className="mxd-block text-center anim-uni-in-up">
+                            <h2 className="text-2xl font-bold mb-8">Technologies Used</h2>
                             <div className="flex flex-wrap justify-center gap-3">
                                 {study.technologies.map((tech, index) => (
-                                    <Badge key={index} variant="outline" className="px-4 py-2 text-base">
+                                    <span key={index} className="tag tag-default border-2 px-6 py-3 text-lg">
                                         {tech}
-                                    </Badge>
+                                    </span>
                                 ))}
                             </div>
-                        </ScrollAnimation>
+                        </div>
                     </div>
                 </section>
 
                 {/* Testimonial */}
-                <section className="py-20 bg-primary/5">
-                    <div className="max-w-4xl mx-auto px-4 text-center">
-                        <ScrollAnimation animation="fade-up">
-                            <blockquote className="text-2xl italic text-foreground mb-6">
+                <section className="mxd-section padding-default bg-secondary/5">
+                    <div className="mxd-container">
+                        <div className="mxd-block text-center max-w-4xl mx-auto anim-uni-in-up">
+                            <blockquote className="text-3xl font-bold t-bright italic mb-8">
                                 "{study.testimonial}"
                             </blockquote>
-                            <p className="text-muted-foreground">
-                                — {study.testimonialAuthor}, {study.client}
+                            <p className="text-muted-foreground t-large">
+                                — <span className="text-foreground font-bold">{study.testimonialAuthor}</span>, {study.client}
                             </p>
-                        </ScrollAnimation>
+                        </div>
                     </div>
                 </section>
 
                 {/* CTA */}
-                <section className="py-20">
-                    <div className="max-w-4xl mx-auto px-4 text-center">
-                        <ScrollAnimation animation="fade-up">
-                            <h2 className="text-3xl font-bold mb-4">Ready for Similar Results?</h2>
-                            <p className="text-lg text-muted-foreground mb-8">
+                <section className="mxd-section padding-default">
+                    <div className="mxd-container text-center">
+                        <div className="mxd-block anim-uni-in-up">
+                            <h2 className="text-4xl font-bold mb-4">Ready for Similar Results?</h2>
+                            <p className="t-bright t-large mb-8">
                                 Let us help you achieve your business transformation goals.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Button asChild size="lg" className="btn-primary">
-                                    <Link href="/contact">
-                                        Start Your Project
-                                        <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
-                                </Button>
-                                <Button asChild variant="outline" size="lg">
-                                    <Link href="/case-studies">View More Case Studies</Link>
-                                </Button>
+                                <Link className="btn btn-anim btn-default" href="/contact">
+                                    <span className="btn-caption">Start Your Project</span>
+                                    <ArrowRight className="ml-2 w-4 h-4" />
+                                </Link>
+                                <Link className="btn btn-anim btn-default btn-outline" href="/case-studies">
+                                    <span className="btn-caption">View More Case Studies</span>
+                                </Link>
                             </div>
-                        </ScrollAnimation>
+                        </div>
                     </div>
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }

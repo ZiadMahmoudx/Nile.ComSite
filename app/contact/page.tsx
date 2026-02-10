@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import ContactPageContent from '@/components/sections/contact-page-content'
+import ContactHero from '@/components/sections/contact-hero'
+import ContactMain from '@/components/sections/contact-main'
 
 export const metadata: Metadata = {
   title: 'Contact Us - NILE.COM',
@@ -10,12 +9,9 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main>
-        <ContactPageContent />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <ContactHero />
+      <ContactMain />
+    </>
   )
 }

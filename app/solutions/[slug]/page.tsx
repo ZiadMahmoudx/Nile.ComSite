@@ -1,13 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
-import { ParticleNetwork } from '@/components/ui/particle-network'
 import { ArrowLeft, ArrowRight, CheckCircle, Cloud, Shield, Server, Smartphone, Database, Network } from 'lucide-react'
 
 const solutions = [
@@ -200,142 +193,152 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
     const Icon = solution.icon
 
     return (
-        <div className="min-h-screen bg-background text-foreground">
-            <Header />
+        <div className="bg-background text-foreground">
             <main>
-                {/* Hero */}
-                <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-background">
-                    <ParticleNetwork
-                        particleCount={50}
-                        particleColor="rgba(159, 34, 32, 0.5)"
-                        lineColor="rgba(159, 34, 32, 0.08)"
-                        maxDistance={120}
-                        speed={0.2}
-                    />
-                    <div className="relative z-10 max-w-7xl mx-auto px-4 py-20">
-                        <Link href="/solutions" className="inline-flex items-center gap-2 text-primary hover:underline mb-8">
-                            <ArrowLeft className="w-4 h-4" />
-                            Back to Solutions
-                        </Link>
+                {/* Inner Header / Hero */}
+                <section className="mxd-section mxd-section-inner-headline padding-default">
+                    <div className="mxd-container grid-container">
+                        <div className="mxd-block">
+                            <div className="container-fluid px-0">
+                                <div className="row gx-0">
+                                    {/* Sidebar Spacing */}
+                                    <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                                        <div className="mxd-block__name name-inner-headline">
+                                            <p className="mxd-point-subtitle">
+                                                <span>Solution</span>
+                                            </p>
+                                        </div>
+                                    </div>
 
-                        <ScrollAnimation animation="fade-up">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="p-4 rounded-2xl bg-primary/10">
-                                    <Icon className="w-10 h-10 text-primary" />
+                                    {/* Main Content */}
+                                    <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                                        <div className="mxd-block__content">
+                                            <div className="inner-headline">
+                                                <Link href="/solutions" className="tag tag-default mb-8 inline-flex items-center gap-2">
+                                                    <ArrowLeft className="w-4 h-4" />
+                                                    Back to Solutions
+                                                </Link>
+
+                                                <div className="flex items-center gap-4 mb-6 anim-uni-in-up">
+                                                    <div className="p-4 radius-m bg-primary/10">
+                                                        <Icon className="w-10 h-10 text-primary" />
+                                                    </div>
+                                                    <span className="tag tag-default bg-primary/10 text-primary border-primary/20">
+                                                        Enterprise Solution
+                                                    </span>
+                                                </div>
+
+                                                <h1 className="inner-headline__title anim-uni-in-up">
+                                                    {solution.title}
+                                                </h1>
+                                                <p className="inner-headline__subtitle anim-uni-in-up">
+                                                    {solution.tagline}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <Badge className="bg-primary/10 text-primary border-primary/20">
-                                    Enterprise Solution
-                                </Badge>
                             </div>
-                        </ScrollAnimation>
-
-                        <ScrollAnimation animation="fade-up" delay={0.1}>
-                            <h1 className="text-5xl lg:text-6xl font-black leading-tight mb-4">
-                                {solution.title}
-                            </h1>
-                            <p className="text-xl text-muted-foreground max-w-2xl">
-                                {solution.tagline}
-                            </p>
-                        </ScrollAnimation>
+                        </div>
                     </div>
                 </section>
 
-                {/* Description & Features */}
-                <section className="py-20">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="grid lg:grid-cols-2 gap-12">
-                            <ScrollAnimation animation="fade-up">
-                                <h2 className="text-3xl font-bold mb-6">Overview</h2>
-                                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                                    {solution.description}
-                                </p>
-                                <Button asChild className="btn-primary">
-                                    <Link href="/contact">Get Started</Link>
-                                </Button>
-                            </ScrollAnimation>
-
-                            <ScrollAnimation animation="fade-up" delay={0.1}>
-                                <h2 className="text-3xl font-bold mb-6">Key Features</h2>
-                                <div className="grid grid-cols-2 gap-4">
-                                    {solution.features.map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-3">
-                                            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                                            <span>{feature}</span>
-                                        </div>
-                                    ))}
+                {/* Overview & Features */}
+                <section className="mxd-section padding-default">
+                    <div className="mxd-container">
+                        <div className="mxd-block">
+                            <div className="row g-5">
+                                <div className="col-12 col-lg-6 anim-uni-in-up">
+                                    <h2 className="text-3xl font-bold mb-6">Overview</h2>
+                                    <p className="t-bright t-large leading-relaxed mb-8">
+                                        {solution.description}
+                                    </p>
+                                    <Link className="btn btn-anim btn-default" href="/contact">
+                                        <span className="btn-caption">Get Started</span>
+                                        <ArrowRight className="w-5 h-5 ml-2" />
+                                    </Link>
                                 </div>
-                            </ScrollAnimation>
+
+                                <div className="col-12 col-lg-6 anim-uni-in-up">
+                                    <h2 className="text-3xl font-bold mb-6">Key Features</h2>
+                                    <div className="row g-4">
+                                        {solution.features.map((feature, index) => (
+                                            <div key={index} className="col-12 col-md-6 flex items-center gap-3">
+                                                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                                                <span className="t-bright">{feature}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Benefits */}
-                <section className="py-20 bg-primary/5">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <ScrollAnimation animation="fade-up">
-                            <h2 className="text-3xl font-bold text-center mb-12">Benefits</h2>
-                        </ScrollAnimation>
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {solution.benefits.map((benefit, index) => (
-                                <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
-                                    <Card className="border-2 border-border text-center p-8">
-                                        <CardContent className="p-0">
+                <section className="mxd-section padding-default bg-secondary/5">
+                    <div className="mxd-container">
+                        <div className="mxd-block mb-12 text-center anim-uni-in-up">
+                            <h2 className="text-4xl font-bold">Benefits</h2>
+                        </div>
+                        <div className="mxd-block">
+                            <div className="row g-4">
+                                {solution.benefits.map((benefit, index) => (
+                                    <div key={index} className="col-12 col-md-4 anim-uni-in-up">
+                                        <div className="radius-m border-2 border-border text-center p-8 h-full flex flex-col justify-center bg-background hover:border-primary/50 transition-colors">
                                             <h3 className="text-2xl font-bold mb-2">{benefit.title}</h3>
                                             <p className="text-muted-foreground">{benefit.desc}</p>
-                                        </CardContent>
-                                    </Card>
-                                </ScrollAnimation>
-                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Process */}
-                <section className="py-20">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <ScrollAnimation animation="fade-up">
-                            <h2 className="text-3xl font-bold text-center mb-12">Our Process</h2>
-                        </ScrollAnimation>
-                        <div className="grid md:grid-cols-4 gap-8">
-                            {solution.process.map((step, index) => (
-                                <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
-                                    <div className="text-center">
+                <section className="mxd-section padding-default">
+                    <div className="mxd-container">
+                        <div className="mxd-block mb-12 text-center anim-uni-in-up">
+                            <h2 className="text-4xl font-bold">Our Process</h2>
+                        </div>
+                        <div className="mxd-block">
+                            <div className="row g-5">
+                                {solution.process.map((step, index) => (
+                                    <div key={index} className="col-6 col-md-3 text-center anim-uni-in-up">
                                         <div className="w-16 h-16 rounded-full bg-primary/10 text-primary text-2xl font-bold flex items-center justify-center mx-auto mb-4">
                                             {step.step}
                                         </div>
                                         <h3 className="text-xl font-bold mb-2">{step.title}</h3>
                                         <p className="text-muted-foreground text-sm">{step.desc}</p>
                                     </div>
-                                </ScrollAnimation>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* CTA */}
-                <section className="py-20 bg-primary/5">
-                    <div className="max-w-4xl mx-auto px-4 text-center">
-                        <ScrollAnimation animation="fade-up">
-                            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-                            <p className="text-lg text-muted-foreground mb-8">
+                <section className="mxd-section padding-default bg-secondary/5">
+                    <div className="mxd-container">
+                        <div className="mxd-block text-center max-w-4xl mx-auto anim-uni-in-up">
+                            <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
+                            <p className="t-bright t-large mb-8">
                                 Contact our experts today to learn how {solution.title.toLowerCase()} can transform your business.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Button asChild size="lg" className="btn-primary">
-                                    <Link href="/contact">
-                                        Schedule Consultation
-                                        <ArrowRight className="ml-2 w-4 h-4" />
-                                    </Link>
-                                </Button>
-                                <Button asChild variant="outline" size="lg">
-                                    <Link href="/solutions">View All Solutions</Link>
-                                </Button>
+                                <Link className="btn btn-anim btn-default" href="/contact">
+                                    <span className="btn-caption">Schedule Consultation</span>
+                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                </Link>
+                                <Link className="btn btn-anim btn-default btn-outline" href="/solutions">
+                                    <span className="btn-caption">View All Solutions</span>
+                                </Link>
                             </div>
-                        </ScrollAnimation>
+                        </div>
                     </div>
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }

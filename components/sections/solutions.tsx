@@ -1,144 +1,165 @@
 'use client'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Cloud, Shield, Server, Zap, Globe, Database, ArrowRight, CheckCircle } from 'lucide-react'
+import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { Cloud, Shield, Server, Zap, Globe, Database, ArrowRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { motion } from 'framer-motion'
 
 const solutions = [
   {
     icon: Cloud,
     title: 'Cloud Solutions',
+    slug: 'cloud-migration',
     description: 'Comprehensive cloud migration, management, and optimization services',
-    features: ['AWS & Azure Migration', 'Hybrid Cloud Setup', 'Cloud Security', 'Cost Optimization'],
-    color: 'from-blue-500 to-cyan-500',
-    badge: 'Most Popular'
+    features: ['AWS & Azure', 'Hybrid Cloud'],
+    color: 'from-blue-600/20 to-blue-400/5',
+    iconColor: 'text-blue-400',
+    image: '/media/real/cloud_migration.jpg',
   },
   {
     icon: Shield,
     title: 'Cybersecurity',
+    slug: 'cybersecurity',
     description: 'Advanced threat protection and security compliance solutions',
-    features: ['Threat Detection', 'Security Audits', 'Compliance Management', '24/7 Monitoring'],
-    color: 'from-red-500 to-pink-500',
-    badge: 'Enterprise'
+    features: ['Threat Detection', 'Audits'],
+    color: 'from-red-600/20 to-red-400/5',
+    iconColor: 'text-red-400',
+    image: '/media/real/cybersecurity.jpg',
   },
   {
     icon: Server,
     title: 'Infrastructure',
+    slug: 'infrastructure',
     description: 'Robust IT infrastructure design, implementation, and management',
-    features: ['Network Design', 'Server Management', 'Disaster Recovery', 'Performance Monitoring'],
-    color: 'from-green-500 to-emerald-500',
-    badge: 'Reliable'
+    features: ['Network Design', 'Servers'],
+    color: 'from-emerald-600/20 to-emerald-400/5',
+    iconColor: 'text-emerald-400',
+    image: '/media/real/infrastructure.jpg',
   },
   {
     icon: Zap,
     title: 'Digital Transformation',
+    slug: 'cloud-migration',
     description: 'Modernize your business processes with cutting-edge technology',
-    features: ['Process Automation', 'Digital Strategy', 'Legacy Modernization', 'Change Management'],
-    color: 'from-yellow-500 to-orange-500',
-    badge: 'Innovation'
+    features: ['Automation', 'Strategy'],
+    color: 'from-amber-600/20 to-amber-400/5',
+    iconColor: 'text-amber-400',
+    image: '/media/real/digital_transformation.jpg',
   },
   {
     icon: Database,
     title: 'Data Management',
+    slug: 'cloud-migration',
     description: 'Comprehensive data strategy, analytics, and management solutions',
-    features: ['Data Analytics', 'Database Optimization', 'Data Migration', 'Business Intelligence'],
-    color: 'from-purple-500 to-indigo-500',
-    badge: 'Analytics'
+    features: ['Analytics', 'Optimization'],
+    color: 'from-purple-600/20 to-purple-400/5',
+    iconColor: 'text-purple-400',
+    image: '/media/real/network_solutions.jpg',
   },
   {
     icon: Globe,
     title: 'Managed Services',
+    slug: 'infrastructure',
     description: '24/7 IT support and management for your entire technology stack',
-    features: ['24/7 Support', 'Proactive Monitoring', 'Maintenance', 'Help Desk'],
-    color: 'from-teal-500 to-blue-500',
-    badge: 'Support'
+    features: ['24/7 Support', 'Monitoring'],
+    color: 'from-teal-600/20 to-teal-400/5',
+    iconColor: 'text-teal-400',
+    image: '/media/real/data_management.jpg',
   }
 ]
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-24 bg-gradient-to-b from-muted/20 to-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
-          <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2">
-            <Zap className="w-4 h-4 mr-2" />
-            Our Solutions
-          </Badge>
-          <h2 className="text-4xl lg:text-6xl font-black">
-            <span className="text-foreground">Comprehensive</span>
-            <br />
-            <span className="text-gradient">IT Solutions</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            From cloud migration to cybersecurity, we provide end-to-end IT solutions 
-            that drive business growth and operational excellence.
-          </p>
+    <section id="solutions" className="mxd-section padding-blog bg-background/50">
+      <div className="mxd-container grid-container">
+
+        {/* Section Title */}
+        <div className="mxd-block">
+          <div className="mxd-section-title pre-grid">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div className="mxd-section-title__hrtitle">
+                    <h2 className="reveal-type anim-uni-in-up">Comprehensive<br />IT Solutions</h2>
+                  </div>
+                </div>
+                <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                  <div className="mxd-section-title__hrdescr">
+                    <p className="anim-uni-in-up">From cloud migration to cybersecurity, we provide end-to-end IT solutions that drive business growth and operational excellence.</p>
+                  </div>
+                </div>
+                <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                  <div className="mxd-section-title__hrcontrols anim-uni-in-up">
+                    <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/contact">
+                      <span className="btn-caption">Get Consultation</span>
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Solutions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {solutions.map((solution) => (
-            <Link 
-              key={solution.title} 
-              href="/solutions"
-              className="card-hover card-glow border-border/50 bg-card/50 backdrop-blur-sm block relative overflow-hidden"
-              aria-label={`Learn more about ${solution.title}`}
-            >
-              <Card className="h-full">
-                {solution.badge && (
-                  <Badge className="absolute top-4 right-4 bg-primary/20 text-primary border-primary/30 text-xs">
-                    {solution.badge}
-                  </Badge>
-                )}
-                <CardHeader className="pb-4">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${solution.color} p-4 shadow-lg mb-4`}>
-                    <solution.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="text-xl font-bold text-foreground">{solution.title}</CardTitle>
-                  <p className="text-muted-foreground leading-relaxed">{solution.description}</p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    {solution.features.map((feature) => (
-                      <div key={feature} className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
+        <div className="mxd-block">
+          <div className="mxd-blog-preview">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                {solutions.map((solution, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3 group"
+                  >
+                    <Link className="mxd-blog-preview__media block relative overflow-hidden" href={`/solutions/${solution.slug}`}>
+                      {/* Real Image with Gradient Overlay */}
+                      <div className="mxd-blog-preview__image blog-preview-image-1 parallax-img-small relative h-[300px] overflow-hidden">
+                        <Image
+                          src={solution.image}
+                          alt={solution.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className={cn("absolute inset-0 bg-gradient-to-t opacity-70", solution.color)} />
+                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
                       </div>
-                    ))}
-                  </div>
-                  <Button variant="ghost" className="w-full justify-between group hover:bg-primary/10 mt-4">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
 
-        {/* CTA Section */}
-        <Card className="bg-gradient-to-r from-primary/10 via-red-500/10 to-primary/10 border-primary/20">
-          <CardContent className="p-12 text-center">
-            <div className="space-y-6">
-              <h3 className="text-3xl font-black text-gradient">Ready to Get Started?</h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Let our experts help you choose the right solutions for your business needs. 
-                Get a free consultation and custom proposal today.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="btn-primary px-8 py-4 font-bold rounded-xl">
-                  <Link href="/contact">Get Free Consultation</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="btn-outline px-8 py-4 font-bold rounded-xl">
-                  <Link href="/solutions">View All Solutions</Link>
-                </Button>
+                      <div className="mxd-preview-hover">
+                        <i className="mxd-preview-hover__icon flex items-center justify-center">
+                          <ArrowRight className="w-6 h-6 text-white" />
+                        </i>
+                      </div>
+
+                      <div className="mxd-blog-preview__tags top-4 left-4 absolute">
+                        {solution.features.map((feature, idx) => (
+                          <span key={idx} className="tag tag-default tag-permanent bg-background/80 backdrop-blur text-xs mr-2 mb-2">{feature}</span>
+                        ))}
+                      </div>
+                    </Link>
+                    <div className="mxd-blog-preview__data p-6">
+                      <Link className="anim-uni-in-up block" href={`/solutions/${solution.slug}`}>
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className={cn("p-2 rounded-lg bg-white/5 border border-white/10", solution.iconColor)}>
+                            <solution.icon className="w-5 h-5" />
+                          </div>
+                          <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{solution.title}</h3>
+                        </div>
+                        <p className="text-muted-foreground text-sm">{solution.description}</p>
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+
       </div>
     </section>
   )

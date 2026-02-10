@@ -1,103 +1,109 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Settings, Users, Headphones, Lightbulb, Zap, Shield, CheckCircle } from 'lucide-react'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
-import { ParticleNetwork } from '@/components/ui/particle-network'
-
-const highlights = [
-  { icon: Lightbulb, title: 'Consulting', desc: 'Strategic IT Planning' },
-  { icon: Settings, title: 'Implementation', desc: 'Expert Deployment' },
-  { icon: Users, title: 'Managed Services', desc: '24/7 Management' },
-  { icon: Headphones, title: 'Support', desc: 'Always Available' },
-]
+import { ArrowUpRight } from 'lucide-react'
 
 const ServicesHero = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-background">
-      {/* Particle Background */}
-      <ParticleNetwork
-        particleCount={60}
-        particleColor="rgba(159, 34, 32, 0.5)"
-        lineColor="rgba(159, 34, 32, 0.08)"
-        maxDistance={100}
-        speed={0.2}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-24">
-        <div className="text-center space-y-8">
-          <ScrollAnimation animation="fade-up">
-            <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-4">
-              <Zap className="w-4 h-4 mr-2" />
-              Enterprise IT Services
-            </Badge>
-          </ScrollAnimation>
-
-          <ScrollAnimation animation="fade-up" delay={0.1}>
-            <h1 className="text-5xl lg:text-7xl font-black leading-tight">
-              <span className="text-foreground">Professional IT</span>
-              <br />
-              <span className="text-gradient">Services</span>
-            </h1>
-          </ScrollAnimation>
-
-          <ScrollAnimation animation="fade-up" delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Expert consulting, implementation, and managed services to optimize your IT infrastructure
-              and accelerate your digital transformation journey.
-            </p>
-          </ScrollAnimation>
-
-          <ScrollAnimation animation="fade-up" delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                asChild
-                className="btn-primary px-8 py-4 font-bold rounded-xl"
-              >
-                <Link href="/contact">
-                  Start Your Project
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="btn-outline px-8 py-4 font-bold rounded-xl"
-              >
-                <Link href="/solutions">
-                  View Solutions
-                </Link>
-              </Button>
-            </div>
-          </ScrollAnimation>
-
-          {/* Service Highlights */}
-          <ScrollAnimation animation="fade-up" delay={0.4}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
-              {highlights.map((item, index) => {
-                const IconComponent = item.icon
-                return (
-                  <div
-                    key={index}
-                    className="group text-center space-y-3 p-6 rounded-2xl border-2 border-border bg-card hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-primary to-primary/70 p-3 shadow-lg group-hover:scale-110 transition-transform">
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="font-bold text-foreground">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+    <>
+      {/* Section - Inner Page Headline Start */}
+      <div className="mxd-section mxd-section-inner-headline padding-s-headline-pre-grid">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block loading-wrap">
+            <div className="container-fluid px-0">
+              <div className="row gx-0">
+                <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div className="mxd-block__name name-inner-headline">
+                    <p className="mxd-point-subtitle">
+                      <span className="relative flex h-3 w-3 mr-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                      </span>
+                      <span>Services</span>
+                    </p>
                   </div>
-                )
-              })}
+                </div>
+                <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div className="mxd-block__content">
+                    <div className="mxd-block__inner-headline">
+                      <h1 className="inner-headline__title headline-img-before headline-img-04">
+                        New standards in <span className="text-primary">digital excellence</span>
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </ScrollAnimation>
+          </div>
         </div>
       </div>
-    </section>
+      {/* Section - Inner Page Headline End */}
+
+      {/* Section - Inner Page Statistics Start */}
+      <div className="mxd-section mxd-section-inner-stats overflow-hidden">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="container-fluid px-0">
+              <div className="row gx-0">
+                <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
+                <div className="col-12 col-xl-10">
+                  <div className="mxd-block__content">
+                    <div className="mxd-block__inner-stats">
+                      <div className="mxd-stats-cards">
+                        <div className="container-fluid px-0">
+                          <div className="row gx-0">
+                            {/* item 1 */}
+                            <div className="col-12 col-xl-7 mxd-stats-cards__item mxd-grid-item">
+                              <div className="mxd-stats-cards__inner bg-secondary/10 radius-m padding-4 h-full relative overflow-hidden group">
+                                <div className="mxd-counter relative z-10">
+                                  <p className="mxd-counter__number mxd-stats-number text-8xl font-bold mb-4">25+</p>
+                                  <p className="mxd-counter__descr t-large t-bright">Years of professional experience in delivering IT solutions</p>
+                                </div>
+                                <div className="mxd-stats-cards__btngroup mt-8 relative z-10">
+                                  <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/contact">
+                                    <span className="btn-caption">Start New Project</span>
+                                    <ArrowUpRight className="w-5 h-5 ml-2" />
+                                  </Link>
+                                </div>
+                                {/* Abstract BG or Image */}
+                                <div className="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                                  {/* Placeholder for illustration */}
+                                  <div className="w-64 h-64 bg-primary rounded-full blur-3xl"></div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* item 2 */}
+                            <div className="col-12 col-xl-5 mxd-stats-cards__item mxd-grid-item">
+                              <div className="mxd-stats-cards__inner bg-secondary/10 radius-m padding-4 h-full relative overflow-hidden group">
+                                <div className="mxd-counter relative z-10">
+                                  <p className="mxd-counter__number mxd-stats-number text-8xl font-bold mb-4">2.5k</p>
+                                  <p className="mxd-counter__descr t-large t-bright">Successfully<br />completed projects</p>
+                                </div>
+                                <div className="mxd-stats-cards__btngroup mt-8 relative z-10">
+                                  <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/solutions">
+                                    <span className="btn-caption">Our Solutions</span>
+                                    <ArrowUpRight className="w-5 h-5 ml-2" />
+                                  </Link>
+                                </div>
+                                <div className="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity">
+                                  <div className="w-48 h-48 bg-blue-500 rounded-full blur-3xl"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Section - Inner Page Statistics End */}
+    </>
   )
 }
 

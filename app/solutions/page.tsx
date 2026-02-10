@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
 import SolutionsHero from '@/components/sections/solutions-hero'
-import SolutionsGrid from '@/components/sections/solutions-grid'
+import Solutions from '@/components/sections/solutions'
 
 export const metadata: Metadata = {
   title: 'IT Solutions - NILE.COM',
@@ -24,13 +22,9 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header />
-      <main>
-        <SolutionsHero />
-        <SolutionsGrid />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <SolutionsHero />
+      <Solutions />
+    </>
   )
 }

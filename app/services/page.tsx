@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import ServicesHero from '@/components/sections/services-hero'
-import ServicesGrid from '@/components/sections/services-grid'
+import Services from '@/components/sections/services'
 
 export const metadata: Metadata = {
   title: 'Services - NILE.COM',
@@ -11,7 +11,7 @@ export default function ServicesPage() {
   return (
     <>
       <ServicesHero />
-      <ServicesGrid />
+      <Services />
     </>
   )
 }

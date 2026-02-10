@@ -16,11 +16,10 @@ export function Providers({ children }: { children: ReactNode }) {
       disableTransitionOnChange={false}
     >
       <AppWrapper>
-        <Header />
+        {/* Header and Footer removed - now in layout.tsx */}
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
         <Toaster />
       </AppWrapper>
     </ThemeProvider>

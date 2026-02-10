@@ -1,15 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { SpotlightButton } from '@/components/ui/spotlight-button'
-import { GlassmorphismCard } from '@/components/ui/glassmorphism-card'
-import { Badge } from '@/components/ui/badge'
-import { Cloud, Shield, Server, Smartphone, Database, Network, ArrowRight, CheckCircle, Zap } from 'lucide-react'
+import Image from 'next/image'
+import { Cloud, Shield, Server, Smartphone, Database, Network, ArrowRight, ArrowUpRight, CheckCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { TiltCard } from '@/components/ui/tilt-card'
 
 const solutions = [
   {
@@ -19,8 +13,7 @@ const solutions = [
     title: 'Cloud Migration',
     description: 'Seamless transition to cloud infrastructure with minimal downtime and maximum efficiency.',
     features: ['AWS & Azure Certified', '99.9% Uptime SLA', '24/7 Monitoring', 'Cost Optimization'],
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-500/10',
+    image: '/media/real/cloud_migration.jpg',
     category: 'Cloud Services'
   },
   {
@@ -30,8 +23,7 @@ const solutions = [
     title: 'Cybersecurity',
     description: 'Advanced threat protection and security solutions to safeguard your digital assets.',
     features: ['Zero Trust Architecture', 'SOC 2 Compliance', 'Threat Intelligence', 'Incident Response'],
-    color: 'text-red-500',
-    bgColor: 'bg-red-500/10',
+    image: '/media/real/cybersecurity.jpg',
     category: 'Security'
   },
   {
@@ -41,8 +33,7 @@ const solutions = [
     title: 'Infrastructure',
     description: 'Robust IT infrastructure solutions designed for scalability and performance.',
     features: ['Hybrid Cloud Setup', 'Load Balancing', 'Disaster Recovery', 'Performance Tuning'],
-    color: 'text-green-500',
-    bgColor: 'bg-green-500/10',
+    image: '/media/real/infrastructure.jpg',
     category: 'Infrastructure'
   },
   {
@@ -52,8 +43,7 @@ const solutions = [
     title: 'Digital Transformation',
     description: 'Modernize your business processes with cutting-edge digital solutions.',
     features: ['Process Automation', 'API Integration', 'Mobile Solutions', 'Analytics Dashboard'],
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-500/10',
+    image: '/media/real/digital_transformation.jpg',
     category: 'Transformation'
   },
   {
@@ -63,8 +53,7 @@ const solutions = [
     title: 'Data Management',
     description: 'Comprehensive data solutions for storage, analytics, and business intelligence.',
     features: ['Big Data Analytics', 'Data Warehousing', 'Real-time Processing', 'ML Integration'],
-    color: 'text-orange-500',
-    bgColor: 'bg-orange-500/10',
+    image: '/media/real/data_management.jpg',
     category: 'Data & Analytics'
   },
   {
@@ -74,155 +63,144 @@ const solutions = [
     title: 'Network Solutions',
     description: 'High-performance networking solutions for seamless connectivity and communication.',
     features: ['SD-WAN Implementation', 'Network Security', '5G Integration', 'IoT Connectivity'],
-    color: 'text-teal-500',
-    bgColor: 'bg-teal-500/10',
+    image: '/media/real/network_solutions.jpg',
     category: 'Networking'
   }
 ]
 
 export default function SolutionsGrid() {
-  const [hoveredSolution, setHoveredSolution] = useState<number | null>(null)
-
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true }}
-        >
-          <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/30 text-primary">
-            <Zap className="h-3 w-3 mr-1" />
-            Our Solutions
-          </Badge>
-          <h2 className="text-4xl font-bold text-gradient mb-4">
-            Comprehensive IT Solutions
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From cloud migration to cybersecurity, we provide end-to-end technology solutions
-            that drive innovation and accelerate your business growth.
-          </p>
-        </motion.div>
+    <>
+      {/* Solutions Grid Section */}
+      <div className="mxd-section padding-default">
+        <div className="mxd-container grid-container">
 
-        {/* Solutions Grid - Smaller Cards with 3D Tilt Effect */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {solutions.map((solution, index) => {
-            const Icon = solution.icon
-            return (
-              <TiltCard
-                key={solution.id}
-                className="block"
-                rotateXMax={8}
-                rotateYMax={8}
-                scale={1.03}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <Link
-                    href={`/solutions/${solution.slug}`}
-                    className={`card-hover tech-glow transition-all duration-500 block ${hoveredSolution === solution.id ? 'scale-105 shadow-2xl border-primary/30' : ''
-                      }`}
-                    onMouseEnter={() => setHoveredSolution(solution.id)}
-                    onMouseLeave={() => setHoveredSolution(null)}
-                    aria-label={`Learn more about ${solution.title}`}
-                  >
-                    <Card
-                      id={solution.id.toString()}
-                      className="h-full"
-                    >
-                      <CardHeader className="pb-3">
-                        <div className="flex items-center justify-between mb-3">
-                          <div className={`p-2 rounded-md ${solution.bgColor} ${solution.color}`}>
-                            <Icon className="h-5 w-5" />
-                          </div>
-                          <Badge variant="outline" className="text-xs py-1">
-                            {solution.category}
-                          </Badge>
-                        </div>
-                        <CardTitle className="text-lg font-bold min-h-[2.5rem]">{solution.title}</CardTitle>
-                      </CardHeader>
-
-                      <CardContent className="space-y-4">
-                        <p className="text-sm text-muted-foreground min-h-[3.5rem]">
-                          {solution.description}
-                        </p>
-
-                        {/* Features List */}
-                        <div className="space-y-1">
-                          <h4 className="text-xs font-semibold text-muted-foreground">Key Features</h4>
-                          <div className="space-y-1">
-                            {solution.features.slice(0, 3).map((feature, featureIndex) => ( // Show only 3 features to keep card smaller
-                              <div key={featureIndex} className="flex items-center space-x-1.5 text-xs">
-                                <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
-                                <span className="text-muted-foreground">{feature}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* CTA Button */}
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full btn-outline group mt-3 text-sm"
-                          asChild
-                        >
-                          <span>
-                            Learn More
-                            <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-0.5" />
-                          </span>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </motion.div>
-              </TiltCard>
-            )
-          })}
-        </motion.div>
-
-        {/* Bottom CTA Section with Glassmorphism */}
-        <GlassmorphismCard intensity="sm" blur="lg" className="w-full">
-          <motion.div
-            className="text-center p-8 sm:p-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl sm:text-3xl font-bold text-gradient mb-4">
-              Ready to Transform Your Business?
-            </h3>
-            <p className="text-base sm:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Let our experts design a custom solution tailored to your specific needs and goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="btn-primary px-6 py-3 sm:px-8 sm:py-4">
-                <Link href="/contact">
-                  Get Free Consultation
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="btn-outline px-6 py-3 sm:px-8 sm:py-4">
-                <Link href="/services">
-                  View All Services
-                </Link>
-              </Button>
+          {/* Section Title */}
+          <div className="mxd-block">
+            <div className="mxd-section-title pre-grid">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrtitle">
+                      <h2 className="reveal-type anim-uni-in-up">Comprehensive<br />IT Solutions</h2>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrdescr">
+                      <p className="anim-uni-in-up">From cloud migration to cybersecurity, we provide end-to-end technology solutions that drive innovation and accelerate your business growth.</p>
+                    </div>
+                  </div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrcontrols anim-uni-in-up">
+                      <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/contact">
+                        <span className="btn-caption">Get Consultation</span>
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </motion.div>
-        </GlassmorphismCard>
+          </div>
+
+          {/* Solutions Blog Preview Grid */}
+          <div className="mxd-block">
+            <div className="mxd-blog-preview">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  {solutions.map((solution, index) => (
+                    <motion.div
+                      key={solution.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3 group"
+                    >
+                      <Link className="mxd-blog-preview__media block relative overflow-hidden" href={`/solutions/${solution.slug}`}>
+                        <div className="mxd-blog-preview__image blog-preview-image-1 parallax-img-small relative h-[300px] overflow-hidden">
+                          <Image
+                            src={solution.image}
+                            alt={solution.title}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        </div>
+
+                        <div className="mxd-preview-hover">
+                          <i className="mxd-preview-hover__icon flex items-center justify-center">
+                            <ArrowRight className="w-6 h-6 text-white" />
+                          </i>
+                        </div>
+
+                        <div className="mxd-blog-preview__tags top-4 left-4 absolute">
+                          <span className="tag tag-default tag-permanent bg-background/80 backdrop-blur text-xs mr-2 mb-2">{solution.category}</span>
+                        </div>
+                      </Link>
+                      <div className="mxd-blog-preview__data p-6">
+                        <Link className="anim-uni-in-up block" href={`/solutions/${solution.slug}`}>
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 text-primary">
+                              <solution.icon className="w-5 h-5" />
+                            </div>
+                            <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{solution.title}</h3>
+                          </div>
+                          <p className="text-muted-foreground text-sm mb-4">{solution.description}</p>
+                          <ul className="space-y-1.5">
+                            {solution.features.slice(0, 3).map((feature, i) => (
+                              <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <CheckCircle className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </Link>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </section>
+
+      {/* CTA Section */}
+      <div className="mxd-section padding-default bg-secondary/5">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
+                <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                  <div className="mxd-block__content text-center">
+                    <div className="mxd-block__inner-headline">
+                      <h2 className="inner-headline__title anim-uni-in-up">
+                        Ready to Transform<br />Your Business?
+                      </h2>
+                      <p className="inner-headline__text t-large t-bright mt-6 anim-uni-in-up">
+                        Let our experts design a custom solution tailored to your specific needs and goals.
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10 anim-uni-in-up">
+                        <Link className="btn btn-anim btn-default btn-opposite slide-right-up" href="/contact">
+                          <span className="btn-caption">Get Free Consultation</span>
+                          <ArrowUpRight className="w-5 h-5 ml-2" />
+                        </Link>
+                        <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/services">
+                          <span className="btn-caption">View All Services</span>
+                          <ArrowRight className="w-5 h-5 ml-2" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }

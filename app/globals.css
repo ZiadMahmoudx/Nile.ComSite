@@ -59,31 +59,101 @@
   }
 }
 
+/*
+ * Bridge: Sync Rayo CSS variables with next-themes class-based dark mode.
+ * Rayo uses @media(prefers-color-scheme) but next-themes uses class="dark".
+ * Without this, if OS is light but app is dark, all Rayo colors break.
+ */
+.dark {
+  --base: var(--base--dark);
+  --base-rgb: var(--base-rgb--dark);
+  --base-tint: var(--base-tint--dark);
+  --base-shade: var(--base-shade--dark);
+  --base-opp: var(--base-opp--dark);
+  --base-opp-tint: var(--base-opp-tint--dark);
+  --accent: var(--accent--dark);
+  --accent-rgb: var(--accent-rgb--dark);
+  --additional: var(--additional--dark);
+  --additional-rgb: var(--additional-rgb--dark);
+  --neutral-transparent: var(--neutral-transparent--dark);
+  --st-bright: var(--st-bright--dark);
+  --st-medium: var(--st-medium--dark);
+  --st-muted: var(--st-muted--dark);
+  --st-opp-bright: var(--st-opp-bright--dark);
+  --fw-regular: var(--fw-regular--dark);
+  --fw-medium: var(--fw-medium--dark);
+  --fw-semibold: var(--fw-semibold--dark);
+  --fw-bold: var(--fw-bold--dark);
+  --fw-regular-opp: var(--fw-regular-opp--dark);
+  --fw-medium-opp: var(--fw-medium-opp--dark);
+  --t-bright: var(--t-bright--dark);
+  --t-medium: var(--t-medium--dark);
+  --t-muted: var(--t-muted--dark);
+  --t-muted-extra: var(--t-muted-extra--dark);
+  --t-opp-bright: var(--t-opp-bright--dark);
+  --t-opp-medium: var(--t-opp-medium--dark);
+  --t-opp-muted: var(--t-opp-muted--dark);
+}
+
+/* Light class bridge (for completeness with next-themes) */
+:root:not(.dark) {
+  --base: var(--base--light);
+  --base-rgb: var(--base-rgb--light);
+  --base-tint: var(--base-tint--light);
+  --base-shade: var(--base-shade--light);
+  --base-opp: var(--base-opp--light);
+  --base-opp-tint: var(--base-opp-tint--light);
+  --accent: var(--accent--light);
+  --accent-rgb: var(--accent-rgb--light);
+  --additional: var(--additional--light);
+  --additional-rgb: var(--additional-rgb--light);
+  --neutral-transparent: var(--neutral-transparent--light);
+  --st-bright: var(--st-bright--light);
+  --st-medium: var(--st-medium--light);
+  --st-muted: var(--st-muted--light);
+  --st-opp-bright: var(--st-opp-bright--light);
+  --fw-regular: var(--fw-regular--light);
+  --fw-medium: var(--fw-medium--light);
+  --fw-semibold: var(--fw-semibold--light);
+  --fw-bold: var(--fw-bold--light);
+  --fw-regular-opp: var(--fw-regular-opp--light);
+  --fw-medium-opp: var(--fw-medium-opp--light);
+  --t-bright: var(--t-bright--light);
+  --t-medium: var(--t-medium--light);
+  --t-muted: var(--t-muted--light);
+  --t-muted-extra: var(--t-muted-extra--light);
+  --t-opp-bright: var(--t-opp-bright--light);
+  --t-opp-medium: var(--t-opp-medium--light);
+  --t-opp-muted: var(--t-opp-muted--light);
+}
+
 @layer base {
+
+  /* Rayo compatibility: Reset root font size */
+  html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+  }
+
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    padding-top: 120px;
+    font-size: 1.6rem;
+    /* Restore 16px base size for body content */
+    padding-top: 0;
+    /* Let Rayo handle padding */
     overflow-x: hidden;
   }
-  
-  @media (max-width: 768px) {
-    body {
-      padding-top: 140px;
-    }
-  }
-  
-  @media (max-width: 640px) {
-    body {
-      padding-top: 160px;
-    }
-  }
+
+  /* Adjusting media query padding since we removed default padding-top */
+
 }
 
 @layer components {
+
   /* Enhanced gradient text */
   .text-gradient {
     @apply bg-gradient-to-r from-primary via-red-500 to-red-600 bg-clip-text text-transparent;
@@ -96,16 +166,16 @@
   /* Advanced hero gradient */
   .hero-gradient {
     background: radial-gradient(ellipse at top,
-      hsl(var(--primary) / 0.1) 0%,
-      hsl(var(--background)) 50%,
-      hsl(var(--primary) / 0.05) 100%
-    );
+        hsl(var(--primary) / 0.1) 0%,
+        hsl(var(--background)) 50%,
+        hsl(var(--primary) / 0.05) 100%);
   }
 
   /* Noise texture background */
   .bg-noise {
     position: relative;
   }
+
   .bg-noise::before {
     content: "";
     position: absolute;
@@ -142,13 +212,13 @@
   .tech-glow {
     @apply relative;
   }
-  
+
   .tech-glow::before {
     content: '';
     @apply absolute -inset-1 rounded-lg bg-gradient-to-r from-primary via-red-500 to-red-600 opacity-0 blur-lg transition-opacity duration-500;
     z-index: -1;
   }
-  
+
   .tech-glow:hover::before {
     @apply opacity-30;
   }
@@ -169,14 +239,14 @@
 
   /* Grid pattern background */
   .bg-grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
   .dark .bg-grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   }
@@ -207,24 +277,25 @@
   /* Enhanced dark mode card glow effect */
   .dark .card-glow::before {
     background: radial-gradient(ellipse at center,
-      hsl(var(--primary) / 0.2) 0%,
-      hsl(var(--primary) / 0.05) 70%,
-      transparent 100%);
+        hsl(var(--primary) / 0.2) 0%,
+        hsl(var(--primary) / 0.05) 70%,
+        transparent 100%);
   }
 
   /* Enhanced dark mode tech glow effect */
   .dark .tech-glow::before {
     @apply opacity-20;
     background: radial-gradient(ellipse at center,
-      hsl(var(--primary) / 0.3) 0%,
-      hsl(var(--primary) / 0.1) 70%,
-      transparent 100%);
+        hsl(var(--primary) / 0.3) 0%,
+        hsl(var(--primary) / 0.1) 70%,
+        transparent 100%);
   }
 
   /* Enhanced dark mode button glow */
   .dark .btn-primary {
     box-shadow: 0 10px 20px -10px hsl(var(--primary) / 0.4), 0 0 20px -5px hsl(var(--primary) / 0.3);
   }
+
   .dark .btn-primary:hover {
     box-shadow: 0 15px 30px -10px hsl(var(--primary) / 0.5), 0 0 30px -5px hsl(var(--primary) / 0.4);
   }
@@ -232,9 +303,9 @@
   /* Enhanced dark mode gradients */
   .dark .hero-gradient {
     background: radial-gradient(ellipse at top,
-      hsl(var(--primary) / 0.2) 0%,
-      hsl(var(--background) / 0.8) 50%,
-      hsl(var(--primary) / 0.1) 100%);
+        hsl(var(--primary) / 0.2) 0%,
+        hsl(var(--background) / 0.8) 50%,
+        hsl(var(--primary) / 0.1) 100%);
   }
 
   /* Enhanced dark mode text gradients */
@@ -268,9 +339,12 @@
 
 /* Enhanced animations */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -281,6 +355,7 @@
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -292,6 +367,7 @@
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -303,6 +379,7 @@
     opacity: 0;
     transform: translateX(40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -310,9 +387,12 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px hsl(var(--primary) / 0.6), 0 0 60px hsl(var(--primary) / 0.4);
   }
@@ -322,6 +402,7 @@
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -344,7 +425,7 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -354,6 +435,7 @@
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
@@ -363,6 +445,7 @@
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
@@ -383,9 +466,11 @@
   .text-6xl {
     @apply text-4xl;
   }
+
   .text-5xl {
     @apply text-3xl;
   }
+
   .text-4xl {
     @apply text-2xl;
   }

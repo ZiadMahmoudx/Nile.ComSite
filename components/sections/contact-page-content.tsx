@@ -2,19 +2,12 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { ParticleNetwork } from '@/components/ui/particle-network'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
-import { useToast } from '@/components/ui/use-toast'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
     Mail, Phone, MapPin, Clock, User, Building, MessageSquare, Send, Loader2,
-    CheckCircle, AlertCircle, Shield, Award, HeadphonesIcon, Zap, ArrowRight
+    CheckCircle, AlertCircle, Shield, Award, HeadphonesIcon, Zap, ArrowRight, ArrowUpRight
 } from 'lucide-react'
+import { useToast } from '@/components/ui/use-toast'
 
 const contactMethods = [
     {
@@ -23,7 +16,6 @@ const contactMethods = [
         value: '+20 2 2735 3333',
         subtext: 'Mon-Thu: 9AM-6PM',
         href: 'tel:+20227353333',
-        color: 'from-green-500 to-emerald-500'
     },
     {
         icon: Mail,
@@ -31,7 +23,6 @@ const contactMethods = [
         value: 'info@nilecom.com.eg',
         subtext: 'Response within 24 hours',
         href: 'mailto:info@nilecom.com.eg',
-        color: 'from-blue-500 to-cyan-500'
     },
     {
         icon: MapPin,
@@ -39,7 +30,6 @@ const contactMethods = [
         value: 'Maadi, Cairo',
         subtext: 'Schedule appointment first',
         href: 'https://maps.app.goo.gl/tTUNyWFzGazyTgHe6',
-        color: 'from-primary to-red-500'
     },
     {
         icon: HeadphonesIcon,
@@ -47,7 +37,6 @@ const contactMethods = [
         value: 'support@nilecom.com.eg',
         subtext: 'For existing clients',
         href: 'mailto:support@nilecom.com.eg',
-        color: 'from-purple-500 to-violet-500'
     }
 ]
 
@@ -114,7 +103,6 @@ export default function ContactPageContent() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        // Validate all fields
         const newErrors: Record<string, string> = {}
         Object.entries(formData).forEach(([key, value]) => {
             const error = validateField(key, value)
@@ -161,114 +149,138 @@ export default function ContactPageContent() {
         }
     }
 
-    const inputClasses = (field: string) => `
-    w-full px-4 py-3 rounded-xl border-2 bg-background text-foreground placeholder:text-muted-foreground
-    focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all duration-200
-    ${errors[field] && touched.has(field) ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary'}
-  `
+    const inputBaseClasses = "w-full bg-transparent border-b-2 py-4 focus:outline-none transition-colors duration-200"
+    const getInputClasses = (field: string) =>
+        `${inputBaseClasses} ${errors[field] && touched.has(field) ? 'border-red-500 focus:border-red-500' : 'border-border focus:border-primary'}`
 
     return (
         <>
-            {/* Hero Section - Compact */}
-            <section className="relative min-h-[40vh] flex items-center overflow-hidden bg-background">
-                <ParticleNetwork
-                    particleCount={50}
-                    particleColor="rgba(159, 34, 32, 0.5)"
-                    lineColor="rgba(159, 34, 32, 0.08)"
-                    maxDistance={120}
-                    speed={0.2}
-                />
-
-                <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 text-center">
-                    <ScrollAnimation animation="fade-up">
-                        <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-6">
-                            <Mail className="w-4 h-4 mr-2" />
-                            Contact Us
-                        </Badge>
-                    </ScrollAnimation>
-
-                    <ScrollAnimation animation="fade-up" delay={0.1}>
-                        <h1 className="text-5xl lg:text-6xl font-black leading-tight mb-4">
-                            <span className="text-foreground">Let's Build</span>{' '}
-                            <span className="text-gradient">Something Great</span>
-                        </h1>
-                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                            Ready to transform your business? Our experts are here to help.
-                        </p>
-                    </ScrollAnimation>
-                </div>
-            </section>
-
-            {/* Trust Badges */}
-            <section className="py-8 border-y border-border bg-muted/30">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="flex flex-wrap justify-center gap-8">
-                        {trustBadges.map((badge, index) => (
-                            <div key={index} className="flex items-center gap-2 text-muted-foreground">
-                                <badge.icon className="w-5 h-5 text-primary" />
-                                <span className="text-sm font-medium">{badge.label}</span>
+            {/* Hero Section - Uses Rayo Inner Headline */}
+            <div className="mxd-section mxd-section-inner-headline padding-headline-pre-block">
+                <div className="mxd-container grid-container">
+                    <div className="mxd-block loading-wrap">
+                        <div className="container-fluid px-0">
+                            <div className="row gx-0">
+                                <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                                    <div className="mxd-block__name name-inner-headline">
+                                        <p className="mxd-point-subtitle">
+                                            <span className="relative flex h-3 w-3 mr-2">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                                            </span>
+                                            <span>Contact</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                                    <div className="mxd-block__content">
+                                        <div className="mxd-block__inner-headline">
+                                            <h1 className="inner-headline__title headline-img-before headline-img-04">
+                                                Let's Build <span className="text-primary">Something Great</span>
+                                            </h1>
+                                            <p className="inner-headline__text t-large t-bright mt-6">
+                                                Ready to transform your business? Our experts are here to help.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        ))}
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            {/* Quick Contact Cards */}
-            <section className="py-12 bg-gradient-to-b from-muted/30 to-background">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {contactMethods.map((method, index) => (
-                            <ScrollAnimation key={index} animation="fade-up" delay={index * 0.05}>
-                                <Link href={method.href} target={method.href.startsWith('http') ? '_blank' : undefined}>
-                                    <Card className="group border-2 border-border hover:border-primary/50 transition-all duration-300 h-full">
-                                        <CardContent className="p-6 text-center">
-                                            <div className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-r ${method.color} p-3 mb-4 group-hover:scale-110 transition-transform`}>
-                                                <method.icon className="w-6 h-6 text-white" />
+            {/* Trust Badges Marquee */}
+            <div className="mxd-section padding-mtext">
+                <div className="mxd-container fullwidth-container">
+                    <div className="mxd-block">
+                        <div className="marquee marquee-right--gsap muted-extra">
+                            <div className="marquee__toright">
+                                {[...trustBadges, ...trustBadges].map((badge, idx) => (
+                                    <div key={idx} className="marquee__item one-line item-regular text">
+                                        <p className="marquee__text flex items-center gap-2">
+                                            <badge.icon className="w-5 h-5 text-primary" />
+                                            {badge.label}
+                                        </p>
+                                        <div className="marquee__image">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="currentColor">
+                                                <circle cx="40" cy="40" r="40" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Quick Contact Methods */}
+            <div className="mxd-section overflow-hidden padding-default">
+                <div className="mxd-container grid-container">
+                    <div className="mxd-block">
+                        <div className="container-fluid p-0">
+                            <div className="row g-0">
+                                {contactMethods.map((method, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="col-12 col-md-6 col-xl-3 mxd-grid-item"
+                                    >
+                                        <a
+                                            href={method.href}
+                                            target={method.href.startsWith('http') ? '_blank' : undefined}
+                                            className="block p-8 bg-secondary/5 border border-border/30 radius-m text-center h-full group hover:border-primary/30 transition-all duration-300"
+                                        >
+                                            <div className="w-14 h-14 mx-auto rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                                <method.icon className="w-6 h-6 text-primary" />
                                             </div>
-                                            <h3 className="font-bold text-foreground mb-1">{method.title}</h3>
+                                            <h3 className="font-bold mb-1">{method.title}</h3>
                                             <p className="text-primary font-semibold text-sm mb-1">{method.value}</p>
                                             <p className="text-xs text-muted-foreground">{method.subtext}</p>
-                                        </CardContent>
-                                    </Card>
-                                </Link>
-                            </ScrollAnimation>
-                        ))}
+                                        </a>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            {/* Main Contact Section */}
-            <section className="py-20">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid lg:grid-cols-5 gap-12">
-                        {/* Map / Info Column */}
-                        <div className="lg:col-span-2 space-y-6">
-                            <ScrollAnimation animation="fade-up">
-                                <h2 className="text-3xl font-bold mb-4">Visit Our Office</h2>
-                                <p className="text-muted-foreground mb-6">
-                                    Located in the heart of Maadi, Cairo. Schedule an appointment for a face-to-face consultation.
-                                </p>
-                            </ScrollAnimation>
+            {/* Main Contact Section - Map + Form */}
+            <div className="mxd-section mxd-section-inner-form padding-default">
+                <div className="mxd-container grid-container">
+                    <div className="mxd-block">
+                        <div className="container-fluid px-0">
+                            <div className="row gx-0">
+                                {/* Map / Info Column */}
+                                <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                                    <div className="mxd-block__name">
+                                        <h2 className="reveal-type anim-uni-in-up mb-4">Visit Our Office</h2>
+                                        <p className="t-bright anim-uni-in-up mb-8">
+                                            Located in the heart of Maadi, Cairo. Schedule an appointment for a face-to-face consultation.
+                                        </p>
+                                    </div>
 
-                            {/* Embedded Map */}
-                            <ScrollAnimation animation="fade-up" delay={0.1}>
-                                <div className="rounded-2xl overflow-hidden border-2 border-border h-[300px]">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.2!2d31.2!3d29.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMaadi%2C%20Cairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1234567890"
-                                        width="100%"
-                                        height="100%"
-                                        style={{ border: 0 }}
-                                        allowFullScreen
-                                        loading="lazy"
-                                        referrerPolicy="no-referrer-when-downgrade"
-                                        title="NILE.COM Office Location"
-                                    />
-                                </div>
-                            </ScrollAnimation>
+                                    {/* Map */}
+                                    <div className="overflow-hidden radius-m border border-border/30 mb-8" style={{ height: '280px' }}>
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.2!2d31.2!3d29.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMaadi%2C%20Cairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1234567890"
+                                            width="100%"
+                                            height="100%"
+                                            style={{ border: 0 }}
+                                            allowFullScreen
+                                            loading="lazy"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                            title="NILE.COM Office Location"
+                                        />
+                                    </div>
 
-                            <ScrollAnimation animation="fade-up" delay={0.2}>
-                                <Card className="border-2 border-primary/20 bg-primary/5">
-                                    <CardContent className="p-6">
+                                    {/* Business Hours */}
+                                    <div className="p-6 bg-primary/5 border border-primary/20 radius-m">
                                         <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
                                             <Clock className="w-5 h-5 text-primary" />
                                             Business Hours
@@ -283,223 +295,233 @@ export default function ContactPageContent() {
                                                 <span className="font-medium text-red-500">Closed</span>
                                             </div>
                                         </div>
-                                    </CardContent>
-                                </Card>
-                            </ScrollAnimation>
-                        </div>
+                                    </div>
+                                </div>
 
-                        {/* Form Column */}
-                        <div className="lg:col-span-3">
-                            <ScrollAnimation animation="fade-up">
-                                <Card className="border-2 border-border">
-                                    <CardHeader>
-                                        <CardTitle className="text-2xl flex items-center gap-2">
-                                            <MessageSquare className="w-6 h-6 text-primary" />
-                                            Send Us a Message
-                                        </CardTitle>
-                                        <p className="text-muted-foreground">
-                                            Fill out the form and we'll respond within 24 hours.
-                                        </p>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <AnimatePresence mode="wait">
-                                            {isSuccess ? (
-                                                <motion.div
-                                                    key="success"
-                                                    initial={{ opacity: 0, scale: 0.9 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
-                                                    exit={{ opacity: 0, scale: 0.9 }}
-                                                    className="text-center py-12 space-y-4"
-                                                >
-                                                    <motion.div
-                                                        initial={{ scale: 0 }}
-                                                        animate={{ scale: 1 }}
-                                                        transition={{ type: 'spring', delay: 0.2 }}
-                                                        className="w-20 h-20 mx-auto rounded-full bg-green-500/10 flex items-center justify-center"
-                                                    >
-                                                        <CheckCircle className="w-10 h-10 text-green-500" />
-                                                    </motion.div>
-                                                    <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
-                                                    <p className="text-muted-foreground">We'll get back to you within 24 hours.</p>
-                                                </motion.div>
-                                            ) : (
-                                                <motion.form
-                                                    key="form"
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: 1 }}
-                                                    exit={{ opacity: 0 }}
-                                                    onSubmit={handleSubmit}
-                                                    className="space-y-6"
-                                                >
-                                                    <div className="grid sm:grid-cols-2 gap-4">
-                                                        {/* Name */}
-                                                        <div className="space-y-2">
-                                                            <label className="flex items-center gap-2 text-sm font-medium">
-                                                                <User className="w-4 h-4" /> Full Name *
-                                                            </label>
-                                                            <input
-                                                                type="text"
-                                                                name="name"
-                                                                value={formData.name}
-                                                                onChange={handleChange}
-                                                                onBlur={handleBlur}
-                                                                placeholder="John Doe"
-                                                                className={inputClasses('name')}
-                                                            />
-                                                            {errors.name && touched.has('name') && (
-                                                                <p className="text-xs text-red-500 flex items-center gap-1">
-                                                                    <AlertCircle className="w-3 h-3" /> {errors.name}
-                                                                </p>
-                                                            )}
-                                                        </div>
+                                {/* Spacer */}
+                                <div className="col-12 col-xl-1 mxd-grid-item no-margin"></div>
 
-                                                        {/* Email */}
-                                                        <div className="space-y-2">
-                                                            <label className="flex items-center gap-2 text-sm font-medium">
-                                                                <Mail className="w-4 h-4" /> Email *
-                                                            </label>
-                                                            <input
-                                                                type="email"
-                                                                name="email"
-                                                                value={formData.email}
-                                                                onChange={handleChange}
-                                                                onBlur={handleBlur}
-                                                                placeholder="john@company.com"
-                                                                className={inputClasses('email')}
-                                                            />
-                                                            {errors.email && touched.has('email') && (
-                                                                <p className="text-xs text-red-500 flex items-center gap-1">
-                                                                    <AlertCircle className="w-3 h-3" /> {errors.email}
-                                                                </p>
-                                                            )}
-                                                        </div>
-                                                    </div>
+                                {/* Form Column */}
+                                <div className="col-12 col-xl-7">
+                                    <div className="mxd-block__content contact">
+                                        <div className="mxd-block__inner-form">
+                                            <div className="mb-6">
+                                                <h3 className="text-2xl font-bold flex items-center gap-2 mb-2">
+                                                    <MessageSquare className="w-6 h-6 text-primary" />
+                                                    Send Us a Message
+                                                </h3>
+                                                <p className="text-muted-foreground">Fill out the form and we'll respond within 24 hours.</p>
+                                            </div>
 
-                                                    <div className="grid sm:grid-cols-2 gap-4">
-                                                        {/* Phone */}
-                                                        <div className="space-y-2">
-                                                            <label className="flex items-center gap-2 text-sm font-medium">
-                                                                <Phone className="w-4 h-4" /> Phone
-                                                            </label>
-                                                            <input
-                                                                type="tel"
-                                                                name="phone"
-                                                                value={formData.phone}
-                                                                onChange={handleChange}
-                                                                placeholder="+20 123 456 7890"
-                                                                className={inputClasses('phone')}
-                                                            />
-                                                        </div>
+                                            <div className="form-container">
+                                                <AnimatePresence mode="wait">
+                                                    {isSuccess ? (
+                                                        <motion.div
+                                                            key="success"
+                                                            initial={{ opacity: 0, scale: 0.9 }}
+                                                            animate={{ opacity: 1, scale: 1 }}
+                                                            exit={{ opacity: 0, scale: 0.9 }}
+                                                            className="text-center py-12 space-y-4"
+                                                        >
+                                                            <motion.div
+                                                                initial={{ scale: 0 }}
+                                                                animate={{ scale: 1 }}
+                                                                transition={{ type: 'spring', delay: 0.2 }}
+                                                                className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center"
+                                                            >
+                                                                <CheckCircle className="w-10 h-10 text-primary" />
+                                                            </motion.div>
+                                                            <h3 className="text-2xl font-bold">Message Sent!</h3>
+                                                            <p className="text-muted-foreground">We'll get back to you within 24 hours.</p>
+                                                        </motion.div>
+                                                    ) : (
+                                                        <motion.form
+                                                            key="form"
+                                                            initial={{ opacity: 0 }}
+                                                            animate={{ opacity: 1 }}
+                                                            exit={{ opacity: 0 }}
+                                                            onSubmit={handleSubmit}
+                                                            className="form contact-form"
+                                                        >
+                                                            <div className="container-fluid p-0">
+                                                                <div className="row gx-0">
+                                                                    {/* Name */}
+                                                                    <div className="col-12 col-md-6 mxd-grid-item">
+                                                                        <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                                                                            <User className="w-4 h-4" /> Full Name *
+                                                                        </label>
+                                                                        <input
+                                                                            type="text"
+                                                                            name="name"
+                                                                            value={formData.name}
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            placeholder="John Doe"
+                                                                            className={getInputClasses('name')}
+                                                                        />
+                                                                        {errors.name && touched.has('name') && (
+                                                                            <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
+                                                                                <AlertCircle className="w-3 h-3" /> {errors.name}
+                                                                            </p>
+                                                                        )}
+                                                                    </div>
 
-                                                        {/* Company */}
-                                                        <div className="space-y-2">
-                                                            <label className="flex items-center gap-2 text-sm font-medium">
-                                                                <Building className="w-4 h-4" /> Company
-                                                            </label>
-                                                            <input
-                                                                type="text"
-                                                                name="company"
-                                                                value={formData.company}
-                                                                onChange={handleChange}
-                                                                placeholder="Your Company"
-                                                                className={inputClasses('company')}
-                                                            />
-                                                        </div>
-                                                    </div>
+                                                                    {/* Email */}
+                                                                    <div className="col-12 col-md-6 mxd-grid-item">
+                                                                        <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                                                                            <Mail className="w-4 h-4" /> Email *
+                                                                        </label>
+                                                                        <input
+                                                                            type="email"
+                                                                            name="email"
+                                                                            value={formData.email}
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            placeholder="john@company.com"
+                                                                            className={getInputClasses('email')}
+                                                                        />
+                                                                        {errors.email && touched.has('email') && (
+                                                                            <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
+                                                                                <AlertCircle className="w-3 h-3" /> {errors.email}
+                                                                            </p>
+                                                                        )}
+                                                                    </div>
 
-                                                    {/* Subject */}
-                                                    <div className="space-y-2">
-                                                        <label className="text-sm font-medium">Subject *</label>
-                                                        <input
-                                                            type="text"
-                                                            name="subject"
-                                                            value={formData.subject}
-                                                            onChange={handleChange}
-                                                            onBlur={handleBlur}
-                                                            placeholder="How can we help you?"
-                                                            className={inputClasses('subject')}
-                                                        />
-                                                        {errors.subject && touched.has('subject') && (
-                                                            <p className="text-xs text-red-500 flex items-center gap-1">
-                                                                <AlertCircle className="w-3 h-3" /> {errors.subject}
-                                                            </p>
-                                                        )}
-                                                    </div>
+                                                                    {/* Phone */}
+                                                                    <div className="col-12 col-md-6 mxd-grid-item">
+                                                                        <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                                                                            <Phone className="w-4 h-4" /> Phone
+                                                                        </label>
+                                                                        <input
+                                                                            type="tel"
+                                                                            name="phone"
+                                                                            value={formData.phone}
+                                                                            onChange={handleChange}
+                                                                            placeholder="+20 123 456 7890"
+                                                                            className={getInputClasses('phone')}
+                                                                        />
+                                                                    </div>
 
-                                                    {/* Message */}
-                                                    <div className="space-y-2">
-                                                        <label className="text-sm font-medium">Message *</label>
-                                                        <textarea
-                                                            name="message"
-                                                            value={formData.message}
-                                                            onChange={handleChange}
-                                                            onBlur={handleBlur}
-                                                            placeholder="Tell us about your project or inquiry..."
-                                                            rows={5}
-                                                            className={inputClasses('message')}
-                                                        />
-                                                        {errors.message && touched.has('message') && (
-                                                            <p className="text-xs text-red-500 flex items-center gap-1">
-                                                                <AlertCircle className="w-3 h-3" /> {errors.message}
-                                                            </p>
-                                                        )}
-                                                    </div>
+                                                                    {/* Company */}
+                                                                    <div className="col-12 col-md-6 mxd-grid-item">
+                                                                        <label className="flex items-center gap-2 text-sm font-medium mb-2">
+                                                                            <Building className="w-4 h-4" /> Company
+                                                                        </label>
+                                                                        <input
+                                                                            type="text"
+                                                                            name="company"
+                                                                            value={formData.company}
+                                                                            onChange={handleChange}
+                                                                            placeholder="Your Company"
+                                                                            className={getInputClasses('company')}
+                                                                        />
+                                                                    </div>
 
-                                                    {/* Submit */}
-                                                    <Button
-                                                        type="submit"
-                                                        disabled={isSubmitting}
-                                                        className="w-full btn-primary py-4 font-bold rounded-xl"
-                                                        size="lg"
-                                                    >
-                                                        {isSubmitting ? (
-                                                            <>
-                                                                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                                                                Sending...
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                <Send className="w-5 h-5 mr-2" />
-                                                                Send Message
-                                                            </>
-                                                        )}
-                                                    </Button>
-                                                </motion.form>
-                                            )}
-                                        </AnimatePresence>
-                                    </CardContent>
-                                </Card>
-                            </ScrollAnimation>
+                                                                    {/* Subject */}
+                                                                    <div className="col-12 mxd-grid-item">
+                                                                        <label className="text-sm font-medium mb-2 block">Subject *</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            name="subject"
+                                                                            value={formData.subject}
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            placeholder="How can we help you?"
+                                                                            className={getInputClasses('subject')}
+                                                                        />
+                                                                        {errors.subject && touched.has('subject') && (
+                                                                            <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
+                                                                                <AlertCircle className="w-3 h-3" /> {errors.subject}
+                                                                            </p>
+                                                                        )}
+                                                                    </div>
+
+                                                                    {/* Message */}
+                                                                    <div className="col-12 mxd-grid-item">
+                                                                        <label className="text-sm font-medium mb-2 block">Message *</label>
+                                                                        <textarea
+                                                                            name="message"
+                                                                            value={formData.message}
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            placeholder="Tell us about your project or inquiry..."
+                                                                            rows={5}
+                                                                            className={`${getInputClasses('message')} min-h-[120px] resize-none`}
+                                                                        />
+                                                                        {errors.message && touched.has('message') && (
+                                                                            <p className="text-xs text-red-500 flex items-center gap-1 mt-1">
+                                                                                <AlertCircle className="w-3 h-3" /> {errors.message}
+                                                                            </p>
+                                                                        )}
+                                                                    </div>
+
+                                                                    {/* Submit */}
+                                                                    <div className="col-12 mxd-grid-item">
+                                                                        <button
+                                                                            className="btn btn-anim btn-default btn-large btn-opposite slide-right-up mt-4 w-full"
+                                                                            type="submit"
+                                                                            disabled={isSubmitting}
+                                                                        >
+                                                                            {isSubmitting ? (
+                                                                                <span className="btn-caption flex items-center justify-center">
+                                                                                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                                                                    Sending...
+                                                                                </span>
+                                                                            ) : (
+                                                                                <>
+                                                                                    <span className="btn-caption">Send Message</span>
+                                                                                    <Send className="w-5 h-5 ml-2" />
+                                                                                </>
+                                                                            )}
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </motion.form>
+                                                    )}
+                                                </AnimatePresence>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            {/* Additional CTA */}
-            <section className="py-16 bg-primary/5">
-                <div className="max-w-4xl mx-auto px-4 text-center">
-                    <ScrollAnimation animation="fade-up">
-                        <h2 className="text-3xl font-bold mb-4">Prefer a Quick Call?</h2>
-                        <p className="text-muted-foreground mb-8">
-                            Our experts are standing by to discuss your IT needs.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button asChild size="lg" className="btn-primary">
-                                <Link href="tel:+20227353333">
-                                    <Phone className="w-5 h-5 mr-2" />
-                                    Call +20 2 2735 3333
-                                </Link>
-                            </Button>
-                            <Button asChild variant="outline" size="lg">
-                                <Link href="/faq">
-                                    View FAQ
-                                    <ArrowRight className="w-4 h-4 ml-2" />
-                                </Link>
-                            </Button>
+            {/* CTA Section */}
+            <div className="mxd-section padding-default bg-primary/5">
+                <div className="mxd-container grid-container">
+                    <div className="mxd-block">
+                        <div className="container-fluid p-0">
+                            <div className="row g-0">
+                                <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
+                                <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                                    <div className="text-center">
+                                        <h2 className="inner-headline__title anim-uni-in-up mb-4">Prefer a Quick Call?</h2>
+                                        <p className="t-large t-bright anim-uni-in-up mb-8">
+                                            Our experts are standing by to discuss your IT needs.
+                                        </p>
+                                        <div className="flex flex-col sm:flex-row gap-4 justify-center anim-uni-in-up">
+                                            <a className="btn btn-anim btn-default btn-opposite slide-right-up" href="tel:+20227353333">
+                                                <span className="btn-caption flex items-center">
+                                                    <Phone className="w-5 h-5 mr-2" />
+                                                    Call +20 2 2735 3333
+                                                </span>
+                                            </a>
+                                            <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/faq">
+                                                <span className="btn-caption">View FAQ</span>
+                                                <ArrowRight className="w-4 h-4 ml-2" />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </ScrollAnimation>
+                    </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }

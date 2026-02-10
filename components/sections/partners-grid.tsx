@@ -1,11 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
-import { Star, Award, Shield, Zap } from 'lucide-react'
+import { Star, Award, Shield, ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const partners = [
   {
@@ -17,7 +14,6 @@ const partners = [
     expertise: 95,
     projects: 150,
     description: 'Advanced cloud solutions and enterprise services',
-    color: 'bg-blue-500'
   },
   {
     id: 2,
@@ -28,7 +24,6 @@ const partners = [
     expertise: 92,
     projects: 200,
     description: 'Comprehensive cloud infrastructure and migration',
-    color: 'bg-orange-500'
   },
   {
     id: 3,
@@ -39,7 +34,6 @@ const partners = [
     expertise: 88,
     projects: 120,
     description: 'Virtualization and hybrid cloud solutions',
-    color: 'bg-gray-600'
   },
   {
     id: 4,
@@ -50,7 +44,6 @@ const partners = [
     expertise: 90,
     projects: 180,
     description: 'Enterprise hardware and infrastructure solutions',
-    color: 'bg-blue-600'
   },
   {
     id: 5,
@@ -61,7 +54,6 @@ const partners = [
     expertise: 94,
     projects: 90,
     description: 'Next-generation cybersecurity solutions',
-    color: 'bg-red-600'
   },
   {
     id: 6,
@@ -72,7 +64,6 @@ const partners = [
     expertise: 87,
     projects: 110,
     description: 'Enterprise database and cloud applications',
-    color: 'bg-red-500'
   }
 ]
 
@@ -87,121 +78,120 @@ const getTierIcon = (tier: string) => {
 }
 
 export default function PartnersGrid() {
-  const [hoveredPartner, setHoveredPartner] = useState<number | null>(null)
-
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fadeInUp">
-          <Badge variant="outline" className="mb-4 bg-primary/10 border-primary/30 text-primary">
-            <Zap className="h-3 w-3 mr-1" />
-            Technology Partners
-          </Badge>
-          <h2 className="text-4xl font-bold text-gradient mb-4">
-            Certified Excellence
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            We maintain the highest level partnerships with industry leaders, ensuring our clients 
-            receive cutting-edge solutions backed by world-class expertise and support.
-          </p>
-        </div>
+    <>
+      {/* Partners Grid Section */}
+      <div className="mxd-section padding-default bg-secondary/5">
+        <div className="mxd-container grid-container">
 
-        {/* Partners Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {partners.map((partner, index) => (
-            <Card 
-              key={partner.id}
-              className={`card-hover card-glow transition-all duration-500 ${
-                hoveredPartner === partner.id ? 'scale-105 shadow-2xl' : ''
-              }`}
-              onMouseEnter={() => setHoveredPartner(partner.id)}
-              onMouseLeave={() => setHoveredPartner(null)}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardHeader className="text-center pb-4">
-                <div className="relative mb-4 group">
-                  <Image
-                    src={partner.logo || "/placeholder.svg"}
-                    alt={`${partner.name} logo`}
-                    width={200}
-                    height={80}
-                    className="mx-auto transition-transform duration-300 group-hover:scale-110 object-contain"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-red-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <CardTitle className="text-xl font-bold">{partner.name}</CardTitle>
-                <div className="flex items-center justify-center space-x-2 mt-2">
-                  {getTierIcon(partner.tier)}
-                  <Badge variant="secondary" className="text-xs">
-                    {partner.tier}
-                  </Badge>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-6">
-                <p className="text-sm text-muted-foreground text-center">
-                  {partner.description}
-                </p>
-
-                {/* Expertise Level */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Expertise Level</span>
-                    <span className="font-semibold text-primary">{partner.expertise}%</span>
+          {/* Section Header */}
+          <div className="mxd-block">
+            <div className="mxd-section-title pre-grid">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrtitle">
+                      <h2 className="reveal-type anim-uni-in-up">Certified<br />Excellence</h2>
+                    </div>
                   </div>
-                  <Progress 
-                    value={partner.expertise} 
-                    className="h-2"
-                  />
-                </div>
-
-                {/* Certifications */}
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-muted-foreground">Certifications</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {partner.certifications.map((cert, certIndex) => (
-                      <Badge 
-                        key={certIndex} 
-                        variant="outline" 
-                        className="text-xs bg-primary/5 border-primary/20"
-                      >
-                        {cert}
-                      </Badge>
-                    ))}
+                  <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrdescr">
+                      <p className="anim-uni-in-up">
+                        We maintain the highest level partnerships with industry leaders, ensuring our clients
+                        receive cutting-edge solutions backed by world-class expertise and support.
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                {/* Projects Completed */}
-                <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                  <span className="text-sm text-muted-foreground">Projects Completed</span>
-                  <span className="font-bold text-primary text-lg">{partner.projects}+</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+          {/* Partners Cards */}
+          <div className="mxd-block">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                {partners.map((partner, index) => (
+                  <motion.div
+                    key={partner.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    className="col-12 col-md-6 col-xl-4 mxd-grid-item"
+                  >
+                    <div className="bg-card border border-border/50 radius-m overflow-hidden h-full group hover:border-primary/20 transition-all duration-300">
+                      {/* Logo Area */}
+                      <div className="p-8 flex items-center justify-center border-b border-border/30 bg-secondary/5 relative overflow-hidden">
+                        <div className="relative w-full h-16 group-hover:scale-110 transition-transform duration-300">
+                          <Image
+                            src={partner.logo || "/placeholder.svg"}
+                            alt={`${partner.name} logo`}
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
 
-        {/* Bottom Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center animate-fadeInUp">
-          <div className="space-y-2">
-            <div className="text-3xl font-bold text-gradient">6</div>
-            <div className="text-sm text-muted-foreground">Premier Partners</div>
+                      {/* Content */}
+                      <div className="p-6 space-y-5">
+                        <div className="text-center">
+                          <h3 className="text-xl font-bold mb-2">{partner.name}</h3>
+                          <div className="flex items-center justify-center gap-2">
+                            {getTierIcon(partner.tier)}
+                            <span className="tag tag-default tag-permanent text-xs">{partner.tier}</span>
+                          </div>
+                        </div>
+
+                        <p className="text-sm text-muted-foreground text-center">{partner.description}</p>
+
+                        {/* Expertise Bar */}
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">Expertise Level</span>
+                            <span className="font-semibold text-primary">{partner.expertise}%</span>
+                          </div>
+                          <div className="w-full h-2 rounded-full bg-secondary/30 overflow-hidden">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              whileInView={{ width: `${partner.expertise}%` }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1, delay: index * 0.1 }}
+                              className="h-full rounded-full bg-primary"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Certifications */}
+                        <div className="space-y-2">
+                          <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Certifications</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {partner.certifications.map((cert, certIndex) => (
+                              <span
+                                key={certIndex}
+                                className="tag tag-default tag-permanent text-[10px] bg-primary/5 border border-primary/20"
+                              >
+                                {cert}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Projects */}
+                        <div className="flex items-center justify-between pt-4 border-t border-border/30">
+                          <span className="text-sm text-muted-foreground">Projects Completed</span>
+                          <span className="font-bold text-primary text-lg">{partner.projects}+</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="space-y-2">
-            <div className="text-3xl font-bold text-gradient">850+</div>
-            <div className="text-sm text-muted-foreground">Total Projects</div>
-          </div>
-          <div className="space-y-2">
-            <div className="text-3xl font-bold text-gradient">15+</div>
-            <div className="text-sm text-muted-foreground">Certifications</div>
-          </div>
-          <div className="space-y-2">
-            <div className="text-3xl font-bold text-gradient">100%</div>
-            <div className="text-sm text-muted-foreground">Success Rate</div>
-          </div>
+
         </div>
       </div>
-    </section>
+    </>
   )
 }

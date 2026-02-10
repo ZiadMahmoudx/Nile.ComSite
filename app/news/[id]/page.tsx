@@ -1,12 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { ArrowLeft, Calendar, Building2, Trophy, CalendarDays, MapPin, Share2, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { ArrowLeft, Calendar, Share2, Linkedin, Twitter, Facebook, ArrowRight } from 'lucide-react'
 
 // News data stored here for the dynamic route
 const newsItems = [
@@ -244,86 +239,113 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ id
     }
 
     return (
-        <div className="min-h-screen bg-background text-foreground">
-            <Header />
+        <div className="bg-background text-foreground">
             <main>
-                {/* Article Header */}
-                <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
-                    <div className="max-w-4xl mx-auto px-4">
-                        <Link href="/news" className="inline-flex items-center gap-2 text-primary hover:underline mb-8">
-                            <ArrowLeft className="w-4 h-4" />
-                            Back to News
-                        </Link>
+                {/* Article Header / Hero */}
+                <section className="mxd-section mxd-section-inner-headline padding-default">
+                    <div className="mxd-container grid-container">
+                        <div className="mxd-block">
+                            <div className="container-fluid px-0">
+                                <div className="row gx-0">
+                                    {/* Sidebar Spacing */}
+                                    <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                                        <div className="mxd-block__name name-inner-headline">
+                                            <p className="mxd-point-subtitle">
+                                                <span>Article</span>
+                                            </p>
+                                        </div>
+                                    </div>
 
-                        <Badge className="bg-primary/10 text-primary border-primary/20 mb-4">
-                            {news.category}
-                        </Badge>
+                                    {/* Main Content */}
+                                    <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                                        <div className="mxd-block__content">
+                                            <div className="inner-headline">
+                                                <Link href="/news" className="tag tag-default mb-8 inline-flex items-center gap-2">
+                                                    <ArrowLeft className="w-4 h-4" />
+                                                    Back to News
+                                                </Link>
 
-                        <h1 className="text-4xl lg:text-5xl font-black leading-tight mb-6">
-                            {news.title}
-                        </h1>
+                                                <div className="flex flex-wrap items-center gap-3 mb-6 anim-uni-in-up">
+                                                    <span className="tag tag-default bg-primary/10 text-primary border-primary/20">
+                                                        {news.category}
+                                                    </span>
+                                                    <div className="flex items-center gap-2 text-muted-foreground ml-4">
+                                                        <Calendar className="w-4 h-4" />
+                                                        <span className="t-small t-bright">{formatDate(news.date)}</span>
+                                                    </div>
+                                                </div>
 
-                        <div className="flex items-center gap-4 text-muted-foreground">
-                            <div className="flex items-center gap-2">
-                                <Calendar className="w-4 h-4" />
-                                {formatDate(news.date)}
+                                                <h1 className="inner-headline__title anim-uni-in-up">
+                                                    {news.title}
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Article Content */}
-                <section className="py-12">
-                    <div className="max-w-4xl mx-auto px-4">
-                        <Card className="border-2 border-border">
-                            <CardContent className="p-8 lg:p-12">
+                <section className="mxd-section padding-default pt-0">
+                    <div className="mxd-container">
+                        <div className="mxd-block max-w-5xl mx-auto">
+                            <div className="radius-m border-2 border-border p-8 lg:p-12 bg-background anim-uni-in-up">
                                 <article
                                     className="prose prose-lg dark:prose-invert max-w-none
-                    prose-headings:font-bold prose-headings:text-foreground
-                    prose-p:text-muted-foreground prose-p:leading-relaxed
-                    prose-li:text-muted-foreground
-                    prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:p-4 prose-blockquote:rounded-lg prose-blockquote:not-italic
-                    prose-ul:space-y-2"
+                                    prose-headings:font-bold prose-headings:text-foreground
+                                    prose-p:text-muted-foreground prose-p:leading-relaxed
+                                    prose-li:text-muted-foreground
+                                    prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:p-6 prose-blockquote:rounded-lg prose-blockquote:not-italic
+                                    prose-ul:space-y-2 prose-h2:mt-12 prose-h2:mb-6"
                                     dangerouslySetInnerHTML={{ __html: news.content }}
                                 />
-                            </CardContent>
-                        </Card>
 
-                        {/* Share Section */}
-                        <div className="mt-8 flex items-center justify-between flex-wrap gap-4">
-                            <div className="flex items-center gap-2 text-muted-foreground">
-                                <Share2 className="w-4 h-4" />
-                                <span>Share this article:</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Button variant="outline" size="icon" className="rounded-full">
-                                    <Linkedin className="w-4 h-4" />
-                                </Button>
-                                <Button variant="outline" size="icon" className="rounded-full">
-                                    <Twitter className="w-4 h-4" />
-                                </Button>
-                                <Button variant="outline" size="icon" className="rounded-full">
-                                    <Facebook className="w-4 h-4" />
-                                </Button>
+                                {/* Share Section */}
+                                <div className="mt-16 pt-8 border-t border-border flex items-center justify-between flex-wrap gap-4">
+                                    <div className="flex items-center gap-2 text-muted-foreground">
+                                        <Share2 className="w-4 h-4" />
+                                        <span className="font-bold">Share this article:</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <button className="btn btn-anim btn-default btn-outline btn-mobile-icon rounded-full p-3">
+                                            <Linkedin className="w-5 h-5 text-foreground" />
+                                        </button>
+                                        <button className="btn btn-anim btn-default btn-outline btn-mobile-icon rounded-full p-3">
+                                            <Twitter className="w-5 h-5 text-foreground" />
+                                        </button>
+                                        <button className="btn btn-anim btn-default btn-outline btn-mobile-icon rounded-full p-3">
+                                            <Facebook className="w-5 h-5 text-foreground" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </section>
 
-                        {/* CTA */}
-                        <Card className="mt-12 border-2 border-primary/20 bg-primary/5">
-                            <CardContent className="p-8 text-center">
-                                <h3 className="text-2xl font-bold mb-4">Stay Updated</h3>
-                                <p className="text-muted-foreground mb-6">
-                                    Subscribe to our newsletter for the latest news and updates from NILE.COM
-                                </p>
-                                <Button asChild className="btn-primary">
-                                    <Link href="/contact">Contact Us</Link>
-                                </Button>
-                            </CardContent>
-                        </Card>
+                {/* CTA */}
+                <section className="mxd-section padding-default bg-secondary/5">
+                    <div className="mxd-container">
+                        <div className="mxd-block text-center max-w-4xl mx-auto anim-uni-in-up">
+                            <h2 className="text-4xl font-bold mb-4">Stay Informed</h2>
+                            <p className="t-bright t-large mb-8">
+                                Subscribe to our newsletter for the latest news and technology updates from NILE.COM.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Link className="btn btn-anim btn-default" href="/contact">
+                                    <span className="btn-caption">Contact Our Team</span>
+                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                </Link>
+                                <Link className="btn btn-anim btn-default btn-outline" href="/news">
+                                    <span className="btn-caption">View All News</span>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </main>
-            <Footer />
         </div>
     )
 }

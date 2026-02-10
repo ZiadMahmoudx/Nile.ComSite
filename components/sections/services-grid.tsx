@@ -1,11 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Settings, Lightbulb, Users, Headphones, Zap, ArrowRight, CheckCircle, Clock, Target, Shield } from 'lucide-react'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
+import Image from 'next/image'
+import { Settings, Lightbulb, Users, Headphones, Zap, ArrowRight, ArrowUpRight, CheckCircle, Clock, Target, Shield } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const services = [
   {
@@ -13,42 +11,42 @@ const services = [
     title: "Automation Services",
     description: "Streamline operations with intelligent automation solutions",
     features: ["Process automation", "RPA implementation", "Workflow optimization", "System integration"],
-    color: "from-primary to-primary/70"
+    image: '/media/real/automation.jpg',
   },
   {
     icon: Lightbulb,
     title: "IT Consulting",
     description: "Strategic guidance for your digital transformation journey",
     features: ["IT strategy", "Technology assessment", "Architecture design", "Vendor management"],
-    color: "from-primary to-primary/70"
+    image: '/media/real/consulting.jpg',
   },
   {
     icon: Settings,
     title: "Implementation Services",
     description: "Expert deployment and configuration of IT solutions",
     features: ["Solution design", "System deployment", "Data migration", "Go-live support"],
-    color: "from-primary to-primary/70"
+    image: '/media/real/implementation.jpg',
   },
   {
     icon: Users,
     title: "Managed Services",
     description: "Comprehensive IT operations and infrastructure management",
     features: ["24/7 monitoring", "Proactive maintenance", "Security management", "Performance tuning"],
-    color: "from-primary to-primary/70"
+    image: '/media/real/managed_services.jpg',
   },
   {
     icon: Headphones,
     title: "Support Services",
     description: "Reliable technical support and helpdesk services",
     features: ["24/7 helpdesk", "Remote support", "On-site service", "SLA management"],
-    color: "from-primary to-primary/70"
+    image: '/media/real/support.jpg',
   },
   {
     icon: Shield,
     title: "Security Services",
     description: "Protect your business with enterprise-grade security",
     features: ["Threat detection", "Compliance audits", "Incident response", "Security training"],
-    color: "from-primary to-primary/70"
+    image: '/media/real/security_managed.jpg',
   }
 ]
 
@@ -61,139 +59,216 @@ const processSteps = [
 
 const ServicesGrid = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-muted/20 to-background">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Section header */}
-        <ScrollAnimation animation="fade-up">
-          <div className="text-center space-y-4 mb-16">
-            <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2">
-              <Settings className="w-4 h-4 mr-2" />
-              What We Offer
-            </Badge>
-            <h2 className="text-4xl lg:text-5xl font-black">
-              <span className="text-gradient">Our Service</span>
-              <span className="text-foreground"> Offerings</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive services to meet all your IT needs.
-            </p>
-          </div>
-        </ScrollAnimation>
+    <>
+      {/* Services Grid Section */}
+      <div className="mxd-section overflow-hidden padding-default">
+        <div className="mxd-container grid-container">
 
-        {/* Services grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
-          {services.map((service, index) => {
-            const IconComponent = service.icon
-            return (
-              <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
-                <Card className="h-full group border-2 border-border hover:border-primary/50 bg-card transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                  <CardContent className="p-6 space-y-4">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-3 shadow-lg group-hover:scale-110 transition-transform`}>
-                      <IconComponent className="w-8 h-8 text-white" />
+          {/* Section Title */}
+          <div className="mxd-block">
+            <div className="mxd-section-title pre-grid">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrtitle">
+                      <h2 className="reveal-type anim-uni-in-up">What We<br />Offer</h2>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {service.description}
-                      </p>
+                  </div>
+                  <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrdescr">
+                      <p className="anim-uni-in-up">Comprehensive services to meet all your IT needs, from automation to security.</p>
                     </div>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="pt-4 border-t border-border/50">
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 transition-all"
-                      >
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <div className="col-12 col-xl-3 mxd-grid-item no-margin">
+                    <div className="mxd-section-title__hrcontrols anim-uni-in-up">
+                      <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/contact">
+                        <span className="btn-caption">Request Consultation</span>
+                        <ArrowRight className="w-5 h-5 ml-2" />
                       </Link>
                     </div>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-            )
-          })}
-        </div>
-
-        {/* Process Section */}
-        <ScrollAnimation animation="fade-up">
-          <Card className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 mb-24">
-            <CardContent className="p-8 md:p-12">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl font-black text-gradient mb-4">Our Process</h3>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  A proven methodology to ensure successful project delivery.
-                </p>
-              </div>
-              <div className="grid md:grid-cols-4 gap-8">
-                {processSteps.map((step, index) => (
-                  <div key={index} className="text-center space-y-4 relative">
-                    <div className="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center font-black text-xl shadow-lg">
-                      {step.number}
-                    </div>
-                    {index < processSteps.length - 1 && (
-                      <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-0.5 bg-primary/20" />
-                    )}
-                    <h4 className="font-bold text-lg">{step.title}</h4>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
                   </div>
-                ))}
+                </div>
               </div>
-            </CardContent>
-          </Card>
-        </ScrollAnimation>
+            </div>
+          </div>
 
-        {/* Benefits & CTA */}
-        <ScrollAnimation animation="fade-up">
-          <Card className="border-2 border-border">
-            <CardContent className="p-8 md:p-12">
-              <div className="text-center space-y-8">
-                <h3 className="text-3xl font-black">
-                  <span className="text-foreground">Why Choose </span>
-                  <span className="text-gradient">Our Services?</span>
-                </h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  {[
-                    { icon: Clock, title: "Faster Results", desc: "Accelerate with proven methodologies" },
-                    { icon: Target, title: "Guaranteed Quality", desc: "Clear SLAs and performance guarantees" },
-                    { icon: Shield, title: "Risk Mitigation", desc: "Comprehensive planning and testing" }
-                  ].map((benefit, index) => (
-                    <div key={index} className="text-center space-y-3">
-                      <div className="w-14 h-14 mx-auto rounded-xl bg-gradient-to-br from-primary to-primary/70 p-3 shadow-lg">
-                        <benefit.icon className="w-8 h-8 text-white" />
+          {/* Services Blog-Preview Grid */}
+          <div className="mxd-block">
+            <div className="mxd-blog-preview">
+              <div className="container-fluid p-0">
+                <div className="row g-0">
+                  {services.map((service, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="col-12 col-xl-4 mxd-blog-preview__item mxd-grid-item animate-card-3 group"
+                    >
+                      <Link className="mxd-blog-preview__media block relative overflow-hidden" href="/contact">
+                        <div className="mxd-blog-preview__image blog-preview-image-1 parallax-img-small relative h-[300px] overflow-hidden">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        </div>
+
+                        <div className="mxd-preview-hover">
+                          <i className="mxd-preview-hover__icon flex items-center justify-center">
+                            <ArrowRight className="w-6 h-6 text-white" />
+                          </i>
+                        </div>
+
+                        <div className="mxd-blog-preview__tags top-4 left-4 absolute">
+                          {service.features.slice(0, 2).map((feature, idx) => (
+                            <span key={idx} className="tag tag-default tag-permanent bg-background/80 backdrop-blur text-xs mr-2 mb-2">{feature}</span>
+                          ))}
+                        </div>
+                      </Link>
+                      <div className="mxd-blog-preview__data p-6">
+                        <Link className="anim-uni-in-up block" href="/contact">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="p-2 rounded-lg bg-primary/10 border border-primary/20 text-primary">
+                              <service.icon className="w-5 h-5" />
+                            </div>
+                            <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{service.title}</h3>
+                          </div>
+                          <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
+                          <ul className="space-y-1.5">
+                            {service.features.map((feature, i) => (
+                              <li key={i} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                <CheckCircle className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </Link>
                       </div>
-                      <h4 className="font-bold">{benefit.title}</h4>
-                      <p className="text-sm text-muted-foreground">{benefit.desc}</p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                  <Button size="lg" className="btn-primary px-8 py-4 font-bold rounded-xl" asChild>
-                    <Link href="/contact">
-                      Request Consultation
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </Link>
-                  </Button>
-                  <Button size="lg" variant="outline" className="btn-outline px-8 py-4 font-bold rounded-xl" asChild>
-                    <Link href="/solutions">
-                      Explore Solutions
-                    </Link>
-                  </Button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Process Section */}
+      <div className="mxd-section padding-default bg-secondary/5">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                  <div className="mxd-section-title__hrtitle mb-12">
+                    <h2 className="reveal-type anim-uni-in-up">Our Process</h2>
+                    <p className="t-large t-bright mt-4 anim-uni-in-up">A proven methodology to ensure successful project delivery.</p>
+                  </div>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </ScrollAnimation>
+            </div>
+          </div>
+
+          <div className="mxd-block">
+            <div className="mxd-awards-list hover-reveal">
+              {processSteps.map((step, idx) => (
+                <div key={idx} className="mxd-awards-list__item">
+                  <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                  <div className="mxd-awards-list__inner">
+                    <div className="container-fluid px-0">
+                      <div className="row gx-0 align-items-center">
+                        <div className="col-4 col-xl-2 mxd-grid-item no-margin">
+                          <div className="mxd-awards-list__date anim-uni-in-up">
+                            <p className="text-4xl font-black text-primary">{step.number}</p>
+                          </div>
+                        </div>
+                        <div className="col-8 col-xl-5 mxd-grid-item no-margin">
+                          <div className="mxd-awards-list__title anim-uni-in-up">
+                            <div className="mxd-awards-list__icon">
+                              <ArrowUpRight className="w-5 h-5" />
+                            </div>
+                            <p>{step.title}</p>
+                          </div>
+                        </div>
+                        <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                          <div className="mxd-awards-list__tagslist">
+                            <ul>
+                              <li className="anim-uni-in-up"><p className="t-small">{step.description}</p></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+
+      {/* Why Choose Us / CTA Section */}
+      <div className="mxd-section padding-default">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div className="mxd-section-title__hrtitle">
+                    <h2 className="reveal-type anim-uni-in-up">Why Choose<br />Our Services?</h2>
+                  </div>
+                </div>
+                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                  <div className="mxd-section-title__hrdescr anim-uni-in-up">
+                    <div className="container-fluid p-0">
+                      <div className="row g-4">
+                        {[
+                          { icon: Clock, title: "Faster Results", desc: "Accelerate with proven methodologies" },
+                          { icon: Target, title: "Guaranteed Quality", desc: "Clear SLAs and performance guarantees" },
+                          { icon: Shield, title: "Risk Mitigation", desc: "Comprehensive planning and testing" }
+                        ].map((benefit, index) => (
+                          <div key={index} className="col-12 col-md-4">
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.1 }}
+                              className="flex flex-col gap-3 group"
+                            >
+                              <div className="p-3 rounded-xl bg-primary/10 border border-primary/20 text-primary w-fit group-hover:scale-110 transition-transform">
+                                <benefit.icon className="w-6 h-6" />
+                              </div>
+                              <h4 className="font-bold text-lg">{benefit.title}</h4>
+                              <p className="text-sm text-muted-foreground">{benefit.desc}</p>
+                            </motion.div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-4 mt-10">
+                      <Link className="btn btn-anim btn-default btn-opposite slide-right-up" href="/contact">
+                        <span className="btn-caption">Request Consultation</span>
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Link>
+                      <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/solutions">
+                        <span className="btn-caption">Explore Solutions</span>
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -8,7 +8,6 @@ import Contact from '@/components/sections/contact'
 import LocalBusinessStructuredData from '@/components/seo/local-business-structured-data'
 import { ScrollAnimation } from '@/components/ui/scroll-animation'
 import CompanyIntro from '@/components/sections/company-intro'
-import { ParticleNetwork } from '@/components/ui/particle-network'
 
 export default function HomePage() {
   return (
@@ -35,10 +34,7 @@ export default function HomePage() {
         ]}
       />
 
-      {/* Background Particles - Removed to move back to Hero per user request */}
-      {/* <div className="fixed inset-0 z-20 pointer-events-none">
-        <ParticleNetwork particleCount={100} particleColor="rgba(159, 34, 32, 0.6)" lineColor="rgba(159, 34, 32, 0.2)" />
-      </div> */}
+
 
       <div className="relative z-10">
         <Hero />
