@@ -48,24 +48,24 @@ export default function Hero() {
                   </div>
                 </motion.div>
                 {/* title text */}
-                <h1 className="hero-01-title relative z-20 mb-16">
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
+                <h1 className="hero-01-title relative z-20 mb-16 flex flex-col items-center justify-center">
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="hero-01-title__row flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-center"
+                    className="flex flex-wrap items-center justify-center gap-[2vw] leading-none"
                   >
-                    <span className="hero-01-title__item text-[12vw] sm:text-[8vw] lg:text-[6.5vw] font-black tracking-tight leading-none">Transform</span>
-                    <span className="hero-01-title__item text-primary px-8 py-3 border-2 border-primary/10 rounded-full bg-primary/5 text-[5vw] sm:text-[3vw] lg:text-[2.5vw] font-bold">Your</span>
-                  </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0, y: 20 }}
+                    <span className="text-[9vw] lg:text-[6.5vw] font-bold tracking-tighter text-foreground">Transform</span>
+                    <span className="text-[9vw] lg:text-[6.5vw] font-bold tracking-tighter text-muted-foreground">Your</span>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="hero-01-title__row flex justify-center items-center text-center mt-6"
+                    className="leading-none mt-[-0.5vw]"
                   >
-                    <span className="hero-01-title__item text-[12vw] sm:text-[8vw] lg:text-[7.5vw] font-black tracking-tighter leading-none italic uppercase">Business</span>
-                  </motion.span>
+                    <span className="text-[12vw] lg:text-[9vw] font-black tracking-tighter text-primary uppercase">Business</span>
+                  </motion.div>
                 </h1>
               </div>
             </div>
