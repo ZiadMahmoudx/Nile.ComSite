@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 /* ── Rayo-style Star/Sparkle SVG (the "+" icon used in the template) ── */
 const SparkleIcon = () => (
@@ -154,7 +155,7 @@ export function RayoHeader() {
                                     {/* ── LEFT: Menu Items ── */}
                                     <div className="mxd-menu__left">
                                         <p className="mxd-menu__caption menu-fade-in" style={{ color: 'var(--t-opp-medium)' }}>
-                                            🏢 Innovative IT solutions<br />and cutting-edge technology
+                                            Innovative IT solutions<br />and cutting-edge technology
                                         </p>
                                         <div className="main-menu">
                                             <nav className="main-menu__content">
@@ -233,7 +234,7 @@ export function RayoHeader() {
                                                     transition={{ delay: 0.5, duration: 0.4 }}
                                                     style={{ color: 'var(--t-opp-medium)' }}
                                                 >
-                                                    👋 Welcome to NILE.COM!<br />
+                                                    Welcome to NILE.COM<br />
                                                     Your trusted IT partner in the Middle East since 2005.
                                                 </motion.p>
                                                 <motion.div
@@ -249,7 +250,7 @@ export function RayoHeader() {
                                                         loop
                                                         muted
                                                         playsInline
-                                                        poster="/media/real/team_collaboration.jpg"
+                                                        poster="/media/real/office_interior.jpg"
                                                     >
                                                         <source type="video/mp4" src="/video/540x310_video.mp4" />
                                                         <source type="video/webm" src="/video/540x310_video.webm" />
@@ -275,7 +276,7 @@ export function RayoHeader() {
                                             </a>
                                         </p>
                                         <p className="t-xsmall" style={{ color: 'var(--t-opp-medium)' }}>
-                                            © 2025
+                                            © 2026
                                         </p>
                                     </motion.div>
 
@@ -315,7 +316,8 @@ export function RayoHeader() {
                 </div>
 
                 {/* Controls */}
-                <div className="mxd-header__controls">
+                <div className="mxd-header__controls flex items-center gap-4">
+                    <ThemeToggle />
                     <Link
                         href="/contact"
                         className="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up"
