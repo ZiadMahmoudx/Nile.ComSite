@@ -50,11 +50,14 @@ export default function CompanyIntro() {
                                             <h1 className="inner-headline__title reveal-type">
                                                 Innovating for a <span className="text-primary">Digital Future</span>
                                             </h1>
-                                            <p className="inner-headline__text text-lg sm:text-xl text-muted-foreground leading-relaxed mt-6 reveal-type">
-                                                For over 25 years, we've been at the forefront of technological evolution in Egypt.
+
+                                            <p className="inner-headline__text text-xl md:text-2xl text-muted-foreground leading-relaxed mt-8 reveal-type">
+                                                For over 25 years, we&apos;ve been at the forefront of technological evolution in Egypt.
                                                 Our journey is defined by a relentless pursuit of excellence and a passion for
                                                 empowering businesses through cutting-edge IT solutions.
                                             </p>
+
+
                                         </div>
                                     </div>
                                 </div>

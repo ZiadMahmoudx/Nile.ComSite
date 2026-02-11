@@ -49,7 +49,7 @@ const menuItems: MenuItem[] = [
         ],
     },
     {
-        label: 'Pages',
+        label: 'Company',
         href: '#',
         submenu: [
             { label: 'About Us', href: '/about' },
@@ -290,15 +290,12 @@ export function RayoHeader() {
                         <Image
                             src="/nile-logo.png"
                             alt="NILE.COM"
-                            width={56}
-                            height={56}
-                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-110"
-                            style={{ width: '5.6rem', height: 'auto' }}
+                            width={120}
+                            height={40}
+                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-105"
+                            style={{ width: '9rem', height: 'auto' }}
                             priority
                         />
-                        <span className="mxd-logo__text">
-                            NILE<span style={{ display: 'block', fontSize: '0.5em', letterSpacing: '0.25em', opacity: 0.7 }}>.COM</span>
-                        </span>
                     </Link>
                 </div>
 
