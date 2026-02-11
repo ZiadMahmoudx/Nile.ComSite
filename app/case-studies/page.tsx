@@ -1,12 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { ArrowRight, BookOpen } from 'lucide-react'
-import { ParticleNetwork } from '@/components/ui/particle-network'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
+import { ArrowUpRight, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const caseStudies = [
   {
@@ -17,7 +13,7 @@ const caseStudies = [
     challenge: 'Modernizing legacy systems while maintaining 24/7 availability',
     solution: 'Implemented hybrid cloud infrastructure with zero downtime migration',
     results: '40% cost reduction, 60% performance improvement',
-    tags: ['Cloud Migration', 'Financial Services']
+    tags: ['Cloud Migration', 'Financial Services'],
   },
   {
     id: 'healthcare-cloud-migration',
@@ -27,7 +23,7 @@ const caseStudies = [
     challenge: 'Achieving HIPAA compliance and protecting patient data',
     solution: 'Deployed zero-trust architecture with advanced threat protection',
     results: '100% compliance achieved, 99.99% uptime',
-    tags: ['Cybersecurity', 'Healthcare']
+    tags: ['Cybersecurity', 'Healthcare'],
   },
   {
     id: 'retail-security-overhaul',
@@ -37,7 +33,7 @@ const caseStudies = [
     challenge: 'Scaling infrastructure to support e-commerce growth',
     solution: 'Built scalable cloud-native architecture with auto-scaling',
     results: '300% traffic handling increase, 50% faster loads',
-    tags: ['Infrastructure', 'Retail']
+    tags: ['Infrastructure', 'Retail'],
   },
   {
     id: 'telecom-network-upgrade',
@@ -47,7 +43,7 @@ const caseStudies = [
     challenge: 'Upgrading network infrastructure for 5G readiness',
     solution: 'Deployed next-generation SD-WAN and 5G infrastructure',
     results: '10x network capacity, 40% latency reduction',
-    tags: ['Networking', 'Telecommunications']
+    tags: ['Networking', 'Telecommunications'],
   }
 ]
 
@@ -55,107 +51,142 @@ export default function CaseStudiesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-background">
-        <ParticleNetwork
-          particleCount={60}
-          particleColor="rgba(159, 34, 32, 0.5)"
-          lineColor="rgba(159, 34, 32, 0.08)"
-          maxDistance={120}
-          speed={0.2}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 text-center">
-          <ScrollAnimation animation="fade-up">
-            <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-6">
-              <BookOpen className="w-4 h-4 mr-2" />
-              Success Stories
-            </Badge>
-          </ScrollAnimation>
-
-          <ScrollAnimation animation="fade-up" delay={0.1}>
-            <h1 className="text-5xl lg:text-7xl font-black leading-tight mb-6">
-              <span className="text-foreground">Client</span>
-              <br />
-              <span className="text-gradient">Case Studies</span>
-            </h1>
-          </ScrollAnimation>
-
-          <ScrollAnimation animation="fade-up" delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore how we've helped organizations transform their IT infrastructure.
-            </p>
-          </ScrollAnimation>
+      <div className="mxd-section mxd-section-inner-headline padding-s-headline-pre-grid">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block loading-wrap">
+            <div className="container-fluid px-0">
+              <div className="row gx-0">
+                <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                  <div className="mxd-block__name name-inner-headline">
+                    <p className="mxd-point-subtitle">
+                      <span className="relative flex h-3 w-3 mr-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                      </span>
+                      <span>Case Studies</span>
+                    </p>
+                  </div>
+                </div>
+                <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                  <div className="mxd-block__content">
+                    <div className="mxd-block__inner-headline">
+                      <h1 className="inner-headline__title">
+                        Client <span className="text-primary">Success Stories</span>
+                      </h1>
+                      <p className="inner-headline__text t-large t-bright mt-6">
+                        Explore how we've helped organizations transform their IT infrastructure and achieve measurable results.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
-      {/* Case Studies Grid */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid gap-8">
-            {caseStudies.map((study, index) => (
-              <ScrollAnimation key={index} animation="fade-up" delay={index * 0.1}>
-                <Card className="group border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl">
-                  <CardHeader>
-                    <div className="flex flex-wrap items-center justify-between gap-4">
-                      <div>
-                        <CardTitle className="text-2xl group-hover:text-primary transition-colors">
-                          {study.title}
-                        </CardTitle>
-                        <CardDescription className="mt-2">
-                          <span className="font-semibold">{study.client}</span> • {study.industry}
-                        </CardDescription>
+      {/* Case Studies List */}
+      <div className="mxd-section padding-default">
+        <div className="mxd-container grid-container">
+          <div className="mxd-block">
+            <div className="mxd-services-list grid-top">
+              {caseStudies.map((study, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="mxd-services-list__item group"
+                >
+                  <div className="mxd-services-list__border anim-uni-in-up"></div>
+                  <div className="mxd-services-list__inner">
+                    <div className="container-fluid px-0">
+                      <div className="row gx-0">
+                        {/* Title & Client */}
+                        <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                          <div className="mxd-services-list__title anim-uni-in-up">
+                            <div className="mxd-services-list__icon">
+                              <ArrowUpRight className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <p className="group-hover:text-primary transition-colors">{study.title}</p>
+                              <span className="text-sm text-muted-foreground block mt-1 font-normal">
+                                {study.client} &bull; {study.industry}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Challenge / Solution / Results */}
+                        <div className="col-12 col-xl-5 mxd-grid-item no-margin">
+                          <div className="mxd-services-list__descr anim-uni-in-up">
+                            <div className="space-y-3">
+                              <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-primary">Challenge</span>
+                                <p className="t-small mt-1">{study.challenge}</p>
+                              </div>
+                              <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-primary">Results</span>
+                                <p className="t-small mt-1">{study.results}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Tags & CTA */}
+                        <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                          <div className="mxd-services-list__tagslist anim-uni-in-up">
+                            <div className="flex flex-wrap gap-2 mb-4">
+                              {study.tags.map((tag, i) => (
+                                <span key={i} className="tag tag-default tag-permanent text-xs bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                            <Link href={`/case-studies/${study.id}`} className="btn btn-anim btn-default btn-outline btn-s slide-right-up">
+                              <span className="btn-caption">View</span>
+                              <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">Challenge</h3>
-                        <p className="text-sm text-muted-foreground">{study.challenge}</p>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">Solution</h3>
-                        <p className="text-sm text-muted-foreground">{study.solution}</p>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">Results</h3>
-                        <p className="text-sm text-muted-foreground">{study.results}</p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 mt-6">
-                      {study.tags.map((tag, i) => (
-                        <Badge key={i} variant="secondary">{tag}</Badge>
-                      ))}
-                    </div>
-
-                    <Button asChild variant="outline" className="mt-6 group">
-                      <Link href={`/case-studies/${study.id}`}>
-                        View Full Case Study
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-            ))}
+                  </div>
+                  <div className="mxd-services-list__border anim-uni-in-up"></div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <ScrollAnimation animation="fade-up" delay={0.3}>
-            <div className="text-center mt-12">
-              <Card className="border-2 border-primary/20 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5">
-                <CardContent className="p-12 text-center">
-                  <h3 className="text-2xl font-black text-gradient mb-4">Have a project in mind?</h3>
-                  <p className="text-muted-foreground mb-6">Let us help you achieve similar success.</p>
-                  <Button asChild size="lg" className="btn-primary px-8 py-4 font-bold rounded-xl">
-                    <Link href="/contact">Get Started Today</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+          {/* CTA */}
+          <div className="mxd-block">
+            <div className="container-fluid p-0">
+              <div className="row g-0">
+                <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
+                <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                  <div className="mxd-block__content text-center">
+                    <div className="mxd-block__inner-headline">
+                      <h2 className="inner-headline__title anim-uni-in-up">
+                        Have a project<br />in mind?
+                      </h2>
+                      <p className="inner-headline__text t-large t-bright mt-6 anim-uni-in-up">
+                        Let us help you achieve similar success with a tailored IT solution.
+                      </p>
+                      <div className="flex justify-center mt-10 anim-uni-in-up">
+                        <Link className="btn btn-anim btn-default btn-opposite slide-right-up" href="/contact">
+                          <span className="btn-caption">Get Started Today</span>
+                          <ArrowUpRight className="w-5 h-5 ml-2" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </ScrollAnimation>
+          </div>
         </div>
-      </section>
+      </div>
     </>
   )
 }

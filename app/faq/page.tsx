@@ -1,10 +1,8 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
+import Link from 'next/link'
 import { FAQAccordion } from '@/components/ui/faq-accordion'
-import { ParticleNetwork } from '@/components/ui/particle-network'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
-import { HelpCircle } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 const faqItems = [
     {
@@ -45,47 +43,82 @@ export default function FAQPage() {
     return (
         <>
             {/* Hero Section */}
-            <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-background">
-                <ParticleNetwork
-                    particleCount={50}
-                    particleColor="rgba(159, 34, 32, 0.5)"
-                    lineColor="rgba(159, 34, 32, 0.08)"
-                    maxDistance={120}
-                    speed={0.2}
-                />
-
-                <div className="relative z-10 max-w-4xl mx-auto px-4 py-20 text-center">
-                    <ScrollAnimation animation="fade-up">
-                        <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 mb-6">
-                            <HelpCircle className="w-4 h-4 mr-2" />
-                            Support Center
-                        </Badge>
-                    </ScrollAnimation>
-
-                    <ScrollAnimation animation="fade-up" delay={0.1}>
-                        <h1 className="text-5xl lg:text-6xl font-black leading-tight mb-6">
-                            <span className="text-foreground">Frequently Asked</span>
-                            <br />
-                            <span className="text-gradient">Questions</span>
-                        </h1>
-                    </ScrollAnimation>
-
-                    <ScrollAnimation animation="fade-up" delay={0.2}>
-                        <p className="text-xl text-muted-foreground">
-                            Find answers to common questions about our services, solutions, and company.
-                        </p>
-                    </ScrollAnimation>
+            <div className="mxd-section mxd-section-inner-headline padding-s-headline-pre-grid">
+                <div className="mxd-container grid-container">
+                    <div className="mxd-block loading-wrap">
+                        <div className="container-fluid px-0">
+                            <div className="row gx-0">
+                                <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                                    <div className="mxd-block__name name-inner-headline">
+                                        <p className="mxd-point-subtitle">
+                                            <span className="relative flex h-3 w-3 mr-2">
+                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                                            </span>
+                                            <span>FAQ</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="col-12 col-xl-10 mxd-grid-item no-margin">
+                                    <div className="mxd-block__content">
+                                        <div className="mxd-block__inner-headline">
+                                            <h1 className="inner-headline__title">
+                                                Frequently Asked <span className="text-primary">Questions</span>
+                                            </h1>
+                                            <p className="inner-headline__text t-large t-bright mt-6">
+                                                Find answers to common questions about our services, solutions, and company.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            {/* FAQ Section */}
-            <section className="py-20">
-                <div className="max-w-3xl mx-auto px-4">
-                    <ScrollAnimation animation="fade-up">
-                        <FAQAccordion items={faqItems} />
-                    </ScrollAnimation>
+            {/* FAQ Content */}
+            <div className="mxd-section padding-default">
+                <div className="mxd-container grid-container">
+                    <div className="mxd-block">
+                        <div className="container-fluid px-0">
+                            <div className="row gx-0">
+                                <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
+                                <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                                    <FAQAccordion items={faqItems} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="mxd-block">
+                        <div className="container-fluid p-0">
+                            <div className="row g-0">
+                                <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
+                                <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                                    <div className="mxd-block__content text-center">
+                                        <div className="mxd-block__inner-headline">
+                                            <h2 className="inner-headline__title anim-uni-in-up">
+                                                Still have questions?
+                                            </h2>
+                                            <p className="inner-headline__text t-large t-bright mt-6 anim-uni-in-up">
+                                                Our team is here to help. Reach out and we'll get back to you within 24 hours.
+                                            </p>
+                                            <div className="flex justify-center mt-10 anim-uni-in-up">
+                                                <Link className="btn btn-anim btn-default btn-opposite slide-right-up" href="/contact">
+                                                    <span className="btn-caption">Contact Us</span>
+                                                    <ArrowUpRight className="w-5 h-5 ml-2" />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
         </>
     )
 }

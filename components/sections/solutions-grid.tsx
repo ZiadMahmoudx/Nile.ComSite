@@ -33,7 +33,7 @@ const solutions = [
     title: 'Infrastructure',
     description: 'Robust IT infrastructure solutions designed for scalability and performance.',
     features: ['Hybrid Cloud Setup', 'Load Balancing', 'Disaster Recovery', 'Performance Tuning'],
-    image: '/media/real/infrastructure.jpg',
+    image: '/media/real/implementation.jpg',
     category: 'Infrastructure'
   },
   {
@@ -63,7 +63,7 @@ const solutions = [
     title: 'Network Solutions',
     description: 'High-performance networking solutions for seamless connectivity and communication.',
     features: ['SD-WAN Implementation', 'Network Security', '5G Integration', 'IoT Connectivity'],
-    image: '/media/real/network_solutions.jpg',
+    image: '/media/real/managed_services.jpg',
     category: 'Networking'
   }
 ]

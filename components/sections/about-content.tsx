@@ -48,7 +48,7 @@ const AboutContent = () => {
 
                   {/* Description Column (Story) */}
                   <div className="col-12 col-xl-6 mxd-values__item order-3 order-xl-3 mobile-reverse mxd-grid-item no-margin">
-                    <div className="mxd-values__image image-small-desktop" style={{ backgroundImage: 'url(/images/thumb.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                    <div className="mxd-values__image image-small-desktop" style={{ backgroundImage: 'url(/media/real/tech_workspace.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                     <div className="mxd-values__descr has-top-list anim-uni-in-up">
                       <p className="t-bright t-large">
                         Founded in 1999, NILE.COM began with a simple mission: to help Egyptian businesses harness the power of technology for growth and success.
@@ -107,7 +107,7 @@ const AboutContent = () => {
       <div className="mxd-section padding-pre-title">
         <div className="mxd-container">
           <div className="mxd-divider">
-            <div className="mxd-divider__image" style={{ backgroundImage: 'url(/media/real/team_collaboration.jpg)', backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center', height: '60vh' }}></div>
+            <div className="mxd-divider__image" style={{ backgroundImage: 'url(/media/real/office_interior.jpg)', backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center', height: '60vh' }}></div>
           </div>
         </div>
       </div>
@@ -142,36 +142,41 @@ const AboutContent = () => {
           <div className="mxd-block">
             <div className="mxd-awards-list hover-reveal">
               {[
-                { year: '2024', title: 'AI Integration', desc: 'Leading with AI & Automation' },
-                { year: '2020', title: 'Remote Solutions', desc: 'Accelerated Remote Work' },
-                { year: '2015', title: 'Digital Transformation', desc: 'Consulting Services Launch' },
-                { year: '2010', title: 'Cloud Pioneer', desc: 'Early Cloud Adoption' },
-                { year: '2005', title: 'Enterprise Focus', desc: 'Expanded to Enterprise' },
-                { year: '1999', title: 'Company Founded', desc: 'Established in Egypt' }
+                { year: '2024', title: 'AI Integration', desc: 'Leading with AI & Automation', image: '/media/real/automation.jpg' },
+                { year: '2020', title: 'Remote Solutions', desc: 'Accelerated Remote Work', image: '/media/real/tech_workspace.jpg' },
+                { year: '2015', title: 'Digital Transformation', desc: 'Consulting Services Launch', image: '/media/real/digital_transformation.jpg' },
+                { year: '2010', title: 'Cloud Pioneer', desc: 'Early Cloud Adoption', image: '/media/real/cloud_migration.jpg' },
+                { year: '2005', title: 'Enterprise Focus', desc: 'Expanded to Enterprise', image: '/media/real/consulting.jpg' },
+                { year: '1999', title: 'Company Founded', desc: 'Established in Egypt', image: '/media/real/office_interior.jpg' }
               ].map((item, idx) => (
-                <div key={idx} className="mxd-awards-list__item">
+                <div key={idx} className="mxd-awards-list__item hover-reveal__item cursor-pointer">
                   <div className="mxd-awards-list__border anim-uni-in-up"></div>
+                  <div className="hover-reveal__content overflow-visible hover-reveal-260x260">
+                    <img className="hover-reveal__image" src={item.image} alt={item.title} />
+                  </div>
                   <div className="mxd-awards-list__inner">
                     <div className="container-fluid px-0">
-                      <div className="row gx-0">
-                        <div className="col-12 col-xl-8 mxd-grid-item no-margin">
+                      <div className="row gx-0 align-items-center">
+                        <div className="col-12 col-xl-2 mxd-grid-item no-margin">
+                          <div className="mxd-awards-list__date anim-uni-in-up">
+                            <p className="text-4xl font-black text-primary/20 group-hover:text-primary transition-colors duration-500">{item.year}</p>
+                          </div>
+                        </div>
+                        <div className="col-12 col-xl-6 mxd-grid-item no-margin">
                           <div className="mxd-awards-list__title anim-uni-in-up">
                             <div className="mxd-awards-list__icon">
-                              <ArrowUpRight className="w-5 h-5" />
+                              <ArrowUpRight className="w-6 h-6" />
                             </div>
-                            <p>{item.title}</p>
+                            <p className="text-2xl font-bold">{item.title}</p>
                           </div>
                         </div>
-                        <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
-                          <div className="mxd-awards-list__tagslist">
+                        <div className="col-12 col-xl-4 mxd-grid-item no-margin">
+                          <div className="mxd-awards-list__tagslist text-right">
                             <ul>
-                              <li className="anim-uni-in-up"><p className="t-small">{item.desc}</p></li>
+                              <li className="anim-uni-in-up">
+                                <span className="tag tag-default tag-permanent bg-black/5 dark:bg-white/5 border-black/10 dark:border-white/10">{item.desc}</span>
+                              </li>
                             </ul>
-                          </div>
-                        </div>
-                        <div className="col-6 col-md-6 col-xl-2 mxd-grid-item no-margin">
-                          <div className="mxd-awards-list__date anim-uni-in-up">
-                            <p className="t-small">{item.year}</p>
                           </div>
                         </div>
                       </div>

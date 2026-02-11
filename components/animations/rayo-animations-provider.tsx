@@ -25,12 +25,12 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
             gsap.from(text.chars, {
                 scrollTrigger: {
                     trigger: element,
-                    start: 'top 80%',
-                    end: 'top 20%',
+                    start: 'top 90%',
+                    end: 'top 50%',
                     scrub: true,
                 },
-                opacity: 0.2,
-                stagger: 0.1,
+                opacity: 0.15,
+                stagger: 0.05,
             })
         })
 

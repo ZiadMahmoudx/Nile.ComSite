@@ -67,7 +67,7 @@ export default function CareersBenefits() {
                                                     className="flex flex-col gap-2 group"
                                                 >
                                                     <div className="flex items-center gap-3">
-                                                        <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/30 transition-colors ${b.color}`}>
+                                                        <div className={`p-2.5 rounded-xl bg-primary/5 border border-black/10 dark:border-white/10 group-hover:border-primary/30 transition-colors ${b.color}`}>
                                                             <b.icon className="w-5 h-5" />
                                                         </div>
                                                         <h4 className="font-bold">{b.title}</h4>

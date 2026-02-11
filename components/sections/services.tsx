@@ -49,7 +49,7 @@ const services = [
     title: 'Training & Education',
     description: 'Comprehensive training programs to empower your team with the latest tech skills.',
     features: ['User Training', 'Tech Workshops', 'Certification Prep', 'Documentation'],
-    image: '/media/real/office_interior.jpg',
+    image: '/media/real/team_collaboration.jpg',
     color: 'from-red-600/10 to-red-400/5',
     iconColor: 'bg-red-500/10 text-red-400',
   },
@@ -58,7 +58,7 @@ const services = [
     title: 'Project Management',
     description: 'End-to-end project management ensuring on-time and on-budget delivery.',
     features: ['Project Planning', 'Resource Management', 'Quality Assurance', 'Risk Mitigation'],
-    image: '/media/real/team_collaboration.jpg',
+    image: '/media/real/tech_workspace.jpg',
     color: 'from-teal-600/10 to-teal-400/5',
     iconColor: 'bg-teal-500/10 text-teal-400',
   }
@@ -130,7 +130,7 @@ export default function Services() {
                     <div className="mxd-blog-preview__data p-8">
                       <div className="anim-uni-in-up block">
                         <div className="flex items-center gap-4 mb-4">
-                          <div className={cn("p-2.5 rounded-xl border border-white/10", service.iconColor)}>
+                          <div className={cn("p-2.5 rounded-xl border border-black/10 dark:border-white/10", service.iconColor)}>
                             <service.icon className="w-6 h-6" />
                           </div>
                           <h3 className="text-2xl font-bold group-hover:text-primary transition-colors leading-tight">{service.title}</h3>

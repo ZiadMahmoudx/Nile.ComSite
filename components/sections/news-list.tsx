@@ -21,7 +21,7 @@ const newsItems = [
         date: '2025-06-22',
         excerpt: 'NILE.COM partners with the annual Cybersecurity Summit to present cutting-edge security solutions and threat intelligence.',
         category: 'Events',
-        image: '/media/real/digital_transformation.jpg',
+        image: '/media/real/cybersecurity.jpg',
     },
     {
         id: 'new-cairo-office',
@@ -37,7 +37,7 @@ const newsItems = [
         date: '2025-04-18',
         excerpt: 'NILE.COM named among the top IT solutions providers in Egypt for excellence in service delivery and innovation.',
         category: 'Awards',
-        image: '/media/real/cybersecurity.jpg',
+        image: '/media/real/team_collaboration.jpg',
     },
     {
         id: 'aws-partnership-expansion',
@@ -45,7 +45,7 @@ const newsItems = [
         date: '2025-03-10',
         excerpt: 'Our expanded partnership with Amazon Web Services enables us to offer more comprehensive cloud solutions.',
         category: 'Company News',
-        image: '/media/real/infrastructure.jpg',
+        image: '/media/real/tech_workspace.jpg',
     },
     {
         id: 'tech-training-workshop',
@@ -53,7 +53,7 @@ const newsItems = [
         date: '2025-02-25',
         excerpt: 'Join our exclusive workshop series designed for IT leaders and executives looking to stay ahead of the curve.',
         category: 'Events',
-        image: '/media/real/data_management.jpg',
+        image: '/media/real/consulting.jpg',
     },
 ]
 

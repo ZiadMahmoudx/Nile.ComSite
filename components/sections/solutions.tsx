@@ -36,12 +36,12 @@ const solutions = [
     features: ['Network Design', 'Servers'],
     color: 'from-emerald-600/20 to-emerald-400/5',
     iconColor: 'text-emerald-400',
-    image: '/media/real/infrastructure.jpg',
+    image: '/media/real/implementation.jpg',
   },
   {
     icon: Zap,
     title: 'Digital Transformation',
-    slug: 'cloud-migration',
+    slug: 'digital-transformation',
     description: 'Modernize your business processes with cutting-edge technology',
     features: ['Automation', 'Strategy'],
     color: 'from-amber-600/20 to-amber-400/5',
@@ -51,22 +51,22 @@ const solutions = [
   {
     icon: Database,
     title: 'Data Management',
-    slug: 'cloud-migration',
+    slug: 'data-management',
     description: 'Comprehensive data strategy, analytics, and management solutions',
     features: ['Analytics', 'Optimization'],
     color: 'from-purple-600/20 to-purple-400/5',
     iconColor: 'text-purple-400',
-    image: '/media/real/network_solutions.jpg',
+    image: '/media/real/data_management.jpg',
   },
   {
     icon: Globe,
     title: 'Managed Services',
-    slug: 'infrastructure',
+    slug: 'network-solutions',
     description: '24/7 IT support and management for your entire technology stack',
     features: ['24/7 Support', 'Monitoring'],
     color: 'from-teal-600/20 to-teal-400/5',
     iconColor: 'text-teal-400',
-    image: '/media/real/data_management.jpg',
+    image: '/media/real/managed_services.jpg',
   }
 ]
 
@@ -82,7 +82,9 @@ export default function Solutions() {
               <div className="row g-0">
                 <div className="col-12 col-xl-5 mxd-grid-item no-margin">
                   <div className="mxd-section-title__hrtitle">
-                    <h2 className="reveal-type anim-uni-in-up">Comprehensive<br />IT Solutions</h2>
+                    <h2 className="reveal-type anim-uni-in-up text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-5xl 2xl:text-6xl font-bold leading-tight break-words">
+                      Comprehensive IT Solutions
+                    </h2>
                   </div>
                 </div>
                 <div className="col-12 col-xl-4 mxd-grid-item no-margin">
@@ -145,7 +147,7 @@ export default function Solutions() {
                     <div className="mxd-blog-preview__data p-6">
                       <Link className="anim-uni-in-up block" href={`/solutions/${solution.slug}`}>
                         <div className="flex items-center gap-3 mb-3">
-                          <div className={cn("p-2 rounded-lg bg-white/5 border border-white/10", solution.iconColor)}>
+                          <div className={cn("p-2 rounded-lg bg-primary/10 border border-primary/20", solution.iconColor)}>
                             <solution.icon className="w-5 h-5" />
                           </div>
                           <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{solution.title}</h3>

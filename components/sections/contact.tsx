@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight, MapPin, Mail, Phone, Clock, MessageSquare } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -56,7 +57,7 @@ export default function Contact() {
             <div className="container-fluid px-0">
               <div className="row gx-0">
                 <div className="col-12 col-xl-2 mxd-grid-item no-margin"></div>
-                <div className="col-12 col-xl-8">
+                <div className="col-12 col-xl-8 mxd-grid-item no-margin">
                   <div className="mxd-block__content contact">
                     <div className="mxd-block__inner-form loading__fade">
                       <div className="form-container">
@@ -105,14 +106,23 @@ export default function Contact() {
               <div className="row gx-0">
                 <div className="col-12 col-xl-5 mxd-grid-item no-margin">
                   <div className="mxd-block__name">
-                    <h2 className="reveal-type anim-uni-in-up">Welcome to our office</h2>
+                    <h2 className="reveal-type anim-uni-in-up">Visit Our Office</h2>
+                    <div className="mxd-values__image image-small-desktop mt-8 h-[300px] rounded-2xl overflow-hidden relative group">
+                      <Image
+                        src="/media/real/office_interior.jpg"
+                        alt="Office"
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500" />
+                    </div>
                   </div>
                 </div>
-                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                <div className="col-12 col-xl-7 mxd-grid-item no-margin">
                   <div className="mxd-block__content">
                     <div className="mxd-block__paragraph">
                       <p className="t-large t-bright anim-uni-in-up mb-8">
-                        Inspiring ideas, creative insights, and the latest in design and tech. Fueling innovation for your digital journey.
+                        Our doors are always open for a conversation about how technology can transform your business.
                       </p>
                       <div className="mxd-paragraph__lists">
                         <div className="container-fluid p-0">

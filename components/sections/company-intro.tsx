@@ -46,10 +46,10 @@ export default function CompanyIntro() {
                                 <div className="col-12 col-xl-10 mxd-grid-item no-margin">
                                     <div className="mxd-block__content">
                                         <div className="mxd-block__inner-headline">
-                                            <h1 className="inner-headline__title headline-img-before headline-img-06">
+                                            <h1 className="inner-headline__title reveal-type">
                                                 Innovating for a <span className="text-primary">Digital Future</span>
                                             </h1>
-                                            <p className="inner-headline__text t-large t-bright mt-6">
+                                            <p className="inner-headline__text t-large t-bright mt-6 reveal-type">
                                                 For over 25 years, we've been at the forefront of technological evolution in Egypt.
                                                 Our journey is defined by a relentless pursuit of excellence and a passion for
                                                 empowering businesses through cutting-edge IT solutions.
@@ -127,8 +127,8 @@ export default function CompanyIntro() {
                                                         onClick={handlePlay}
                                                     >
                                                         <Image
-                                                            src="/images/thumb.jpg"
-                                                            alt="Video Thumbnail"
+                                                            src="/media/real/team_collaboration.jpg"
+                                                            alt="NILE.COM Team"
                                                             fill
                                                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                                                         />
@@ -149,8 +149,8 @@ export default function CompanyIntro() {
                                         <div className="mxd-values__image image-small-desktop" style={{ backgroundImage: 'url(/media/real/office_interior.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                                         <div className="mxd-values__descr has-top-list">
                                             <p className="t-bright t-large">
-                                                We are a creative digital agency specializing in innovative design and cutting-edge development.
-                                                We help businesses stand out and thrive in the modern landscape.
+                                                We are a trusted IT solutions provider specializing in enterprise infrastructure, cybersecurity, and digital transformation.
+                                                We help businesses scale and thrive in the modern technology landscape.
                                             </p>
                                             <div className="mt-8">
                                                 <Link href="/about" className="btn btn-anim btn-default btn-outline slide-right">

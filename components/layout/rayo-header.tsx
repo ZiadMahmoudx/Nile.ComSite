@@ -101,6 +101,39 @@ export function RayoHeader() {
         setOpenSubmenu(prev => (prev === label ? null : label))
     }
 
+    // Interactive button animations - Re-run for menu items when opened
+    useEffect(() => {
+        if (isOpen) {
+            // Slight delay to ensure DOM elements are mounted
+            const timeoutId = setTimeout(() => {
+                const btnElements = document.querySelectorAll('.mxd-menu__wrapper .btn-anim .btn-caption')
+                btnElements.forEach((element) => {
+                    const el = element as HTMLElement
+                    // Prevent double-init if already processed
+                    if (el.querySelector('.btn-anim__block')) return
+
+                    const innerText = el.innerText
+                    el.innerHTML = ''
+                    const textContainer = document.createElement('div')
+                    textContainer.classList.add('btn-anim__block')
+
+                    for (const letter of innerText) {
+                        const span = document.createElement('span')
+                        // Use non-breaking space for spaces to preserve layout
+                        span.innerText = letter.trim() === '' ? '\xa0' : letter
+                        span.classList.add('btn-anim__letter')
+                        textContainer.appendChild(span)
+                    }
+
+                    // Append twice for the hover effect (original + clone)
+                    el.appendChild(textContainer)
+                    el.appendChild(textContainer.cloneNode(true))
+                })
+            }, 100)
+            return () => clearTimeout(timeoutId)
+        }
+    }, [isOpen])
+
     return (
         <>
             {/* ═══════════════ NAV WRAP ═══════════════ */}
@@ -237,25 +270,6 @@ export function RayoHeader() {
                                                     Welcome to NILE.COM<br />
                                                     Your trusted IT partner in the Middle East since 2005.
                                                 </motion.p>
-                                                <motion.div
-                                                    className="menu-promo__video"
-                                                    initial={{ opacity: 0, y: 20 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    transition={{ delay: 0.6, duration: 0.5 }}
-                                                >
-                                                    <video
-                                                        className="menu-video"
-                                                        preload="auto"
-                                                        autoPlay
-                                                        loop
-                                                        muted
-                                                        playsInline
-                                                        poster="/media/real/office_interior.jpg"
-                                                    >
-                                                        <source type="video/mp4" src="/video/540x310_video.mp4" />
-                                                        <source type="video/webm" src="/video/540x310_video.webm" />
-                                                    </video>
-                                                </motion.div>
                                             </div>
                                         </div>
                                     </div>
