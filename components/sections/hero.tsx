@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { AnimatedCaption } from '@/components/ui/animated-caption'
 
 const stats = [
   { label: 'Satisfied Enterprise Clients', value: 1750, suffix: '+', id: 'stats-counter-1' },
@@ -79,11 +80,11 @@ export default function Hero() {
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Link href="/contact" className="btn btn-anim btn-default btn-opposite slide-right-up">
-                      <span className="btn-caption">Get Started</span>
+                      <AnimatedCaption text="Get Started" />
                       <ArrowUpRight className="w-5 h-5 ml-2" />
                     </Link>
                     <Link href="/solutions" className="btn btn-anim btn-default btn-outline slide-right-up">
-                      <span className="btn-caption">Our Solutions</span>
+                      <AnimatedCaption text="Our Solutions" />
                       <ArrowUpRight className="w-5 h-5 ml-2" />
                     </Link>
                   </div>

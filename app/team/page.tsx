@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { AnimatedCaption } from '@/components/ui/animated-caption'
 
 const teamMembers = [
   {
@@ -229,7 +230,7 @@ export default function TeamPage() {
                       </p>
                       <div className="flex justify-center mt-10 anim-uni-in-up">
                         <Link className="btn btn-anim btn-default btn-opposite slide-right-up" href="/careers">
-                          <span className="btn-caption">View Open Positions</span>
+                          <AnimatedCaption text="View Open Positions" />
                           <ArrowRight className="w-5 h-5 ml-2" />
                         </Link>
                       </div>

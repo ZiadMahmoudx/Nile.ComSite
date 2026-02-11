@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Play, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
+import { AnimatedCaption } from '@/components/ui/animated-caption'
 
 export default function CompanyIntro() {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -109,7 +110,7 @@ export default function CompanyIntro() {
                                             </p>
                                             <div className="mt-8">
                                                 <Link href="/about" className="btn btn-anim btn-default btn-outline slide-right">
-                                                    <span className="btn-caption">About Our Company</span>
+                                                    <AnimatedCaption text="About Our Company" />
                                                     <ChevronRight className="ml-2 w-4 h-4" />
                                                 </Link>
                                             </div>

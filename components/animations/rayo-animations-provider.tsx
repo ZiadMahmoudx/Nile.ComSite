@@ -58,7 +58,7 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
         // --------------------------------------------- //
         // Button Hover Stagger (.btn-anim)
         // --------------------------------------------- //
-        const btnElements = document.querySelectorAll('.btn-anim .btn-caption')
+        const btnElements = document.querySelectorAll('.btn-anim .btn-caption:not([data-static-anim="true"])')
         btnElements.forEach((element) => {
             const el = element as HTMLElement
             if (el.querySelector('.btn-anim__block')) return // Avoid double-init

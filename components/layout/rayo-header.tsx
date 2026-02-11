@@ -15,6 +15,8 @@ const SparkleIcon = () => (
 )
 
 /* ── Menu Structure ── */
+import { AnimatedCaption } from "@/components/ui/animated-caption"
+
 interface MenuItem {
     label: string
     href: string
@@ -101,39 +103,6 @@ export function RayoHeader() {
         setOpenSubmenu(prev => (prev === label ? null : label))
     }
 
-    // Interactive button animations - Re-run for menu items when opened
-    useEffect(() => {
-        if (isOpen) {
-            // Slight delay to ensure DOM elements are mounted
-            const timeoutId = setTimeout(() => {
-                const btnElements = document.querySelectorAll('.mxd-menu__wrapper .btn-anim .btn-caption')
-                btnElements.forEach((element) => {
-                    const el = element as HTMLElement
-                    // Prevent double-init if already processed
-                    if (el.querySelector('.btn-anim__block')) return
-
-                    const innerText = el.innerText
-                    el.innerHTML = ''
-                    const textContainer = document.createElement('div')
-                    textContainer.classList.add('btn-anim__block')
-
-                    for (const letter of innerText) {
-                        const span = document.createElement('span')
-                        // Use non-breaking space for spaces to preserve layout
-                        span.innerText = letter.trim() === '' ? '\xa0' : letter
-                        span.classList.add('btn-anim__letter')
-                        textContainer.appendChild(span)
-                    }
-
-                    // Append twice for the hover effect (original + clone)
-                    el.appendChild(textContainer)
-                    el.appendChild(textContainer.cloneNode(true))
-                })
-            }, 100)
-            return () => clearTimeout(timeoutId)
-        }
-    }, [isOpen])
-
     return (
         <>
             {/* ═══════════════ NAV WRAP ═══════════════ */}
@@ -216,7 +185,7 @@ export function RayoHeader() {
                                                                         onClick={() => handleToggleSubmenu(item.label)}
                                                                     >
                                                                         <span className="main-menu__link btn btn-anim" style={{ color: 'var(--t-opp-bright)' }}>
-                                                                            <span className="btn-caption">{item.label}</span>
+                                                                            <AnimatedCaption text={item.label} />
                                                                         </span>
                                                                         <SparkleIcon />
                                                                     </div>
@@ -250,7 +219,7 @@ export function RayoHeader() {
                                                                     onClick={toggleMenu}
                                                                     style={{ color: 'var(--t-opp-bright)' }}
                                                                 >
-                                                                    <span className="btn-caption">{item.label}</span>
+                                                                    <AnimatedCaption text={item.label} />
                                                                 </Link>
                                                             )}
                                                         </motion.li>
@@ -340,7 +309,7 @@ export function RayoHeader() {
                         href="/contact"
                         className="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up"
                     >
-                        <span className="btn-caption">Say Hello</span>
+                        <AnimatedCaption text="Say Hello" />
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="7" y1="17" x2="17" y2="7" />
                             <polyline points="7 7 17 7 17 17" />
