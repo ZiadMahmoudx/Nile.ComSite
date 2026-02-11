@@ -191,10 +191,10 @@ export default function TeamPage() {
                         </div>
                         <div className="col-8 col-xl-5 mxd-grid-item no-margin">
                           <div className="mxd-awards-list__title anim-uni-in-up">
-                            <div className="mxd-awards-list__icon">
+                            <div className="mxd-awards-list__icon !transform-none">
                               <ArrowUpRight className="w-5 h-5" />
                             </div>
-                            <p>{value.title}</p>
+                            <p className="!transform-none">{value.title}</p>
                           </div>
                         </div>
                         <div className="col-12 col-xl-5 mxd-grid-item no-margin">

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import ContactHero from '@/components/sections/contact-hero'
-import ContactMain from '@/components/sections/contact-main'
+import Contact from '@/components/sections/contact'
 
 export const metadata: Metadata = {
   title: 'Contact Us - NILE.COM',
@@ -10,8 +9,9 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <ContactHero />
-      <ContactMain />
+      <div className="pt-20">
+        <Contact />
+      </div>
     </>
   )
 }

@@ -92,9 +92,33 @@ export default function CompanyIntro() {
                                         </div>
                                     </div>
 
-                                    {/* Video/Image Column */}
-                                    <div className="col-12 col-xl-4 mxd-values__item order-1 order-xl-2 mxd-grid-item no-margin">
-                                        <div className="mxd-values__image image-large-desktop relative overflow-hidden group">
+                                    {/* Description Column (Swapped to Left/Middle) */}
+                                    <div className="col-12 col-xl-4 mxd-values__item order-3 order-xl-2 mobile-reverse mxd-grid-item no-margin">
+                                        <div className="mxd-values__image image-small-desktop h-[300px] w-full relative overflow-hidden rounded-2xl mb-8">
+                                            <Image
+                                                src="/media/real/office_interior.jpg"
+                                                alt="Office Interior"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                        <div className="mxd-values__descr has-top-list">
+                                            <p className="t-bright t-large">
+                                                We are a trusted IT solutions provider specializing in enterprise infrastructure, cybersecurity, and digital transformation.
+                                                We help businesses scale and thrive in the modern technology landscape.
+                                            </p>
+                                            <div className="mt-8">
+                                                <Link href="/about" className="btn btn-anim btn-default btn-outline slide-right">
+                                                    <span className="btn-caption">About Our Company</span>
+                                                    <ChevronRight className="ml-2 w-4 h-4" />
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Video/Image Column (Swapped to Right) */}
+                                    <div className="col-12 col-xl-6 mxd-values__item order-1 order-xl-3 mxd-grid-item no-margin">
+                                        <div className="mxd-values__image image-large-desktop relative overflow-hidden group w-full rounded-2xl aspect-video shadow-2xl">
                                             {/* Video Player Overlay */}
                                             <AnimatePresence mode="wait">
                                                 {isPlaying ? (
@@ -109,7 +133,7 @@ export default function CompanyIntro() {
                                                             width="100%"
                                                             height="100%"
                                                             controls
-                                                            className="w-full h-full object-cover"
+                                                            className="w-full h-full object-contain"
                                                             autoPlay
                                                         >
                                                             {/* Use existing video path */}
@@ -123,7 +147,7 @@ export default function CompanyIntro() {
                                                         initial={{ opacity: 0 }}
                                                         animate={{ opacity: 1 }}
                                                         exit={{ opacity: 0 }}
-                                                        className="absolute inset-0 cursor-pointer"
+                                                        className="absolute inset-0 cursor-pointer h-full w-full"
                                                         onClick={handlePlay}
                                                     >
                                                         <Image
@@ -134,30 +158,13 @@ export default function CompanyIntro() {
                                                         />
                                                         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
                                                         <div className="absolute inset-0 flex items-center justify-center">
-                                                            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/30">
-                                                                <Play className="w-6 h-6 text-white fill-current ml-1" />
+                                                            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/30">
+                                                                <Play className="w-8 h-8 text-white fill-current ml-1" />
                                                             </div>
                                                         </div>
                                                     </motion.div>
                                                 )}
                                             </AnimatePresence>
-                                        </div>
-                                    </div>
-
-                                    {/* Description Column */}
-                                    <div className="col-12 col-xl-6 mxd-values__item order-3 order-xl-3 mobile-reverse mxd-grid-item no-margin">
-                                        <div className="mxd-values__image image-small-desktop" style={{ backgroundImage: 'url(/media/real/office_interior.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
-                                        <div className="mxd-values__descr has-top-list">
-                                            <p className="t-bright t-large">
-                                                We are a trusted IT solutions provider specializing in enterprise infrastructure, cybersecurity, and digital transformation.
-                                                We help businesses scale and thrive in the modern technology landscape.
-                                            </p>
-                                            <div className="mt-8">
-                                                <Link href="/about" className="btn btn-anim btn-default btn-outline slide-right">
-                                                    <span className="btn-caption">About Our Company</span>
-                                                    <ChevronRight className="ml-2 w-4 h-4" />
-                                                </Link>
-                                            </div>
                                         </div>
                                     </div>
 

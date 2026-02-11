@@ -157,10 +157,10 @@ export function RayoHeader() {
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+                            initial={{ y: '-100%' }}
+                            animate={{ y: '0%' }}
+                            exit={{ y: '-100%' }}
+                            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
                             className="mxd-menu__wrapper"
                             style={{ display: 'flex' }}
                         >
@@ -168,7 +168,11 @@ export function RayoHeader() {
                             <div className="mxd-menu__base" style={{ backgroundColor: 'var(--base-opp)' }} />
 
                             {/* Close button (top-right) */}
-                            <button
+                            <motion.button
+                                initial={{ rotate: -90, scale: 0, opacity: 0 }}
+                                animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                                exit={{ rotate: 90, scale: 0, opacity: 0 }}
+                                transition={{ duration: 0.4, delay: 0.3 }}
                                 type="button"
                                 onClick={toggleMenu}
                                 className="absolute top-6 right-6 z-[210] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -179,7 +183,7 @@ export function RayoHeader() {
                                     <line x1="2" y1="2" x2="16" y2="16" />
                                     <line x1="16" y1="2" x2="2" y2="16" />
                                 </svg>
-                            </button>
+                            </motion.button>
 
                             {/* Menu Container */}
                             <div className="mxd-menu__contain">
