@@ -29,15 +29,17 @@ export default function Contact() {
                 </div>
                 <div className="col-12 col-xl-8 mxd-grid-item no-margin">
                   <div className="mxd-block__content">
-                    <div className="mxd-block__inner-headline loading__item">
-                      <h1 className="inner-headline__title">
-                        Let's talk<br />about your project!
+                    <div className="mxd-block__inner-headline">
+                      <h1 className="inner-headline__title mb-6 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight reveal-type">
+                        Let's talk about your project!
                       </h1>
-                      <a className="btn btn-line-headline slide-right-up anim-no-delay" href="mailto:info@nilecom.com.eg">
-                        <span className="btn-caption">info@nilecom.com.eg</span>
-                        <ArrowUpRight className="w-5 h-5 ml-2" />
-                      </a>
-                      <p className="inner-headline__text t-large t-bright loading__item mt-6">
+                      <div className="mb-8 slide-right-up">
+                        <a className="inline-flex items-center text-xl sm:text-2xl font-medium hover:text-primary transition-colors group" href="mailto:info@nilecom.com.eg">
+                          <span className="break-all">info@nilecom.com.eg</span>
+                          <ArrowUpRight className="w-6 h-6 ml-2 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                        </a>
+                      </div>
+                      <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl anim-uni-in-up">
                         Have questions? We've got the answers! Here, you'll find clear and concise information about our services, process, and what to expect when working with us.
                       </p>
                     </div>
