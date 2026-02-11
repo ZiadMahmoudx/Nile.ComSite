@@ -23221,3 +23221,21 @@ form textarea:required:valid {
 /* ------------------------------------------------*/
 /* Features - Project Details End */
 /* ------------------------------------------------*/
+
+/* ------------------------------------------------*/
+/* NILE.COM OVERRIDES */
+/* ------------------------------------------------*/
+:root {
+  /* Override Bootstrap Primary variable used in plugins.css */
+  --bs-primary: #a02222;
+  --bs-primary-rgb: 160, 34, 34;
+  /* Matches HSL(1, 65%, 38%) */
+
+  /* Also configure Tailwind primary just in case */
+  --primary: 1 65% 38%;
+}
+
+/* Force text-primary to use our variable, beating plugins.css !important if specificity matches */
+.text-primary {
+  color: rgba(var(--bs-primary-rgb), 1) !important;
+}

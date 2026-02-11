@@ -22,7 +22,7 @@ export default function Hero() {
       {/* Hero Section Start */}
       <section className="mxd-section mxd-hero-section relative overflow-hidden flex flex-col min-h-screen">
         <div className="mxd-hero-01 relative z-10 flex-grow flex flex-col">
-          <div className="mxd-hero-01__wrap container mx-auto px-4 flex flex-col h-full py-20 lg:py-32">
+          <div className="mxd-hero-01__wrap container mx-auto px-4 flex flex-col h-full py-6 md:py-20 lg:py-32">
             {/* top group */}
             <div className="mxd-hero-01__top">
               <div className="mxd-hero-01__title-wrap">
@@ -33,7 +33,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="flex justify-center mb-8"
+                  className="flex justify-center mb-2 md:mb-8"
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-sm border border-black/5 dark:border-white/10 transition-colors hover:bg-black/10 dark:hover:bg-white/10">
                     <span className="relative flex h-2 w-2">
@@ -44,7 +44,7 @@ export default function Hero() {
                   </div>
                 </motion.div>
                 {/* title text */}
-                <h1 className="hero-01-title relative z-20 mb-16 flex flex-col items-center justify-center">
+                <h1 className="hero-01-title relative z-20 mb-2 md:mb-16 flex flex-col items-center justify-center">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function Hero() {
               </div>
             </div>
             {/* Bottom Group: Simplified to avoid template layout bugs */}
-            <div className="mt-auto pt-16">
+            <div className="mt-auto pt-2 md:pt-16">
               <div className="flex flex-col lg:flex-row items-end justify-between gap-12">
 
                 <motion.div
@@ -75,7 +75,7 @@ export default function Hero() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="flex flex-col justify-center"
                 >
-                  <p className="t-bright text-lg leading-relaxed max-w-xl mb-8">
+                  <p className="t-bright text-lg leading-relaxed max-w-xl mb-4 md:mb-8">
                     Empowering enterprises with cutting-edge IT solutions, cybersecurity, and digital transformation services for over 25 years.
                   </p>
                   <div className="flex flex-wrap gap-4">
@@ -97,9 +97,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="w-full mt-24 pt-12 border-t border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl rounded-3xl px-8 pb-8"
+              className="w-full mt-6 pt-4 md:mt-24 md:pt-12 border-t border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/5 backdrop-blur-xl rounded-3xl px-4 md:px-8 pb-4 md:pb-8"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
                 {stats.map((stat, i) => (
                   <div key={i} className="flex flex-col items-center lg:items-start gap-1 group">
                     <div className="flex items-baseline gap-1">
