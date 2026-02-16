@@ -22,9 +22,9 @@ export default function Hero() {
       {/* Hero Section Start */}
       <section className="mxd-section mxd-hero-section relative overflow-hidden flex flex-col min-h-screen">
         <div className="mxd-hero-01 relative z-10 flex-grow flex flex-col">
-          <div className="mxd-hero-01__wrap container mx-auto px-4 flex flex-col h-full py-6 md:py-20 lg:py-32">
+          <div className="mxd-hero-01__wrap container mx-auto px-4 flex flex-col h-full justify-start pt-6 pb-12 md:justify-center md:py-20 lg:py-32">
             {/* top group */}
-            <div className="mxd-hero-01__top">
+            <div className="mxd-hero-01__top flex-none">
               <div className="mxd-hero-01__title-wrap">
                 {/* Floating images removed per request */}
                 {/* title marquee */}
@@ -33,7 +33,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="flex justify-center mb-2 md:mb-8"
+                  className="flex justify-center mb-1 md:mb-8"
                 >
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-sm border border-black/5 dark:border-white/10 transition-colors hover:bg-black/10 dark:hover:bg-white/10">
                     <span className="relative flex h-2 w-2">
@@ -44,29 +44,29 @@ export default function Hero() {
                   </div>
                 </motion.div>
                 {/* title text */}
-                <h1 className="hero-01-title relative z-20 mb-2 md:mb-16 flex flex-col items-center justify-center">
+                <h1 className="hero-01-title relative z-20 mb-0 md:mb-16 flex flex-col items-center justify-center">
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="flex flex-wrap items-center justify-center gap-[2vw] leading-none"
                   >
-                    <span className="text-[9vw] lg:text-[6.5vw] font-bold tracking-tighter text-foreground">Transform</span>
-                    <span className="text-[9vw] lg:text-[6.5vw] font-bold tracking-tighter text-muted-foreground">Your</span>
+                    <span className="text-[15vw] lg:text-[6.5vw] font-bold tracking-tighter text-foreground">Transform</span>
+                    <span className="text-[15vw] lg:text-[6.5vw] font-bold tracking-tighter text-muted-foreground">Your</span>
                   </motion.div>
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="leading-none mt-[-0.5vw]"
+                    className="leading-none mt-[-3vw]"
                   >
-                    <span className="text-[12vw] lg:text-[9vw] font-black tracking-tighter text-primary uppercase">Business</span>
+                    <span className="text-[21vw] lg:text-[9vw] font-black tracking-tighter text-primary uppercase">Business</span>
                   </motion.div>
                 </h1>
               </div>
             </div>
             {/* Bottom Group: Simplified to avoid template layout bugs */}
-            <div className="mt-auto pt-2 md:pt-16">
+            <div className="mt-[-8vw] md:mt-auto pt-0 md:pt-16">
               <div className="flex flex-col lg:flex-row items-end justify-between gap-12">
 
                 <motion.div
@@ -75,15 +75,15 @@ export default function Hero() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="flex flex-col justify-center"
                 >
-                  <p className="t-bright text-lg leading-relaxed max-w-xl mb-4 md:mb-8">
+                  <p className="t-bright text-xl md:text-2xl leading-normal max-w-3xl mb-6 md:mb-10">
                     Empowering enterprises with cutting-edge IT solutions, cybersecurity, and digital transformation services for over 25 years.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Link href="/contact" className="btn btn-anim btn-default btn-opposite slide-right-up">
+                    <Link href="/contact" className="btn btn-anim btn-default btn-opposite slide-right-up w-full sm:w-auto justify-center mb-3 sm:mb-0">
                       <AnimatedCaption text="Get Started" />
                       <ArrowUpRight className="w-5 h-5 ml-2" />
                     </Link>
-                    <Link href="/solutions" className="btn btn-anim btn-default btn-outline slide-right-up">
+                    <Link href="/solutions" className="btn btn-anim btn-default btn-outline slide-right-up w-full sm:w-auto justify-center">
                       <AnimatedCaption text="Our Solutions" />
                       <ArrowUpRight className="w-5 h-5 ml-2" />
                     </Link>

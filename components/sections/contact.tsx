@@ -27,9 +27,9 @@ const contactMethods = [
   {
     icon: MapPin,
     title: 'Visit Us',
-    value: 'Maadi, Cairo, Egypt',
+    value: 'New Maadi, Cairo, Egypt',
     subtext: 'Schedule appointment first',
-    href: 'https://maps.app.goo.gl/tTUNyWFzGazyTgHe6',
+    href: 'https://maps.app.goo.gl/b5dSoqV4WKX57X9Z6',
   },
   {
     icon: HeadphonesIcon,
@@ -177,7 +177,7 @@ export default function Contact() {
                         Let's talk<br />about your project!
                       </h1>
                       <a className="btn btn-line-headline slide-right-up anim-no-delay" href="mailto:info@nilecom.com.eg?subject=Message%20from%20your%20site">
-                        <span className="btn-caption">info@nilecom.com.eg</span>
+                        <span className="btn-caption text-[3.5vw] sm:text-base break-all">info@nilecom.com.eg</span>
                         <ArrowUpRight className="w-5 h-5" />
                       </a>
                       <p className="inner-headline__text t-large t-bright mt-6">
@@ -417,14 +417,14 @@ export default function Contact() {
                       href={method.href}
                       target={method.href.startsWith('http') ? '_blank' : undefined}
                       rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="block p-8 bg-secondary/5 border border-border/30 radius-m h-full group hover:border-primary/30 transition-all duration-300"
+                      className="block p-10 bg-secondary/5 border border-border/30 radius-m h-full group hover:border-primary/30 hover:bg-secondary/10 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                     >
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                        <method.icon className="w-6 h-6 text-primary" />
+                      <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <method.icon className="w-8 h-8 text-primary" />
                       </div>
-                      <h3 className="font-bold text-lg mb-1">{method.title}</h3>
-                      <p className="text-primary font-semibold text-sm mb-1">{method.value}</p>
-                      <p className="text-xs text-muted-foreground">{method.subtext}</p>
+                      <h3 className="font-bold text-2xl mb-2">{method.title}</h3>
+                      <p className="text-primary font-semibold text-lg mb-2 break-words">{method.value}</p>
+                      <p className="text-sm text-muted-foreground font-medium">{method.subtext}</p>
                     </a>
                   </motion.div>
                 ))}
@@ -445,7 +445,7 @@ export default function Contact() {
                 <div className="col-12 col-xl-8 mxd-grid-item no-margin">
                   <div className="overflow-hidden radius-m border border-border/30" style={{ height: '400px' }}>
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.2!2d31.2!3d29.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMaadi%2C%20Cairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1234567890"
+                      src="https://maps.google.com/maps?q=NILE.COM,+Building+438A,+Road+293,+New+Maadi,+Cairo&t=&z=15&ie=UTF8&iwloc=&output=embed"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -500,7 +500,7 @@ export default function Contact() {
                     <div className="mt-8">
                       <a
                         className="btn btn-anim btn-default btn-outline slide-right-up w-full"
-                        href="https://maps.app.goo.gl/tTUNyWFzGazyTgHe6"
+                        href="https://maps.app.goo.gl/b5dSoqV4WKX57X9Z6"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -543,30 +543,7 @@ export default function Contact() {
       </div>
 
       {/* Social Links Section */}
-      <div className="mxd-section padding-default">
-        <div className="mxd-container grid-container">
-          <div className="mxd-block">
-            <div className="mxd-links-lines">
-              {[
-                { title: 'LinkedIn', href: 'https://www.linkedin.com/company/nilecom/' },
-                { title: 'Facebook', href: 'https://www.facebook.com/NileCom.eg/' },
-                { title: 'WhatsApp', href: 'https://wa.me/20227353333' },
-              ].map((social, idx) => (
-                <div key={idx} className="mxd-links-lines__item">
-                  <div className="mxd-links-lines__divider anim-uni-in-up"></div>
-                  <a className="mxd-links-lines__link anim-uni-in-up" href={social.href} target="_blank" rel="noopener noreferrer">
-                    <h6 className="mxd-links-lines__title">{social.title}</h6>
-                    <div className="mxd-links-lines__icon">
-                      <ArrowUpRight className="w-5 h-5" />
-                    </div>
-                  </a>
-                  <div className="mxd-links-lines__divider anim-uni-in-up"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+
     </>
   )
 }

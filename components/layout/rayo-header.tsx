@@ -109,7 +109,7 @@ export function RayoHeader() {
             <nav className="mxd-nav__wrap" data-lenis-prevent="">
 
                 {/* ── Hamburger Button ── */}
-                <div className="mxd-nav__contain">
+                <div className="mxd-nav__contain scale-75 origin-right md:scale-100">
                     <button
                         type="button"
                         className={cn('mxd-nav__hamburger', isOpen && 'is-active')}
@@ -161,7 +161,7 @@ export function RayoHeader() {
                                         <p className="mxd-menu__caption menu-fade-in" style={{ color: 'var(--t-opp-medium)' }}>
                                             Innovative IT solutions<br />and cutting-edge technology
                                         </p>
-                                        <div className="main-menu">
+                                        <div className="main-menu scale-90 origin-top-left md:scale-100">
                                             <nav className="main-menu__content">
                                                 <ul className="main-menu__accordion">
                                                     {menuItems.map((item, i) => (
@@ -293,15 +293,15 @@ export function RayoHeader() {
                             alt="NILE.COM"
                             width={120}
                             height={40}
-                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-105"
-                            style={{ width: '9rem', height: 'auto' }}
+                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-105 w-[6rem] md:w-[9rem]"
+                            style={{ height: 'auto' }}
                             priority
                         />
                     </Link>
                 </div>
 
                 {/* Controls */}
-                <div className="mxd-header__controls flex items-center gap-4">
+                <div className="mxd-header__controls flex items-center gap-1 md:gap-4 scale-75 origin-right md:scale-100">
                     <ThemeToggle />
                     <Link
                         href="/contact"
