@@ -21,7 +21,32 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
         // --------------------------------------------- //
         const revealTypes = document.querySelectorAll('.reveal-type')
         revealTypes.forEach((element) => {
+            // Preserve color classes on inner spans (e.g. text-primary)
+            const colorSpans = element.querySelectorAll('[class*="text-"]')
+            const colorMap = new Map<Node, string>()
+            colorSpans.forEach((span) => {
+                const colorClass = Array.from(span.classList).find(c => c.startsWith('text-'))
+                if (colorClass) colorMap.set(span, span.getAttribute('style') || '')
+            })
+
             const text = new SplitType(element as HTMLElement, { types: 'words,chars' })
+
+            // Re-apply color to chars that were inside colored spans
+            if (colorMap.size > 0) {
+                const chars = element.querySelectorAll('.char')
+                chars.forEach((char) => {
+                    let parent = char.parentElement
+                    while (parent && parent !== element) {
+                        const colorClass = Array.from(parent.classList).find(c => c.startsWith('text-'))
+                        if (colorClass) {
+                            char.classList.add(colorClass)
+                            break
+                        }
+                        parent = parent.parentElement
+                    }
+                })
+            }
+
             gsap.from(text.chars, {
                 scrollTrigger: {
                     trigger: element,
@@ -107,7 +132,7 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
             const reveal = item.querySelector('.hover-reveal__content') as HTMLElement
             const image = item.querySelector('.hover-reveal__image') as HTMLElement
 
-            if (!reveal || !image) return
+            if (!reveal) return
 
             item.addEventListener('mousemove', (e: any) => {
                 gsap.to(reveal, {
@@ -118,12 +143,14 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
                     ease: 'power2.out',
                     overwrite: true
                 })
-                gsap.to(image, {
-                    scale: 1,
-                    duration: 0.5,
-                    ease: 'power2.out',
-                    overwrite: true
-                })
+                if (image) {
+                    gsap.to(image, {
+                        scale: 1,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        overwrite: true
+                    })
+                }
             })
 
             item.addEventListener('mouseleave', () => {
@@ -133,12 +160,14 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
                     ease: 'power2.out',
                     overwrite: true
                 })
-                gsap.to(image, {
-                    scale: 1.2,
-                    duration: 0.5,
-                    ease: 'power2.out',
-                    overwrite: true
-                })
+                if (image) {
+                    gsap.to(image, {
+                        scale: 1.2,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        overwrite: true
+                    })
+                }
             })
         })
 

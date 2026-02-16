@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { useInView } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -24,10 +24,11 @@ export function AnimatedCounter({
     decimals = 0,
 }: AnimatedCounterProps) {
     const ref = useRef<HTMLSpanElement>(null)
-    const isInView = useInView(ref, { once: true, margin: '-100px' })
+    const isInView = useInView(ref, { once: false, margin: '-50px' })
 
     // Use 'end' prop if 'value' is not provided
     const rawValue = value ?? end ?? 0
+
     const [displayValue, setDisplayValue] = useState(0)
 
     // Parse numeric value from string like "500+" or "99.9%"
@@ -35,13 +36,11 @@ export function AnimatedCounter({
         ? parseFloat(rawValue.replace(/[^0-9.]/g, '')) || 0
         : (rawValue || 0)
 
-    useEffect(() => {
-        if (!isInView) return
-
+    const animate = useCallback(() => {
         let startTime: number | null = null
         let animationFrame: number
 
-        const animate = (timestamp: number) => {
+        const step = (timestamp: number) => {
             if (!startTime) startTime = timestamp
             const progress = Math.min((timestamp - startTime) / duration, 1)
 
@@ -52,13 +51,25 @@ export function AnimatedCounter({
             setDisplayValue(currentValue)
 
             if (progress < 1) {
-                animationFrame = requestAnimationFrame(animate)
+                animationFrame = requestAnimationFrame(step)
             }
         }
 
-        animationFrame = requestAnimationFrame(animate)
+        animationFrame = requestAnimationFrame(step)
         return () => cancelAnimationFrame(animationFrame)
-    }, [isInView, numericValue, duration])
+    }, [numericValue, duration])
+
+    useEffect(() => {
+        if (isInView) {
+            // Reset to 0 and re-animate every time it comes into view
+            setDisplayValue(0)
+            const cleanup = animate()
+            return cleanup
+        } else {
+            // Reset when out of view so it re-counts next time
+            setDisplayValue(0)
+        }
+    }, [isInView, animate])
 
     const formattedValue = decimals > 0
         ? displayValue.toFixed(decimals)

@@ -112,13 +112,29 @@ export function RayoHeader() {
                 <div className="mxd-nav__contain">
                     <button
                         type="button"
-                        className="mxd-nav__hamburger"
+                        className={cn('mxd-nav__hamburger', isOpen && 'is-active')}
                         onClick={toggleMenu}
-                        aria-label="Toggle Menu"
+                        aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
+                        aria-expanded={isOpen}
+                        style={{ cursor: 'pointer', zIndex: isOpen ? 210 : 2 }}
                     >
                         <div className="hamburger__base"></div>
-                        <div className="hamburger__line"></div>
-                        <div className="hamburger__line"></div>
+                        <span
+                            className="hamburger__line"
+                            style={{
+                                transition: 'transform 0.4s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease',
+                                transform: isOpen ? 'rotate(45deg) translateY(0.5rem)' : 'none',
+                                transformOrigin: 'center',
+                            }}
+                        />
+                        <span
+                            className="hamburger__line"
+                            style={{
+                                transition: 'transform 0.4s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease',
+                                transform: isOpen ? 'rotate(-45deg) translateY(-0.5rem)' : 'none',
+                                transformOrigin: 'center',
+                            }}
+                        />
                     </button>
                 </div>
 
@@ -135,24 +151,6 @@ export function RayoHeader() {
                         >
                             {/* Background */}
                             <div className="mxd-menu__base" style={{ backgroundColor: 'var(--base-opp)' }} />
-
-                            {/* Close button (top-right) */}
-                            <motion.button
-                                initial={{ rotate: -90, scale: 0, opacity: 0 }}
-                                animate={{ rotate: 0, scale: 1, opacity: 1 }}
-                                exit={{ rotate: 90, scale: 0, opacity: 0 }}
-                                transition={{ duration: 0.4, delay: 0.3 }}
-                                type="button"
-                                onClick={toggleMenu}
-                                className="absolute top-6 right-6 z-[210] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                                style={{ background: 'var(--base-opp-tint)', border: '1px solid rgba(128,128,128,0.25)' }}
-                                aria-label="Close Menu"
-                            >
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" strokeWidth="2" strokeLinecap="round" style={{ stroke: 'var(--t-opp-bright)' }}>
-                                    <line x1="2" y1="2" x2="16" y2="16" />
-                                    <line x1="16" y1="2" x2="2" y2="16" />
-                                </svg>
-                            </motion.button>
 
                             {/* Menu Container */}
                             <div className="mxd-menu__contain">
@@ -182,7 +180,10 @@ export function RayoHeader() {
                                                                     {/* Toggle with sparkle icon */}
                                                                     <div
                                                                         className="main-menu__toggle"
+                                                                        role="button"
+                                                                        tabIndex={0}
                                                                         onClick={() => handleToggleSubmenu(item.label)}
+                                                                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleToggleSubmenu(item.label) } }}
                                                                     >
                                                                         <span className="main-menu__link btn btn-anim" style={{ color: 'var(--t-opp-bright)' }}>
                                                                             <AnimatedCaption text={item.label} />
@@ -256,14 +257,14 @@ export function RayoHeader() {
                                     >
                                         <p className="t-xsmall" style={{ color: 'var(--t-opp-medium)' }}>
                                             Made with{' '}
-                                            <span style={{ color: 'var(--additional, #DDF160)' }}>❤</span>
+                                            <span style={{ color: 'var(--additional, #DDF160)' }}>&#10084;</span>
                                             {' '}by{' '}
                                             <a className="no-effect" href="https://nilecom.com.eg" target="_blank" style={{ color: 'var(--t-opp-medium)' }}>
                                                 NILE.COM
                                             </a>
                                         </p>
                                         <p className="t-xsmall" style={{ color: 'var(--t-opp-medium)' }}>
-                                            © 2026
+                                            &copy; 2026
                                         </p>
                                     </motion.div>
 

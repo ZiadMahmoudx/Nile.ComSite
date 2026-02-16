@@ -11,6 +11,7 @@ const services = [
   {
     icon: Settings,
     title: 'Managed IT Services',
+    tag: 'Infrastructure',
     description: 'Complete IT infrastructure management and support with 24/7 monitoring.',
     features: ['24/7 Monitoring', 'Proactive Maintenance', 'Security Management', 'Performance Tuning'],
     image: '/media/real/managed_services.jpg',
@@ -20,6 +21,7 @@ const services = [
   {
     icon: Users,
     title: 'IT Consulting',
+    tag: 'Strategy',
     description: 'Strategic technology consulting to align your IT with business goals.',
     features: ['IT Strategy', 'Architecture Design', 'Vendor Management', 'Risk Assessment'],
     image: '/media/real/consulting.jpg',
@@ -29,6 +31,7 @@ const services = [
   {
     icon: Headphones,
     title: 'Technical Support',
+    tag: 'Helpdesk',
     description: 'Expert technical support and help desk services available whenever you need them.',
     features: ['24/7 Helpdesk', 'Remote Support', 'On-site Service', 'SLA Management'],
     image: '/media/real/support.jpg',
@@ -38,6 +41,7 @@ const services = [
   {
     icon: Wrench,
     title: 'Implementation',
+    tag: 'Deployment',
     description: 'Professional implementation services for seamless hardware and software deployment.',
     features: ['Solution Design', 'System Deployment', 'Data Migration', 'Go-live Support'],
     image: '/media/real/implementation.jpg',
@@ -47,6 +51,7 @@ const services = [
   {
     icon: BookOpen,
     title: 'Training & Education',
+    tag: 'Development',
     description: 'Comprehensive training programs to empower your team with the latest tech skills.',
     features: ['User Training', 'Tech Workshops', 'Certification Prep', 'Documentation'],
     image: '/media/real/team_collaboration.jpg',
@@ -56,6 +61,7 @@ const services = [
   {
     icon: Rocket,
     title: 'Project Management',
+    tag: 'Delivery',
     description: 'End-to-end project management ensuring on-time and on-budget delivery.',
     features: ['Project Planning', 'Resource Management', 'Quality Assurance', 'Risk Mitigation'],
     image: '/media/real/tech_workspace.jpg',
@@ -124,7 +130,7 @@ export default function Services() {
                       </div>
 
                       <div className="mxd-blog-preview__tags top-4 left-4 absolute">
-                        <span className="tag tag-default tag-permanent bg-background/80 backdrop-blur text-xs">Service</span>
+                        <span className="tag tag-default tag-permanent bg-background/80 backdrop-blur text-xs">{service.tag}</span>
                       </div>
                     </div>
                     <div className="mxd-blog-preview__data p-8">

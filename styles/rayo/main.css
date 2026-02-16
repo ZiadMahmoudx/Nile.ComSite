@@ -6395,6 +6395,35 @@ form textarea:required:valid {
   z-index: 2;
 }
 
+/* Hamburger button — hover, focus, active states */
+.mxd-nav__hamburger {
+  cursor: pointer;
+  -webkit-transition: transform 0.3s var(--_animbezier);
+  -moz-transition: transform 0.3s var(--_animbezier);
+  transition: transform 0.3s var(--_animbezier);
+}
+
+.no-touch .mxd-nav__hamburger:hover {
+  -webkit-transform: scale(1.08);
+  -moz-transform: scale(1.08);
+  -ms-transform: scale(1.08);
+  transform: scale(1.08);
+}
+
+.mxd-nav__hamburger:active {
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+.mxd-nav__hamburger:focus-visible {
+  outline: 2px solid var(--accent, currentColor);
+  outline-offset: 3px;
+  -moz-border-radius: var(--_radius-l);
+  border-radius: var(--_radius-l);
+}
+
 .mxd-menu__wrapper {
   position: absolute;
   inset: 0% 0% auto;

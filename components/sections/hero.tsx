@@ -60,7 +60,7 @@ export default function Hero() {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="leading-none mt-[-0.5vw]"
                   >
-                    <span className="text-[12vw] lg:text-[9vw] font-black tracking-tighter text-foreground uppercase">Business</span>
+                    <span className="text-[12vw] lg:text-[9vw] font-black tracking-tighter text-primary uppercase">Business</span>
                   </motion.div>
                 </h1>
               </div>
@@ -124,7 +124,8 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.15 }}
-          className="absolute right-[-10%] bottom-[-5%] w-[60%] h-[60%] z-0 pointer-events-none grayscale opacity-20"
+          transition={{ duration: 1.5, delay: 1 }}
+          className="absolute right-[-10%] bottom-[-5%] w-[60%] h-[60%] z-0 pointer-events-none grayscale"
         >
           <video className="w-full h-full object-cover rounded-full overflow-hidden" preload="auto" autoPlay loop muted>
             <source type="video/mp4" src="/media/intro.mp4" />
