@@ -59,8 +59,8 @@ export default function Footer() {
             </div>
             <div className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
-                <Input 
-                  placeholder="Enter your email address" 
+                <Input
+                  placeholder="Enter your email address"
                   className="flex-1 bg-background/50 border-border/50"
                 />
                 <Button className="btn-primary px-8 font-bold group">
@@ -93,12 +93,11 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-black text-gradient">NILE.COM</span>
-                <span className="text-xs text-muted-foreground font-semibold">IT Solutions</span>
               </div>
             </Link>
-            
+
             <p className="text-muted-foreground leading-relaxed max-w-md">
-              Leading IT solutions provider with 25+ years of experience in delivering 
+              Leading IT solutions provider with 25+ years of experience in delivering
               cutting-edge technology solutions to enterprises across the Middle East.
             </p>
 
@@ -139,7 +138,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.company.map((link) => (
                   <li key={link.name}>
-                    <Link 
+                    <Link
                       href={link.href}
                       className="text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center group"
                     >
@@ -156,7 +155,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.solutions.map((link) => (
                   <li key={link.name}>
-                    <Link 
+                    <Link
                       href={link.href}
                       className="text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center group"
                     >
@@ -173,7 +172,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {footerLinks.services.map((link) => (
                   <li key={link.name}>
-                    <Link 
+                    <Link
                       href={link.href}
                       className="text-muted-foreground hover:text-primary transition-colors duration-300 flex items-center group"
                     >

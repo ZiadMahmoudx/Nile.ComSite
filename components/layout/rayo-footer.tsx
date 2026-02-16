@@ -52,9 +52,6 @@ export function RayoFooter() {
                                             className="mxd-logo__image object-contain"
                                             style={{ width: '5.6rem', height: 'auto' }}
                                         />
-                                        <span className="mxd-logo__text">
-                                            NILE<span style={{ display: 'block', fontSize: '0.5em', letterSpacing: '0.25em', opacity: 0.7 }}>.COM</span>
-                                        </span>
                                     </Link>
                                 </div>
                                 <div className="mxd-demo-footer__slogan">
