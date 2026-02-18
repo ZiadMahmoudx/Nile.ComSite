@@ -111,7 +111,9 @@ export default function RootLayout({
             <RayoHeader />
             <ScrollProgress />
             <SmoothScroll>
-              {children}
+              <main className="min-h-screen">
+                {children}
+              </main>
               <RayoFooter />
             </SmoothScroll>
             <BackToTop />

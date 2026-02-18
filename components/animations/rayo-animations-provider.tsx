@@ -9,6 +9,8 @@ import SplitType from 'split-type'
 import Ukiyo from 'ukiyojs'
 import imagesLoaded from 'imagesloaded'
 
+import { usePathname } from 'next/navigation'
+
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP)
@@ -17,6 +19,8 @@ if (typeof window !== 'undefined') {
 const docStyle = typeof window !== 'undefined' ? getComputedStyle(document.documentElement) : null
 
 export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode }) => {
+    const pathname = usePathname()
+
     useGSAP(() => {
         // --------------------------------------------- //
         // Text Reveal (.reveal-type)
@@ -340,7 +344,7 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
             ScrollTrigger.addEventListener('refreshInit', initCards)
         }
 
-    }, [])
+    }, [pathname])
 
     return <>{children}</>
 }

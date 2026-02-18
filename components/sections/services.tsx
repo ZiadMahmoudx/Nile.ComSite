@@ -7,20 +7,33 @@ import { motion } from 'framer-motion'
 import { Settings, Users, Headphones, Wrench, BookOpen, Rocket, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const services = [
+const services: any[] = [
   {
     icon: Settings,
-    title: 'Managed IT Services',
-    tags: ['24/7 Monitoring', 'Proactive Maintenance', 'Security', 'Performance'],
-    description: 'Complete IT infrastructure management and support with 24/7 monitoring, proactive security, and performance optimization.',
+    headline: (
+      <>
+        <span className="text-white">Transform</span> <span className="text-neutral-500">Your</span>
+        <br />
+        <span className="text-primary text-[4rem] md:text-[6rem] lg:text-[7rem] leading-[0.8] uppercase tracking-tighter">BUSINESS</span>
+      </>
+    ),
+    badge: 'LEADING IT SOLUTIONS',
+    title: '',
+    tags: [],
+    description: 'Empowering enterprises with cutting-edge IT solutions, cybersecurity, and digital transformation services for over 25 years.',
     image: '/img/1200x1200_service-image-01.webp',
     layoutClass: 'col-12 col-xl-8',
     itemClass: 'justify-between radius-l padding-4',
-    itemStyle: { backgroundColor: 'var(--base-tint)' },
-    titleClass: '',
-    titleStyle: { color: 'var(--t-bright)' },
+    itemStyle: { backgroundColor: '#0a0a0a' }, // Very dark/black background
+    titleClass: 'text-white', // Force white text
+    titleStyle: { color: '#ffffff' }, // Force white text style
     imageClass: 'image-right',
-    anim: 'anim-uni-scale-in-right'
+    textClass: 'text-white',
+    anim: 'anim-uni-scale-in-right',
+    buttons: [
+      { text: 'Get Started', link: '/contact', style: 'bg-white text-black hover:bg-neutral-200 border-transparent' },
+      { text: 'Our Solutions', link: '/solutions', style: 'bg-transparent text-white border-white hover:bg-white/10' }
+    ]
   },
   {
     icon: Users,
@@ -92,21 +105,52 @@ export default function Services() {
               <div className="row gx-0">
                 {services.map((service, index) => (
                   <div key={index} className={`${service.layoutClass} mxd-services-cards-s__item mxd-grid-item ${service.anim}`}>
-                    <div className={`mxd-services-cards-s__inner ${service.itemClass}`} style={service.itemStyle || {}}>
-                      <div className="mxd-services-cards-s__title">
-                        <h3 className={`reveal-type anim-uni-in-up ${service.titleClass}`} style={service.titleStyle || {}}>{service.title}</h3>
+                    <div className={`mxd-services-cards-s__inner relative ${service.itemClass}`} style={service.itemStyle || {}}>
+
+                      {/* Badge / Slogan */}
+                      {service.badge && (
+                        <div className="absolute top-8 left-8 md:left-12 z-20">
+                          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm">
+                            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            <span className="text-xs font-bold tracking-widest text-white uppercase">{service.badge}</span>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="mxd-services-cards-s__title z-10 relative mt-12 md:mt-16">
+                        {service.headline ? (
+                          <h2 className={`anim-uni-in-up ${service.titleClass} font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-4`} style={service.titleStyle || {}}>
+                            {typeof service.headline === 'string' ? service.headline.split('\n').map((line: string, i: number) => (
+                              <span key={i} className="block">{line}</span>
+                            )) : service.headline}
+                          </h2>
+                        ) : (
+                          <h3 className={`reveal-type anim-uni-in-up ${service.titleClass}`} style={service.titleStyle || {}}>{service.title}</h3>
+                        )}
                       </div>
-                      <div className={`mxd-services-cards-s__info ${service.layoutClass.includes('col-xl-8') ? 'width-50' : ''}`}>
+                      <div className={`mxd-services-cards-s__info z-10 relative ${service.layoutClass.includes('col-xl-8') ? 'width-50' : ''}`}>
                         <div className="mxd-services-cards-s__tags">
-                          {service.tags.map((tag, i) => (
+                          {service.tags && service.tags.map((tag: string, i: number) => (
                             <span key={i} className={`tag tag-default ${service.tagClass || 'tag-outline'} anim-uni-in-up`}>{tag}</span>
                           ))}
                         </div>
                         <p className={`reveal-type anim-uni-in-up ${service.textClass || ''}`}>{service.description}</p>
+
+                        {/* Custom Buttons */}
+                        {service.buttons && (
+                          <div className="flex flex-wrap gap-4 mt-8 anim-uni-in-up">
+                            {service.buttons.map((btn: any, i: number) => (
+                              <Link key={i} href={btn.link} className={`flex items-center gap-2 px-8 py-3 rounded-full border transition-all duration-300 ${btn.style}`}>
+                                <span className="font-bold">{btn.text}</span>
+                                <ArrowUpRight className="w-4 h-4" />
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                      <div className={`mxd-services-cards-s__image ${service.imageClass}`}>
+                      <div className={`mxd-services-cards-s__image ${service.imageClass} z-0 opacity-50 md:opacity-100`}>
                         {/* Using img tag directly to respect template CSS absolute positioning */}
-                        <img src={service.image} alt={service.title} className="object-cover" />
+                        <img src={service.image} alt={service.title || 'Service Image'} className="object-cover" />
                       </div>
                     </div>
                   </div>

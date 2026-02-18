@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import SolutionsHero from '@/components/sections/solutions-hero'
 import Solutions from '@/components/sections/solutions'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'IT Solutions - NILE.COM',
   description: 'Comprehensive IT solutions including cloud services, cybersecurity, infrastructure management, and digital transformation services.',
