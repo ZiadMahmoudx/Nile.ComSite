@@ -67,7 +67,7 @@ const values = [
 ]
 
 const initialsColors = [
-  'bg-blue-600',
+  'bg-[rgb(160,34,34)]',
   'bg-emerald-600',
   'bg-violet-600',
   'bg-amber-600',

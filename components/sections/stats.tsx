@@ -10,20 +10,20 @@ const stats = [
         label: 'Happy Clients',
         value: 1750,
         suffix: '+',
-        description: 'Happy clients who trust our work',
+        description: 'Enterprise clients who trust our IT solutions',
         image: '/img/800x800_card-image-01.webp',
         colClass: 'col-12 col-xl-5',
         bgClass: 'bg-primary',
         textClass: 'text-primary-foreground',
-        btnText: 'Studio',
+        btnText: 'About Us',
         btnLink: '/about',
         anim: 'anim-uni-scale-in-right'
     },
     {
         label: 'Clients Return',
-        value: 80,
+        value: 99,
         suffix: '%',
-        description: 'Clients come back for new projects',
+        description: 'Client satisfaction rate across all our projects',
         image: '/img/customer.png',
         colClass: 'col-12 col-xl-7',
         bgClass: '',
@@ -34,9 +34,9 @@ const stats = [
     },
     {
         label: 'Years Experience',
-        value: 27,
+        value: 25,
         suffix: '+',
-        description: 'Years of professional experience in designing digital products',
+        description: 'Years of professional experience delivering IT solutions',
         image: '/img/27.png',
         colClass: 'col-12 col-xl-7',
         bgClass: '',
@@ -52,22 +52,22 @@ const stats = [
         label: 'Successful Projects',
         value: 2500,
         suffix: '+',
-        description: 'Successfully completed projects',
+        description: 'Successfully completed IT projects',
         image: '/img/projects.png',
         colClass: 'col-12 col-xl-5',
         bgClass: '',
         bgStyle: { backgroundColor: 'var(--base-tint)' },
         textClass: '',
         textStyle: { color: 'var(--t-bright)' },
-        btnText: 'Works',
-        btnLink: '/works',
+        btnText: 'Case Studies',
+        btnLink: '/case-studies',
         anim: 'anim-uni-scale-in-left'
     },
     {
-        label: 'Our Technologies',
-        value: 250,
+        label: 'Team Certifications',
+        value: 200,
         suffix: '+',
-        description: 'Our Technologies',
+        description: 'Industry certifications held by our expert engineers',
         image: '/img/cloud22.png',
         colClass: 'col-12 col-xl-5',
         bgClass: '',
@@ -77,16 +77,18 @@ const stats = [
         anim: 'anim-uni-scale-in-left'
     },
     {
-        label: 'Our Partners',
+        label: 'Technology Partners',
         value: 50,
         suffix: '+',
-        description: 'Our Partners',
+        description: 'Strategic technology partnerships including Microsoft, AWS, Cisco & VMware',
         image: '/img/partners.png',
         colClass: 'col-12 col-xl-7',
         bgClass: '',
         bgStyle: { backgroundColor: 'var(--base-tint)' },
         textClass: '',
         textStyle: { color: 'var(--t-bright)' },
+        btnText: 'Our Partners',
+        btnLink: '/partners',
         anim: 'anim-uni-scale-in-right'
     }
 ]
@@ -106,10 +108,10 @@ export default function Stats() {
                                         <div className={`mxd-stats-cards__inner relative h-[450px] ${stat.bgClass} rounded-[2.5rem] overflow-hidden transition-transform hover:-translate-y-1 duration-300`} style={stat.bgStyle || {}}>
                                             {/* Text Content - Top Right */}
                                             <div className="absolute top-8 right-8 z-10 flex flex-col items-end text-right">
-                                                <div className={`mxd-counter__number mxd-stats-number ${stat.textClass} flex items-baseline font-display text-[5rem] md:text-[7rem] lg:text-[8rem] font-bold leading-[0.8] tracking-tight`} style={stat.textStyle || {}}>
+                                                <div className={`mxd-counter__number mxd-stats-number anim-uni-in-up ${stat.textClass} flex items-baseline font-display text-[5rem] md:text-[7rem] lg:text-[8rem] font-bold leading-[0.8] tracking-tight`} style={stat.textStyle || {}}>
                                                     <AnimatedCounter value={stat.value} suffix={stat.suffix} separator="," />
                                                 </div>
-                                                <p className={`mxd-counter__descr !text-lg md:!text-xl font-medium opacity-90 max-w-[280px] leading-snug mt-4 ${stat.textClass}`} style={stat.textStyle || {}}>
+                                                <p className={`mxd-counter__descr anim-uni-in-up !text-lg md:!text-xl font-medium opacity-90 max-w-[280px] leading-snug mt-4 ${stat.textClass}`} style={stat.textStyle || {}}>
                                                     {stat.description}
                                                 </p>
                                             </div>

@@ -58,7 +58,7 @@ const newsItems = [
 ]
 
 const categoryColors: Record<string, string> = {
-    'Company News': 'bg-blue-500/20 text-blue-400',
+    'Company News': 'bg-[rgb(160,34,34)]/20 text-[rgb(160,34,34)]',
     'Events': 'bg-emerald-500/20 text-emerald-400',
     'Awards': 'bg-amber-500/20 text-amber-400',
 }

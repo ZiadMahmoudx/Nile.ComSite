@@ -17,7 +17,7 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 1 65% 38%;
+    --primary: 0 65% 38%;
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -29,7 +29,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 1 65% 38%;
+    --ring: 0 65% 38%;
     --radius: 0.75rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -38,6 +38,8 @@
     --chart-5: 27 87% 67%;
   }
 
+
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -45,7 +47,7 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 5% 8%;
     --popover-foreground: 0 0% 98%;
-    --primary: 1 65% 38%;
+    --primary: 0 65% 38%;
     --primary-foreground: 0 0% 98%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -57,7 +59,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 1 65% 38%;
+    --ring: 0 65% 38%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -66,97 +68,16 @@
   }
 }
 
-/*
- * Bridge: Sync Rayo CSS variables with next-themes class-based dark mode.
- * Rayo uses @media(prefers-color-scheme) but next-themes uses class="dark".
- * Without this, if OS is light but app is dark, all Rayo colors break.
- */
-.dark {
-  --base: var(--base--dark);
-  --base-rgb: var(--base-rgb--dark);
-  --base-tint: var(--base-tint--dark);
-  --base-shade: var(--base-shade--dark);
-  --base-opp: var(--base-opp--dark);
-  --base-opp-tint: var(--base-opp-tint--dark);
-  --accent: var(--accent--dark);
-  --accent-rgb: var(--accent-rgb--dark);
-  --additional: var(--additional--dark);
-  --additional-rgb: var(--additional-rgb--dark);
-  --neutral-transparent: var(--neutral-transparent--dark);
-  --st-bright: var(--st-bright--dark);
-  --st-medium: var(--st-medium--dark);
-  --st-muted: var(--st-muted--dark);
-  --st-opp-bright: var(--st-opp-bright--dark);
-  --fw-regular: var(--fw-regular--dark);
-  --fw-medium: var(--fw-medium--dark);
-  --fw-semibold: var(--fw-semibold--dark);
-  --fw-bold: var(--fw-bold--dark);
-  --fw-regular-opp: var(--fw-regular-opp--dark);
-  --fw-medium-opp: var(--fw-medium-opp--dark);
-  --t-bright: var(--t-bright--dark);
-  --t-medium: var(--t-medium--dark);
-  --t-muted: var(--t-muted--dark);
-  --t-muted-extra: var(--t-muted-extra--dark);
-  --t-opp-bright: var(--t-opp-bright--dark);
-  --t-opp-medium: var(--t-opp-medium--dark);
-  --t-opp-muted: var(--t-opp-muted--dark);
-}
 
-/* Light class bridge (for completeness with next-themes) */
-:root:not(.dark) {
-  --base: var(--base--light);
-  --base-rgb: var(--base-rgb--light);
-  --base-tint: var(--base-tint--light);
-  --base-shade: var(--base-shade--light);
-  --base-opp: var(--base-opp--light);
-  --base-opp-tint: var(--base-opp-tint--light);
-  --accent: var(--accent--light);
-  --accent-rgb: var(--accent-rgb--light);
-  --additional: var(--additional--light);
-  --additional-rgb: var(--additional-rgb--light);
-  --neutral-transparent: var(--neutral-transparent--light);
-  --st-bright: var(--st-bright--light);
-  --st-medium: var(--st-medium--light);
-  --st-muted: var(--st-muted--light);
-  --st-opp-bright: var(--st-opp-bright--light);
-  --fw-regular: var(--fw-regular--light);
-  --fw-medium: var(--fw-medium--light);
-  --fw-semibold: var(--fw-semibold--light);
-  --fw-bold: var(--fw-bold--light);
-  --fw-regular-opp: var(--fw-regular-opp--light);
-  --fw-medium-opp: var(--fw-medium-opp--light);
-  --t-bright: var(--t-bright--light);
-  --t-medium: var(--t-medium--light);
-  --t-muted: var(--t-muted--light);
-  --t-muted-extra: var(--t-muted-extra--light);
-  --t-opp-bright: var(--t-opp-bright--light);
-  --t-opp-medium: var(--t-opp-medium--light);
-  --t-opp-muted: var(--t-opp-muted--light);
-}
 
 @layer base {
-
-  /* Rayo compatibility: Reset root font size */
-  html {
-    font-size: 62.5%;
-    /* 1rem = 10px */
-  }
-
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-size: 1.6rem;
-    /* Restore 16px base size for body content */
-    padding-top: 0;
-    /* Let Rayo handle padding */
-    overflow-x: hidden;
+    @apply bg-background text-foreground;
   }
-
-  /* Adjusting media query padding since we removed default padding-top */
-
 }
 
 @layer components {

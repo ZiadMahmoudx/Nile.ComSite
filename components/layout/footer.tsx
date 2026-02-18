@@ -39,8 +39,8 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/p/NileCom-100064014699452/', color: 'hover:text-blue-500' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nile.com', color: 'hover:text-blue-600' },
+  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/p/NileCom-100064014699452/', color: 'hover:text-[rgb(160,34,34)]' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nile.com', color: 'hover:text-[rgb(160,34,34)]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/nilecom.eg.ae/', color: 'hover:text-pink-500' },
 ]
 

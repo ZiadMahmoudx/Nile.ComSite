@@ -11,12 +11,13 @@ export default function CompanyIntro() {
                 <div className="mxd-block">
                     <div className="row">
                         <div className="col-lg-6">
-                            <div className="relative w-full h-full min-h-[500px] rounded-xl overflow-hidden shadow-lg bg-neutral-100">
+                            <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg bg-neutral-100">
                                 <video
                                     controls
                                     playsInline
                                     preload="metadata"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
+                                    poster="/images/thumb.jpg"
                                 >
                                     <source src="/intro.mp4" type="video/mp4" />
                                     Your browser does not support the video tag.

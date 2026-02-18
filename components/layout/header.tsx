@@ -118,17 +118,14 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
+            <Link href="/" className="flex items-center space-x-3 group shrink-0">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-red-500/30 to-primary/30 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                <div className="relative bg-gradient-to-br from-primary/10 to-red-500/10 p-2 rounded-xl border border-primary/20 group-hover:border-primary/40 transition-all duration-300">
-                  <Image
+                <div className="relative bg-gradient-to-br from-primary/10 to-red-500/10 rounded-xl border border-primary/20 group-hover:border-primary/40 transition-all duration-300 flex items-center justify-center p-2 h-14 w-auto">
+                  <img
                     src="/nile-logo.png"
                     alt="NILE.COM Logo"
-                    width={40}
-                    height={40}
-                    className="transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-                    priority
+                    className="h-full w-auto object-contain transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                   />
                 </div>
               </div>

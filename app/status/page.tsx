@@ -110,7 +110,7 @@ export default function StatusPage() {
       case 'outage':
         return <XCircle className="w-5 h-5 text-red-500" />
       default:
-        return <Clock className="w-5 h-5 text-blue-500" />
+        return <Clock className="w-5 h-5 text-[rgb(160,34,34)]" />
     }
   }
 
@@ -125,7 +125,7 @@ export default function StatusPage() {
       case 'resolved':
         return <Badge variant="secondary" className="bg-green-500/10 text-green-500 border-green-500/20">Resolved</Badge>
       case 'completed':
-        return <Badge variant="secondary" className="bg-blue-500/10 text-blue-500 border-blue-500/20">Completed</Badge>
+        return <Badge variant="secondary" className="bg-[rgb(160,34,34)]/10 text-[rgb(160,34,34)] border-[rgb(160,34,34)]/20">Completed</Badge>
       case 'maintenance':
         return <Badge variant="secondary" className="bg-purple-500/10 text-purple-500 border-purple-500/20">Maintenance</Badge>
       default:

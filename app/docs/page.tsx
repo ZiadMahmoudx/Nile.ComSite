@@ -28,7 +28,7 @@ const documentationCategories = [
     title: 'Cloud Services',
     description: 'Documentation for our cloud solutions including Azure and AWS',
     docs: 24,
-    color: 'text-blue-500'
+    color: 'text-[rgb(160,34,34)]'
   },
   {
     icon: Shield,

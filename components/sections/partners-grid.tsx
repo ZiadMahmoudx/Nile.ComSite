@@ -74,7 +74,7 @@ const getTierIcon = (tier: string) => {
   if (tier.includes('Expert') || tier.includes('Principal')) {
     return <Star className="h-4 w-4 text-purple-500" />
   }
-  return <Shield className="h-4 w-4 text-blue-500" />
+  return <Shield className="h-4 w-4 text-[rgb(160,34,34)]" />
 }
 
 export default function PartnersGrid() {

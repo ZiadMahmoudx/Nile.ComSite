@@ -1,73 +1,118 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
-import { TestimonialCarousel } from '@/components/ui/testimonial-carousel'
-import { ScrollAnimation } from '@/components/ui/scroll-animation'
-import { MessageSquare } from 'lucide-react'
+import React from 'react'
+import Image from 'next/image'
+import { Marquee } from '@/components/ui/marquee'
 
 const testimonials = [
     {
-        id: 1,
         name: 'Ahmed Hassan',
         role: 'CTO',
-        company: 'Al-Futtaim Group',
         content: 'NILE.COM transformed our entire IT infrastructure. Their expertise in cloud migration saved us millions and improved our operational efficiency by 40%.',
-        rating: 5,
+        avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+        logo: '/img/microsoft-logo-300x300.png'
     },
     {
-        id: 2,
         name: 'Sarah Mitchell',
         role: 'IT Director',
-        company: 'Emirates NBD',
         content: 'The cybersecurity solutions implemented by NILE.COM have been exceptional. We haven\'t had a single security incident since partnering with them.',
-        rating: 5,
+        avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
+        logo: '/img/Fortinet-300x300.png'
     },
     {
-        id: 3,
         name: 'Omar Khalid',
         role: 'Managing Director',
-        company: 'Etisalat Digital',
         content: 'Their 24/7 support team is phenomenal. Any issue we\'ve had was resolved within hours, not days. True enterprise-grade service.',
-        rating: 5,
+        avatar: 'https://randomuser.me/api/portraits/men/85.jpg',
+        logo: '/img/Dell-Emc-e1588863410145-367x367.png'
     },
     {
-        id: 4,
         name: 'Lisa Chen',
         role: 'VP of Operations',
-        company: 'DAMAC Properties',
         content: 'We\'ve worked with many IT providers, but NILE.COM stands out for their strategic approach. They don\'t just solve problems—they anticipate them.',
-        rating: 5,
-    },
+        avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
+        logo: '/img/Vmware-logo-300x300.png'
+    }
 ]
 
 export default function Testimonials() {
     return (
-        <section id="testimonials" className="py-24 bg-gradient-to-b from-background to-muted/20">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Section Header */}
-                <ScrollAnimation animation="fade-up">
-                    <div className="text-center mb-12 space-y-4">
-                        <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2">
-                            <MessageSquare className="w-4 h-4 mr-2" />
-                            Client Testimonials
-                        </Badge>
-                        <h2 className="text-4xl lg:text-6xl font-black">
-                            <span className="text-foreground">What Our</span>
-                            <br />
-                            <span className="text-gradient">Clients Say</span>
-                        </h2>
-                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                            Don't just take our word for it. Hear from industry leaders who trust NILE.COM
-                            for their technology needs.
-                        </p>
-                    </div>
-                </ScrollAnimation>
+        <div className="mxd-section overflow-hidden padding-default">
+            <div className="mxd-container grid-container">
 
-                {/* Testimonial Carousel */}
-                <ScrollAnimation animation="scale-up" delay={0.2}>
-                    <TestimonialCarousel testimonials={testimonials} autoPlay interval={6000} />
-                </ScrollAnimation>
+                {/* Section Title */}
+                <div className="mxd-block">
+                    <div className="mxd-section-title pre-grid">
+                        <div className="container-fluid p-0">
+                            <div className="row g-0">
+                                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                                    <div className="mxd-section-title__hrtitle">
+                                        <h2 className="reveal-type anim-uni-in-up" style={{ fontSize: 'clamp(2.4rem, 4vw, 4rem)' }}>
+                                            What Our<br />Clients Say
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                                    <div className="mxd-section-title__hrdescr">
+                                        <p className="anim-uni-in-up">
+                                            Don't just take our word for it. Hear from industry leaders who trust NILE.COM for their technology needs.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Testimonials Marquee */}
+                <div className="mxd-block">
+                    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+                        <Marquee pauseOnHover className="[--duration:40s]">
+                            {testimonials.map((item, index) => (
+                                <div key={index} className="mx-4 w-[400px] md:w-[500px]">
+                                    <div className="mxd-testimonials-card bg-neutral-900 rounded-[2rem] !h-auto !min-h-[300px] p-8 border border-white/5 hover:border-white/10 transition-colors">
+                                        <div className="flex flex-col gap-6 justify-between h-full">
+                                            {/* Top: Avatar & Logo */}
+                                            <div className="flex items-center justify-between">
+                                                <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-primary/20">
+                                                    <Image
+                                                        src={item.avatar}
+                                                        alt={item.name}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                                <div className="relative w-24 h-12 grayscale opacity-70">
+                                                    <Image
+                                                        src={item.logo}
+                                                        alt="Company Logo"
+                                                        fill
+                                                        className="object-contain"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            {/* Middle: Content */}
+                                            <div className="mt-4">
+                                                <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light">"{item.content}"</p>
+                                            </div>
+
+                                            {/* Bottom: Author */}
+                                            <div className="mt-4 border-t border-white/10 pt-4">
+                                                <h4 className="text-lg font-bold text-white">{item.name}</h4>
+                                                <span className="text-sm text-primary">{item.role}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </Marquee>
+                        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background dark:from-background"></div>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background dark:from-background"></div>
+                    </div>
+                </div>
+
             </div>
-        </section>
+        </div>
     )
 }

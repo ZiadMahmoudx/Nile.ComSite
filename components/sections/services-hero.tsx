@@ -87,7 +87,7 @@ const ServicesHero = () => {
                                   </Link>
                                 </div>
                                 <div className="absolute right-0 bottom-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                                  <div className="w-48 h-48 bg-blue-500 rounded-full blur-3xl"></div>
+                                  <div className="w-48 h-48 bg-[rgb(160,34,34)] rounded-full blur-3xl"></div>
                                 </div>
                               </div>
                             </div>

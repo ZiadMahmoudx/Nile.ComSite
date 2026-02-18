@@ -6,6 +6,7 @@ import LocalBusinessStructuredData from '@/components/seo/local-business-structu
 import CompanyIntro from '@/components/sections/company-intro'
 import Stats from '@/components/sections/stats'
 import Partners from '@/components/sections/partners'
+import Testimonials from '@/components/sections/testimonials'
 
 export default function HomePage() {
   return (
@@ -38,6 +39,7 @@ export default function HomePage() {
         <Solutions />
         <Stats />
         <Partners />
+        <Testimonials />
         <CtaContact />
       </main>
     </>

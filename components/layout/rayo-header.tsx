@@ -252,7 +252,7 @@ export function RayoHeader() {
                                                     style={{ color: 'var(--t-opp-medium)' }}
                                                 >
                                                     Welcome to NILE.COM<br />
-                                                    Your trusted IT partner in the Middle East since 2005.
+                                                    Your trusted IT partner in Egypt &amp; the region since 1999.
                                                 </p>
                                             </div>
                                         </div>
@@ -303,8 +303,7 @@ export function RayoHeader() {
                             alt="NILE.COM"
                             width={160}
                             height={50}
-                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-105 w-[14rem] md:w-[20rem]"
-                            style={{ height: 'auto' }}
+                            className="object-contain transition-transform duration-300 group-hover:scale-105 !w-28 !h-auto md:!w-[160px] md:!h-[70px]"
                             priority
                         />
                     </Link>

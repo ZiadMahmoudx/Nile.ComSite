@@ -16,7 +16,7 @@ export default function CTA() {
                 {/* Block - CTA Start */}
                 <div className="mxd-block">
                     <div className="mxd-promo">
-                        <div className="mxd-promo__inner relative overflow-hidden bg-[#111] rounded-[3rem] px-6 py-20 md:py-32 flex flex-col items-center justify-center text-center">
+                        <div className="mxd-promo__inner relative overflow-hidden !bg-[#111] dark:!bg-black rounded-[3rem] px-6 py-20 md:py-32 flex flex-col items-center justify-center text-center">
 
                             {/* Decorative Background Images */}
                             <div className="absolute inset-0 pointer-events-none">
@@ -36,11 +36,11 @@ export default function CTA() {
                                     </div>
                                 </div>
 
-                                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-10 leading-[1.1]">
+                                <h2 className="anim-uni-in-up text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-10 leading-[1.1]">
                                     Let's talk about <br /><span className="text-white/80">your project!</span>
                                 </h2>
 
-                                <div className="flex justify-center">
+                                <div className="flex justify-center anim-uni-in-up">
                                     <Link className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-accent text-white font-semibold text-lg transition-transform hover:scale-105 hover:brightness-110" href="/contact">
                                         <span>Contact Us</span>
                                         <ArrowUpRight className="w-5 h-5" />

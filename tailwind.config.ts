@@ -66,8 +66,8 @@ const config: Config = {
           to: { height: "0" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(0, 212, 255, 0.3)" },
-          "50%": { boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(160, 34, 34, 0.3)" },
+          "50%": { boxShadow: "0 0 30px rgba(160, 34, 34, 0.6)" },
         },
         aurora: {
           from: {

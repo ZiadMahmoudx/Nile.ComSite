@@ -15,7 +15,7 @@ export default function CtaContact() {
                         <div className="mxd-promo">
                             <div className="mxd-promo__inner anim-zoom-out-container rounded-[3.5rem] border border-border/40 shadow-xl overflow-hidden">
                                 {/* background */}
-                                <div className="mxd-promo__bg bg-gradient-to-br from-base-opp/90 to-base-opp backdrop-blur-sm"></div>
+                                <div className="mxd-promo__bg bg-gradient-to-br from-neutral-900 to-black backdrop-blur-sm"></div>
                                 {/* caption */}
                                 <div className="mxd-promo__content relative z-10">
                                     <p className="mxd-promo__title anim-uni-in-up">
