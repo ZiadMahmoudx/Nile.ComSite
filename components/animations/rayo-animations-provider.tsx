@@ -14,6 +14,8 @@ if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP)
 }
 
+const docStyle = typeof window !== 'undefined' ? getComputedStyle(document.documentElement) : null
+
 export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode }) => {
     useGSAP(() => {
         // --------------------------------------------- //
@@ -76,6 +78,44 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
                     trigger: element,
                     start: 'top 90%',
                     toggleActions: 'play none none reverse',
+                }
+            })
+        })
+
+        // --------------------------------------------- //
+        // Zoom In/Out Containers (.anim-zoom-in-container, .anim-zoom-out-container)
+        // --------------------------------------------- //
+        const zoomInContainer = document.querySelectorAll('.anim-zoom-in-container')
+        const zoomOutContainer = document.querySelectorAll('.anim-zoom-out-container')
+
+        zoomInContainer.forEach((element) => {
+            gsap.fromTo(element, {
+                borderRadius: '200px',
+                transform: 'scale3d(0.94, 1, 1)'
+            }, {
+                borderRadius: docStyle?.getPropertyValue('--_radius-l') || '3.8rem',
+                transform: 'scale3d(1, 1, 1)',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 82%',
+                    end: 'top 14%',
+                    scrub: true,
+                }
+            })
+        })
+
+        zoomOutContainer.forEach((element) => {
+            gsap.fromTo(element, {
+                borderRadius: docStyle?.getPropertyValue('--_radius-l') || '3.8rem',
+                transform: 'scale3d(1, 1, 1)'
+            }, {
+                borderRadius: '200px',
+                transform: 'scale3d(0.94, 1, 1)',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'bottom 100%',
+                    end: 'bottom 20%',
+                    scrub: true,
                 }
             })
         })
@@ -215,11 +255,90 @@ export const RayoAnimationsProvider = ({ children }: { children: React.ReactNode
         }
         initMarquees()
 
+        // --------------------------------------------- //
+        // Parallax Universal ([data-speed])
+        // --------------------------------------------- //
+        gsap.to('[data-speed]', {
+            y: (i, el) => (1 - parseFloat(el.getAttribute('data-speed') || '0')) * ScrollTrigger.maxScroll(window),
+            ease: 'none',
+            scrollTrigger: {
+                start: 0,
+                end: 'max',
+                invalidateOnRefresh: true,
+                scrub: 0
+            }
+        })
+
+        // --------------------------------------------- //
+        // Pinned Images (.mxd-pinned)
+        // --------------------------------------------- //
+        const pinnedSections = document.querySelectorAll('.mxd-pinned')
+        pinnedSections.forEach((section) => {
+            const childTriggers = section.querySelectorAll('.mxd-pinned__text-item')
+            const childTargets = section.querySelectorAll('.mxd-pinned__img-item')
+
+            function makeItemActive(idx: number) {
+                childTriggers.forEach(t => t.classList.remove('is-active'))
+                childTargets.forEach(t => t.classList.remove('is-active'))
+                childTriggers[idx]?.classList.add('is-active')
+                childTargets[idx]?.classList.add('is-active')
+            }
+
+            makeItemActive(0)
+
+            childTriggers.forEach((trigger, idx) => {
+                ScrollTrigger.create({
+                    trigger: trigger,
+                    start: 'top center',
+                    end: 'bottom center',
+                    onToggle: (isActive) => {
+                        if (isActive) makeItemActive(idx)
+                    }
+                })
+            })
+        })
+
         // Refresh ScrollTrigger on image load
         const content = document.body
         imagesLoaded(content, () => {
             ScrollTrigger.refresh()
         })
+
+        // --------------------------------------------- //
+        // Stacking Cards (.stack-item)
+        // --------------------------------------------- //
+        const cards = document.querySelectorAll('.stack-item')
+        const stickySpace = document.querySelector('.stack-offset') as HTMLElement || null
+
+        if (cards.length > 0 && stickySpace) {
+            const animation = gsap.timeline()
+            let cardHeight = 0
+
+            function initCards() {
+                animation.clear()
+                cardHeight = (cards[0] as HTMLElement).offsetHeight
+                cards.forEach((card, index) => {
+                    if (index > 0) {
+                        gsap.set(card, { y: index * cardHeight })
+                        animation.to(card, { y: 0, duration: index * 0.5, ease: 'none' }, 0)
+                    }
+                })
+            }
+
+            initCards()
+
+            ScrollTrigger.create({
+                trigger: '.stack-wrapper',
+                start: 'top top',
+                pin: true,
+                end: () => `+=${(cards.length * cardHeight) + stickySpace.offsetHeight}`,
+                scrub: true,
+                animation: animation,
+                invalidateOnRefresh: true,
+            })
+
+            ScrollTrigger.addEventListener('refreshInit', initCards)
+        }
 
     }, [])
 

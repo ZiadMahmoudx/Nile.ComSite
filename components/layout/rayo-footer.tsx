@@ -1,178 +1,142 @@
 'use client'
 
+import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { Facebook, Linkedin, Instagram, ArrowUpRight } from 'lucide-react'
-
-const footerLinks = {
-    company: [
-        { name: 'About Us', href: '/about' },
-        { name: 'Our Team', href: '/team' },
-        { name: 'Careers', href: '/careers' },
-        { name: 'News & Events', href: '/news' },
-        { name: 'Case Studies', href: '/case-studies' },
-    ],
-    solutions: [
-        { name: 'Cloud Solutions', href: '/solutions#cloud' },
-        { name: 'Cybersecurity', href: '/solutions#security' },
-        { name: 'Infrastructure', href: '/solutions#infrastructure' },
-        { name: 'Digital Transformation', href: '/solutions#transformation' },
-        { name: 'Data Management', href: '/solutions#data' },
-    ],
-    services: [
-        { name: 'Managed IT Services', href: '/services#managed' },
-        { name: 'IT Consulting', href: '/services#consulting' },
-        { name: 'Technical Support', href: '/services#support' },
-        { name: 'Implementation', href: '/services#implementation' },
-        { name: 'Training', href: '/services#training' },
-    ],
-}
+import { ArrowUpRight, ArrowRight, ArrowUp } from 'lucide-react'
 
 export function RayoFooter() {
     return (
-        <footer className="mxd-demo-footer">
-            <div className="mxd-demo-footer__bg">
-                <div className="absolute inset-0 bg-background/90" />
-            </div>
+        <footer id="mxd-footer" className="mxd-footer">
 
-            <div className="mxd-container grid-container relative z-10">
-                <div className="mxd-block">
-                    <div className="container-fluid p-0">
-                        <div className="row g-0">
 
-                            {/* Logo Column */}
-                            <div className="col-12 col-xl-3 mxd-demo-footer__item mxd-grid-item">
-                                <div className="mxd-demo-footer__logo">
-                                    <Link href="/" className="mxd-logo">
-                                        <Image
-                                            src="/nile-logo.png"
-                                            alt="NILE.COM"
-                                            width={56}
-                                            height={56}
-                                            className="mxd-logo__image object-contain"
-                                            style={{ width: '5.6rem', height: 'auto' }}
-                                        />
+
+            {/* Footer Block - Info Columns Start */}
+            <div className="mxd-footer__footer-blocks">
+
+                {/* single column (Navigation) */}
+                <div className="footer-blocks__column animate-card-3">
+                    <div className="footer-blocks__card fullheight-card">
+                        <div className="footer-blocks__nav">
+                            <ul className="footer-nav">
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Home</span>
                                     </Link>
-                                </div>
-                                <div className="mxd-demo-footer__slogan">
-                                    <p className="t-small t-bright">
-                                        Leading IT solutions provider with 25+ years of experience in delivering
-                                        cutting-edge technology solutions.
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/about" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">About us</span>
+                                    </Link>
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/works" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Works</span>
+                                    </Link>
+                                    <p className="footer-nav__counter">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2 c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4 c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2 c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6 c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4 c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6 c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+                                        </svg>
+                                        <span>10</span>
                                     </p>
-                                </div>
-                                <div className="mxd-demo-footer__btn">
-                                    <Link className="btn btn-anim btn-default btn-small btn-accent slide-right" href="/contact">
-                                        <span className="btn-caption">Contact Us</span>
-                                        <ArrowUpRight className="ml-2 w-4 h-4" />
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/services" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Services</span>
                                     </Link>
-                                </div>
-                            </div>
-
-                            {/* Navigation Column */}
-                            <div className="col-12 col-xl-6 mxd-demo-footer__item">
-                                <nav className="mxd-demo-footer__nav">
-                                    <div className="container-fluid p-0">
-                                        <div className="row g-0">
-
-                                            {/* Company Links */}
-                                            <div className="col-12 col-md-4 mxd-grid-item mxd-footer-nav__item">
-                                                <div className="mxd-footer-nav__block">
-                                                    <div className="mxd-footer-nav__title">
-                                                        <p className="t-140 t-bright t-caption">Company</p>
-                                                    </div>
-                                                    <div className="mxd-footer-nav__list">
-                                                        <ul>
-                                                            {footerLinks.company.map((link) => (
-                                                                <li key={link.name}>
-                                                                    <Link href={link.href}>{link.name}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {/* Solutions Links */}
-                                            <div className="col-12 col-md-4 mxd-grid-item mxd-footer-nav__item">
-                                                <div className="mxd-footer-nav__block">
-                                                    <div className="mxd-footer-nav__title">
-                                                        <p className="t-140 t-bright t-caption">Solutions</p>
-                                                    </div>
-                                                    <div className="mxd-footer-nav__list">
-                                                        <ul>
-                                                            {footerLinks.solutions.map((link) => (
-                                                                <li key={link.name}>
-                                                                    <Link href={link.href}>{link.name}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {/* Services Links */}
-                                            <div className="col-12 col-md-4 mxd-grid-item mxd-footer-nav__item">
-                                                <div className="mxd-footer-nav__block">
-                                                    <div className="mxd-footer-nav__title">
-                                                        <p className="t-140 t-bright t-caption">Services</p>
-                                                    </div>
-                                                    <div className="mxd-footer-nav__list">
-                                                        <ul>
-                                                            {footerLinks.services.map((link) => (
-                                                                <li key={link.name}>
-                                                                    <Link href={link.href}>{link.name}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </nav>
-                            </div>
-
-                            {/* Social / Contact Column */}
-                            <div className="col-12 col-xl-3 mxd-demo-footer__item mxd-grid-item">
-                                <div className="mxd-demo-footer__promo">
-                                    <div className="mxd-footer-promo__title">
-                                        <p className="t-140 t-bright t-caption">Connect with us:</p>
-                                    </div>
-                                    <div className="mxd-footer-promo__list">
-                                        <Link className="mxd-footer-promo__item" href="https://www.linkedin.com/company/nile.com" target="_blank">
-                                            <Linkedin className="mxd-footer-promo__icon w-6 h-6" />
-                                            <span className="mxd-footer-promo__link">LinkedIn</span>
-                                        </Link>
-                                        <Link className="mxd-footer-promo__item" href="https://www.facebook.com/" target="_blank">
-                                            <Facebook className="mxd-footer-promo__icon w-6 h-6" />
-                                            <span className="mxd-footer-promo__link">Facebook</span>
-                                        </Link>
-                                        <Link className="mxd-footer-promo__item" href="https://www.instagram.com/" target="_blank">
-                                            <Instagram className="mxd-footer-promo__icon w-6 h-6" />
-                                            <span className="mxd-footer-promo__link">Instagram</span>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/insights" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Insights</span>
+                                    </Link>
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/contact" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Contact</span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="footer-blocks__links anim-uni-in-up">
+                            <Link className="btn btn-line-xsmall btn-muted slide-right anim-no-delay" href="/privacy-policy">
+                                <span className="btn-caption">Privacy Policy</span>
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
+                            <Link className="btn btn-line-xsmall btn-muted slide-right anim-no-delay" href="/terms-and-conditions">
+                                <span className="btn-caption">Terms & conditions</span>
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
                         </div>
                     </div>
                 </div>
 
-                {/* Copyright */}
-                <div className="mxd-block">
-                    <div className="mxd-demo-footer__mixdesign mxd-grid-item no-margin py-8">
-                        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground w-full">
-                            <p>&copy; 2025 NILE.COM. All rights reserved.</p>
-                            <div className="flex gap-4 mt-4 md:mt-0">
-                                <Link href="/privacy">Privacy</Link>
-                                <Link href="/terms">Terms</Link>
-                            </div>
+                {/* single column (Contact & Newsletter) */}
+                <div className="footer-blocks__column animate-card-3">
+                    {/* inner card - Email */}
+                    <div className="footer-blocks__card">
+                        <p className="mxd-point-subtitle anim-uni-in-up">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2 c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4 c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2 c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6 c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4 c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6 c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+                            </svg>
+                            <a href="mailto:info@nilecom.com.eg">info@nilecom.com.eg</a>
+                        </p>
+                    </div>
+                    {/* inner card - Phone */}
+                    <div className="footer-blocks__card">
+                        <p className="mxd-point-subtitle anim-uni-in-up">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2 c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4 c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2 c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6 c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4 c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6 c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"></path>
+                            </svg>
+                            <a href="tel:+20227024681">+20 (2) 27024681</a>
+                        </p>
+                    </div>
+                    {/* inner card - Newsletter */}
+                    <div className="footer-blocks__card fill-card notify">
+                        <div className="footer-blocks__title anim-uni-in-up">
+                            <p className="footer-blocks__title-m">Subscribe to our insights:</p>
+                        </div>
+                        <div className="form-container anim-uni-in-up">
+                            <form className="form notify-form form-light">
+                                <input type="email" placeholder="Your Email" required className="outline-none" />
+                                <button className="btn btn-form btn-absolute-right btn-muted slide-right-up anim-no-delay" type="submit">
+                                    <ArrowUpRight className="w-5 h-5" />
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
+
+                {/* single column (Ecosystem) */}
+                <div className="footer-blocks__column animate-card-3">
+                    <div className="footer-blocks__card fullheight-card">
+                        <div className="footer-blocks__block">
+                            <div className="footer-blocks__title anim-uni-in-up">
+                                <p className="footer-blocks__title-l">Ecosystem</p>
+                            </div>
+                            <div className="footer-blocks__socials">
+                                <ul className="footer-socials">
+                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://dribbble.com/" className="footer-socials__link" target="_blank">Dribbble</a></li>
+                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.behance.net/" className="footer-socials__link" target="_blank">Behance</a></li>
+                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.instagram.com/" className="footer-socials__link" target="_blank">Instagram</a></li>
+                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://github.com/" className="footer-socials__link" target="_blank">Github</a></li>
+                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://codepen.io/" className="footer-socials__link" target="_blank">Codepen</a></li>
+                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.figma.com/community" className="footer-socials__link" target="_blank">Figma Community</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="footer-blocks__links anim-uni-in-up">
+                            <p className="t-xsmall t-muted flex items-center gap-2">
+                                <Link className="no-effect" href="/" target="_blank">Nile.com</Link>
+                                <span>&copy; 2025</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            {/* Footer Block - Info Columns End */}
+
+
+
         </footer>
     )
 }

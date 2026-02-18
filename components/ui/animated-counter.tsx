@@ -12,6 +12,7 @@ interface AnimatedCounterProps {
     duration?: number
     className?: string
     decimals?: number
+    separator?: string
 }
 
 export function AnimatedCounter({
@@ -22,6 +23,7 @@ export function AnimatedCounter({
     duration = 2000,
     className,
     decimals = 0,
+    separator,
 }: AnimatedCounterProps) {
     const ref = useRef<HTMLSpanElement>(null)
     const isInView = useInView(ref, { once: false, margin: '-50px' })
@@ -34,7 +36,7 @@ export function AnimatedCounter({
     // Parse numeric value from string like "500+" or "99.9%"
     const numericValue = typeof rawValue === 'string'
         ? parseFloat(rawValue.replace(/[^0-9.]/g, '')) || 0
-        : (rawValue || 0)
+        : (rawValue as number || 0)
 
     const animate = useCallback(() => {
         let startTime: number | null = null
@@ -42,10 +44,11 @@ export function AnimatedCounter({
 
         const step = (timestamp: number) => {
             if (!startTime) startTime = timestamp
-            const progress = Math.min((timestamp - startTime) / duration, 1)
+            const progress = (timestamp - startTime) / duration
+            const easeProgress = Math.min(progress, 1)
 
             // Easing function (ease-out cubic)
-            const easeOut = 1 - Math.pow(1 - progress, 3)
+            const easeOut = 1 - Math.pow(1 - easeProgress, 3)
             const currentValue = numericValue * easeOut
 
             setDisplayValue(currentValue)
@@ -71,9 +74,13 @@ export function AnimatedCounter({
         }
     }, [isInView, animate])
 
-    const formattedValue = decimals > 0
+    let formattedValue = decimals > 0
         ? displayValue.toFixed(decimals)
         : Math.floor(displayValue).toString()
+
+    if (separator) {
+        formattedValue = formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, separator)
+    }
 
     return (
         <span ref={ref} className={cn('tabular-nums', className)}>

@@ -1,9 +1,11 @@
 import Hero from '@/components/sections/hero'
 import Solutions from '@/components/sections/solutions'
 import Services from '@/components/sections/services'
-import Contact from '@/components/sections/contact'
+import CtaContact from '@/components/sections/cta-contact'
 import LocalBusinessStructuredData from '@/components/seo/local-business-structured-data'
 import CompanyIntro from '@/components/sections/company-intro'
+import Stats from '@/components/sections/stats'
+import Partners from '@/components/sections/partners'
 
 export default function HomePage() {
   return (
@@ -30,13 +32,14 @@ export default function HomePage() {
         ]}
       />
 
-      <div className="relative z-10">
-        <Hero />
+      <main id="mxd-page-content" className="mxd-page-content">
+        <Services />
         <CompanyIntro />
         <Solutions />
-        <Services />
-        <Contact />
-      </div>
+        <Stats />
+        <Partners />
+        <CtaContact />
+      </main>
     </>
   )
 }

@@ -2,13 +2,12 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
-import '@/styles/rayo/plugins.css'
-import '@/styles/rayo/main.css'
 import { Providers } from './providers'
 import { SmoothScroll } from '@/components/ui/smooth-scroll'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { BackToTop } from '@/components/ui/back-to-top'
 import { CookieConsent } from '@/components/ui/cookie-consent'
+import { PageLoader } from '@/components/ui/page-loader'
 import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 import { ScrollToTopGuide } from '@/components/ui/scroll-to-top-guide'
 import { RayoHeader } from '@/components/layout/rayo-header'
@@ -99,7 +98,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={GeistSans.className}>
+      <head>
+        <link rel="stylesheet" type="text/css" href="/css/loaders/loader.css" />
+        <link rel="stylesheet" type="text/css" href="/css/plugins.css" />
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+      </head>
+
+      <body className="font-sans antialiased">
+        <PageLoader />
         <Providers>
           <RayoAnimationsProvider>
             <RayoHeader />

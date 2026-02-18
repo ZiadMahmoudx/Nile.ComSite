@@ -1,175 +1,48 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Play, ChevronRight } from 'lucide-react'
-import Image from 'next/image'
-import { AnimatedCaption } from '@/components/ui/animated-caption'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function CompanyIntro() {
-    const [isPlaying, setIsPlaying] = useState(false)
-    const videoRef = useRef<HTMLVideoElement>(null)
-
-    const handlePlay = () => {
-        setIsPlaying(true)
-        setTimeout(() => {
-            if (videoRef.current) {
-                videoRef.current.play()
-            }
-        }, 100)
-    }
-
     return (
-        <>
-            {/* Section - Inner Page Headline Start */}
-            <div className="mxd-section mxd-section-inner-headline padding-headline-pre-block">
-                <div className="mxd-container grid-container">
-                    <div className="mxd-block loading-wrap">
-                        <div className="container-fluid px-0">
-                            <div className="row gx-0">
-                                <div className="col-12 col-xl-2 mxd-grid-item no-margin">
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        className="mxd-block__name name-inner-headline"
-                                    >
-                                        <p className="mxd-point-subtitle">
-                                            <span className="relative flex h-3 w-3 mr-2">
-                                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                                                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                                            </span>
-                                            <span>Discover</span>
-                                        </p>
-                                    </motion.div>
-                                </div>
-                                <div className="col-12 col-xl-10 mxd-grid-item no-margin">
-                                    <div className="mxd-block__content">
-                                        <div className="mxd-block__inner-headline">
-                                            <h1 className="inner-headline__title reveal-type">
-                                                Innovating for a <span className="text-primary">Digital Future</span>
-                                            </h1>
-
-                                            <p className="inner-headline__text text-xl md:text-2xl text-muted-foreground leading-relaxed mt-8 reveal-type">
-                                                For over 25 years, we&apos;ve been at the forefront of technological evolution in Egypt.
-                                                Our journey is defined by a relentless pursuit of excellence and a passion for
-                                                empowering businesses through cutting-edge IT solutions.
-                                            </p>
-
-
-                                        </div>
-                                    </div>
-                                </div>
+        <div className="mxd-section padding-grid-pre-mtext">
+            <div className="mxd-container grid-container">
+                <div className="mxd-block">
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div className="relative w-full h-full min-h-[500px] rounded-xl overflow-hidden shadow-lg bg-neutral-100">
+                                <video
+                                    controls
+                                    playsInline
+                                    preload="metadata"
+                                    className="w-full h-full object-cover"
+                                >
+                                    <source src="/intro.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            {/* Section - Inner Page Headline End */}
-
-            {/* Section - Culture & Values Start */}
-            <div className="mxd-section padding-grid-pre-mtext">
-                <div className="mxd-container grid-container">
-                    <div className="mxd-block">
-                        <div className="mxd-values">
-                            <div className="container-fluid p-0">
-                                <div className="row g-0 d-flex">
-
-                                    {/* Lists Column */}
-                                    <div className="col-12 col-xl-2 mxd-values__item order-2 order-xl-1 mxd-grid-item no-margin">
-                                        <div className="mxd-values__lists fullheight-xl">
-                                            <div className="container-fluid p-0 fullheight-xl">
-                                                <div className="row g-0 fullheight-xl d-xl-flex flex-xl-column justify-content-xl-between">
-                                                    <div className="col-12 mxd-values__lists-item">
-                                                        <ul>
-                                                            <li><p className="t-small">Award-winning expertise</p></li>
-                                                            <li><p className="t-small">24/7 Support Center</p></li>
-                                                            <li><p className="t-small">Global Partnerships</p></li>
-                                                            <li><p className="t-small">Cloud Solutions</p></li>
-                                                            <li><p className="t-small">Cybersecurity</p></li>
-                                                            <li><p className="t-small">Digital Transformation</p></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Description Column (Swapped to Left/Middle) */}
-                                    <div className="col-12 col-xl-4 mxd-values__item order-3 order-xl-2 mobile-reverse mxd-grid-item no-margin">
-                                        <div className="mxd-values__image image-small-desktop h-[300px] w-full relative overflow-hidden rounded-2xl mb-8">
-                                            <Image
-                                                src="/media/real/office_interior.jpg"
-                                                alt="Office Interior"
-                                                fill
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                        <div className="mxd-values__descr has-top-list">
-                                            <p className="t-bright t-large">
-                                                We are a trusted IT solutions provider specializing in enterprise infrastructure, cybersecurity, and digital transformation.
-                                                We help businesses scale and thrive in the modern technology landscape.
-                                            </p>
-                                            <div className="mt-8">
-                                                <Link href="/about" className="btn btn-anim btn-default btn-outline slide-right">
-                                                    <AnimatedCaption text="About Our Company" />
-                                                    <ChevronRight className="ml-2 w-4 h-4" />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Video/Image Column (Swapped to Right) */}
-                                    <div className="col-12 col-xl-6 mxd-values__item order-1 order-xl-3 mxd-grid-item no-margin">
-                                        <div className="mxd-values__image image-large-desktop relative overflow-hidden group w-full rounded-2xl aspect-video shadow-2xl">
-                                            {/* Video Player Overlay */}
-                                            <AnimatePresence mode="wait">
-                                                {isPlaying ? (
-                                                    <motion.div
-                                                        key="video"
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        className="absolute inset-0 z-20 bg-black"
-                                                    >
-                                                        <video
-                                                            ref={videoRef}
-                                                            width="100%"
-                                                            height="100%"
-                                                            controls
-                                                            className="w-full h-full object-contain"
-                                                            autoPlay
-                                                        >
-                                                            {/* Use existing video path */}
-                                                            <source src="/media/intro.mp4" type="video/mp4" />
-                                                            Your browser does not support the video tag.
-                                                        </video>
-                                                    </motion.div>
-                                                ) : (
-                                                    <motion.div
-                                                        key="thumbnail"
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        exit={{ opacity: 0 }}
-                                                        className="absolute inset-0 cursor-pointer h-full w-full"
-                                                        onClick={handlePlay}
-                                                    >
-                                                        <Image
-                                                            src="/media/real/team_collaboration.jpg"
-                                                            alt="NILE.COM Team"
-                                                            fill
-                                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                                        />
-                                                        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-                                                        <div className="absolute inset-0 flex items-center justify-center">
-                                                            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-white/30">
-                                                                <Play className="w-8 h-8 text-white fill-current ml-1" />
-                                                            </div>
-                                                        </div>
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </div>
+                        <div className="col-lg-6">
+                            <div className="mxd-block__content" style={{ paddingLeft: '2rem' }}>
+                                <div className="mxd-block__name">
+                                    <h2 className="reveal-type anim-uni-in-up">About Us</h2><br />
+                                </div>
+                                <div className="mxd-block__paragraph">
+                                    <p className="t-large t-bright anim-uni-in-up">We don't do miracles, but we do amazing things.
+                                        Established in 1999, NILE.COM is a private joint stock company based in Cairo, Egypt.</p>
+                                    <p className="anim-uni-in-up">NILE.COM has successfully prospered in the rapidly evolving and highly
+                                        demanding fields of communication and information technology.
+                                        <br />
+                                        Over 90% of our engineers have been successfully awarded with the most prestigious industry and products branded certifications and many of them are still pursuing higher self education goals in the aim of obtaining additional certifications.
+                                        <br />
+                                        Our engineers receive rigorous training that enable them to stand out in their work and ultimately exceed our customers' expectations.
+                                    </p>
+                                    <div className="mxd-paragraph__controls anim-uni-in-up mt-8">
+                                        <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/about">
+                                            <span className="btn-caption">More About Us</span>
+                                            <ArrowUpRight className="w-4 h-4 ml-2" />
+                                        </Link>
                                     </div>
 
                                 </div>
@@ -178,7 +51,6 @@ export default function CompanyIntro() {
                     </div>
                 </div>
             </div>
-            {/* Section - Culture & Values End */}
-        </>
+        </div>
     )
 }

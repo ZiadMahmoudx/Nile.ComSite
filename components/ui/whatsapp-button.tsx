@@ -42,7 +42,8 @@ export function WhatsAppButton({
                         initial={{ opacity: 0, x: 10 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 10 }}
-                        className="hidden sm:block bg-white text-gray-800 px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap"
+                        className="hidden sm:block px-4 py-2 rounded-lg shadow-lg text-sm font-medium whitespace-nowrap"
+                        style={{ backgroundColor: 'var(--base-tint)', color: 'var(--t-bright)' }}
                     >
                         Chat with us on WhatsApp
                     </motion.span>

@@ -109,10 +109,10 @@ export function RayoHeader() {
             <nav className="mxd-nav__wrap" data-lenis-prevent="">
 
                 {/* ── Hamburger Button ── */}
-                <div className="mxd-nav__contain scale-75 origin-right md:scale-100">
+                <div className="mxd-nav__contain loading__fade">
                     <button
                         type="button"
-                        className={cn('mxd-nav__hamburger', isOpen && 'is-active')}
+                        className={cn('mxd-nav__hamburger', isOpen && 'nav-open')}
                         onClick={toggleMenu}
                         aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
                         aria-expanded={isOpen}
@@ -122,17 +122,15 @@ export function RayoHeader() {
                         <span
                             className="hamburger__line"
                             style={{
-                                transition: 'transform 0.4s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease',
-                                transform: isOpen ? 'rotate(45deg) translateY(0.5rem)' : 'none',
-                                transformOrigin: 'center',
+                                transition: 'transform 0.3s cubic-bezier(0.76, 0, 0.24, 1)',
+                                transform: isOpen ? 'translateY(5px) rotate(45deg)' : 'none',
                             }}
                         />
                         <span
                             className="hamburger__line"
                             style={{
-                                transition: 'transform 0.4s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.3s ease',
-                                transform: isOpen ? 'rotate(-45deg) translateY(-0.5rem)' : 'none',
-                                transformOrigin: 'center',
+                                transition: 'transform 0.3s cubic-bezier(0.76, 0, 0.24, 1)',
+                                transform: isOpen ? 'translateY(-5px) rotate(-45deg)' : 'none',
                             }}
                         />
                     </button>
@@ -142,15 +140,15 @@ export function RayoHeader() {
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ y: '-100%' }}
-                            animate={{ y: '0%' }}
-                            exit={{ y: '-100%' }}
-                            transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
                             className="mxd-menu__wrapper"
                             style={{ display: 'flex' }}
+                            initial={{ clipPath: 'circle(0% at calc(100% - 4rem) 3rem)' }}
+                            animate={{ clipPath: 'circle(150% at calc(100% - 4rem) 3rem)' }}
+                            exit={{ clipPath: 'circle(0% at calc(100% - 4rem) 3rem)' }}
+                            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                         >
                             {/* Background */}
-                            <div className="mxd-menu__base" style={{ backgroundColor: 'var(--base-opp)' }} />
+                            <div className="mxd-menu__base" style={{ backgroundColor: 'var(--base-opp)' }} onClick={toggleMenu} />
 
                             {/* Menu Container */}
                             <div className="mxd-menu__contain">
@@ -158,10 +156,16 @@ export function RayoHeader() {
 
                                     {/* ── LEFT: Menu Items ── */}
                                     <div className="mxd-menu__left">
-                                        <p className="mxd-menu__caption menu-fade-in" style={{ color: 'var(--t-opp-medium)' }}>
+                                        <motion.p
+                                            className="mxd-menu__caption menu-fade-in"
+                                            style={{ color: 'var(--t-opp-medium)' }}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            transition={{ delay: 0.4, duration: 0.3 }}
+                                        >
                                             Innovative IT solutions<br />and cutting-edge technology
-                                        </p>
-                                        <div className="main-menu scale-90 origin-top-left md:scale-100">
+                                        </motion.p>
+                                        <div className="main-menu">
                                             <nav className="main-menu__content">
                                                 <ul className="main-menu__accordion">
                                                     {menuItems.map((item, i) => (
@@ -171,9 +175,13 @@ export function RayoHeader() {
                                                                 'main-menu__item',
                                                                 openSubmenu === item.label ? 'open' : ''
                                                             )}
-                                                            initial={{ opacity: 0, y: 20 }}
+                                                            initial={{ opacity: 0, y: 50 }}
                                                             animate={{ opacity: 1, y: 0 }}
-                                                            transition={{ delay: 0.15 + i * 0.06, duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
+                                                            transition={{
+                                                                delay: 0.3 + i * 0.05,
+                                                                duration: 0.3,
+                                                                ease: [0.76, 0, 0.24, 1]
+                                                            }}
                                                         >
                                                             {item.submenu ? (
                                                                 <>
@@ -231,22 +239,24 @@ export function RayoHeader() {
                                     </div>
 
                                     {/* ── RIGHT: Promo Area ── */}
-                                    <div className="mxd-menu__right">
+                                    <motion.div
+                                        className="mxd-menu__right"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.5, duration: 0.4 }}
+                                    >
                                         <div className="menu-promo">
                                             <div className="menu-promo__content">
-                                                <motion.p
+                                                <p
                                                     className="menu-promo__caption menu-fade-in"
-                                                    initial={{ opacity: 0, y: 15 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    transition={{ delay: 0.5, duration: 0.4 }}
                                                     style={{ color: 'var(--t-opp-medium)' }}
                                                 >
                                                     Welcome to NILE.COM<br />
                                                     Your trusted IT partner in the Middle East since 2005.
-                                                </motion.p>
+                                                </p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
                                     {/* ── BOTTOM DATA ── */}
                                     <motion.div
@@ -289,11 +299,11 @@ export function RayoHeader() {
                 <div className="mxd-header__logo">
                     <Link href="/" className="mxd-logo group">
                         <Image
-                            src="/nile-logo.png"
+                            src="/logo.png"
                             alt="NILE.COM"
-                            width={120}
-                            height={40}
-                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-105 w-[6rem] md:w-[9rem]"
+                            width={160}
+                            height={50}
+                            className="mxd-logo__image object-contain transition-transform duration-300 group-hover:scale-105 w-[14rem] md:w-[20rem]"
                             style={{ height: 'auto' }}
                             priority
                         />
@@ -301,17 +311,14 @@ export function RayoHeader() {
                 </div>
 
                 {/* Controls */}
-                <div className="mxd-header__controls flex items-center gap-1 md:gap-4 scale-75 origin-right md:scale-100">
+                <div className="mxd-header__controls">
                     <ThemeToggle />
                     <Link
                         href="/contact"
                         className="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up"
                     >
-                        <AnimatedCaption text="Say Hello" />
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="7" y1="17" x2="17" y2="7" />
-                            <polyline points="7 7 17 7 17 17" />
-                        </svg>
+                        <span className="btn-caption">Contact Us</span>
+                        <i className="ph-bold ph-arrow-up-right"></i>
                     </Link>
                 </div>
             </header>

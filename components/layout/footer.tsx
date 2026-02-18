@@ -86,8 +86,8 @@ export default function Footer() {
                 <Image
                   src="/nile-logo.png"
                   alt="NILE.COM Logo"
-                  width={48}
-                  height={48}
+                  width={80}
+                  height={80}
                   className="transition-transform duration-300 group-hover:scale-110"
                 />
               </div>
