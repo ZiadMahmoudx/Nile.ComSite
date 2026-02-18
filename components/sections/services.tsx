@@ -94,7 +94,7 @@ export default function Services() {
                   <div key={index} className={`${service.layoutClass} mxd-services-cards-s__item mxd-grid-item ${service.anim}`}>
                     <div className={`mxd-services-cards-s__inner ${service.itemClass}`} style={service.itemStyle || {}}>
                       <div className="mxd-services-cards-s__title">
-                        <h3 className={`anim-uni-in-up ${service.titleClass}`} style={service.titleStyle || {}}>{service.title}</h3>
+                        <h3 className={`reveal-type anim-uni-in-up ${service.titleClass}`} style={service.titleStyle || {}}>{service.title}</h3>
                       </div>
                       <div className={`mxd-services-cards-s__info ${service.layoutClass.includes('col-xl-8') ? 'width-50' : ''}`}>
                         <div className="mxd-services-cards-s__tags">
@@ -102,7 +102,7 @@ export default function Services() {
                             <span key={i} className={`tag tag-default ${service.tagClass || 'tag-outline'} anim-uni-in-up`}>{tag}</span>
                           ))}
                         </div>
-                        <p className={`anim-uni-in-up ${service.textClass || ''}`}>{service.description}</p>
+                        <p className={`reveal-type anim-uni-in-up ${service.textClass || ''}`}>{service.description}</p>
                       </div>
                       <div className={`mxd-services-cards-s__image ${service.imageClass}`}>
                         {/* Using img tag directly to respect template CSS absolute positioning */}

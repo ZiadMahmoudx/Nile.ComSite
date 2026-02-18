@@ -6,44 +6,7 @@ import Link from 'next/link'
 export default function CtaContact() {
     return (
         <>
-            {/* Section - CTA Start */}
-            <div className="mxd-section overflow-hidden mt-12 md:mt-24">
-                <div className="mxd-container grid-container">
 
-                    {/* Block - CTA Start */}
-                    <div className="mxd-block">
-                        <div className="mxd-promo">
-                            <div className="mxd-promo__inner anim-zoom-out-container rounded-[3.5rem] border border-border/40 shadow-xl overflow-hidden">
-                                {/* background */}
-                                <div className="mxd-promo__bg bg-gradient-to-br from-neutral-900 to-black backdrop-blur-sm"></div>
-                                {/* caption */}
-                                <div className="mxd-promo__content relative z-10">
-                                    <p className="mxd-promo__title anim-uni-in-up">
-                                        <span className="mxd-promo__icon">
-                                            <img src="/img/300x300_obj-cta-01.webp" alt="Icon" className="rounded-full shadow-lg" />
-                                        </span>
-                                        <span className="mxd-promo__caption reveal-type text-white font-bold">Let&apos;s talk about your project!</span>
-                                    </p>
-                                    <div className="mxd-promo__controls anim-uni-in-up">
-                                        <Link className="btn btn-anim btn-default btn-large btn-additional slide-right-up shadow-lg hover:shadow-primary/20 transition-all duration-500" href="#contact-form">
-                                            <span className="btn-caption">Contact Us</span>
-                                            <i className="ph-bold ph-arrow-up-right"></i>
-                                        </Link>
-                                    </div>
-                                </div>
-                                {/* parallax images */}
-                                <div className="mxd-promo__images">
-                                    <img className="promo-image promo-image-1 rounded-full shadow-2xl border-4 border-white/10" src="/img/cta-img-01.webp" alt="Image" data-speed="0.85" />
-                                    <img className="promo-image promo-image-2 rounded-full shadow-2xl border-4 border-white/10" src="/img/cta-img-02.webp" alt="Image" data-speed="1.15" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Block - CTA End */}
-
-                </div>
-            </div>
-            {/* Section - CTA End */}
 
             {/* Section - Inner Page Form Start */}
             <div className="mxd-section mxd-section-inner-form padding-default anim-zoom-in-container" id="contact-form">

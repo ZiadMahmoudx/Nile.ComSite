@@ -1,7 +1,7 @@
 import Hero from '@/components/sections/hero'
 import Solutions from '@/components/sections/solutions'
 import Services from '@/components/sections/services'
-import CtaContact from '@/components/sections/cta-contact'
+
 import LocalBusinessStructuredData from '@/components/seo/local-business-structured-data'
 import CompanyIntro from '@/components/sections/company-intro'
 import Stats from '@/components/sections/stats'
@@ -40,7 +40,7 @@ export default function HomePage() {
         <Stats />
         <Partners />
         <Testimonials />
-        <CtaContact />
+
       </main>
     </>
   )

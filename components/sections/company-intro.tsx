@@ -30,9 +30,9 @@ export default function CompanyIntro() {
                                     <h2 className="reveal-type anim-uni-in-up">About Us</h2><br />
                                 </div>
                                 <div className="mxd-block__paragraph">
-                                    <p className="t-large t-bright anim-uni-in-up">We don't do miracles, but we do amazing things.
+                                    <p className="t-large t-bright reveal-type anim-uni-in-up">We don't do miracles, but we do amazing things.
                                         Established in 1999, NILE.COM is a private joint stock company based in Cairo, Egypt.</p>
-                                    <p className="anim-uni-in-up">NILE.COM has successfully prospered in the rapidly evolving and highly
+                                    <p className="reveal-type anim-uni-in-up">NILE.COM has successfully prospered in the rapidly evolving and highly
                                         demanding fields of communication and information technology.
                                         <br />
                                         Over 90% of our engineers have been successfully awarded with the most prestigious industry and products branded certifications and many of them are still pursuing higher self education goals in the aim of obtaining additional certifications.

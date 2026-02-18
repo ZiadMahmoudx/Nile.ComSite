@@ -134,11 +134,11 @@ export default function Solutions() {
                     <div className={`mxd-services-stack__inner showcase-inner ${solution.bgColor}`}>
                       <div className="mxd-services-stack__container">
                         <div className="mxd-services-stack__title showcase-title">
-                          <h3 className={`anim-uni-in-up ${solution.titleClass}`}>{solution.title}</h3>
+                          <h3 className={`reveal-type anim-uni-in-up ${solution.titleClass}`}>{solution.title}</h3>
                           <span className={`mxd-services-stack__number anim-uni-in-up ${solution.numClass}`}>{solution.number}</span>
                         </div>
                         <div className="mxd-services-stack__info showcase-info">
-                          <p className={`anim-uni-in-up ${solution.textClass}`}>{solution.description}</p>
+                          <p className={`reveal-type anim-uni-in-up ${solution.textClass}`}>{solution.description}</p>
                         </div>
                         <div className="mxd-services-stack__works">
                           <Link className="mxd-services-stack__work" href={solution.link}>

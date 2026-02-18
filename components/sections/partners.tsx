@@ -10,6 +10,8 @@ const partners = [
   { name: 'Broadcom', logo: '/img/Broadcom-367x367.png' },
   { name: 'VMware', logo: '/img/Vmware-logo-300x300.png' },
   { name: 'SecPod', logo: '/img/secpod-2-300x300.png' },
+  { name: 'Logitech', logo: '/img/brands/logitech.svg' },
+  { name: 'Mozilla', logo: '/img/brands/mozilla.svg' },
 ]
 
 export default function Partners() {
