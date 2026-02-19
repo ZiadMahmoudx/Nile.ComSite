@@ -140,7 +140,7 @@ export function RayoHeader() {
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            className="mxd-menu__wrapper"
+                            className="mxd-menu__wrapper !pt-4 md:!pt-8"
                             style={{ display: 'flex' }}
                             initial={{ clipPath: 'circle(0% at calc(100% - 4rem) 3rem)' }}
                             animate={{ clipPath: 'circle(150% at calc(100% - 4rem) 3rem)' }}
@@ -152,10 +152,10 @@ export function RayoHeader() {
 
                             {/* Menu Container */}
                             <div className="mxd-menu__contain">
-                                <div className="mxd-menu__inner" ref={menuInnerRef}>
+                                <div className="mxd-menu__inner !pt-0" ref={menuInnerRef}>
 
                                     {/* ── LEFT: Menu Items ── */}
-                                    <div className="mxd-menu__left">
+                                    <div className="mxd-menu__left !pt-0">
                                         <motion.p
                                             className="mxd-menu__caption menu-fade-in"
                                             style={{ color: 'var(--t-opp-medium)' }}

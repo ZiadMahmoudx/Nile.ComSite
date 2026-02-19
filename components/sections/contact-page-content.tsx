@@ -175,7 +175,7 @@ export default function ContactPageContent() {
                                 <div className="col-12 col-xl-10 mxd-grid-item no-margin">
                                     <div className="mxd-block__content">
                                         <div className="mxd-block__inner-headline">
-                                            <h1 className="inner-headline__title headline-img-before headline-img-04">
+                                            <h1 className="inner-headline__title text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
                                                 Let's Build <span className="text-primary">Something Great</span>
                                             </h1>
                                             <p className="inner-headline__text t-large t-bright mt-6">

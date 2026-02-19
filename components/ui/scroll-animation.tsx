@@ -10,7 +10,7 @@ interface ScrollAnimationProps {
     animation?: 'fade-up' | 'fade-in' | 'scale-up' | 'slide-right' | 'slide-left'
     delay?: number
     duration?: number
-    viewport?: { once?: boolean; margin?: string }
+    viewport?: { once?: boolean; margin?: any }
 }
 
 const variants: Record<string, { hidden: Variant; visible: Variant }> = {
@@ -42,7 +42,7 @@ export function ScrollAnimation({
     animation = 'fade-up',
     delay = 0,
     duration = 0.5,
-    viewport = { once: true, margin: '-50px' },
+    viewport = { once: true, margin: '-50px' as any },
 }: ScrollAnimationProps) {
     const ref = useRef(null)
     const isInView = useInView(ref, viewport)

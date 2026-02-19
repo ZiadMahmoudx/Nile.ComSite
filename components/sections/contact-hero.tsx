@@ -25,7 +25,7 @@ const ContactHero = () => {
                 <div className="col-12 col-xl-10 mxd-grid-item no-margin">
                   <div className="mxd-block__content">
                     <div className="mxd-block__inner-headline">
-                      <h1 className="inner-headline__title headline-img-before headline-img-04">
+                      <h1 className="inner-headline__title text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
                         Let's build <span className="text-primary">something great</span>
                       </h1>
                       <div className="inner-headline__descr t-large t-bright mt-6 max-w-2xl">

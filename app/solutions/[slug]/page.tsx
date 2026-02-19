@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ArrowRight, CheckCircle, Cloud, Shield, Server, Smartphone, Database, Network } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle, Cloud, Shield, Server, Smartphone, Database, Network, Zap, Lock, BarChart, Settings, Users, ArrowUpRight } from 'lucide-react'
 
 const solutions = [
     {
@@ -10,6 +11,8 @@ const solutions = [
         title: 'Cloud Migration',
         tagline: 'Seamless transition to cloud infrastructure',
         description: 'Our cloud migration services ensure a smooth transition from on-premise infrastructure to cloud platforms with minimal downtime and maximum efficiency.',
+        heroImage: '/img/cloud-1.png',
+        detailImage: '/img/cloud-2.png',
         features: [
             'AWS & Azure Certified',
             '99.9% Uptime SLA',
@@ -36,6 +39,8 @@ const solutions = [
         title: 'Cybersecurity',
         tagline: 'Advanced threat protection for your digital assets',
         description: 'Comprehensive cybersecurity solutions to protect your organization from evolving threats with advanced threat detection, incident response, and compliance management.',
+        heroImage: '/img/security-1.png',
+        detailImage: '/img/security-2.png',
         features: [
             'Zero Trust Architecture',
             'SOC 2 Compliance',
@@ -62,6 +67,8 @@ const solutions = [
         title: 'Infrastructure',
         tagline: 'Robust IT infrastructure for scalability and performance',
         description: 'Design and implement enterprise-grade IT infrastructure solutions that provide the foundation for your digital operations with high availability and performance.',
+        heroImage: '/img/800-400-1.png',
+        detailImage: '/img/800-400-2.png',
         features: [
             'Hybrid Cloud Setup',
             'Load Balancing',
@@ -88,6 +95,8 @@ const solutions = [
         title: 'Digital Transformation',
         tagline: 'Modernize your business processes',
         description: 'Transform your business operations with cutting-edge digital solutions that streamline processes, enhance customer experiences, and drive innovation.',
+        heroImage: '/img/productivity-1.png',
+        detailImage: '/img/productivity-2.png',
         features: [
             'Process Automation',
             'API Integration',
@@ -114,6 +123,8 @@ const solutions = [
         title: 'Data Management',
         tagline: 'Comprehensive data solutions for your business',
         description: 'Unlock the power of your data with comprehensive data management solutions including storage, analytics, and business intelligence capabilities.',
+        heroImage: '/img/business-1.png',
+        detailImage: '/img/business-2.png',
         features: [
             'Big Data Analytics',
             'Data Warehousing',
@@ -140,6 +151,8 @@ const solutions = [
         title: 'Network Solutions',
         tagline: 'High-performance networking for seamless connectivity',
         description: 'Design and implement high-performance networking solutions that provide seamless connectivity, security, and reliability for your organization.',
+        heroImage: '/img/service-1.jpg',
+        detailImage: '/img/service-2.jpg',
         features: [
             'SD-WAN Implementation',
             'Network Security',
@@ -193,79 +206,102 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
     const Icon = solution.icon
 
     return (
-        <div className="bg-background text-foreground">
+        <div className="bg-background text-foreground overflow-hidden">
             <main>
-                {/* Inner Header / Hero */}
-                <section className="mxd-section mxd-section-inner-headline padding-default">
-                    <div className="mxd-container grid-container">
+                {/* Hero Section */}
+                <section className="mxd-section mxd-section-inner-headline padding-default min-h-[0px] pb-24 relative">
+                    <div className="mxd-container grid-container relative z-10">
                         <div className="mxd-block">
                             <div className="container-fluid px-0">
-                                <div className="row gx-0">
-                                    {/* Sidebar Spacing */}
-                                    <div className="col-12 col-xl-2 mxd-grid-item no-margin">
-                                        <div className="mxd-block__name name-inner-headline">
-                                            <p className="mxd-point-subtitle">
-                                                <span>Solution</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Main Content */}
-                                    <div className="col-12 col-xl-10 mxd-grid-item no-margin">
-                                        <div className="mxd-block__content">
+                                <div className="row gx-0 items-center">
+                                    {/* Left Content */}
+                                    <div className="col-12 col-xl-6 mxd-grid-item no-margin">
+                                        <div className="mxd-block__content pr-0 md:pr-12">
                                             <div className="inner-headline">
-                                                <Link href="/solutions" className="tag tag-default mb-8 inline-flex items-center gap-2">
+                                                <Link href="/solutions" className="tag tag-default mb-8 inline-flex items-center gap-2 hover:bg-white/10 transition-colors">
                                                     <ArrowLeft className="w-4 h-4" />
                                                     Back to Solutions
                                                 </Link>
 
-                                                <div className="flex items-center gap-4 mb-6 anim-uni-in-up">
-                                                    <div className="p-4 radius-m bg-primary/10">
-                                                        <Icon className="w-10 h-10 text-primary" />
+                                                <div className="flex items-center gap-4 mb-8 anim-uni-in-up">
+                                                    <div className="p-3 radius-m bg-primary text-primary-foreground shadow-lg shadow-primary/20">
+                                                        <Icon className="w-8 h-8" />
                                                     </div>
-                                                    <span className="tag tag-default bg-primary/10 text-primary border-primary/20">
+                                                    <span className="text-sm font-bold tracking-widest uppercase text-primary">
                                                         Enterprise Solution
                                                     </span>
                                                 </div>
 
-                                                <h1 className="inner-headline__title anim-uni-in-up">
+                                                <h1 className="reveal-type anim-uni-in-up font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-8">
                                                     {solution.title}
                                                 </h1>
-                                                <p className="inner-headline__subtitle anim-uni-in-up">
+                                                <p className="reveal-type anim-uni-in-up inner-headline__subtitle text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-xl">
                                                     {solution.tagline}
                                                 </p>
+
+                                                <div className="mt-10 flex flex-wrap gap-4 anim-uni-in-up">
+                                                    <Link className="btn btn-anim btn-default btn-primary px-8 py-4" href="/contact">
+                                                        <span className="btn-caption font-bold">Start Transformation</span>
+                                                        <ArrowRight className="w-5 h-5 ml-2" />
+                                                    </Link>
+                                                    <Link className="btn btn-anim btn-default btn-outline px-8 py-4" href="#overview">
+                                                        <span className="btn-caption font-medium">Explore Features</span>
+                                                    </Link>
+                                                </div>
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Right Visual */}
+                                    <div className="col-12 col-xl-6 mxd-grid-item no-margin mt-12 md:mt-0">
+                                        <div className="relative anim-zoom-in-container rounded-[2rem] overflow-hidden aspect-[4/3] md:aspect-square shadow-2xl border border-white/10 group">
+                                            <Image
+                                                src={solution.heroImage}
+                                                alt={solution.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                priority
+                                            />
+                                            {/* Gradient Overlay */}
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {/* Background Glow */}
+                    <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
                 </section>
 
-                {/* Overview & Features */}
-                <section className="mxd-section padding-default">
+                {/* Overview Section */}
+                <section id="overview" className="mxd-section padding-default bg-muted">
                     <div className="mxd-container">
                         <div className="mxd-block">
-                            <div className="row g-5">
-                                <div className="col-12 col-lg-6 anim-uni-in-up">
-                                    <h2 className="text-3xl font-bold mb-6">Overview</h2>
-                                    <p className="t-bright t-large leading-relaxed mb-8">
+                            <div className="row g-5 items-center">
+                                <div className="col-12 col-lg-6 order-2 lg:order-1 anim-uni-in-up">
+                                    <div className="relative rounded-[2rem] overflow-hidden shadow-xl aspect-video border border-border/50">
+                                        <Image
+                                            src={solution.detailImage}
+                                            alt="Overview"
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-12 col-lg-6 order-1 lg:order-2 anim-uni-in-up">
+                                    <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Overview & Impact</h2>
+                                    <p className="t-large leading-relaxed mb-8 text-foreground/80">
                                         {solution.description}
                                     </p>
-                                    <Link className="btn btn-anim btn-default" href="/contact">
-                                        <span className="btn-caption">Get Started</span>
-                                        <ArrowRight className="w-5 h-5 ml-2" />
-                                    </Link>
-                                </div>
 
-                                <div className="col-12 col-lg-6 anim-uni-in-up">
-                                    <h2 className="text-3xl font-bold mb-6">Key Features</h2>
-                                    <div className="row g-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {solution.features.map((feature, index) => (
-                                            <div key={index} className="col-12 col-md-6 flex items-center gap-3">
-                                                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                                                <span className="t-bright">{feature}</span>
+                                            <div key={index} className="flex items-center gap-3 p-3 rounded-xl bg-card border border-border/50 shadow-sm hover:border-primary/30 transition-colors">
+                                                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                                    <CheckCircle className="w-4 h-4 text-primary" />
+                                                </div>
+                                                <span className="font-medium text-sm md:text-base">{feature}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -275,19 +311,23 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                     </div>
                 </section>
 
-                {/* Benefits */}
-                <section className="mxd-section padding-default bg-secondary/5">
+                {/* Benefits Grid */}
+                <section className="mxd-section padding-default">
                     <div className="mxd-container">
-                        <div className="mxd-block mb-12 text-center anim-uni-in-up">
-                            <h2 className="text-4xl font-bold">Benefits</h2>
+                        <div className="mxd-block mb-16 text-center anim-uni-in-up">
+                            <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Why Choose US</span>
+                            <h2 className="text-4xl md:text-5xl font-display font-bold">Key Benefits</h2>
                         </div>
                         <div className="mxd-block">
                             <div className="row g-4">
                                 {solution.benefits.map((benefit, index) => (
-                                    <div key={index} className="col-12 col-md-4 anim-uni-in-up">
-                                        <div className="radius-m border-2 border-border text-center p-8 h-full flex flex-col justify-center bg-background hover:border-primary/50 transition-colors">
-                                            <h3 className="text-2xl font-bold mb-2">{benefit.title}</h3>
-                                            <p className="text-muted-foreground">{benefit.desc}</p>
+                                    <div key={index} className="col-12 col-lg-4 anim-uni-in-up">
+                                        <div className="group h-full p-8 rounded-[2rem] bg-card border border-border/50 shadow-sm hover:border-primary/50 transition-all duration-300 hover:-translate-y-2">
+                                            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center mb-6 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform">
+                                                <Zap className="w-7 h-7 text-white" />
+                                            </div>
+                                            <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{benefit.title}</h3>
+                                            <p className="text-muted-foreground leading-relaxed">{benefit.desc}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -296,21 +336,34 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                     </div>
                 </section>
 
-                {/* Process */}
-                <section className="mxd-section padding-default">
+                {/* Process Steps */}
+                <section className="mxd-section padding-default bg-muted">
                     <div className="mxd-container">
-                        <div className="mxd-block mb-12 text-center anim-uni-in-up">
-                            <h2 className="text-4xl font-bold">Our Process</h2>
+                        <div className="mxd-block mb-16 anim-uni-in-up flex flex-col md:flex-row justify-between items-end gap-6">
+                            <div>
+                                <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Our Methodology</span>
+                                <h2 className="text-4xl md:text-5xl font-display font-bold">Implementation Process</h2>
+                            </div>
+                            <p className="text-muted-foreground max-w-md text-lg">
+                                A proven, structured approach to ensure seamless execution and measurable results.
+                            </p>
                         </div>
                         <div className="mxd-block">
-                            <div className="row g-5">
+                            <div className="row g-4">
                                 {solution.process.map((step, index) => (
-                                    <div key={index} className="col-6 col-md-3 text-center anim-uni-in-up">
-                                        <div className="w-16 h-16 rounded-full bg-primary/10 text-primary text-2xl font-bold flex items-center justify-center mx-auto mb-4">
-                                            {step.step}
+                                    <div key={index} className="col-12 col-md-3 anim-uni-in-up">
+                                        <div className="relative p-6 pt-12 md:pt-6">
+                                            {/* Line Connector (Desktop) */}
+                                            {index < solution.process.length - 1 && (
+                                                <div className="hidden md:block absolute top-[2.5rem] right-[-50%] w-full h-[2px] bg-gradient-to-r from-primary/50 to-transparent z-0"></div>
+                                            )}
+
+                                            <div className="relative z-10 w-12 h-12 rounded-full bg-card border-2 border-primary flex items-center justify-center text-xl font-bold text-primary mb-6 shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]">
+                                                {step.step}
+                                            </div>
+                                            <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                                         </div>
-                                        <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                                        <p className="text-muted-foreground text-sm">{step.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -318,22 +371,29 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
                     </div>
                 </section>
 
-                {/* CTA */}
-                <section className="mxd-section padding-default bg-secondary/5">
+                {/* CTA / Next Steps */}
+                <section className="mxd-section padding-default">
                     <div className="mxd-container">
-                        <div className="mxd-block text-center max-w-4xl mx-auto anim-uni-in-up">
-                            <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
-                            <p className="t-bright t-large mb-8">
-                                Contact our experts today to learn how {solution.title.toLowerCase()} can transform your business.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link className="btn btn-anim btn-default" href="/contact">
-                                    <span className="btn-caption">Schedule Consultation</span>
-                                    <ArrowRight className="w-5 h-5 ml-2" />
-                                </Link>
-                                <Link className="btn btn-anim btn-default btn-outline" href="/solutions">
-                                    <span className="btn-caption">View All Solutions</span>
-                                </Link>
+                        <div className="mxd-block">
+                            <div className="relative rounded-[3rem] overflow-hidden bg-primary px-6 py-20 md:p-24 text-center anim-uni-in-up">
+                                {/* Background Patterns */}
+                                <div className="absolute inset-0 bg-[url('/img/background.png')] opacity-10 mix-blend-overlay"></div>
+                                <div className="absolute inset-0 bg-gradient-to-b from-primary/80 to-primary"></div>
+
+                                <div className="relative z-10 max-w-3xl mx-auto">
+                                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
+                                        Ready to Transform?
+                                    </h2>
+                                    <p className="text-xl text-primary-foreground/90 mb-10 leading-relaxed">
+                                        Let's discuss directly how our {solution.title} services can drive growth for your business.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                        <Link className="btn btn-anim !bg-white text-primary hover:!bg-white/90 px-10 py-4 rounded-full shadow-xl shadow-black/10 transition-all hover:-translate-y-1" href="/contact">
+                                            <span className="btn-caption font-bold text-lg">Schedule Consultation</span>
+                                            <ArrowRight className="w-5 h-5 ml-2" />
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

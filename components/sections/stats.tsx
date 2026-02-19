@@ -17,7 +17,8 @@ const stats = [
         textClass: 'text-primary-foreground',
         btnText: 'About Us',
         btnLink: '/about',
-        anim: 'anim-uni-scale-in-right'
+        anim: 'anim-uni-scale-in-right',
+        textPosition: 'right'
     },
     {
         label: 'Clients Return',
@@ -30,7 +31,8 @@ const stats = [
         bgStyle: { backgroundColor: 'var(--base-tint)' },
         textClass: '',
         textStyle: { color: 'var(--t-bright)' },
-        anim: 'anim-uni-scale-in-left'
+        anim: 'anim-uni-scale-in-left',
+        textPosition: 'right'
     },
     {
         label: 'Years Experience',
@@ -46,7 +48,8 @@ const stats = [
         btnText: 'Start New Project',
         btnLink: '/contact',
         btnIcon: ArrowDownRight,
-        anim: 'anim-uni-scale-in-right'
+        anim: 'anim-uni-scale-in-right',
+        textPosition: 'left'
     },
     {
         label: 'Successful Projects',
@@ -61,7 +64,8 @@ const stats = [
         textStyle: { color: 'var(--t-bright)' },
         btnText: 'Case Studies',
         btnLink: '/case-studies',
-        anim: 'anim-uni-scale-in-left'
+        anim: 'anim-uni-scale-in-left',
+        textPosition: 'left'
     },
     {
         label: 'Team Certifications',
@@ -74,7 +78,8 @@ const stats = [
         bgStyle: { backgroundColor: 'var(--base-tint)' },
         textClass: '',
         textStyle: { color: 'var(--t-bright)' },
-        anim: 'anim-uni-scale-in-left'
+        anim: 'anim-uni-scale-in-left',
+        textPosition: 'right'
     },
     {
         label: 'Technology Partners',
@@ -89,7 +94,8 @@ const stats = [
         textStyle: { color: 'var(--t-bright)' },
         btnText: 'Our Partners',
         btnLink: '/partners',
-        anim: 'anim-uni-scale-in-right'
+        anim: 'anim-uni-scale-in-right',
+        textPosition: 'right'
     }
 ]
 
@@ -106,8 +112,8 @@ export default function Stats() {
                                 {stats.map((stat, index) => (
                                     <div key={index} className={`${stat.colClass} mxd-stats-cards__item mxd-grid-item ${stat.anim}`}>
                                         <div className={`mxd-stats-cards__inner relative h-[450px] ${stat.bgClass} rounded-[2.5rem] overflow-hidden transition-transform hover:-translate-y-1 duration-300`} style={stat.bgStyle || {}}>
-                                            {/* Text Content - Top Right */}
-                                            <div className="absolute top-8 right-8 z-10 flex flex-col items-end text-right">
+                                            {/* Text Content - Position based on textPosition prop */}
+                                            <div className={`absolute top-8 z-10 flex flex-col ${stat.textPosition === 'left' ? 'left-8 items-start text-left' : 'right-8 items-end text-right'}`}>
                                                 <div className={`mxd-counter__number mxd-stats-number anim-uni-in-up ${stat.textClass} flex items-baseline font-display text-[5rem] md:text-[7rem] lg:text-[8rem] font-bold leading-[0.8] tracking-tight`} style={stat.textStyle || {}}>
                                                     <AnimatedCounter value={stat.value} suffix={stat.suffix} separator="," />
                                                 </div>

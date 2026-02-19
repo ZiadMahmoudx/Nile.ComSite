@@ -35,7 +35,7 @@ export default function ServiceStructuredData({
         "url": provider.url
       },
       "areaServed": areaServed,
-      "serviceType": serviceTypeDetail,
+      "alternateName": serviceTypeDetail,
       "description": description
     }
 

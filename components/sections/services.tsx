@@ -31,8 +31,8 @@ const services: any[] = [
     textClass: 'text-white',
     anim: 'anim-uni-scale-in-right',
     buttons: [
-      { text: 'Get Started', link: '/contact', style: 'bg-white text-black hover:bg-neutral-200 border-transparent' },
-      { text: 'Our Solutions', link: '/solutions', style: 'bg-transparent text-white border-white hover:bg-white/10' }
+      { text: 'Get Started', link: '/contact', style: '!bg-white !text-black hover:!bg-neutral-200 border-none' },
+      { text: 'Our Solutions', link: '/solutions', style: 'btn-outline !text-white !border-white hover:!bg-white/10' }
     ]
   },
   {
@@ -140,9 +140,9 @@ export default function Services() {
                         {service.buttons && (
                           <div className="flex flex-wrap gap-4 mt-8 anim-uni-in-up">
                             {service.buttons.map((btn: any, i: number) => (
-                              <Link key={i} href={btn.link} className={`flex items-center gap-2 px-8 py-3 rounded-full border transition-all duration-300 ${btn.style}`}>
-                                <span className="font-bold">{btn.text}</span>
-                                <ArrowUpRight className="w-4 h-4" />
+                              <Link key={i} href={btn.link} className={`btn btn-anim btn-small ${btn.style}`}>
+                                <span className="btn-caption font-bold">{btn.text}</span>
+                                <ArrowUpRight className="w-5 h-5 ml-2" />
                               </Link>
                             ))}
                           </div>

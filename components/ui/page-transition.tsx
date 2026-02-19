@@ -1,13 +1,13 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 
 interface PageTransitionProps {
   children: React.ReactNode
 }
 
-const variants = {
+const variants: Variants = {
   initial: {
     opacity: 0,
     y: 20
@@ -32,7 +32,7 @@ const variants = {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
-  
+
   return (
     <motion.div
       key={pathname}

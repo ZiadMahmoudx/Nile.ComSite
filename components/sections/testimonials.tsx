@@ -37,7 +37,7 @@ const testimonials = [
 
 export default function Testimonials() {
     return (
-        <div className="mxd-section overflow-hidden padding-default mb-24 md:mb-32">
+        <div className="mxd-section overflow-hidden padding-default mt-24 md:mt-32">
             <div className="mxd-container grid-container">
 
                 {/* Section Title */}

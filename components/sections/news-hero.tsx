@@ -30,7 +30,7 @@ const NewsHero = () => {
                                 <div className="col-12 col-xl-10 mxd-grid-item no-margin">
                                     <div className="mxd-block__content">
                                         <div className="mxd-block__inner-headline loading__item">
-                                            <h1 className="inner-headline__title headline-img-before headline-img-06">Latest Updates <span className='text-primary'>& Events</span></h1>
+                                            <h1 className="inner-headline__title text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">Latest Updates <span className='text-primary'>& Events</span></h1>
                                         </div>
                                     </div>
                                 </div>

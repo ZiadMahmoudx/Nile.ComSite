@@ -1,10 +1,44 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react' // Import useState
+import { toast } from 'sonner' // Import toast
 import Link from 'next/link'
 import { ArrowUpRight, ArrowRight, ArrowUp } from 'lucide-react'
 
 export function RayoFooter() {
+    const [email, setEmail] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault()
+        if (!email) return
+
+        setIsSubmitting(true)
+        try {
+            const res = await fetch('/api/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            })
+
+            const data = await res.json()
+
+            if (!res.ok) throw new Error(data.error || 'Failed to subscribe')
+
+            toast.success('Subscribed successfully!', {
+                description: 'Thank you for subscribing to our insights.'
+            })
+            setEmail('')
+        } catch (error) {
+            console.error(error)
+            toast.error('Subscription failed', {
+                description: 'Please try again later.'
+            })
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
     return (
         <footer id="mxd-footer" className="mxd-footer">
 
@@ -89,10 +123,26 @@ export function RayoFooter() {
                             <p className="footer-blocks__title-m">Subscribe to our insights:</p>
                         </div>
                         <div className="form-container anim-uni-in-up">
-                            <form className="form notify-form form-light">
-                                <input type="email" placeholder="Your Email" required className="outline-none" />
-                                <button className="btn btn-form btn-absolute-right btn-muted slide-right-up anim-no-delay" type="submit">
-                                    <ArrowUpRight className="w-5 h-5" />
+                            <form className="form notify-form form-light" onSubmit={handleSubscribe}>
+                                <input
+                                    type="email"
+                                    placeholder="Your Email"
+                                    required
+                                    className="outline-none"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    disabled={isSubmitting}
+                                />
+                                <button
+                                    className="btn btn-form btn-absolute-right btn-muted slide-right-up anim-no-delay"
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                                    ) : (
+                                        <ArrowUpRight className="w-5 h-5" />
+                                    )}
                                 </button>
                             </form>
                         </div>
