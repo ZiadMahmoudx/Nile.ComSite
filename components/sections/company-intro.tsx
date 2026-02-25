@@ -27,14 +27,14 @@ export default function CompanyIntro() {
                         <div className="w-full flex flex-col justify-between h-full lg:py-2 lg:pl-6">
                             <div className="mxd-block__content">
                                 <div className="mxd-block__name mb-6">
-                                    <h2 className="reveal-type anim-uni-in-up font-bold text-black" style={{ fontSize: '4.5rem', lineHeight: '1.15' }}>About Us</h2>
+                                    <h2 className="reveal-type anim-uni-in-up font-bold" style={{ fontSize: '4.5rem', lineHeight: '1.15' }}>About Us</h2>
                                 </div>
                                 <div className="mxd-block__paragraph">
-                                    <p className="t-large t-bright reveal-type anim-uni-in-up font-medium text-black mb-6" style={{ fontSize: '1.75rem', lineHeight: '1.3' }}>
+                                    <p className="t-large reveal-type anim-uni-in-up font-medium mb-6" style={{ fontSize: '1.75rem', lineHeight: '1.3' }}>
                                         We don't do miracles, but we do amazing things.
                                         Established in 1999, <strong className="font-bold">NILE.COM</strong> is a private joint stock company based in Cairo, Egypt.
                                     </p>
-                                    <p className="reveal-type anim-uni-in-up text-neutral-800" style={{ fontSize: '1.45rem', lineHeight: '1.8' }}>
+                                    <p className="reveal-type anim-uni-in-up opacity-90" style={{ fontSize: '1.45rem', lineHeight: '1.8' }}>
                                         NILE.COM has successfully prospered in the rapidly evolving and highly
                                         demanding fields of communication and information technology.
                                         <br /><br />
@@ -45,8 +45,8 @@ export default function CompanyIntro() {
                                 </div>
                             </div>
                             <div className="mxd-paragraph__controls flex justify-end mt-4">
-                                <Link className="btn btn-anim btn-default btn-outline slide-right-up mt-8" href="/about" style={{ borderColor: 'rgba(0,0,0,0.2)', color: '#000' }}>
-                                    <span className="btn-caption font-bold" style={{ color: '#000' }}>More About Us</span>
+                                <Link className="btn btn-anim btn-default btn-outline slide-right-up mt-8" href="/about">
+                                    <span className="btn-caption font-bold">More About Us</span>
                                     <ArrowUpRight className="w-4 h-4 ml-2" />
                                 </Link>
                             </div>

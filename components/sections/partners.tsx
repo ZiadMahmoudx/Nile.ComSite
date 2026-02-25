@@ -19,14 +19,14 @@ const partners = [
 
 export default function Partners() {
   return (
-    <div className="mxd-section overflow-hidden padding-default bg-neutral-50/50">
+    <div className="mxd-section overflow-hidden padding-default">
       <div className="mxd-container grid-container">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-black reveal-type anim-uni-in-up">Trusted Partners & Vendors</h2>
-            <p className="text-lg text-neutral-600 mt-4 reveal-type anim-uni-in-up">Collaborating with industry leaders to deliver world-class infrastructure and solutions.</p>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight reveal-type anim-uni-in-up">Trusted Partners & Vendors</h2>
+            <p className="text-lg opacity-80 mt-4 reveal-type anim-uni-in-up">Collaborating with industry leaders to deliver world-class infrastructure and solutions.</p>
           </div>
           <div className="mt-6 md:mt-0 anim-uni-in-up">
             <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/partners">
@@ -48,13 +48,13 @@ export default function Partners() {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="anim-uni-in-up"
                 >
-                  <div className="bg-white rounded-3xl p-8 flex items-center justify-center shadow-sm border border-neutral-100 hover:shadow-md hover:border-neutral-200 transition-all duration-300 h-[180px] md:h-[220px] group">
+                  <div className="bg-white dark:bg-white/5 rounded-3xl p-8 flex items-center justify-center shadow-sm border border-neutral-100 dark:border-white/10 hover:shadow-md hover:border-neutral-200 dark:hover:border-white/20 transition-all duration-300 h-[180px] md:h-[220px] group">
                     <div className="relative w-full h-full flex items-center justify-center">
                       <Image
                         src={partner.logo}
                         alt={partner.name}
                         fill
-                        className="object-contain p-2 md:p-6 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-60 group-hover:opacity-100 scale-95 group-hover:scale-100"
+                        className="object-contain p-2 md:p-6 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-60 dark:opacity-50 group-hover:opacity-100 dark:group-hover:opacity-100 scale-95 group-hover:scale-100 dark:invert dark:group-hover:invert-0"
                       />
                     </div>
                   </div>

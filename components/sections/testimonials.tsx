@@ -70,39 +70,26 @@ export default function Testimonials() {
                         <Marquee pauseOnHover className="[--duration:40s]">
                             {testimonials.map((item, index) => (
                                 <div key={index} className="mx-4 w-[400px] md:w-[500px]">
-                                    <div className="mxd-testimonials-card bg-neutral-900 rounded-[2rem] !h-auto !min-h-[300px] p-8 border border-white/5 hover:border-white/10 transition-colors">
-                                        <div className="flex flex-col gap-6 justify-between h-full">
-                                            {/* Top: Avatar & Logo */}
-                                            <div className="flex items-center justify-between">
-                                                <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-primary/20">
-                                                    <Image
-                                                        src={item.avatar}
-                                                        alt={item.name}
-                                                        fill
-                                                        className="object-cover"
-                                                    />
-                                                </div>
-                                                <div className="relative w-24 h-12 grayscale opacity-70">
-                                                    <Image
-                                                        src={item.logo}
-                                                        alt="Company Logo"
-                                                        fill
-                                                        className="object-contain"
-                                                    />
-                                                </div>
-                                            </div>
+                                    <div className="mxd-testimonials-card bg-white rounded-3xl p-8 shadow-sm border border-neutral-100 hover:shadow-md hover:border-neutral-200 transition-all duration-300 h-auto flex flex-col justify-between group">
 
-                                            {/* Middle: Content */}
+                                        {/* Decorative Quote & Text content */}
+                                        <div className="flex flex-col">
+                                            <div className="text-6xl text-neutral-200 font-serif leading-none h-6 group-hover:text-primary/20 transition-colors duration-300">
+                                                "
+                                            </div>
                                             <div className="mt-4">
-                                                <p className="text-xl md:text-2xl text-gray-200 leading-relaxed font-light">"{item.content}"</p>
-                                            </div>
-
-                                            {/* Bottom: Author */}
-                                            <div className="mt-4 border-t border-white/10 pt-4">
-                                                <h4 className="text-lg font-bold text-white">{item.name}</h4>
-                                                <span className="text-sm text-primary">{item.role}</span>
+                                                <p className="text-xl md:text-2xl text-neutral-800 leading-relaxed font-medium">
+                                                    {item.content}
+                                                </p>
                                             </div>
                                         </div>
+
+                                        {/* Author Info */}
+                                        <div className="mt-8 pt-6 border-t border-neutral-100 flex flex-col">
+                                            <h4 className="text-lg font-bold text-black tracking-tight">{item.name}</h4>
+                                            <span className="text-sm font-medium text-neutral-500 uppercase tracking-widest mt-1">{item.role}</span>
+                                        </div>
+
                                     </div>
                                 </div>
                             ))}

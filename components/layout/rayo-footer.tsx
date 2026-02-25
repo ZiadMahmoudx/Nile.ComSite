@@ -154,7 +154,7 @@ export function RayoFooter() {
                     <div className="footer-blocks__card fullheight-card">
                         <div className="footer-blocks__block">
                             <div className="footer-blocks__title anim-uni-in-up">
-                                <p className="footer-blocks__title-l">Ecosystem</p>
+                                <p className="footer-blocks__title-l">Find Us</p>
                             </div>
                             <div className="footer-blocks__socials">
                                 <ul className="footer-socials">
