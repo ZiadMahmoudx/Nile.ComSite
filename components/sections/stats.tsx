@@ -53,8 +53,6 @@ const stats = [
         bg: 'bg-card border border-border/50 text-foreground hover:border-primary/50',
         contentPos: 'items-start text-left mr-auto',
         imgClasses: 'right-0 -bottom-4 w-[45%] md:w-[50%] h-[55%] md:h-[65%]',
-        btnText: 'Case Studies',
-        btnLink: '/case-studies',
     },
     {
         label: 'Team Certifications',
