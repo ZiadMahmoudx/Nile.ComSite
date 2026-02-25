@@ -14,54 +14,50 @@ const benefits = [
 
 export default function CareersBenefits() {
     return (
-        <section className="mxd-section padding-grid-pre-mtext">
-            <div className="mxd-container grid-container">
+        <section id="benefits" className="mxd-section padding-default bg-muted/30">
+            <div className="mxd-container">
+                <div className="mxd-block mb-16 text-center anim-uni-in-up">
+                    <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Life at NILE.COM</span>
+                    <h2 className="text-4xl md:text-5xl font-display font-bold">Why Join Us?</h2>
+                </div>
                 <div className="mxd-block">
-                    <div className="mxd-values">
-                        <div className="container-fluid p-0">
-                            <div className="row g-0 d-flex">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                        {/* Office Image */}
+                        <div className="lg:col-span-5 order-2 lg:order-1 relative anim-zoom-in-container rounded-[2rem] overflow-hidden aspect-[4/5] shadow-2xl border border-border/50 group">
+                            <Image
+                                src="/media/real/tech_workspace.jpg"
+                                alt="NILE.COM Office Life"
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                            <div className="absolute bottom-8 left-8 right-8 text-white z-10">
+                                <h3 className="font-bold text-2xl mb-2">Modern Workspace</h3>
+                                <p className="text-white/80">A collaborative environment designed for innovation.</p>
+                            </div>
+                        </div>
 
-                                {/* Office Image */}
-                                <div className="col-12 col-xl-5 mxd-values__item order-1 mxd-grid-item no-margin">
-                                    <div className="mxd-values__image image-large-desktop relative overflow-hidden">
-                                        <Image
-                                            src="/media/real/tech_workspace.jpg"
-                                            alt="NILE.COM Office Life"
-                                            fill
-                                            className="object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                    </div>
-                                </div>
-
-                                {/* Description and Benefits Grid */}
-                                <div className="col-12 col-xl-7 mxd-values__item order-2 mobile-reverse mxd-grid-item no-margin">
-                                    <div className="mxd-values__descr has-top-list anim-uni-in-up">
-                                        <h3 className="font-bold mb-6" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', color: 'var(--t-bright)' }}>Why Join NILE.COM?</h3>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                            {benefits.map((b, i) => (
-                                                <motion.div
-                                                    key={i}
-                                                    initial={{ opacity: 0, y: 20 }}
-                                                    whileInView={{ opacity: 1, y: 0 }}
-                                                    viewport={{ once: true }}
-                                                    transition={{ delay: i * 0.1 }}
-                                                    className="flex flex-col gap-3 group"
-                                                >
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="p-2.5 rounded-xl flex-shrink-0 group-hover:border-primary/30 transition-colors"
-                                                            style={{ backgroundColor: 'var(--base-opp)', border: '1px solid var(--st-bright)' }}>
-                                                            <b.icon className="w-5 h-5" style={{ color: 'var(--t-opp-bright)' }} />
-                                                        </div>
-                                                        <h4 className="font-bold" style={{ fontSize: '1rem', color: 'var(--t-bright)' }}>{b.title}</h4>
-                                                    </div>
-                                                    <p style={{ fontSize: '0.875rem', color: 'var(--t-medium)', paddingLeft: 'calc(2.5rem + 0.75rem)' }}>{b.description}</p>
-                                                </motion.div>
-                                            ))}
+                        {/* Description and Benefits Grid */}
+                        <div className="lg:col-span-7 order-1 lg:order-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                {benefits.map((b, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="flex flex-col gap-4 p-8 rounded-3xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 group"
+                                    >
+                                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                            <b.icon className="w-7 h-7 text-primary" />
                                         </div>
-                                    </div>
-                                </div>
-
+                                        <div>
+                                            <h4 className="font-bold text-xl mb-2">{b.title}</h4>
+                                            <p className="text-muted-foreground leading-relaxed">{b.description}</p>
+                                        </div>
+                                    </motion.div>
+                                ))}
                             </div>
                         </div>
                     </div>

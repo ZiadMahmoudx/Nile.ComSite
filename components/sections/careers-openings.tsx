@@ -14,100 +14,78 @@ const positions = [
 
 export default function CareersOpenings() {
     return (
-        <section id="openings" className="mxd-section overflow-hidden padding-default">
-            <div className="mxd-container grid-container">
+        <section id="openings" className="mxd-section overflow-hidden padding-default relative">
+            <div className="mxd-container relative z-10">
 
                 {/* Section Title */}
-                <div className="mxd-block">
-                    <div className="mxd-section-title">
-                        <div className="container-fluid p-0">
-                            <div className="row g-0">
-                                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
-                                    <div className="mxd-section-title__hrtitle">
-                                        <h2 className="reveal-type" style={{ fontSize: 'clamp(2.4rem, 4vw, 4rem)' }}>Department <br />& Open Roles</h2>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
-                                    <div className="mxd-section-title__hrdescr">
-                                        <p className="anim-uni-in-up">
-                                            Explore our current job openings and find the perfect role for your skills and passion.
-                                            We offer competitive salaries, comprehensive benefits, and a culture of continuous learning.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-border/50 pb-8">
+                    <div className="max-w-2xl">
+                        <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block anim-uni-in-up">We're Hiring</span>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold anim-uni-in-up tracking-tight">Open Roles</h2>
+                    </div>
+                    <div className="mt-8 md:mt-0 max-w-md anim-uni-in-up">
+                        <p className="text-lg text-muted-foreground">
+                            Explore our current openings. If you don't see a perfect fit, you can still send us your resume.
+                        </p>
                     </div>
                 </div>
 
                 {/* Jobs List */}
                 <div className="mxd-block">
                     {positions.length > 0 ? (
-                        <div className="mxd-services-list grid-top hover-reveal">
+                        <div className="grid grid-cols-1 gap-4">
                             {positions.map((job, index) => (
-                                <div key={index} className="mxd-services-list__item hover-reveal__item group">
-                                    <div className="mxd-services-list__border anim-uni-in-up"></div>
+                                <Link
+                                    href={`/contact?role=${encodeURIComponent(job.title)}`}
+                                    key={index}
+                                    className="group block p-6 md:p-8 rounded-3xl bg-card border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 anim-uni-in-up"
+                                >
+                                    <div className="flex flex-col md:flex-row justify-between md:items-center gap-6">
 
-                                    {/* Hover Content */}
-                                    <div className="hover-reveal__content hover-reveal-360x440 flex items-center justify-center" style={{ backgroundColor: 'var(--base-opp)', opacity: 0.95 }}>
-                                        <Link
-                                            href={`/contact?role=${encodeURIComponent(job.title)}`}
-                                            aria-label={`Apply for ${job.title}`}
-                                            className="w-full h-full flex flex-col items-center justify-center"
-                                            style={{ color: 'var(--t-opp-bright)' }}
-                                        >
-                                            <Briefcase className="w-16 h-16 mb-4" />
-                                            <span className="font-bold" style={{ fontSize: '1.25rem' }}>Apply Now</span>
-                                        </Link>
-                                    </div>
+                                        {/* Left Side: Title & Dept */}
+                                        <div className="flex-1">
+                                            <div className="inline-block px-3 py-1 mb-4 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider group-hover:bg-primary group-hover:!text-white transition-colors duration-300">
+                                                {job.department}
+                                            </div>
+                                            <h3 className="text-2xl md:text-3xl font-bold font-display group-hover:translate-x-3 transition-transform duration-300">
+                                                {job.title}
+                                            </h3>
+                                        </div>
 
-                                    <div className="mxd-services-list__inner">
-                                        <div className="container-fluid px-0">
-                                            <div className="row gx-0 align-items-center">
-                                                <div className="col-12 col-xl-6 mxd-grid-item no-margin">
-                                                    <div className="mxd-services-list__title anim-uni-in-up">
-                                                        <p className="group-hover:text-primary transition-colors" style={{ fontSize: 'clamp(1.4rem, 2vw, 2rem)', lineHeight: '1.3' }}>{job.title}</p>
-                                                        <span className="block font-normal" style={{ fontSize: '0.875rem', color: 'var(--t-medium)', marginTop: '0.25rem' }}>{job.department}</span>
-                                                    </div>
+                                        {/* Right Side: Meta Data & Button */}
+                                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                                            <div className="flex flex-col gap-2 border-l border-border/50 pl-6 transition-colors duration-300 group-hover:border-primary/30">
+                                                <div className="flex items-center text-muted-foreground group-hover:text-foreground transition-colors duration-300 font-medium text-sm">
+                                                    <MapPin className="w-4 h-4 mr-2 text-primary/70 group-hover:text-primary transition-colors duration-300" />
+                                                    {job.location}
                                                 </div>
-                                                <div className="col-12 col-xl-4 mxd-grid-item no-margin">
-                                                    <div className="mxd-services-list__descr anim-uni-in-up flex flex-col gap-2">
-                                                        <div className="flex items-center" style={{ fontSize: '0.875rem', color: 'var(--t-medium)' }}>
-                                                            <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
-                                                            {job.location}
-                                                        </div>
-                                                        <div className="flex items-center" style={{ fontSize: '0.875rem', color: 'var(--t-medium)' }}>
-                                                            <Clock className="w-4 h-4 mr-2 flex-shrink-0" />
-                                                            {job.type}
-                                                        </div>
-                                                    </div>
+                                                <div className="flex items-center text-muted-foreground group-hover:text-foreground transition-colors duration-300 font-medium text-sm">
+                                                    <Clock className="w-4 h-4 mr-2 text-primary/70 group-hover:text-primary transition-colors duration-300" />
+                                                    {job.type}
                                                 </div>
-                                                <div className="col-12 col-xl-2 mxd-grid-item no-margin flex justify-end">
-                                                    <div className="mxd-services-list__tagslist">
-                                                        <Link
-                                                            href={`/contact?role=${encodeURIComponent(job.title)}`}
-                                                            aria-label={`Apply for ${job.title}`}
-                                                            className="btn btn-anim btn-default btn-outline slide-right-up"
-                                                        >
-                                                            <span className="btn-caption">Apply</span>
-                                                            <ArrowRight className="w-4 h-4 ml-2" />
-                                                        </Link>
-                                                    </div>
+                                            </div>
+                                            <div className="ml-0 sm:ml-4">
+                                                <div className="w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:!text-white transition-all transform group-hover:scale-110 shadow-sm group-hover:shadow-[0_0_20px_rgba(var(--primary-rgb),0.3)]">
+                                                    <ArrowRight className="w-5 h-5 group-hover:-rotate-45 group-hover:text-white transition-transform duration-300" />
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
-                                    <div className="mxd-services-list__border anim-uni-in-up"></div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-16">
-                            <Briefcase className="w-12 h-12 mx-auto mb-4" style={{ color: 'var(--t-medium)' }} />
-                            <p className="font-bold mb-2" style={{ fontSize: '1.25rem', color: 'var(--t-bright)' }}>No open positions right now</p>
-                            <p style={{ fontSize: '0.875rem', color: 'var(--t-medium)' }}>
-                                Check back soon or <Link href="/contact" className="text-primary underline">send us your CV</Link> for future opportunities.
+                        <div className="text-center py-24 bg-card rounded-3xl border border-border/50">
+                            <Briefcase className="w-16 h-16 mx-auto mb-6 text-muted-foreground" />
+                            <h3 className="text-3xl font-bold font-display mb-4">No open positions right now</h3>
+                            <p className="text-lg text-muted-foreground max-w-lg mx-auto mb-8">
+                                Check back soon or send us your CV for future opportunities. We're always looking for great talent.
                             </p>
+                            <Link href="/contact" className="btn btn-anim btn-default btn-outline">
+                                <span className="btn-caption font-medium">Send General Application</span>
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                            </Link>
                         </div>
                     )}
                 </div>

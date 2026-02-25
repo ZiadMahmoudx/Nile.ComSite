@@ -53,13 +53,14 @@ const menuItems: MenuItem[] = [
         href: '#',
         submenu: [
             { label: 'About Us', href: '/about' },
-            { label: 'Our Team', href: '/team' },
+            // { label: 'Our Team', href: '/team' },
             { label: 'Careers', href: '/careers' },
             { label: 'Partners', href: '/partners' },
-            { label: 'Case Studies', href: '/case-studies' },
-            { label: 'FAQ', href: '/faq' },
+            // { label: 'Case Studies', href: '/case-studies' },
+            // { label: 'FAQ', href: '/faq' },
         ],
     },
+    /*
     {
         label: 'Insights',
         href: '/news',
@@ -68,6 +69,7 @@ const menuItems: MenuItem[] = [
             { label: 'Case Studies', href: '/case-studies' },
         ],
     },
+    */
     {
         label: 'Contact',
         href: '/contact',

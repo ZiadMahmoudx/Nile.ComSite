@@ -63,18 +63,23 @@ export function RayoFooter() {
                                     </Link>
                                 </li>
                                 <li className="footer-nav__item anim-uni-in-up">
-                                    <Link href="/case-studies" className="footer-nav__link btn-anim">
-                                        <span className="btn-caption">Case Studies</span>
-                                    </Link>
-                                </li>
-                                <li className="footer-nav__item anim-uni-in-up">
                                     <Link href="/services" className="footer-nav__link btn-anim">
                                         <span className="btn-caption">Services</span>
                                     </Link>
                                 </li>
                                 <li className="footer-nav__item anim-uni-in-up">
-                                    <Link href="/news" className="footer-nav__link btn-anim">
-                                        <span className="btn-caption">News</span>
+                                    <Link href="/solutions" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Solutions</span>
+                                    </Link>
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/careers" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Careers</span>
+                                    </Link>
+                                </li>
+                                <li className="footer-nav__item anim-uni-in-up">
+                                    <Link href="/partners" className="footer-nav__link btn-anim">
+                                        <span className="btn-caption">Partners</span>
                                     </Link>
                                 </li>
                                 <li className="footer-nav__item anim-uni-in-up">
