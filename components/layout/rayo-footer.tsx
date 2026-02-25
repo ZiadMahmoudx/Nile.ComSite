@@ -3,7 +3,7 @@
 import React, { useState } from 'react' // Import useState
 import { toast } from 'sonner' // Import toast
 import Link from 'next/link'
-import { ArrowUpRight, ArrowRight, ArrowUp } from 'lucide-react'
+import { ArrowUpRight, ArrowRight, ArrowUp, Facebook, Linkedin, Instagram } from 'lucide-react'
 
 export function RayoFooter() {
     const [email, setEmail] = useState('')
@@ -157,23 +157,43 @@ export function RayoFooter() {
                 {/* single column (Ecosystem) */}
                 <div className="footer-blocks__column animate-card-3">
                     <div className="footer-blocks__card fullheight-card">
-                        <div className="footer-blocks__block">
-                            <div className="footer-blocks__title anim-uni-in-up">
-                                <p className="footer-blocks__title-l">Find Us</p>
+                        <div className="footer-blocks__block flex-1 flex flex-col h-full mt-2">
+                            <div className="footer-blocks__title anim-uni-in-up mb-8">
+                                <p className="footer-blocks__title-l font-bold">Find Us</p>
                             </div>
-                            <div className="footer-blocks__socials">
-                                <ul className="footer-socials">
-                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.linkedin.com/company/nile-com" className="footer-socials__link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.facebook.com/nilecom" className="footer-socials__link" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.twitter.com/nilecom" className="footer-socials__link" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-                                    <li className="footer-socials__item anim-uni-in-up"><a href="https://www.youtube.com/@nilecom" className="footer-socials__link" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                            <div className="footer-blocks__socials flex-1 flex flex-col justify-center pb-8">
+                                <ul className="flex flex-col gap-6">
+                                    <li className="anim-uni-in-up">
+                                        <a href="https://www.linkedin.com/company/nile.com/" className="flex items-center gap-5 text-xl font-semibold text-foreground hover:text-primary transition-colors group" target="_blank" rel="noopener noreferrer">
+                                            <span className="w-14 h-14 flex items-center justify-center bg-foreground/5 rounded-full group-hover:bg-primary group-hover:text-white transition-all shrink-0">
+                                                <Linkedin className="w-6 h-6" strokeWidth={1.75} />
+                                            </span>
+                                            LinkedIn
+                                        </a>
+                                    </li>
+                                    <li className="anim-uni-in-up" style={{ animationDelay: '0.1s' }}>
+                                        <a href="https://www.facebook.com/profile.php?id=100064014699452#" className="flex items-center gap-5 text-xl font-semibold text-foreground hover:text-primary transition-colors group" target="_blank" rel="noopener noreferrer">
+                                            <span className="w-14 h-14 flex items-center justify-center bg-foreground/5 rounded-full group-hover:bg-primary group-hover:text-white transition-all shrink-0">
+                                                <Facebook className="w-6 h-6" strokeWidth={1.75} />
+                                            </span>
+                                            Facebook
+                                        </a>
+                                    </li>
+                                    <li className="anim-uni-in-up" style={{ animationDelay: '0.2s' }}>
+                                        <a href="https://www.instagram.com/nilecom.eg.ae/" className="flex items-center gap-5 text-xl font-semibold text-foreground hover:text-primary transition-colors group" target="_blank" rel="noopener noreferrer">
+                                            <span className="w-14 h-14 flex items-center justify-center bg-foreground/5 rounded-full group-hover:bg-primary group-hover:text-white transition-all shrink-0">
+                                                <Instagram className="w-6 h-6" strokeWidth={1.75} />
+                                            </span>
+                                            Instagram
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="footer-blocks__links anim-uni-in-up">
                             <p className="t-xsmall t-muted flex items-center gap-2">
                                 <Link className="no-effect" href="/" target="_blank">Nile.com</Link>
-                                <span>&copy; 2025</span>
+                                <span>&copy; 2026</span>
                             </p>
                         </div>
                     </div>

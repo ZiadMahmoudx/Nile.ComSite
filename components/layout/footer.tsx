@@ -39,8 +39,8 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/p/NileCom-100064014699452/', color: 'hover:text-[rgb(160,34,34)]' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nile.com', color: 'hover:text-[rgb(160,34,34)]' },
+  { name: 'Facebook', icon: Facebook, href: 'https://www.facebook.com/profile.php?id=100064014699452#', color: 'hover:text-[rgb(160,34,34)]' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/nile.com/', color: 'hover:text-[rgb(160,34,34)]' },
   { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/nilecom.eg.ae/', color: 'hover:text-pink-500' },
 ]
 
@@ -193,7 +193,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="text-sm text-muted-foreground">
-            © 2025 NILE.COM. All rights reserved. | Established 1999
+            © 2026 NILE.COM. All rights reserved. | Established 1999
           </div>
           <div className="flex space-x-6 text-sm">
             <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors duration-300">

@@ -29,9 +29,9 @@ export default function Partners() {
             <p className="text-lg opacity-80 mt-4 reveal-type anim-uni-in-up">Collaborating with industry leaders to deliver world-class infrastructure and solutions.</p>
           </div>
           <div className="mt-6 md:mt-0 anim-uni-in-up">
-            <Link className="btn btn-anim btn-default btn-outline slide-right-up" href="/partners">
-              <span className="btn-caption font-bold">Show All Our Partners</span>
-              <ArrowUpRight className="w-5 h-5 ml-2" />
+            <Link className="inline-flex items-center justify-center border-2 border-foreground/10 hover:border-foreground/30 text-foreground transition-all rounded-full px-6 py-3 md:px-8 md:py-4 w-full sm:w-auto group/btn" href="/partners">
+              <span className="font-bold text-sm md:text-base tracking-wide">Show All Our Partners</span>
+              <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 ml-2 md:ml-3 shrink-0 transform transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
             </Link>
           </div>
         </div>
