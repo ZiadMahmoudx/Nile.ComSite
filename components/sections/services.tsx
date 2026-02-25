@@ -12,27 +12,26 @@ const services: any[] = [
     icon: Settings,
     headline: (
       <>
-        <span className="text-white">Transform</span> <span className="text-neutral-500">Your</span>
+        <span className="text-black">Transform</span> <span className="text-neutral-500">Your</span>
         <br />
         <span className="text-primary text-[4rem] md:text-[6rem] lg:text-[7rem] leading-[0.8] uppercase tracking-tighter">BUSINESS</span>
       </>
     ),
-    badge: 'LEADING IT SOLUTIONS',
     title: '',
     tags: [],
     description: 'Empowering enterprises with cutting-edge IT solutions, cybersecurity, and digital transformation services for over 25 years.',
     image: '/img/1200x1200_service-image-01.webp',
     layoutClass: 'col-12 col-xl-8',
-    itemClass: 'justify-between radius-l padding-4',
-    itemStyle: { backgroundColor: '#0a0a0a' }, // Very dark/black background
-    titleClass: 'text-white', // Force white text
-    titleStyle: { color: '#ffffff' }, // Force white text style
+    itemClass: 'justify-between radius-l padding-4 border border-neutral-200',
+    itemStyle: { backgroundColor: '#ffffff' },
+    titleClass: 'text-black',
+    titleStyle: { color: '#000000' },
     imageClass: 'image-right',
-    textClass: 'text-white',
+    textClass: 'text-neutral-700',
     anim: 'anim-uni-scale-in-right',
     buttons: [
-      { text: 'Get Started', link: '/contact', style: '!bg-white !text-black hover:!bg-neutral-200 border-none' },
-      { text: 'Our Solutions', link: '/solutions', style: 'btn-outline !text-white !border-white hover:!bg-white/10' }
+      { text: 'Get Started', link: '/contact', style: '!bg-black !text-white hover:!bg-neutral-800 border-none' },
+      { text: 'Our Solutions', link: '/solutions', style: 'btn-outline !text-black !border-black hover:!bg-black/10' }
     ]
   },
   {
@@ -82,7 +81,7 @@ const services: any[] = [
     title: 'Training & Education',
     tags: ['Workshops', 'Certification Prep', 'Documentation'],
     description: 'Comprehensive training programs to empower your team with the latest technology skills.',
-    image: '/img/1200x1200_service-image-05.webp',
+    image: '/img/1200x1200_service-image-03.webp',
     layoutClass: 'col-12 col-xl-4',
     itemClass: 'justify-end radius-l padding-4',
     itemStyle: { backgroundColor: 'var(--base-tint)' },

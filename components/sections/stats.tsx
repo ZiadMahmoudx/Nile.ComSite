@@ -27,10 +27,8 @@ const stats = [
         description: 'Client satisfaction rate across all our projects',
         image: '/img/customer.png',
         colClass: 'col-12 col-xl-7',
-        bgClass: '',
-        bgStyle: { backgroundColor: 'var(--base-tint)' },
-        textClass: '',
-        textStyle: { color: 'var(--t-bright)' },
+        bgClass: 'bg-neutral-100',
+        textClass: 'text-black',
         anim: 'anim-uni-scale-in-left',
         textPosition: 'right'
     },
@@ -41,10 +39,8 @@ const stats = [
         description: 'Years of professional experience delivering IT solutions',
         image: '/img/27.png',
         colClass: 'col-12 col-xl-7',
-        bgClass: '',
-        bgStyle: { backgroundColor: 'var(--base-tint)' },
-        textClass: '',
-        textStyle: { color: 'var(--t-bright)' },
+        bgClass: 'bg-neutral-200',
+        textClass: 'text-black',
         btnText: 'Start New Project',
         btnLink: '/contact',
         btnIcon: ArrowDownRight,
@@ -58,10 +54,8 @@ const stats = [
         description: 'Successfully completed IT projects',
         image: '/img/projects.png',
         colClass: 'col-12 col-xl-5',
-        bgClass: '',
-        bgStyle: { backgroundColor: 'var(--base-tint)' },
-        textClass: '',
-        textStyle: { color: 'var(--t-bright)' },
+        bgClass: 'bg-neutral-100',
+        textClass: 'text-black',
         btnText: 'Case Studies',
         btnLink: '/case-studies',
         anim: 'anim-uni-scale-in-left',
@@ -74,10 +68,8 @@ const stats = [
         description: 'Industry certifications held by our expert engineers',
         image: '/img/cloud22.png',
         colClass: 'col-12 col-xl-5',
-        bgClass: '',
-        bgStyle: { backgroundColor: 'var(--base-tint)' },
-        textClass: '',
-        textStyle: { color: 'var(--t-bright)' },
+        bgClass: 'bg-neutral-200',
+        textClass: 'text-black',
         anim: 'anim-uni-scale-in-left',
         textPosition: 'right'
     },
@@ -88,10 +80,8 @@ const stats = [
         description: 'Strategic technology partnerships including Microsoft, AWS, Cisco & VMware',
         image: '/img/partners.png',
         colClass: 'col-12 col-xl-7',
-        bgClass: '',
-        bgStyle: { backgroundColor: 'var(--base-tint)' },
-        textClass: '',
-        textStyle: { color: 'var(--t-bright)' },
+        bgClass: 'bg-neutral-100',
+        textClass: 'text-black',
         btnText: 'Our Partners',
         btnLink: '/partners',
         anim: 'anim-uni-scale-in-right',
@@ -111,20 +101,20 @@ export default function Stats() {
                             <div className="row gx-0">
                                 {stats.map((stat, index) => (
                                     <div key={index} className={`${stat.colClass} mxd-stats-cards__item mxd-grid-item ${stat.anim}`}>
-                                        <div className={`mxd-stats-cards__inner relative h-[450px] ${stat.bgClass} rounded-[2.5rem] overflow-hidden transition-transform hover:-translate-y-1 duration-300`} style={stat.bgStyle || {}}>
+                                        <div className={`mxd-stats-cards__inner relative h-[450px] ${stat.bgClass} rounded-[2.5rem] overflow-hidden transition-transform hover:-translate-y-1 duration-300`}>
                                             {/* Text Content - Position based on textPosition prop */}
                                             <div className={`absolute top-8 z-10 flex flex-col ${stat.textPosition === 'left' ? 'left-8 items-start text-left' : 'right-8 items-end text-right'}`}>
-                                                <div className={`mxd-counter__number mxd-stats-number anim-uni-in-up ${stat.textClass} flex items-baseline font-display text-[5rem] md:text-[7rem] lg:text-[8rem] font-bold leading-[0.8] tracking-tight`} style={stat.textStyle || {}}>
+                                                <div className={`mxd-counter__number mxd-stats-number anim-uni-in-up ${stat.textClass} flex items-baseline font-display text-[5rem] md:text-[7rem] lg:text-[8rem] font-bold leading-[0.8] tracking-tight`}>
                                                     <AnimatedCounter value={stat.value} suffix={stat.suffix} separator="," />
                                                 </div>
-                                                <p className={`mxd-counter__descr reveal-type anim-uni-in-up !text-lg md:!text-xl font-medium opacity-90 max-w-[280px] leading-snug mt-4 ${stat.textClass}`} style={stat.textStyle || {}}>
+                                                <p className={`mxd-counter__descr reveal-type anim-uni-in-up !text-lg md:!text-xl font-medium opacity-90 max-w-[280px] leading-snug mt-4 ${stat.textClass}`}>
                                                     {stat.description}
                                                 </p>
 
                                                 {/* Button - Moved Here */}
                                                 {stat.btnText && (
                                                     <div className="mt-8 z-20 anim-uni-in-up">
-                                                        <Link className={`btn btn-anim btn-default btn-outline rounded-full px-8 py-3 bg-transparent border-2 slide-right-up`} href={stat.btnLink || '#'} style={{ borderColor: stat.textStyle?.color || 'currentColor', color: stat.textStyle?.color || 'currentColor' }}>
+                                                        <Link className={`btn btn-anim btn-default btn-outline rounded-full px-8 py-3 bg-transparent border-2 slide-right-up ${stat.textClass}`} href={stat.btnLink || '#'}>
                                                             <span className="btn-caption font-bold text-lg">{stat.btnText}</span>
                                                             {stat.btnIcon ? <stat.btnIcon className="w-5 h-5 ml-2" /> : <ArrowUpRight className="w-5 h-5 ml-2" />}
                                                         </Link>
