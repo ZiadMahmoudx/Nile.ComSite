@@ -31,9 +31,9 @@ export default function CompanyIntro() {
         <div className="mxd-section padding-grid-pre-mtext">
             <div className="mxd-container grid-container">
                 <div className="mxd-block">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch h-full">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                         <div className="w-full">
-                            <div className="relative w-full aspect-video h-full rounded-2xl overflow-hidden shadow-2xl bg-black border border-border/50 group">
+                            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl group">
                                 <video
                                     ref={videoRef}
                                     autoPlay
@@ -44,7 +44,7 @@ export default function CompanyIntro() {
                                     controlsList="nodownload"
                                     onContextMenu={(e) => e.preventDefault()}
                                     onClick={togglePlay}
-                                    className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 cursor-pointer"
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 cursor-pointer"
                                     poster="/images/thumb.jpg"
                                 >
                                     <source src="/intro.mp4" type="video/mp4" />

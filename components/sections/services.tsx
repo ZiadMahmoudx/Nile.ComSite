@@ -45,7 +45,7 @@ const services: any[] = [
     titleClass: 'text-primary-foreground',
     imageClass: 'image-top-right',
     textClass: 'text-primary-foreground/90',
-    tagClass: 'tag-outline-opposite',
+    tagClass: '!border-white/40 !text-white hover:!bg-white hover:!text-black',
     anim: 'anim-uni-scale-in-left'
   },
   {
@@ -59,7 +59,7 @@ const services: any[] = [
     titleClass: 'text-white',
     imageClass: 'image-bottom',
     textClass: 'text-white/90',
-    tagClass: 'tag-outline-opposite',
+    tagClass: '!border-white/40 !text-white hover:!bg-white hover:!text-black',
     anim: 'anim-uni-scale-in-right'
   },
   {
@@ -73,7 +73,7 @@ const services: any[] = [
     titleClass: 'text-primary-foreground',
     imageClass: 'image-bottom image-bottom-2',
     textClass: 'text-primary-foreground/90',
-    tagClass: 'tag-outline-opposite',
+    tagClass: '!border-white/40 !text-white hover:!bg-white hover:!text-black',
     anim: 'anim-uni-scale-in'
   },
   {
@@ -83,10 +83,10 @@ const services: any[] = [
     description: 'Comprehensive training programs to empower your team with the latest technology skills.',
     image: '/img/1200x1200_service-image-03.webp',
     layoutClass: 'col-12 col-xl-4',
-    itemClass: 'justify-end radius-l padding-4',
-    itemStyle: { backgroundColor: 'var(--base-tint)' },
-    titleClass: '',
-    titleStyle: { color: 'var(--t-bright)' },
+    itemClass: 'justify-end bg-neutral-900 radius-l padding-4',
+    titleClass: 'text-white',
+    textClass: 'text-white/90',
+    tagClass: '!border-white/40 !text-white hover:!bg-white hover:!text-black',
     imageClass: 'image-top',
     anim: 'anim-uni-scale-in-left'
   }

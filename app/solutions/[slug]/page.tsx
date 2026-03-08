@@ -209,72 +209,62 @@ export default async function SolutionDetailPage({ params }: { params: Promise<{
         <div className="bg-background text-foreground overflow-hidden">
             <main>
                 {/* Hero Section */}
-                {/* Hero Section */}
-                <section className="mxd-section mxd-section-inner-headline padding-default min-h-[0px] pb-24 relative overflow-hidden">
+                <section className="mxd-section mxd-section-inner-headline padding-default min-h-[0px] pb-12 relative overflow-hidden">
                     <div className="mxd-container relative z-10">
-                        <div className="mxd-block">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-                                {/* Left Content */}
-                                <div className="lg:col-span-7 xl:col-span-7">
-                                    <div className="mxd-block__content">
-                                        <div className="inner-headline">
-                                            <Link href="/solutions" className="tag tag-default mb-8 inline-flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/10 transition-colors border border-black/10 dark:border-white/10 rounded-full px-4 py-2 text-sm font-medium">
-                                                <ArrowLeft className="w-4 h-4" />
-                                                Back to Solutions
-                                            </Link>
+                        <div className="relative rounded-[2.5rem] overflow-hidden min-h-[50vh] lg:min-h-[70vh] flex items-center shadow-2xl w-full border border-black/5 dark:border-white/10">
+                            {/* Clear Background Image */}
+                            <div className="absolute inset-0 z-0">
+                                <Image
+                                    src={solution.heroImage}
+                                    alt={solution.title}
+                                    fill
+                                    className="object-cover scale-105"
+                                    priority
+                                />
+                                {/* Gradient overlays to ensure text readability */}
+                                <div className="absolute inset-0 bg-black/30"></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+                            </div>
 
-                                            <div className="flex items-center gap-4 mb-6 anim-uni-in-up">
-                                                <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                                                    <Icon className="w-6 h-6" />
-                                                </div>
-                                                <span className="text-sm font-bold tracking-wider uppercase text-primary">
-                                                    Enterprise Solution
-                                                </span>
+                            <div className="relative z-10 w-full p-8 md:p-14 lg:p-24">
+                                <div className="max-w-3xl">
+                                    <div className="inner-headline">
+                                        <Link href="/solutions" className="tag tag-default mb-10 inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all rounded-full px-5 py-2.5 text-sm font-medium backdrop-blur-md hover:-translate-x-1">
+                                            <ArrowLeft className="w-4 h-4" />
+                                            Back to Solutions
+                                        </Link>
+
+                                        <div className="flex items-center gap-4 mb-8 anim-uni-in-up">
+                                            <div className="p-3 rounded-xl bg-primary/90 text-white shadow-lg shadow-primary/20 backdrop-blur-md">
+                                                <Icon className="w-6 h-6" />
                                             </div>
-
-                                            <h1 className="reveal-type anim-uni-in-up font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-6 text-foreground">
-                                                {solution.title}
-                                            </h1>
-                                            <p className="reveal-type anim-uni-in-up text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl border-l-2 border-primary/20 pl-4 py-1">
-                                                {solution.tagline}
-                                            </p>
-
-                                            <div className="mt-10 flex flex-wrap gap-4 anim-uni-in-up">
-                                                <Link className="btn btn-anim btn-default btn-primary slide-right-up px-8 py-4" href="/contact">
-                                                    <span className="btn-caption font-bold">Start Transformation</span>
-                                                    <ArrowRight className="w-5 h-5 ml-2" />
-                                                </Link>
-                                                <Link className="btn btn-anim btn-default btn-outline slide-right-up px-8 py-4" href="#overview">
-                                                    <span className="btn-caption font-medium">Explore Features</span>
-                                                </Link>
-                                            </div>
+                                            <span className="text-sm font-bold tracking-widest uppercase text-white/90 drop-shadow-sm">
+                                                Enterprise Solution
+                                            </span>
                                         </div>
-                                    </div>
-                                </div>
 
-                                {/* Right Visual */}
-                                <div className="lg:col-span-5 xl:col-span-5 mt-12 lg:mt-0">
-                                    <div className="relative anim-zoom-in-container w-full max-w-[550px] mx-auto group">
-                                        {/* Decorative background shape */}
-                                        <div className="absolute inset-0 bg-primary/5 dark:bg-primary/10 rounded-[2rem] transform rotate-3 scale-105 transition-transform duration-500 group-hover:rotate-6"></div>
-                                        <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-card z-10">
-                                            <Image
-                                                src={solution.heroImage}
-                                                alt={solution.title}
-                                                fill
-                                                className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                priority
-                                            />
-                                            {/* Gradient Overlay */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60"></div>
+                                        <h1 className="reveal-type anim-uni-in-up font-display text-5xl md:text-6xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight mb-8 text-white drop-shadow-lg">
+                                            {solution.title}
+                                        </h1>
+
+                                        <p className="reveal-type anim-uni-in-up text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl border-l-[3px] border-primary pl-6 py-2 drop-shadow-md font-medium">
+                                            {solution.tagline}
+                                        </p>
+
+                                        <div className="mt-12 flex flex-wrap gap-5 anim-uni-in-up">
+                                            <Link className="btn btn-anim btn-default btn-primary slide-right-up px-8 py-4 shadow-xl shadow-primary/30" href="/contact">
+                                                <span className="btn-caption font-bold text-base md:text-lg">Start Transformation</span>
+                                                <ArrowRight className="w-5 h-5 ml-2" />
+                                            </Link>
+                                            <Link className="btn btn-anim btn-default slide-right-up px-8 py-4 !bg-white/10 !text-white hover:!bg-white/20 backdrop-blur-md border border-white/20 transition-all shadow-lg" href="#overview">
+                                                <span className="btn-caption font-medium text-base md:text-lg">Explore Features</span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* Background Glow */}
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
                 </section>
 
                 {/* Overview Section */}

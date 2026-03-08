@@ -15,6 +15,10 @@ const partners = [
   { name: 'SecPod', logo: '/img/secpod-2-300x300.png' },
   { name: 'Logitech', logo: '/img/brands/logitech.svg' },
   { name: 'Mozilla', logo: '/img/brands/mozilla.svg' },
+  { name: 'Angular', logo: '/img/brands/angular.svg' },
+  { name: 'DeepSeek', logo: '/img/brands/deepseek.svg' },
+  { name: 'CrewAI', logo: '/img/brands/crewai.svg' },
+  { name: 'Smartlook', logo: '/img/brands/smartlook.svg' },
 ]
 
 export default function Partners() {
@@ -38,7 +42,7 @@ export default function Partners() {
 
         <div className="mxd-block">
           <div className="container-fluid px-0">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-5">
               {partners.map((partner, index) => (
                 <motion.div
                   key={index}
@@ -48,13 +52,13 @@ export default function Partners() {
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="anim-uni-in-up"
                 >
-                  <div className="bg-white dark:bg-white/5 rounded-3xl p-8 flex items-center justify-center shadow-sm border border-neutral-100 dark:border-white/10 hover:shadow-md hover:border-neutral-200 dark:hover:border-white/20 transition-all duration-300 h-[180px] md:h-[220px] group">
+                  <div className="bg-white dark:bg-white/5 rounded-[1.5rem] p-4 md:p-6 flex items-center justify-center shadow-sm border border-neutral-100 dark:border-white/10 hover:shadow-md hover:border-neutral-200 dark:hover:border-white/20 transition-all duration-300 h-[100px] md:h-[120px] lg:h-[135px] group">
                     <div className="relative w-full h-full flex items-center justify-center">
                       <Image
                         src={partner.logo}
                         alt={partner.name}
                         fill
-                        className="object-contain p-2 md:p-6 grayscale group-hover:grayscale-0 transition-all duration-500 opacity-60 dark:opacity-50 group-hover:opacity-100 dark:group-hover:opacity-100 scale-95 group-hover:scale-100 dark:invert dark:group-hover:invert-0"
+                        className="object-contain p-2 md:p-3 transition-all duration-500 opacity-60 dark:opacity-70 group-hover:opacity-100 scale-95 group-hover:scale-100 mix-blend-multiply grayscale group-hover:grayscale-0 dark:mix-blend-screen dark:invert dark:grayscale dark:group-hover:grayscale"
                       />
                     </div>
                   </div>
