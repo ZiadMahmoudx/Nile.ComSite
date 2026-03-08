@@ -135,13 +135,13 @@ export default function Contact() {
       </div>
 
       {/* ── Trust Badges Strip ── */}
-      <div className="border-y border-border/40 bg-secondary/5">
+      <div className="border-y border-neutral-200 dark:border-white/10 bg-neutral-50 dark:bg-card/50">
         <div className="mxd-container">
-          <div className="py-6 flex flex-wrap justify-center gap-x-12 gap-y-4">
+          <div className="py-8 flex flex-wrap justify-center gap-4 md:gap-x-8 gap-y-4">
             {trustBadges.map((badge, i) => (
-              <div key={i} className="flex items-center gap-3 text-muted-foreground">
+              <div key={i} className="flex items-center gap-3 px-6 py-3 bg-white dark:bg-white/5 rounded-full border border-neutral-200 dark:border-white/10 shadow-sm hover:shadow-md transition-shadow">
                 <badge.icon className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-sm font-semibold">{badge.label}</span>
+                <span className="text-sm md:text-base font-bold text-foreground/90">{badge.label}</span>
               </div>
             ))}
           </div>
@@ -149,32 +149,35 @@ export default function Contact() {
       </div>
 
       {/* ── Contact Methods Grid ── */}
-      <div className="mxd-section padding-default overflow-hidden">
-        <div className="mxd-container grid-container">
+      <div className="mxd-section py-16 md:py-24 overflow-hidden relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/50 to-transparent dark:from-background dark:to-background pointer-events-none"></div>
+        <div className="mxd-container grid-container relative z-10">
           <div className="mxd-block">
             <div className="container-fluid p-0">
-              <div className="row gx-0">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 {contactMethods.map((method, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.08 }}
-                    className="col-12 col-sm-6 col-xl-4 mxd-grid-item"
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
                     <a
                       href={method.href}
                       target={method.href.startsWith('http') ? '_blank' : undefined}
                       rel="noreferrer"
-                      className="block h-full border border-border/50 radius-m p-6 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 group"
+                      className="block h-full relative overflow-hidden bg-white dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-[2rem] p-8 md:p-10 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/30 transition-all duration-300 group hover:-translate-y-1.5"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors duration-300">
-                        <method.icon className="w-6 h-6 text-primary" />
+                      <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:bg-primary group-hover:scale-110 transition-all duration-300 shadow-inner relative z-10">
+                        <method.icon className="w-7 h-7 text-primary group-hover:!text-white transition-colors duration-300" />
                       </div>
-                      <h3 className="text-2xl font-bold t-bright mb-2">{method.title}</h3>
-                      <p className="text-primary font-bold text-lg md:text-xl mb-1">{method.value}</p>
-                      <p className="text-sm t-muted">{method.subtext}</p>
+                      <h3 className="text-2xl font-bold text-foreground mb-3">{method.title}</h3>
+                      <p className="text-primary font-bold text-xl md:text-2xl mb-2 group-hover:text-primary transition-colors">{method.value}</p>
+                      <p className="text-base text-muted-foreground font-medium">{method.subtext}</p>
+
+                      {/* Decorative Background Icon */}
+                      <method.icon className="absolute -bottom-6 -right-6 w-48 h-48 text-primary/5 dark:text-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 pointer-events-none" />
                     </a>
                   </motion.div>
                 ))}
@@ -185,7 +188,7 @@ export default function Contact() {
       </div>
 
       {/* ── Main Layout: Form + Sidebar (Rayo Grid) ── */}
-      <div className="mxd-section padding-default">
+      <div className="mxd-section pt-0 pb-16 md:pb-24">
         <div className="mxd-container grid-container">
           <div className="mxd-block">
             <div className="container-fluid p-0">
